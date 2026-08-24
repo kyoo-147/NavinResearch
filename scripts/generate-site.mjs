@@ -2,7 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, sections, site } from "../site.config.mjs";
 
 const localeEntries = Object.entries(locales);
-const homeAssetRevision = "20260824-08";
+const homeAssetRevision = "20260824-09";
 const escapeHtml = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 
 function alternates(suffix = "") {
@@ -119,8 +119,16 @@ function routeNav(localeKey, current) {
 function routeTemplate(localeKey, section) {
   const locale = locales[localeKey];
   const route = locale.routes[section];
+  const ui = experience[localeKey];
+  const routeNumber = String(sections.indexOf(section) + 1).padStart(2, "0");
   const search = section === "search" ? `<section class="route-search" aria-labelledby="search-label"><label id="search-label" for="route-search">${escapeHtml(locale.common.searchLabel)}</label><input id="route-search" type="search" data-route-search placeholder="${escapeHtml(locale.common.searchPlaceholder)}" autocomplete="off"><div class="route-search__results" data-search-results data-empty-label="${escapeHtml(locale.common.noResults)}" aria-live="polite"></div></section>` : "";
-  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>\n${head(localeKey, `${route.title} — ${site.name}`, route.description, section, "/content-routes/route-foundation.css", section === "search" ? "/content-routes/route-search.js" : "")}  </head><body class="route-page"><div class="route-page__shell"><header class="route-page__header"><a class="route-page__brand" href="${localePath(localeKey)}"><img src="/assets/brand/logo.webp" alt="" width="64" height="64"><span>NAVIN RESEARCH</span></a><nav class="route-page__nav" aria-label="${escapeHtml(locale.common.navAria)}">${routeNav(localeKey, section)}</nav><nav class="route-page__languages" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, section)}</nav></header><main class="route-page__main"><p class="route-page__eyebrow">${escapeHtml(route.title)}</p><h1>${escapeHtml(route.title)}</h1><p class="route-page__lede">${escapeHtml(route.lede)}</p><div class="route-page__notice"><strong>${escapeHtml(locale.common.preparation)}</strong><span>${escapeHtml(route.description)}</span></div>${search}</main><footer class="route-page__footer"><p>${escapeHtml(locale.common.footer)}</p><p><a href="${localePath(localeKey)}">Navin Research</a></p></footer></div></body></html>\n`;
+  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
+${head(localeKey, `${route.title} — ${site.name}`, route.description, section, "/content-routes/route-foundation.css", section === "search" ? "/content-routes/route-search.js" : "")}  </head><body class="route-page content-page content-${section}"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
+    <header class="route-page__header content-header"><a class="route-page__brand content-wordmark" href="${localePath(localeKey)}"><span>NAVIN<br>RESEARCH</span></a><nav class="route-page__nav" aria-label="${escapeHtml(locale.common.navAria)}">${routeNav(localeKey, section)}</nav><nav class="route-page__languages" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, section)}</nav></header>
+    <main class="route-page__main content-main"><div class="content-copy"><p class="route-page__eyebrow">SECTION ${routeNumber} / ${escapeHtml(route.title)}</p><h1>${escapeHtml(route.title)}</h1><p class="route-page__lede">${escapeHtml(route.lede)}</p><div class="route-page__notice"><strong>${escapeHtml(locale.common.preparation)}</strong><span>${escapeHtml(route.description)}</span></div>${search}</div><aside class="content-index"><p>${escapeHtml(ui.menu.explore)}</p><nav aria-label="${escapeHtml(ui.menu.explore)}">${routeNav(localeKey, section)}</nav></aside></main>
+    <footer class="route-page__footer content-footer"><p>© 2026 NAVIN RESEARCH</p><nav aria-label="Legal"><a href="${localePath(localeKey, "privacy-policy")}">${escapeHtml(ui.privacy)}</a><span aria-hidden="true">/</span><a href="${localePath(localeKey, "terms-of-use")}">${escapeHtml(ui.terms)}</a></nav></footer>
+  </div></body></html>
+`;
 }
 
 function chapterTemplate(localeKey, chapter) {
