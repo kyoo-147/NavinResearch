@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#04130e">
     <meta name="description" content="Navin Research 专注于语言、语音和视觉 AI 模型研究，并打造端到端 AI 产品。">
+    <meta name="robots" content="index, follow">
     <meta property="og:site_name" content="Navin Research">
     <meta property="og:title" content="Navin Research — 即将推出">
-    <meta property="og:description" content="语言、语音和视觉 AI 模型研究，以及基于这些研究打造的端到端产品，正在逐步成形。">
-    <meta property="og:locale" content="zh_CN">
-    <meta property="og:locale:alternate" content="en_US">
-    <meta property="og:locale:alternate" content="vi_VN">
+    <meta property="og:description" content="Navin Research 专注于语言、语音和视觉 AI 模型研究，并打造端到端 AI 产品。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://navinresearch.com/zh-cn/">
+    <meta property="og:locale" content="zh_CN">
     <meta property="og:image" content="https://navinresearch.com/assets/field-4.webp">
-    <meta property="og:image:type" content="image/webp">
-    <meta property="og:image:width" content="1600">
-    <meta property="og:image:height" content="900">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://navinresearch.com/assets/field-4.webp">
     <title>Navin Research — 即将推出</title>
@@ -26,53 +22,59 @@
     <link rel="alternate" hreflang="zh-CN" href="https://navinresearch.com/zh-cn/">
     <link rel="alternate" hreflang="x-default" href="https://navinresearch.com/">
     <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
-    <link rel="preload" href="/assets/field-1.webp" as="image" fetchpriority="high">
     <link rel="stylesheet" href="/styles.css">
     <script src="/script.js" defer></script>
   </head>
-  <body>
-    <div class="field" aria-hidden="true">
-      <div class="field__layer field__layer--1"></div>
-      <div class="field__layer field__layer--2"></div>
-      <div class="field__layer field__layer--3"></div>
-      <div class="field__layer field__layer--4"></div>
-      <div class="field__layer field__layer--5"></div>
-      <div class="field__wash"></div>
-      <div class="field__grain"></div>
-    </div>
+  <body class="home-page">
+    <div class="field" aria-hidden="true"><div class="field__layer field__layer--1"></div><div class="field__layer field__layer--2"></div><div class="field__layer field__layer--3"></div><div class="field__layer field__layer--4"></div><div class="field__layer field__layer--5"></div><div class="field__wash"></div><div class="field__grain"></div></div>
     <div class="shell">
       <header class="masthead">
-        <a class="brand" href="/zh-cn/" aria-label="Navin Research home">
-          <img class="brand__logo" src="/assets/brand/logo.webp" alt="" width="80" height="80">
-        </a>
-        <div class="masthead__meta">
-          <span class="signal">重大更新正在进行</span>
-          <nav class="language" aria-label="选择语言">
-            <a href="/" hreflang="en" lang="en">EN</a><span aria-hidden="true">/</span><a href="/vi/" hreflang="vi" lang="vi">VI</a><span aria-hidden="true">/</span><a href="/zh-cn/" hreflang="zh-CN" lang="zh-CN" aria-current="page">CN</a>
-          </nav>
+        <div class="masthead__brand-group">
+          <button class="menu-toggle" type="button" data-menu-open aria-expanded="false" aria-controls="site-menu" aria-label="打开菜单"><span></span><span></span><span></span></button>
+          <a class="brand" href="/zh-cn/" aria-label="Navin Research home"><img class="brand__logo" src="/assets/brand/logo.webp" alt="" width="80" height="80"></a>
         </div>
+        <div class="masthead__meta"><span class="signal">重大更新正在进行</span><nav class="language" aria-label="选择语言"><a href="/" hreflang="en" lang="en">EN</a><span aria-hidden="true">/</span><a href="/vi/" hreflang="vi" lang="vi">VI</a><span aria-hidden="true">/</span><a href="/zh-cn/" hreflang="zh-CN" lang="zh-CN" aria-current="page">CN</a></nav></div>
       </header>
-      <main class="hero">
-        <div class="hero__index" aria-hidden="true">NR — 01</div>
-        <div class="hero__content">
-          <p class="eyebrow">即将推出</p>
-          <h1>新的前沿<br>正在成形。</h1>
-          <p class="statement">我们正在进行一次大规模且充满雄心的更新——汇集我们对语言、语音与视觉 AI 模型的研究，以及基于这些研究打造的端到端产品。敬请期待。</p>
-        </div>
-        <aside class="contact" aria-label="联系信息">
-          <p>在此期间</p>
-          <h2>与我们交流。</h2>
-          <nav class="contact__links" aria-label="联系方式">
-            <a href="mailto:michaelbui.contact@gmail.com"><span>Email</span><span aria-hidden="true">↗</span></a>
-            <a href="https://www.linkedin.com/in/michaelbui-engineer" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/kyoo-147" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a>
+      <div class="menu-backdrop" data-menu-backdrop hidden></div>
+      <aside class="site-menu" id="site-menu" aria-label="主导航" aria-hidden="true" inert>
+        <div class="site-menu__primary">
+          <button class="menu-close" type="button" data-menu-close aria-label="关闭菜单"><span aria-hidden="true">×</span></button>
+          <nav aria-label="主导航">
+            <a href="/zh-cn/">首页</a>
+            <button type="button" data-chapters-toggle aria-expanded="false" aria-controls="chapter-panel">章节<span aria-hidden="true">→</span></button>
+            <a href="/zh-cn/research/">工作</a>
+            <a href="/zh-cn/blog/">笔记</a>
+            <a href="/zh-cn/#wealth-of-nature">理念</a>
+            <a href="mailto:michaelbui.contact@gmail.com">联系</a>
           </nav>
-        </aside>
+        </div>
+        <div class="chapter-panel" id="chapter-panel" aria-hidden="true" inert>
+          <button class="chapter-back" type="button" data-chapter-back><span aria-hidden="true">←</span>返回</button>
+          <p>章节</p>
+          <nav aria-label="章节">
+              <a href="/zh-cn/physis/"><span class="chapter-link__number">01</span><span><small>NAVIN</small><strong>PHYSIS</strong><em>具身与自然智能</em></span><span aria-hidden="true">↗</span></a>
+              <a href="/zh-cn/noema/"><span class="chapter-link__number">02</span><span><small>NAVIN</small><strong>NOEMA</strong><em>语言与多模态推理</em></span><span aria-hidden="true">↗</span></a>
+              <a href="/zh-cn/lumen/"><span class="chapter-link__number">03</span><span><small>NAVIN</small><strong>LUMEN</strong><em>视觉与感知</em></span><span aria-hidden="true">↗</span></a>
+              <a href="/zh-cn/pneuma/"><span class="chapter-link__number">04</span><span><small>NAVIN</small><strong>PNEUMA</strong><em>语音与声音</em></span><span aria-hidden="true">↗</span></a>
+              <a href="/zh-cn/poiesis/"><span class="chapter-link__number">05</span><span><small>NAVIN</small><strong>POIESIS</strong><em>生成系统</em></span><span aria-hidden="true">↗</span></a>
+          </nav>
+        </div>
+      </aside>
+      <main>
+        <section class="hero">
+          <div class="hero__index" aria-hidden="true">NR — 00</div>
+          <div class="hero__content"><p class="eyebrow">CHAPTER 00 / WEALTH OF NATURE — COMING SOON</p><h1>新的前沿<br>正在成形。</h1><p class="statement">我们正在进行一次大规模且充满雄心的更新——汇集我们对语言、语音与视觉 AI 模型的研究，以及基于这些研究打造的端到端产品。敬请期待。</p></div>
+          <aside class="contact" aria-label="联系信息"><p>在此期间</p><h2>与我们交流。</h2><nav class="contact__links" aria-label="联系方式"><a href="mailto:michaelbui.contact@gmail.com"><span>Email</span><span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/michaelbui-engineer" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span aria-hidden="true">↗</span></a><a href="https://github.com/kyoo-147" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a></nav></aside>
+        </section>
+        <section class="wealth" id="wealth-of-nature" aria-labelledby="wealth-title">
+          <div class="wealth__mark" aria-hidden="true"><span></span></div>
+          <p class="wealth__label">第 00 章</p>
+          <h2 id="wealth-title">自然之丰</h2>
+          <span class="wealth__rule" aria-hidden="true"></span>
+          <p class="wealth__statement">智能并非独立于自然而存在。它通过感知、语言、记忆与行动涌现。</p>
+        </section>
       </main>
-      <footer class="footer">
-        <p>© <span data-current-year>2026</span> NAVIN RESEARCH</p>
-        <p>独立 AI 研究 · 越南</p>
-      </footer>
+      <footer class="footer"><p>© <span data-current-year>2026</span> NAVIN RESEARCH</p><nav aria-label="Legal"><a href="/zh-cn/privacy-policy/">隐私政策</a><span aria-hidden="true">/</span><a href="/zh-cn/terms-of-use/">使用条款</a></nav></footer>
     </div>
   </body>
 </html>

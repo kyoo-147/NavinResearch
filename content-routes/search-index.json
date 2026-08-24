@@ -4,7 +4,7 @@
     "url": "/",
     "title": "Navin Research — Coming Soon",
     "description": "Navin Research studies language, speech, and vision AI models and builds end-to-end products.",
-    "text": "We are working on a major and ambitious update—bringing together our research into language, speech, and vision AI models, along with the end-to-end products built around them. Please stay tuned. Start a conversation."
+    "text": "We are working on a major and ambitious update—bringing together our research into language, speech, and vision AI models, along with the end-to-end products built around them. Please stay tuned. Intelligence does not exist apart from nature. It emerges through perception, language, memory, and action."
   },
   {
     "language": "EN",
@@ -35,11 +35,60 @@
     "text": "Search the real public surfaces currently available on this website."
   },
   {
+    "language": "EN",
+    "url": "/physis/",
+    "title": "NAVIN / PHYSIS — 01",
+    "description": "A future home for carefully documented work concerning embodied & natural intelligence.",
+    "text": "Embodied & Natural Intelligence This chapter is being prepared. No studies, findings, metrics, or publication dates are presented here yet."
+  },
+  {
+    "language": "EN",
+    "url": "/noema/",
+    "title": "NAVIN / NOEMA — 02",
+    "description": "A future home for carefully documented work concerning language & multimodal reasoning.",
+    "text": "Language & Multimodal Reasoning This chapter is being prepared. No studies, findings, metrics, or publication dates are presented here yet."
+  },
+  {
+    "language": "EN",
+    "url": "/lumen/",
+    "title": "NAVIN / LUMEN — 03",
+    "description": "A future home for carefully documented work concerning vision & perception.",
+    "text": "Vision & Perception This chapter is being prepared. No studies, findings, metrics, or publication dates are presented here yet."
+  },
+  {
+    "language": "EN",
+    "url": "/pneuma/",
+    "title": "NAVIN / PNEUMA — 04",
+    "description": "A future home for carefully documented work concerning speech & voice.",
+    "text": "Speech & Voice This chapter is being prepared. No studies, findings, metrics, or publication dates are presented here yet."
+  },
+  {
+    "language": "EN",
+    "url": "/poiesis/",
+    "title": "NAVIN / POIESIS — 05",
+    "description": "A future home for carefully documented work concerning generative systems.",
+    "text": "Generative Systems This chapter is being prepared. No studies, findings, metrics, or publication dates are presented here yet."
+  },
+  {
+    "language": "EN",
+    "url": "/privacy-policy/",
+    "title": "Privacy policy",
+    "description": "This static site does not set analytics cookies or run client-side behavioral tracking. Standard server access logs may be processed for security and operations, then reduced to coarse daily aggregates as described by the site.",
+    "text": "Questions about this website or information voluntarily sent to the contact address may be directed to michaelbui.contact@gmail.com."
+  },
+  {
+    "language": "EN",
+    "url": "/terms-of-use/",
+    "title": "Terms of use",
+    "description": "This website is provided for public information. Pages marked coming soon describe planned editorial and research areas; they are not published studies, findings, or promises of delivery.",
+    "text": "Original text and visual assets must not be reused in a misleading way. Contact michaelbui.contact@gmail.com with questions about permitted use."
+  },
+  {
     "language": "VI",
     "url": "/vi/",
     "title": "Navin Research — Sắp ra mắt",
     "description": "Navin Research nghiên cứu các mô hình AI ngôn ngữ, giọng nói và thị giác, đồng thời xây dựng các sản phẩm AI đầu cuối.",
-    "text": "Chúng tôi đang thực hiện một đợt cập nhật lớn và đầy tham vọng—quy tụ các nghiên cứu về mô hình AI ngôn ngữ, giọng nói và thị giác, cùng những sản phẩm AI đầu cuối được xây dựng từ các nghiên cứu đó. Vui lòng chờ đón. Hãy bắt đầu một cuộc trò chuyện."
+    "text": "Chúng tôi đang thực hiện một đợt cập nhật lớn và đầy tham vọng—quy tụ các nghiên cứu về mô hình AI ngôn ngữ, giọng nói và thị giác, cùng những sản phẩm AI đầu cuối được xây dựng từ các nghiên cứu đó. Vui lòng chờ đón. Trí tuệ không tồn tại tách rời tự nhiên. Nó hình thành qua tri giác, ngôn ngữ, ký ức và hành động."
   },
   {
     "language": "VI",
@@ -70,11 +119,60 @@
     "text": "Tìm trong các bề mặt công khai thực tế hiện có trên website."
   },
   {
+    "language": "VI",
+    "url": "/vi/physis/",
+    "title": "NAVIN / PHYSIS — 01",
+    "description": "Không gian tương lai cho các công trình được ghi chép cẩn trọng về trí tuệ hiện thân & tự nhiên.",
+    "text": "Trí tuệ hiện thân & tự nhiên Chương này đang được chuẩn bị. Hiện chưa có nghiên cứu, phát hiện, số liệu hay ngày công bố nào được trình bày."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/noema/",
+    "title": "NAVIN / NOEMA — 02",
+    "description": "Không gian tương lai cho các công trình được ghi chép cẩn trọng về ngôn ngữ & suy luận đa phương thức.",
+    "text": "Ngôn ngữ & suy luận đa phương thức Chương này đang được chuẩn bị. Hiện chưa có nghiên cứu, phát hiện, số liệu hay ngày công bố nào được trình bày."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/lumen/",
+    "title": "NAVIN / LUMEN — 03",
+    "description": "Không gian tương lai cho các công trình được ghi chép cẩn trọng về thị giác & nhận thức.",
+    "text": "Thị giác & nhận thức Chương này đang được chuẩn bị. Hiện chưa có nghiên cứu, phát hiện, số liệu hay ngày công bố nào được trình bày."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/pneuma/",
+    "title": "NAVIN / PNEUMA — 04",
+    "description": "Không gian tương lai cho các công trình được ghi chép cẩn trọng về lời nói & giọng nói.",
+    "text": "Lời nói & giọng nói Chương này đang được chuẩn bị. Hiện chưa có nghiên cứu, phát hiện, số liệu hay ngày công bố nào được trình bày."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/poiesis/",
+    "title": "NAVIN / POIESIS — 05",
+    "description": "Không gian tương lai cho các công trình được ghi chép cẩn trọng về hệ thống sinh tạo.",
+    "text": "Hệ thống sinh tạo Chương này đang được chuẩn bị. Hiện chưa có nghiên cứu, phát hiện, số liệu hay ngày công bố nào được trình bày."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/privacy-policy/",
+    "title": "Chính sách riêng tư",
+    "description": "Website tĩnh này không đặt cookie phân tích và không theo dõi hành vi phía trình duyệt. Nhật ký truy cập máy chủ tiêu chuẩn có thể được xử lý cho bảo mật và vận hành, sau đó chỉ được rút gọn thành số liệu tổng hợp theo ngày.",
+    "text": "Các câu hỏi về website hoặc thông tin tự nguyện gửi đến địa chỉ liên hệ có thể được gửi tới michaelbui.contact@gmail.com."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/terms-of-use/",
+    "title": "Điều khoản sử dụng",
+    "description": "Website này cung cấp thông tin công khai. Các trang ghi sắp ra mắt mô tả lĩnh vực biên tập và nghiên cứu dự kiến; chúng không phải nghiên cứu, phát hiện đã công bố hay cam kết phát hành.",
+    "text": "Không được tái sử dụng văn bản và tài sản hình ảnh gốc theo cách gây hiểu lầm. Liên hệ michaelbui.contact@gmail.com để hỏi về quyền sử dụng."
+  },
+  {
     "language": "CN",
     "url": "/zh-cn/",
     "title": "Navin Research — 即将推出",
     "description": "Navin Research 专注于语言、语音和视觉 AI 模型研究，并打造端到端 AI 产品。",
-    "text": "我们正在进行一次大规模且充满雄心的更新——汇集我们对语言、语音与视觉 AI 模型的研究，以及基于这些研究打造的端到端产品。敬请期待。 与我们交流。"
+    "text": "我们正在进行一次大规模且充满雄心的更新——汇集我们对语言、语音与视觉 AI 模型的研究，以及基于这些研究打造的端到端产品。敬请期待。 智能并非独立于自然而存在。它通过感知、语言、记忆与行动涌现。"
   },
   {
     "language": "CN",
@@ -103,5 +201,54 @@
     "title": "搜索",
     "description": "搜索 Navin Research 的公开页面目录。",
     "text": "搜索本网站当前真实存在的公开页面。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/physis/",
+    "title": "NAVIN / PHYSIS — 01",
+    "description": "未来用于认真记录与具身与自然智能相关工作的空间。",
+    "text": "具身与自然智能 本章节正在准备中。目前尚未在此展示研究、发现、指标或发布日期。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/noema/",
+    "title": "NAVIN / NOEMA — 02",
+    "description": "未来用于认真记录与语言与多模态推理相关工作的空间。",
+    "text": "语言与多模态推理 本章节正在准备中。目前尚未在此展示研究、发现、指标或发布日期。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/lumen/",
+    "title": "NAVIN / LUMEN — 03",
+    "description": "未来用于认真记录与视觉与感知相关工作的空间。",
+    "text": "视觉与感知 本章节正在准备中。目前尚未在此展示研究、发现、指标或发布日期。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/pneuma/",
+    "title": "NAVIN / PNEUMA — 04",
+    "description": "未来用于认真记录与语音与声音相关工作的空间。",
+    "text": "语音与声音 本章节正在准备中。目前尚未在此展示研究、发现、指标或发布日期。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/poiesis/",
+    "title": "NAVIN / POIESIS — 05",
+    "description": "未来用于认真记录与生成系统相关工作的空间。",
+    "text": "生成系统 本章节正在准备中。目前尚未在此展示研究、发现、指标或发布日期。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/privacy-policy/",
+    "title": "隐私政策",
+    "description": "本静态网站不设置分析 Cookie，也不运行客户端行为跟踪。标准服务器访问日志可能为安全与运维而处理，随后仅缩减为按日汇总的粗粒度数据。",
+    "text": "有关本网站或自愿发送至联系地址的信息，请联系 michaelbui.contact@gmail.com。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/terms-of-use/",
+    "title": "使用条款",
+    "description": "本网站用于提供公共信息。标记为即将推出的页面描述计划中的编辑与研究方向；它们不代表已发布研究、发现或交付承诺。",
+    "text": "不得以误导方式重用原创文字与视觉资产。如需询问许可，请联系 michaelbui.contact@gmail.com。"
   }
 ]

@@ -446,3 +446,87 @@ h1 {
     transform: scale(1.04);
   }
 }
+
+::selection {
+  color: #f6faef;
+  background: rgba(91, 139, 105, 0.72);
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.masthead__brand-group { display: flex; align-items: center; gap: 1rem; }
+.menu-toggle { display: grid; width: 44px; height: 44px; padding: 12px 9px; border: 0; background: transparent; place-content: center; gap: 5px; cursor: pointer; }
+.menu-toggle span { display: block; width: 25px; height: 1px; background: var(--ink); transition: transform 180ms ease; }
+.shell { padding-bottom: 4.5rem; }
+.hero { min-height: calc(100svh - 11.5rem); }
+.footer { position: fixed; z-index: 20; right: var(--edge); bottom: 0; left: var(--edge); min-height: 4.5rem; background: linear-gradient(180deg, rgba(3,18,13,0), rgba(3,18,13,.9) 35%); backdrop-filter: blur(8px); }
+.footer nav { display: flex; align-items: center; gap: .7rem; }
+.footer a:hover, .footer a:focus-visible { color: var(--acid); }
+.wealth { display: grid; min-height: calc(100svh - 4.5rem); padding: clamp(6rem, 13vh, 10rem) 1rem 7rem; place-items: center; align-content: center; border-top: 1px solid var(--line); text-align: center; }
+.wealth__mark { width: 2.5rem; height: 2.5rem; margin-bottom: 1.4rem; border: 1px solid rgba(217,255,87,.65); border-radius: 50%; }
+.wealth__mark span { display: block; width: 1px; height: 3.5rem; margin: -.5rem auto; background: var(--acid); transform: rotate(32deg); }
+.wealth__label { margin: 0 0 2rem; color: var(--acid); font-size: .65rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; }
+.wealth h2 { margin: 0; font-size: clamp(2.4rem, 6vw, 5.5rem); font-weight: 400; letter-spacing: .24em; line-height: 1; text-transform: uppercase; }
+.wealth__rule { width: 7.5rem; height: 1px; margin: 2.5rem 0 1.8rem; background: rgba(217,255,87,.78); }
+.wealth__statement { max-width: 34rem; margin: 0; color: rgba(244,247,236,.82); font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.5; }
+.menu-backdrop { position: fixed; z-index: 48; inset: 0; background: rgba(0,8,5,.6); backdrop-filter: blur(4px); }
+.site-menu { position: fixed; z-index: 50; top: 0; bottom: 0; left: 0; display: grid; width: min(52rem, 76vw); grid-template-columns: minmax(17rem, .85fr) minmax(20rem, 1.15fr); color: var(--ink); background: rgba(2,22,15,.97); border-right: 1px solid var(--line); transform: translateX(-102%); visibility: hidden; transition: transform 420ms cubic-bezier(.2,.8,.2,1), visibility 420ms; }
+.menu-open .site-menu { transform: translateX(0); visibility: visible; }
+.site-menu__primary, .chapter-panel { padding: clamp(2rem, 5vw, 4rem); }
+.site-menu__primary { border-right: 1px solid var(--line); }
+.menu-close, .chapter-back { min-width: 44px; min-height: 44px; padding: 0; border: 0; color: var(--ink); background: transparent; cursor: pointer; }
+.menu-close { margin-bottom: 2.5rem; font-size: 2.1rem; }
+.site-menu nav { display: grid; }
+.site-menu__primary nav > a, .site-menu__primary nav > button { display: flex; min-height: 3.8rem; align-items: center; justify-content: space-between; padding: .45rem 0; border: 0; border-bottom: 1px solid rgba(244,247,236,.12); color: var(--ink); background: transparent; font-size: clamp(1.7rem, 3vw, 2.7rem); font-weight: 400; text-align: left; cursor: pointer; }
+.site-menu__primary nav > :hover, .site-menu__primary nav > :focus-visible, .site-menu__primary nav > button[aria-expanded="true"] { color: var(--acid); }
+.chapter-panel { overflow-y: auto; opacity: 0; pointer-events: none; transform: translateX(-1rem); transition: opacity 220ms ease, transform 220ms ease; }
+.chapters-open .chapter-panel { opacity: 1; pointer-events: auto; transform: none; }
+.chapter-panel > p { color: var(--acid); font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+.chapter-back { display: none; margin-bottom: 1rem; }
+.chapter-panel nav a { display: grid; grid-template-columns: 2rem 1fr auto; gap: .8rem; align-items: center; padding: 1rem 0; border-bottom: 1px solid rgba(244,247,236,.12); }
+.chapter-panel small, .chapter-panel strong, .chapter-panel em { display: block; }
+.chapter-panel small { color: var(--acid); font-size: .55rem; letter-spacing: .18em; }
+.chapter-panel strong { margin: .1rem 0; font-size: 1.15rem; font-weight: 400; letter-spacing: .08em; }
+.chapter-panel em { color: var(--muted); font-size: .75rem; font-style: normal; }
+.chapter-link__number { color: var(--acid); font-size: .65rem; }
+.menu-open { overflow: hidden; }
+
+@media (max-width: 720px) {
+  .site-menu { width: min(100%, 28rem); grid-template-columns: 1fr; }
+  .chapter-panel { position: absolute; inset: 0; background: #031b12; transform: translateX(100%); opacity: 1; }
+  .chapters-open .chapter-panel { transform: translateX(0); }
+  .chapter-back { display: flex; align-items: center; gap: .5rem; }
+  .wealth { padding-right: 0; padding-left: 0; }
+  .wealth h2 { letter-spacing: .12em; }
+  .footer { gap: .6rem; }
+  .footer nav { gap: .35rem; white-space: nowrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-menu, .chapter-panel { transition-duration: .001ms !important; }
+}
+
+@media (max-width: 540px) {
+  .language a { min-width: 1.8rem; padding-right: .15rem; padding-left: .15rem; }
+  .eyebrow { max-width: 100%; font-size: .55rem; letter-spacing: .15em; line-height: 1.45; }
+  h1 { max-width: 100%; font-size: clamp(3.2rem, 15vw, 4.4rem); overflow-wrap: anywhere; }
+  .hero { padding-bottom: 7rem; }
+  .footer { font-size: .43rem; letter-spacing: .07em; }
+  .footer p, .footer nav { min-width: 0; white-space: nowrap; }
+  .footer nav { font-size: .42rem; gap: .25rem; }
+}
+
+
+.hero > * { min-width: 0; }
+@media (max-width: 540px) {
+  h1 { font-size: clamp(3rem, 13vw, 4rem); }
+  .footer { font-size: .36rem; }
+  .footer nav { margin-left: auto; font-size: .36rem; }
+}
+
+
+.shell { width: 100%; max-width: 100vw; }
+main, .masthead, .hero, .wealth, .hero__content, .statement { min-width: 0; max-width: 100%; }
+@media (max-width: 540px) {
+  .shell { width: 100vw; overflow-x: clip; }
+  .statement { width: 100%; overflow-wrap: break-word; }
+}
