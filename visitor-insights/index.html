@@ -1,1 +1,29 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Private visitor insights · Navin Research</title><link rel="stylesheet" href="../visitor-map/style.css"></head><body><main class="wrap"><header><a href="../visitor-map/">NAVIN RESEARCH</a><span>PRIVATE / AUTHENTICATED</span></header><section class="intro"><p class="kicker">Operator view</p><h1>More context.<br>Still no trail.</h1><p>Daily region and city counts for authorized operators. This view is intended for an nginx Basic Auth boundary; it contains no raw IPs, URLs, user agents, or event-level records.</p></section><section class="panel"><div class="panel-title"><span>Daily location counts</span><strong id="date">—</strong></div><ol id="locations"></ol><p class="note" id="status">Loading private aggregate…</p></section></main><script>fetch('data.json').then(r=>r.json()).then(d=>{let rows=d.rows||[],date=rows.map(x=>x.day).sort().pop();document.querySelector('#date').textContent=date||'—';rows.filter(x=>x.day===date).sort((a,b)=>b.visits-a.visits).forEach(x=>{let li=document.createElement('li');li.innerHTML='<span>'+x.city+', '+x.country+'</span><small>'+x.visits.toLocaleString()+' visits</small>';document.querySelector('#locations').append(li)});document.querySelector('#status').textContent=(d.demo?'DEMO DATA · ':'')+'Aggregated daily; not a live feed.'}).catch(()=>document.querySelector('#status').textContent='Private data unavailable.');</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="referrer" content="no-referrer">
+    <title>Private visitor insights · Navin Research</title>
+    <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
+    <link rel="stylesheet" href="/visitor-map/style.css">
+    <script src="/visitor-insights/script.js" defer></script>
+  </head>
+  <body>
+    <main class="wrap">
+      <header><a class="map-brand" href="/visitor-map/"><img src="/assets/brand/logo.webp" alt="" width="56" height="56"><span>NAVIN RESEARCH</span></a><span>PRIVATE / AUTHENTICATED</span></header>
+      <section class="intro">
+        <p class="kicker">Operator view</p>
+        <h1>More context.<br>Still no trail.</h1>
+        <p>Daily region and city aggregates for authorized operators. No raw IP, IP hash, URL, user agent, or event-level trajectory is retained.</p>
+      </section>
+      <section class="panel">
+        <div class="panel-title"><span>Daily location aggregates</span><strong id="date">—</strong></div>
+        <p class="demo-badge" id="demo-badge" hidden>DEMO DATA</p>
+        <ol id="locations"></ol>
+        <p class="note" id="status">Loading private aggregate…</p>
+      </section>
+    </main>
+  </body>
+</html>

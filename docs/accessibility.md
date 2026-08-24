@@ -1,85 +1,72 @@
-# NavinResearch accessibility, SEO, and content quality
+# Accessibility, SEO, privacy, and content quality
 
-This audit is grounded in `index.html`, `styles.css`, and `script.js` at baseline `48b4b1c7a30664a99cbe47c2c14b1e40ff22cbef`. It records what exists and the safeguards required when the visual system is reused.
+This checklist applies to every generated Navin Research page and analytics surface.
 
-## Current baseline
+## Semantics and keyboard
 
-### Semantics and names
+- Keep a valid document language, one page-level `h1`, and semantic `header`, `main`, `nav`, `aside`, and `footer` landmarks.
+- Use real links for navigation. Locale links use stable URLs and `aria-current="page"`; do not recreate them as client-only toggles.
+- Brand links require an accessible label while the decorative logo image uses empty alt text to avoid duplication.
+- Decorative background layers, arrows, and visual globe effects stay outside the accessibility tree.
+- Preserve the global `2px solid #d9ff57` focus ring with 5px offset and minimum 44px locale targets.
+- Keep source order logical even when the desktop grid places the contact panel beside the hero.
 
-- `html lang="en"`, `meta viewport`, one page-level `h1`, supporting `h2`, semantic `header`, `main`, `aside`, `nav`, and `footer` are present.
-- Brand home link has an accessible label. The field is `aria-hidden`; decorative mark and external-link arrows are also hidden. Contact aside and contact nav have labels.
-- Language is a keyboard-operable `<button>` with `aria-pressed`; its label changes to the target language. The click handler and storage fallback preserve basic function.
-- `:focus-visible` is global and uses acid outline, 2px width, 5px offset. Links and controls inherit the dark-theme text color.
-- External links use `target="_blank" rel="noreferrer"`; visible labels remain meaningful without the arrow.
+## Motion
 
-### Motion and sensory considerations
+- Homepage motion waits 3 seconds, then begins a slow 40-second crossfade. It is decorative and never gates content.
+- `prefers-reduced-motion: reduce` fixes one field image and suppresses transitions and pointer wash.
+- The visitor globe stops rotation for reduced motion and when its tab is hidden.
+- Do not add autoplaying media, rapid flashes, or parallax that changes reading order.
 
-- Background crossfades, pan/scale/blur, pointer wash, status ping, and link transitions are present. The `prefers-reduced-motion: reduce` block stops the animation/transition system, fixes layer 1, and avoids pointer tracking.
-- Motion is decorative and does not gate content. Keep it that way: no autoplaying content, parallax that changes reading order, or essential status communicated solely by color/pulse.
-- The grain is decorative and has no pointer interaction. On low-power or data-constrained contexts, a future enhancement may use a static layer, but that is not current behavior.
+## Color and contrast
 
-### Responsive behavior
+Current primary colors are near-white `#f4f7ec`, acid `#d9ff57`, and deep green `#03120d`. Because field imagery moves beneath copy, preserve the dark wash and test every image, locale, and viewport. Body text must meet WCAG AA 4.5:1, large text 3:1, and focus/control boundaries 3:1. Thin rules and muted text are not valid as the only state indicator.
 
-- `min-width: 320px` prevents an unusable sub-320 layout. `100svh` avoids common mobile browser viewport issues.
-- At ≤900px, the index disappears, status copy hides, and hero becomes one column. At ≤540px, edges shrink to 1.2rem and footer copy wraps deliberately.
-- Verify focus visibility, no horizontal scrolling, line wrapping, and tap target size at 320, 375, 540, 768, 900, and wide desktop widths. The current CSS does not declare an explicit 44px minimum for every control; this is a follow-up requirement for production expansion.
+## Responsive checks
 
-## Implementation-ready patterns
+Test all three locales at 320, 375, 390, 540, 768, 900, 1440, and 1920 CSS pixels. Confirm:
 
-### Keyboard and focus
+- no horizontal overflow;
+- logo and EN/VI/CN links remain usable;
+- the long status label disappears below 900px rather than clipping;
+- hero line breaks remain intentional;
+- contact and footer text do not collide;
+- focus indicators are not clipped.
 
-- Preserve semantic elements: real links for navigation; real buttons for toggles.
-- Keep the DOM order masthead → hero index/content → contact → footer. CSS layout may reposition visually, but must not create a confusing reading/focus order.
-- Keep focus rings unoccluded against the field; if a future component changes background, use an opaque focus backing or equivalent contrast.
-- Use `aria-current` only for a current navigation item. For the locale control, `aria-pressed` is appropriate for the current Vietnamese state, but its accessible label must always say the action (“Switch to …”), not only the current value.
-- If a future async status changes materially, use a polite live region with concise updates; the current static “Major update in progress” does not need one.
+## SEO and i18n
 
-### Color and contrast
+- Locale source of truth is `site.config.mjs`; generated HTML must not be edited as the only copy change.
+- Stable locale URLs are `/`, `/vi/`, and `/zh-cn/`, with matching localized content-route paths.
+- Every indexable page must emit server-rendered title, description, canonical, `html lang`, and complete `en`/`vi`/`zh-CN`/`x-default` hreflang links.
+- The sitemap contains only real public pages. `/visitor-insights/` is excluded and disallowed in robots.
+- Content placeholders must say they are being prepared. Never add hidden text, doorway pages, fake articles, fake dates, fake metrics, fabricated research, or unsupported JSON-LD.
+- Search only indexes real route metadata and must not imply unpublished full-text content exists.
 
-Current text colors are `#f4f7ec`, `rgba(244,247,236,.84)`, and `rgba(244,247,236,.70)` over a dark wash; rules are `.24` alpha and acid is `#d9ff57`. Because images sit beneath the wash, contrast must be tested against the actual darkest and lightest portions at every viewport and language. Use full-opacity near-white for essential small text if a photograph reduces contrast. Do not use line color, muted copy, the dot, or hover color as the only semantic signal. Pair state colors with text/structure.
+## Analytics privacy boundary
 
-**Required checks for a new component:** normal body text should meet WCAG AA 4.5:1, large text 3:1, and non-text controls/focus indicators 3:1 against adjacent colors. These ratios are a validation requirement, not a claim that every current alpha overlay has been exhaustively measured.
+- Raw IPs are sensitive and remain only in the restricted Nginx log and aggregator process memory.
+- SQLite stores aggregate counts only—no raw IP, IP hash, URL, user agent, event, or individual trajectory.
+- Public visitor geography is country/day only and suppresses groups smaller than five.
+- Private insights may show daily region/city aggregates but must be protected by authentication and `no-store` headers.
+- Demo JSON must remain visibly labeled `DEMO DATA`; never report it as live visitors.
+- GeoLite2 is approximate. Never use it to identify a person, household, or street address. Keep required attribution and current EULA/update obligations.
 
-### Motion contract
+## Logo and assets
 
-Preserve current values unless a deliberate system change is approved:
-
-- field: 40s infinite cycle, staggered layer delays; default animation easing is browser `ease` because no timing function is set on `.field__layer`;
-- ping: 2.8s `ease-out` infinite;
-- link/language transitions: 180ms `ease`;
-- pointer wash: 500ms `ease`.
-
-Under reduced motion, stop decorative animation, transition, and pointer response. Test both the OS setting and keyboard-only navigation; reduced motion must not remove focus or content.
-
-## SEO and sharing
-
-Current `index.html` has a descriptive `<title>`, meta description, canonical `https://navinresearch.com/`, Open Graph site/title/description/locale/type/url/image/type/width/height, Twitter large-image card/image, theme color, favicon, and image preload. `robots.txt` and `sitemap.xml` are present in the repository. Keep canonical, OG URL, sitemap, and language URL strategy consistent if deployment changes.
-
-- Keep one truthful title and description per locale. `script.js` updates title, description, OG title, OG description, and OG locale client-side; crawlers that do not execute JavaScript may only see English metadata. For indexable future locales, prefer server-rendered or statically generated localized HTML and stable locale URLs.
-- Ensure the OG image is reachable, intentional, and representative. Current social image is `/assets/field-4.webp`, not either supplied logo PNG.
-- Preserve the canonical host and trailing-slash convention unless routing changes. Do not add keyword-stuffed copy or claim research/products not present in the page.
-- Add `og:locale:alternate`, `hreflang`, and JSON-LD only when their values and URL routes are real. Do not manufacture an organization schema identity from the supplied logo alone.
-
-## Internationalization and safe rendering
-
-The locale dictionary currently includes English and Vietnamese. Add a locale only with complete copy and metadata records. Set `document.documentElement.lang` before/with content updates, check translated heading line lengths, and test all metadata. Prefer DOM text nodes to HTML injection. The current title uses trusted dictionary `<br>` markup; if dictionary ownership expands, replace that exception with structured line data. Preserve proper Vietnamese diacritics and do not let uppercase tracking destroy legibility.
-
-## Asset and logo guidance
-
-The supplied `logo.png` and `logo_icon_tab.png` are 1254×1254 RGBA references, visually distinct from the current inline header mark. They contain saturated ribbon artwork; the icon-tab variant has a white circular field. If adopted, provide meaningful alt text when informative, empty alt when decorative, and a suitable `maskable`/favicon treatment only after checking transparency and small-size recognition. Keep clearspace around the visible artwork and do not place it over the photographic field without contrast testing. Never silently replace the current mark in a docs-only extraction.
-
-## Review findings
-
-- **medium — `styles.css` (focus/control sizing):** the current language button has vertical padding `.45rem` but no explicit minimum 44px target; verify its computed target and add a larger hit area in a future runtime change if needed.
-- **medium — `index.html`/`script.js` (localized SEO):** locale metadata changes only after client JavaScript runs, so non-JS crawlers receive English metadata. Use localized HTML/URLs if Vietnamese becomes indexable.
-- **low — `styles.css` (contrast under imagery):** alpha body/muted text is intentionally layered over a wash, but a formal contrast sweep over all five images/viewports is still needed.
-- **low — supplied logo references:** the colorful PNGs are not connected to the runtime; any brand adoption needs product approval, asset optimization, and favicon/alt-text testing.
+- Use `assets/brand/logo.webp` for the transparent header mark.
+- Use `assets/brand/logo_icon_tab.png` only as the browser/favicon asset.
+- Preserve proportions, transparency, minimum size, and clearspace; do not stretch, recolor, rotate, or crop the ribbon.
+- Source background PNGs are versioned design inputs but must not be deployed to the public web root; only optimized WebPs ship.
 
 ## Verification checklist
 
-1. Keyboard through brand, locale button, email, LinkedIn, GitHub; confirm visible focus and sensible order.
-2. Test EN and VI at 320/375/540/768/900px and desktop; confirm no clipping or horizontal scroll.
-3. Test `prefers-reduced-motion` and a screen reader/browser combination.
-4. Run axe or equivalent automated checks, then manually sample contrast over every background layer.
-5. Inspect title, description, canonical, OG tags, favicon, robots, and sitemap in a non-JS fetch and a rendered page.
-6. Confirm supplied logo files are not referenced unless an approved runtime change adds them.
+1. Run `node scripts/generate-site.mjs` and `node content-routes/validate.mjs`.
+2. Run JavaScript syntax checks for homepage, search, public map, and private insights.
+3. Run `uv run python -m unittest analytics.test_aggregate -v`.
+4. Validate HTML and check every local asset and route over an HTTP server.
+5. Keyboard-test brand, locale links, contact links, search, and analytics pages.
+6. Capture EN/VI/ZH-CN screenshots on desktop and mobile after the 3-second motion boundary.
+7. Test reduced motion and inspect browser console/network/CSP errors.
+8. Verify canonical/hreflang/sitemap from non-JavaScript fetches.
+9. Verify public analytics has no private fields and private production routes return `401` without credentials.
+10. Confirm source PNGs, SQLite, MMDB, raw logs, and credentials are absent from the release archive.

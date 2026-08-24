@@ -1,9 +1,17 @@
 {
+  "schemaVersion": 1,
+  "batchId": "demo-20260214",
+  "generatedAt": "2026-02-14T23:59:59Z",
   "demo": true,
-  "privacy": {"contains": ["daily region/city counts"], "excludes": ["raw IP", "URL", "user agent", "individual trajectory"]},
+  "metric": "unique visitors per log day",
+  "geolocationProvider": "demo",
+  "privacy": {
+    "contains": ["daily region and city aggregates"],
+    "excludes": ["raw IP", "IP hash", "URL", "user agent", "individual trajectory"]
+  },
   "rows": [
-    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "region": "Ho Chi Minh City", "city": "Ho Chi Minh City", "visits": 21},
-    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "region": "Hanoi", "city": "Hanoi", "visits": 14},
-    {"day": "2026-02-14", "countryCode": "DE", "country": "Germany", "region": "Berlin", "city": "Berlin", "visits": 9}
+    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "region": "Ho Chi Minh City", "city": "Ho Chi Minh City", "visitors": 21},
+    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "region": "Hanoi", "city": "Hanoi", "visitors": 14},
+    {"day": "2026-02-14", "countryCode": "DE", "country": "Germany", "region": "Berlin", "city": "Berlin", "visitors": 9}
   ]
 }

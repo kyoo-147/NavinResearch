@@ -77,34 +77,31 @@ button {
   opacity: 0;
   transform: scale(1.08);
   filter: saturate(1.12) contrast(1.05) blur(2px);
-  will-change: opacity, transform, filter;
-  animation: field-shift 40s infinite both;
-  animation-play-state: paused;
 }
 
 .field__layer--1 {
   background-image: url("/assets/field-1.webp");
-  animation-delay: -2s;
+  animation-delay: -4s;
 }
 
 .field__layer--2 {
   background-image: url("/assets/field-2.webp");
-  animation-delay: 6s;
+  animation-delay: 4s;
 }
 
 .field__layer--3 {
   background-image: url("/assets/field-3.webp");
-  animation-delay: 14s;
+  animation-delay: 12s;
 }
 
 .field__layer--4 {
   background-image: url("/assets/field-4.webp");
-  animation-delay: 22s;
+  animation-delay: 20s;
 }
 
 .field__layer--5 {
   background-image: url("/assets/field-5.webp");
-  animation-delay: 30s;
+  animation-delay: 28s;
 }
 
 .field__wash {
@@ -176,21 +173,19 @@ button {
   letter-spacing: 0.14em;
 }
 
-.language button {
-  padding: 0.45rem 0;
-  border: 0;
-  color: inherit;
-  background: transparent;
-  cursor: pointer;
+.language a {
+  display: inline-grid;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  place-items: center;
+  padding: 0.45rem;
   opacity: 0.45;
-  font: inherit;
-  letter-spacing: inherit;
   transition: opacity 180ms ease;
 }
 
-.language button[aria-pressed="true"],
-.language button:hover,
-.language button:focus-visible {
+.language a[aria-current="page"],
+.language a:hover,
+.language a:focus-visible {
   opacity: 1;
 }
 
@@ -302,15 +297,15 @@ h1 {
 }
 
 @keyframes field-shift {
-  0%, 15% {
+  0% {
     opacity: 0;
     transform: scale(1.12) translate3d(-1.5%, 1%, 0) rotate(-0.35deg);
     filter: saturate(1.1) contrast(1.04) blur(7px);
   }
-  20%, 35% {
+  4%, 18% {
     opacity: 1;
   }
-  40%, 100% {
+  24%, 100% {
     opacity: 0;
     transform: scale(1.03) translate3d(1.5%, -1%, 0) rotate(0.35deg);
     filter: saturate(1.25) contrast(1.08) blur(1px);
@@ -318,13 +313,23 @@ h1 {
 }
 
 .motion-ready .field__layer {
-  animation-play-state: running;
+  will-change: opacity, transform, filter;
+  animation-name: field-shift;
+  animation-duration: 40s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
 }
 
 @media (max-width: 900px) {
   .field__layer {
     filter: saturate(1.06) contrast(1.03);
   }
+
+  .signal {
+    display: none;
+  }
+
   .masthead {
     min-height: 6rem;
   }
@@ -374,6 +379,14 @@ h1 {
 
   .masthead__meta {
     gap: 0.75rem;
+  }
+
+  .language {
+    gap: 0.1rem;
+  }
+
+  .language a {
+    min-width: 2.35rem;
   }
 
   .hero {

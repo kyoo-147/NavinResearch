@@ -1,103 +1,97 @@
-# NavinResearch components and templates
+# Navin Research components and templates
 
-This catalogue describes the current coming-soon composition and the reusable contracts implied by it. “Current” means implemented in `index.html`/`styles.css`/`script.js`; “proposed” means a safe extraction for future pages, not a claim that runtime components already exist.
+This catalogue defines the reusable contracts behind the generated EN/VI/ZH-CN site. Runtime markup is generated from `site.config.mjs` by `scripts/generate-site.mjs`; generated HTML is deployable output, not the translation source of truth.
 
-## Component contracts
-
-### Field backdrop (current)
+## Field backdrop
 
 ```html
 <div class="field" aria-hidden="true">
   <div class="field__layer field__layer--1"></div>
-  <!-- layers 2–5 -->
+  <!-- field__layer--2 through --5 -->
   <div class="field__wash"></div>
   <div class="field__grain"></div>
 </div>
 ```
 
-Keep it decorative and outside the reading order. Use five optimized WebP layers from `/assets/field-1.webp` … `/assets/field-5.webp`; set a fallback background. The wash must maintain legibility, and grain must remain `pointer-events:none`. Provide a reduced-motion still state. Do not put content or alt text in this layer.
+Keep it decorative and outside reading order. The five optimized WebPs start after a 3-second calm state and crossfade over a 40-second loop. Wash opacity protects text contrast. Grain remains `pointer-events:none`. Reduced-motion mode fixes layer 1 and disables pointer response.
 
-### Masthead / brand lockup (current)
+## Masthead and brand
 
-A semantic `header` contains a home link (`aria-label="Navin Research home"`) and a metadata cluster. The current mark is an inline 36×36 viewBox path with no fill and a 1.7 stroke; the text is NAVIN with a RESEARCH subline. Status is a dot plus uppercase text; on ≤900px only the dot remains. The language control is a real `button` with `aria-pressed`, a dynamic `aria-label`, and EN/VI state styling. Use a visible focus ring (`2px solid #d9ff57`, 5px offset).
+The semantic `header` contains:
 
-**Proposed extraction:** `<BrandLockup href label markVariant="inline-n">`, `<StatusSignal label>`, `<LocaleToggle current supportedLocales>`. Keep labels translatable and make the status dot supplementary, not the only status announcement.
+- a home link with the approved transparent `assets/brand/logo.webp` and an accessible Navin Research label;
+- an uppercase update-status label, hidden as a whole below 900px;
+- a locale `nav` with real links to `/`, `/vi/`, and `/zh-cn/`, `hreflang`, valid BCP 47 language tags, and `aria-current="page"`.
 
-### Editorial hero (current)
+The browser icon is the distinct white-backed `assets/brand/logo_icon_tab.png`. Do not interchange the two logo assets. Locale links must preserve a minimum 44px target and the global acid focus ring.
 
-The `main.hero` has three desktop tracks: vertical index (`NR — 01`), editorial content, and contact aside. The content uses an acid uppercase eyebrow, one `h1` with intentional `<br>` in both language strings, and a paragraph. The `h1` is max 10ch and uses balanced text; translated strings must be rechecked before preserving a forced line break.
+## Editorial hero
 
-**Proposed extraction:** `<EditorialHero index eyebrow title statement aside>`. Enforce exactly one page-level `h1`, with a concise text alternative for any line-break treatment. Do not use `aria-hidden` on actual copy.
+The homepage `main.hero` has three desktop tracks: vertical index, editorial content, and contact aside. It contains one `h1`, an acid uppercase eyebrow, and one truthful statement. Controlled line breaks are generated from locale title arrays rather than injected at runtime. Every translated headline must be visually checked rather than inheriting English wrapping assumptions.
 
-### Contact panel and link list (current)
+**Reusable contract:** `EditorialHero(index, eyebrow, titleLines, statement, aside)` with exactly one page-level `h1`.
 
-The aside has an `aria-label`, muted section label, `h2`, and a bordered list of email, LinkedIn, and GitHub links. Links are uppercase, separated by top rules, with a final bottom rule. The arrow is decorative (`aria-hidden`) while the link text is the accessible name. External links use `target="_blank" rel="noreferrer"`; mail uses `mailto:`.
+## Contact panel
 
-**Proposed extraction:** `<LinkList heading items>` where each item has a visible label and optional external indicator. Keep an actual link for navigation; never make the entire panel a click target without a name.
+The `aside` has a localized accessible label, section label, `h2`, and semantic links for Email, LinkedIn, and GitHub. External links use `target="_blank" rel="noopener noreferrer"`; the arrow remains decorative. Do not turn the whole panel into an unnamed click target.
 
-### Footer (current)
+## Footer
 
-A `footer` uses two uppercase metadata lines: dynamic current year and “Independent AI research · Vietnam”. It is flex-aligned with a 4.5rem minimum height; on mobile the second line is constrained to 12rem and right-aligned.
+The footer pairs a script-enhanced current year with a locale-specific institutional descriptor. It remains readable without JavaScript because the generated year is a valid fallback.
 
-**Proposed extraction:** `<InstitutionFooter year organization descriptor>` with locale-aware year and punctuation. Keep legal/identity text readable even when it is visually small.
+## Content-route shell
 
-### Language switcher (current)
+Blog, Research, Docs, and Search use one generated editorial shell:
 
-`script.js` owns a small EN/VI dictionary. `setLanguage()` updates `document.documentElement.lang`, `document.title`, description, OG title/description/locale, `aria-pressed`, button label, and `[data-copy]` nodes. The title is the only node updated with `innerHTML` because its dictionary value intentionally contains `<br>`; all other values use `textContent`. `localStorage` key is `navin-language`; invalid/missing storage falls back to English.
+1. approved brand asset;
+2. localized primary navigation;
+3. localized URL switcher;
+4. one page `h1` and a truthful preparation notice;
+5. shared route footer.
 
-**Proposed extraction:** a locale record with `htmlTitle` only when markup is explicitly trusted, otherwise render line breaks structurally. Each locale must provide every required key, metadata, accessible toggle label, and social preview copy.
+Route metadata, canonical URLs, and all hreflang alternates are generated at build time. Placeholder surfaces must not contain fake articles, fake dates, fabricated research, schema claims, or keyword stuffing.
 
-## Page templates
+## Search
 
-### Coming-soon landing (current)
+The public search is a small client-side directory over real route metadata only. It creates DOM nodes with `textContent`, does not index unpublished material, and remains a progressive enhancement. It is not represented as full-text research search.
 
-1. `body` with dark ground and decorative field.
-2. `.shell` full viewport: masthead / hero / footer.
-3. Masthead brand + status + locale toggle.
-4. Hero: optional index rail + one editorial message + contact panel.
-5. Footer identity line.
+## Visitor map
 
-Use this template when the page has one temporary state and a small set of contact actions. It is intentionally content-light; do not force product cards or navigation into it.
+`/visitor-map/` uses an original Canvas 2D globe, static country centroids, and periodically refreshed aggregate JSON. The globe is ambient; the ranked country list is the authoritative accessible data. Public groups below `k=5` are withheld. There is no WebSocket or individual event stream.
 
-### Research editorial landing (proposed)
+## Private visitor insights
 
-Reuse the same masthead, field/wash, edge padding, typography, rules, and footer. Replace the coming-soon hero with one `h1`, a short dek, and a modular sequence of research sections. Keep the dark wash behind copy and use rules/acid labels to expose hierarchy. A future multi-section page needs a skip link and landmark plan; those are not present in the current one-screen page.
+`/visitor-insights/` is public source code but a private production route. Nginx authentication, `Cache-Control: private, no-store`, and `X-Robots-Tag: noindex` are deployment requirements. The UI reads aggregate city/region counts only; it never receives raw IPs or individual trajectories.
 
-### Detail / project page (proposed)
+## Internationalization rules
 
-Use the same brand and type tokens, with a narrow reading measure for long-form text and a persistent but less dominant contact/navigation rail. Background imagery should be decorative and not compete with code, figures, or citations. Add breadcrumbs only if the information architecture warrants them; do not infer them from the coming-soon page.
+- Locale keys: `en`, `vi`, `zh-cn`; rendered tags: `en`, `vi`, `zh-CN`.
+- Stable home URLs: `/`, `/vi/`, `/zh-cn/`.
+- Stable route pattern: `/{optional-locale}/{blog|research|docs|search}/`.
+- Every locale record must provide complete homepage, route, metadata, navigation, footer, and accessibility copy.
+- Never concatenate translated fragments or translate brand names, Email, LinkedIn, or GitHub.
+- Run the generator and validator after every copy or route change.
 
-## Internationalization expansion rules
+## Interaction rules
 
-- Current locales are English (`en`) and Vietnamese (`vi`); default is English, with Vietnamese restored only when storage equals exactly `vi`.
-- Keep locale keys complete: status, eyebrow, title, statement, contact label/title, footer, links, document title, description, OG description, OG locale, and toggle label.
-- Update `lang` to a valid BCP 47 language tag (`en`, `vi`) and use locale-specific metadata. Add `hreflang`/server-routed URLs only when distinct indexable locale URLs exist; the current client toggle does not create URLs.
-- Never assume English word lengths. Vietnamese already has longer status, statement, contact title, and footer strings. Test the 320px/540px layouts, headline wrapping, link rules, focus order, and social previews for every locale.
-- Do not concatenate translated fragments or translate brand names, Email, LinkedIn, or GitHub. Keep the separator (`·`) intentional and locale-reviewed.
-- Avoid `innerHTML` for translations. If controlled line breaks are needed, model title lines as data and render text nodes plus `<br>`; the current `innerHTML` is a narrow, trusted-dictionary exception.
+- Use links for navigation and buttons only for in-page actions.
+- Preserve DOM order: masthead → hero content → contact → footer.
+- Keep acid `:focus-visible` outlines and 44px targets.
+- Motion may decorate but may not gate information.
+- Contact-link shifts and color changes must not cause layout overflow.
 
-## Interaction and state rules
-
-Default link state is inherited near-white; hover/focus color is acid and contact links shift right `.45rem` over `180ms ease`. Language labels are `.45` opacity when inactive and `1` when active/hover/focused. Focus uses a high-visibility acid outline. Pointer movement changes only decorative wash variables and is absent under reduced motion. Storage failure must not block language switching or content rendering.
-
-## Do / don't examples
+## Do / don't
 
 ```html
-<!-- Do: named landmarks and an actual control -->
-<header>...</header>
-<main>
-  <h1>...</h1>
-  <aside aria-label="Contact information">...</aside>
-</main>
-<button type="button" aria-pressed="false" aria-label="Switch to Vietnamese">EN / VI</button>
+<!-- Do: stable locale URLs and current-page semantics -->
+<nav aria-label="Language selection">
+  <a href="/" hreflang="en" aria-current="page">EN</a>
+  <a href="/vi/" hreflang="vi" lang="vi">VI</a>
+  <a href="/zh-cn/" hreflang="zh-CN" lang="zh-CN">CN</a>
+</nav>
 
-<!-- Don't: decorative text pretending to be a control -->
-<div onclick="switchLanguage()">EN / VI</div>
+<!-- Don't: client-only text pretending to be indexable locale content -->
+<div onclick="replaceAllCopy()">EN / VI / CN</div>
 ```
 
-- **Do:** keep the status text in the DOM even when its visual label is hidden at tablet width.
-- **Don't:** make the green pulse the only indication of progress.
-- **Do:** mark decorative arrows and background layers `aria-hidden="true"`.
-- **Don't:** hide the actual hero, contact labels, or translated content from assistive technology.
-- **Do:** preserve the three-track composition on wide screens and collapse it to a readable single column at 900px.
-- **Don't:** replicate desktop min-width tracks on a 320px viewport.
+Do preserve the three-track wide layout and one-column mobile collapse. Do not duplicate translation copy by hand in generated HTML, expose private analytics without authentication, or present demo analytics as live data.

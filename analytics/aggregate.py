@@ -1,104 +1,316 @@
 #!/usr/bin/env python3
-"""Offline, privacy-first Nginx access-log aggregator.
+"""Build privacy-preserving daily visitor geography from a complete Nginx log.
 
-Raw log lines are streamed and discarded. SQLite stores only time bucket + GeoLite
-labels and counts; it never stores an IP address, URL, user agent, or trajectory.
+The process holds IP addresses only in memory long enough to deduplicate a visitor
+within one UTC/log day. SQLite stores aggregate location counts only. Reprocessing
+the same complete log is idempotent because days present in the input are replaced.
 """
 from __future__ import annotations
-import argparse, datetime as dt, json, re, sqlite3, sys
+
+import argparse
+import datetime as dt
+import ipaddress
+import json
+import os
+import re
+import sqlite3
+import sys
+import tempfile
+import uuid
+from collections import defaultdict
 from pathlib import Path
 
-LOG_RE = re.compile(r'^(?P<ip>\S+) \S+ \S+ \[(?P<when>[^]]+)\] "(?P<method>\S+) (?P<path>\S+)(?: HTTP/[^\"]+)?" (?P<status>\d{3}) \S+ "(?P<ref>[^\"]*)" "(?P<ua>[^\"]*)"')
-COMBINED_RE = re.compile(r'^(?P<ip>\S+) \S+ \S+ \[(?P<when>[^]]+)\] "(?P<method>\S+) (?P<path>\S+)(?: HTTP/[^\"]+)?" (?P<status>\d{3})')
-STATIC = re.compile(r'\.(?:css|js|mjs|map|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|txt|xml|json|webmanifest)(?:\?|$)', re.I)
-BOTS = re.compile(r'bot|crawler|spider|slurp|headless|curl|wget|uptime|monitor|lighthouse', re.I)
+LOG_RE = re.compile(
+    r'^(?P<ip>\S+) \S+ \S+ \[(?P<when>[^]]+)\] '
+    r'"(?P<method>\S+) (?P<path>\S+)(?: HTTP/[^\"]+)?" '
+    r'(?P<status>\d{3}) \S+(?: "(?P<ref>[^\"]*)" "(?P<ua>[^\"]*)")?'
+)
+STATIC = re.compile(
+    r'\.(?:css|js|mjs|map|png|jpe?g|gif|svg|webp|ico|woff2?|ttf|txt|xml|json|webmanifest)(?:\?|$)',
+    re.IGNORECASE,
+)
+BOTS = re.compile(
+    r'bot|crawler|spider|slurp|headless|curl|wget|uptime|monitor|lighthouse|preview',
+    re.IGNORECASE,
+)
 DATE_FORMATS = ("%d/%b/%Y:%H:%M:%S %z", "%d/%b/%Y:%H:%M:%S")
 
-SCHEMA = """CREATE TABLE IF NOT EXISTS visits (
- day TEXT NOT NULL, country_code TEXT NOT NULL, country TEXT NOT NULL,
- region TEXT NOT NULL, city TEXT NOT NULL, count INTEGER NOT NULL,
+SCHEMA = """CREATE TABLE IF NOT EXISTS daily_locations (
+ day TEXT NOT NULL,
+ country_code TEXT NOT NULL,
+ country TEXT NOT NULL,
+ region TEXT NOT NULL,
+ city TEXT NOT NULL,
+ visitors INTEGER NOT NULL CHECK(visitors >= 0),
+ CHECK(length(day) = 10),
+ CHECK(length(country_code) = 2 AND country_code = upper(country_code)),
  PRIMARY KEY(day, country_code, country, region, city)
 )"""
 
+
 def parse_line(line: str):
-    match = LOG_RE.match(line.rstrip("\n")) or COMBINED_RE.match(line.rstrip("\n"))
-    if not match: return None
+    """Return a candidate page request or None; raw fields are never persisted."""
+    match = LOG_RE.match(line.rstrip("\n"))
+    if not match:
+        return None
     data = match.groupdict()
-    if data["method"] not in {"GET", "HEAD"} or not (200 <= int(data["status"]) < 400): return None
-    if STATIC.search(data["path"].split("#", 1)[0]) or BOTS.search(data.get("ua") or ""): return None
-    for fmt in DATE_FORMATS:
-        try: stamp = dt.datetime.strptime(data["when"], fmt); break
-        except ValueError: stamp = None
-    if stamp is None: return None
-    return data["ip"], stamp.date().isoformat(), data["path"].split("?", 1)[0]
+    if data["method"] not in {"GET", "HEAD"}:
+        return None
+    if not 200 <= int(data["status"]) < 400:
+        return None
+    path = data["path"].split("#", 1)[0]
+    if STATIC.search(path) or BOTS.search(data.get("ua") or ""):
+        return None
+    try:
+        address = ipaddress.ip_address(data["ip"])
+    except ValueError:
+        return None
+    if not address.is_global:
+        return None
+    stamp = None
+    for date_format in DATE_FORMATS:
+        try:
+            stamp = dt.datetime.strptime(data["when"], date_format)
+            break
+        except ValueError:
+            continue
+    if stamp is None:
+        return None
+    if stamp.tzinfo is not None:
+        stamp = stamp.astimezone(dt.timezone.utc)
+    return str(address), stamp.date().isoformat()
+
 
 def lookup(ip: str, reader=None):
-    if reader is None: return ("ZZ", "Unknown", "Unknown", "Unknown")
+    if reader is None:
+        return ("ZZ", "Unknown", "Unknown", "Unknown")
     try:
         record = reader.city(ip)
         country = record.country.name or "Unknown"
-        code = (record.country.iso_code or "ZZ").upper()
+        candidate_code = (record.country.iso_code or "ZZ").upper()
+        code = candidate_code if re.fullmatch(r"[A-Z]{2}", candidate_code) else "ZZ"
         region = record.subdivisions.most_specific.name or "Unknown"
         city = record.city.name or "Unknown"
         return code, country, region, city
     except Exception:
         return ("ZZ", "Unknown", "Unknown", "Unknown")
 
+
 def open_db(path):
-    db = sqlite3.connect(path); db.execute(SCHEMA); db.commit(); return db
+    database = sqlite3.connect(path)
+    database.execute(SCHEMA)
+    database.commit()
+    return database
 
-def ingest(lines, db, reader=None):
-    counts = {}
-    for line in lines:
-        parsed = parse_line(line)
-        if not parsed: continue
-        ip, day, _ = parsed
-        key = (day, *lookup(ip, reader)); counts[key] = counts.get(key, 0) + 1
-    db.executemany(
-        "INSERT INTO visits VALUES (?,?,?,?,?,?) ON CONFLICT(day,country_code,country,region,city) DO UPDATE SET count=count+excluded.count",
-        ((*key, value) for key, value in counts.items()),
-    )
-    db.commit(); return sum(counts.values())
 
-def purge(db, retention_days: int, today=None):
-    today = today or dt.date.today(); cutoff = today - dt.timedelta(days=retention_days)
-    db.execute("DELETE FROM visits WHERE day < ?", (cutoff.isoformat(),)); db.commit()
+def ingest(lines, database, reader=None):
+    """Replace chronological log days while retaining raw IPs for one day only."""
+    current_day = None
+    visitors = defaultdict(set)
+    location_cache = {}
+    total = 0
 
-def export(db, destination, minimum=5, detailed=False):
-    rows = db.execute("SELECT day,country_code,country,region,city,count FROM visits ORDER BY day,country").fetchall()
+    def flush_day():
+        nonlocal total
+        if current_day is None:
+            return
+        database.execute("DELETE FROM daily_locations WHERE day = ?", (current_day,))
+        database.executemany(
+            "INSERT INTO daily_locations VALUES (?,?,?,?,?,?)",
+            ((*key, len(unique_ips)) for key, unique_ips in visitors.items()),
+        )
+        total += sum(len(unique_ips) for unique_ips in visitors.values())
+
+    try:
+        database.execute("BEGIN")
+        for line in lines:
+            parsed = parse_line(line)
+            if not parsed:
+                continue
+            ip, day = parsed
+            if current_day is not None and day < current_day:
+                raise ValueError("input log must be chronological by UTC day")
+            if current_day is not None and day != current_day:
+                flush_day()
+                visitors.clear()
+                location_cache.clear()
+            current_day = day
+            location = location_cache.setdefault(ip, lookup(ip, reader))
+            visitors[(day, *location)].add(ip)
+        flush_day()
+        database.commit()
+    except Exception:
+        database.rollback()
+        raise
+    return total
+
+
+def purge(database, retention_days: int, today=None):
+    today = today or dt.datetime.now(dt.timezone.utc).date()
+    cutoff = today - dt.timedelta(days=retention_days)
+    with database:
+        database.execute("DELETE FROM daily_locations WHERE day < ?", (cutoff.isoformat(),))
+
+
+def validate_rows(rows):
+    """Reject malformed aggregate rows before publishing either JSON contract."""
+    for day, code, country, region, city, visitors in rows:
+        try:
+            parsed_day = dt.date.fromisoformat(day)
+        except (TypeError, ValueError) as error:
+            raise ValueError(f"invalid aggregate day: {day!r}") from error
+        if parsed_day.isoformat() != day:
+            raise ValueError(f"invalid aggregate day: {day!r}")
+        if not isinstance(code, str) or not re.fullmatch(r"[A-Z]{2}", code):
+            raise ValueError(f"invalid country code: {code!r}")
+        if not all(isinstance(label, str) and 0 < len(label) <= 200 for label in (country, region, city)):
+            raise ValueError("invalid aggregate location label")
+        if not isinstance(visitors, int) or isinstance(visitors, bool) or visitors < 0:
+            raise ValueError(f"invalid visitor count: {visitors!r}")
+
+
+def export(
+    database,
+    destination,
+    minimum=5,
+    detailed=False,
+    provider="none",
+    batch_id=None,
+    generated_at=None,
+):
+    if minimum < 5:
+        raise ValueError("minimum public group size must be at least 5")
+    rows = database.execute(
+        "SELECT day,country_code,country,region,city,visitors FROM daily_locations ORDER BY day,country"
+    ).fetchall()
+    validate_rows(rows)
+    privacy = {
+        "excludes": ["raw IP", "IP hash", "URL", "user agent", "individual trajectory"],
+        "retentionUnit": "daily aggregate",
+    }
+    batch_id = batch_id or uuid.uuid4().hex
+    generated_at = generated_at or dt.datetime.now(dt.timezone.utc).isoformat().replace("+00:00", "Z")
+    base = {
+        "schemaVersion": 1,
+        "batchId": batch_id,
+        "generatedAt": generated_at,
+        "demo": False,
+        "metric": "unique visitors per log day",
+        "geolocationProvider": provider,
+        "privacy": privacy,
+    }
+
     if detailed:
-        payload = {"demo": False, "privacy": {"contains": ["daily location counts"], "excludes": ["raw IP", "URL", "user agent", "individual trajectory"]}, "rows": [dict(zip(("day","countryCode","country","region","city","visits"), row)) for row in rows]}
+        payload = {
+            **base,
+            "privacy": {**privacy, "contains": ["daily country, region, and city aggregates"]},
+            "rows": [
+                dict(zip(("day", "countryCode", "country", "region", "city", "visitors"), row))
+                for row in rows
+            ],
+        }
     else:
-        by_country = {}
-        for day, code, country, region, city, count in rows:
-            key = (day, code, country); by_country[key] = by_country.get(key, 0) + count
-        visible = [dict(day=d, countryCode=c, country=n, visits=v) for (d,c,n),v in by_country.items() if v >= minimum]
-        withheld = sum(v for (d,c,n),v in by_country.items() if v < minimum)
-        payload = {"demo": False, "minimumGroupSize": minimum, "privacy": {"contains": ["daily country aggregates meeting threshold"], "excludes": ["raw IP", "city", "region", "URL", "user agent", "individual trajectory"]}, "withheldVisits": withheld, "rows": visible}
-    Path(destination).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+        by_country = defaultdict(int)
+        for day, code, country, _region, _city, visitors_count in rows:
+            by_country[(day, code, country)] += visitors_count
+        visible = [
+            {"day": day, "countryCode": code, "country": country, "visitors": visitors_count}
+            for (day, code, country), visitors_count in sorted(by_country.items())
+            if visitors_count >= minimum and code != "ZZ"
+        ]
+        withheld = sum(
+            visitors_count
+            for (_day, code, _country), visitors_count in by_country.items()
+            if visitors_count < minimum or code == "ZZ"
+        )
+        payload = {
+            **base,
+            "minimumGroupSize": minimum,
+            "privacy": {**privacy, "contains": ["daily country aggregates meeting the minimum group size"]},
+            "withheldVisitors": withheld,
+            "rows": visible,
+        }
+
+    destination_path = Path(destination)
+    destination_path.parent.mkdir(parents=True, exist_ok=True)
+    encoded = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+    temporary_name = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=destination_path.parent,
+            prefix=f".{destination_path.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as temporary:
+            temporary_name = temporary.name
+            temporary.write(encoded)
+            temporary.flush()
+            os.fsync(temporary.fileno())
+        os.replace(temporary_name, destination_path)
+    finally:
+        if temporary_name and os.path.exists(temporary_name):
+            os.unlink(temporary_name)
+
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("log", help="Nginx log file, or - for stdin")
-    ap.add_argument("--db", default="analytics/visitors.sqlite3")
-    ap.add_argument("--public-json", default="visitor-map/data.json")
-    ap.add_argument("--private-json", default="visitor-insights/data.json")
-    ap.add_argument("--mmdb", help="optional user-supplied GeoLite2-City.mmdb")
-    ap.add_argument("--retention-days", type=int, default=90)
-    ap.add_argument("--minimum", type=int, default=5)
-    args = ap.parse_args(argv)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("log", help="complete Nginx log file, or - for stdin")
+    parser.add_argument("--db", default="analytics/visitors.sqlite3")
+    parser.add_argument("--public-json", default="visitor-map/data.json")
+    parser.add_argument("--private-json", default="visitor-insights/data.json")
+    parser.add_argument("--mmdb", help="user-supplied GeoLite2-City.mmdb")
+    parser.add_argument("--retention-days", type=int, default=90)
+    parser.add_argument("--minimum", type=int, default=5)
+    args = parser.parse_args(argv)
+
+    if args.minimum < 5:
+        parser.error("--minimum must be at least 5")
+    if args.retention_days < 1:
+        parser.error("--retention-days must be at least 1")
+
     reader = None
+    provider = "none"
     if args.mmdb:
         try:
             from geoip2.database import Reader
-            reader = Reader(args.mmdb)
-        except ImportError: ap.error("--mmdb requires the optional geoip2 package")
-    db = open_db(args.db)
-    source = sys.stdin if args.log == "-" else open(args.log, encoding="utf-8", errors="replace")
-    try: ingest(source, db, reader)
-    finally:
-        if source is not sys.stdin: source.close()
-        if reader: reader.close()
-    purge(db, args.retention_days); export(db, args.public_json, args.minimum); export(db, args.private_json, detailed=True); db.close()
+        except ImportError:
+            parser.error("--mmdb requires the optional geoip2 package")
+        reader = Reader(args.mmdb)
+        provider = "MaxMind GeoLite2 City"
 
-if __name__ == "__main__": main()
+    database = open_db(args.db)
+    source = sys.stdin if args.log == "-" else open(args.log, encoding="utf-8", errors="replace")
+    try:
+        ingest(source, database, reader)
+    finally:
+        if source is not sys.stdin:
+            source.close()
+        if reader:
+            reader.close()
+
+    purge(database, args.retention_days)
+    batch_id = uuid.uuid4().hex
+    generated_at = dt.datetime.now(dt.timezone.utc).isoformat().replace("+00:00", "Z")
+    export(
+        database,
+        args.public_json,
+        args.minimum,
+        provider=provider,
+        batch_id=batch_id,
+        generated_at=generated_at,
+    )
+    export(
+        database,
+        args.private_json,
+        detailed=True,
+        provider=provider,
+        batch_id=batch_id,
+        generated_at=generated_at,
+    )
+    database.close()
+
+
+if __name__ == "__main__":
+    main()
