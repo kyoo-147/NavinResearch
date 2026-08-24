@@ -38,6 +38,7 @@ for (const route of generatedRoutes) {
 for (const file of [
   "styles.css",
   "script.js",
+  "google00bfffcce9844575.html",
   "content-routes/route-foundation.css",
   "content-routes/route-search.js",
   "assets/brand/logo.webp",

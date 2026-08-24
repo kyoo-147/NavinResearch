@@ -4,7 +4,7 @@ document.querySelectorAll("[data-current-year]").forEach((node) => {
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 if (!reduceMotion.matches) {
-  window.setTimeout(() => document.documentElement.classList.add("motion-ready"), 1200);
+  window.setTimeout(() => document.documentElement.classList.add("motion-ready"), 1400);
   window.addEventListener("pointermove", (event) => {
     document.documentElement.style.setProperty("--pointer-x", `${(event.clientX / innerWidth) * 100}%`);
     document.documentElement.style.setProperty("--pointer-y", `${(event.clientY / innerHeight) * 100}%`);
@@ -19,36 +19,45 @@ const chaptersButton = document.querySelector("[data-chapters-toggle]");
 const chapterPanel = document.querySelector("#chapter-panel");
 const chapterBack = document.querySelector("[data-chapter-back]");
 let returnFocus = null;
+let closeTimer = null;
 
 function focusable() {
   return menu ? [...menu.querySelectorAll('a[href], button:not([disabled])')].filter((item) => item.offsetParent !== null) : [];
 }
 
-function setChapters(open) {
+function setChapters(open, manageFocus = true) {
   document.documentElement.classList.toggle("chapters-open", open);
   menu?.classList.toggle("site-menu--chapters", open);
   chaptersButton?.setAttribute("aria-expanded", String(open));
   chapterPanel?.setAttribute("aria-hidden", String(!open));
   if (chapterPanel) chapterPanel.inert = !open;
-  if (open) chapterPanel?.querySelector("a")?.focus();
-  else chaptersButton?.focus();
+  if (manageFocus && open) chapterPanel?.querySelector("a")?.focus();
+  else if (manageFocus) chaptersButton?.focus();
 }
 
 function setMenu(open) {
+  if (closeTimer) {
+    window.clearTimeout(closeTimer);
+    closeTimer = null;
+  }
+  if (open) {
+    setChapters(false, false);
+    if (backdrop) backdrop.hidden = false;
+  }
   document.documentElement.classList.toggle("menu-open", open);
   openButton?.setAttribute("aria-expanded", String(open));
   menu?.setAttribute("aria-hidden", String(!open));
   if (menu) menu.inert = !open;
-  if (backdrop) backdrop.hidden = !open;
   if (open) {
     returnFocus = document.activeElement;
     closeButton?.focus();
   } else {
-    document.documentElement.classList.remove("chapters-open");
-    chaptersButton?.setAttribute("aria-expanded", "false");
-    chapterPanel?.setAttribute("aria-hidden", "true");
-    if (chapterPanel) chapterPanel.inert = true;
     returnFocus?.focus?.();
+    closeTimer = window.setTimeout(() => {
+      setChapters(false, false);
+      if (backdrop) backdrop.hidden = true;
+      closeTimer = null;
+    }, 680);
   }
 }
 

@@ -26,7 +26,7 @@ export const locales = {
     ogLocale: "en_US",
     shortLabel: "EN",
     meta: {
-      title: "Navin Research — Coming Soon",
+      title: "NAVIN RESEARCH | WEALTH OF NATURE",
       description: "Navin Research studies language, speech, and vision AI models and builds end-to-end products.",
       ogDescription: "Research into language, speech, and vision AI models, plus end-to-end products, is taking shape.",
     },
@@ -64,7 +64,7 @@ export const locales = {
     ogLocale: "vi_VN",
     shortLabel: "VI",
     meta: {
-      title: "Navin Research — Sắp ra mắt",
+      title: "NAVIN RESEARCH | WEALTH OF NATURE",
       description: "Navin Research nghiên cứu các mô hình AI ngôn ngữ, giọng nói và thị giác, đồng thời xây dựng các sản phẩm AI đầu cuối.",
       ogDescription: "Các nghiên cứu về mô hình AI ngôn ngữ, giọng nói và thị giác, cùng những sản phẩm AI đầu cuối, đang dần thành hình.",
     },
@@ -102,7 +102,7 @@ export const locales = {
     ogLocale: "zh_CN",
     shortLabel: "CN",
     meta: {
-      title: "Navin Research — 即将推出",
+      title: "NAVIN RESEARCH | WEALTH OF NATURE",
       description: "Navin Research 专注于语言、语音和视觉 AI 模型研究，并打造端到端 AI 产品。",
       ogDescription: "语言、语音和视觉 AI 模型研究，以及基于这些研究打造的端到端产品，正在逐步成形。",
     },
