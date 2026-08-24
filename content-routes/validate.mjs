@@ -1,5 +1,5 @@
 import { access, readFile } from "node:fs/promises";
-import { chapters, legalPages, locales, localePath, sections, site } from "../site.config.mjs";
+import { chapters, experience, legalPages, locales, localePath, sections, site } from "../site.config.mjs";
 
 const errors = [];
 const generatedRoutes = [];
@@ -30,9 +30,19 @@ for (const route of generatedRoutes) {
     if (!html.includes(marker)) errors.push(`${route.file}: ${marker} missing`);
   }
   if (!html.includes('/assets/brand/logo_icon_tab.png')) errors.push(`${route.file}: current favicon missing`);
+  for (const sharedComponent of ['class="masthead site-header"', 'class="footer site-footer', 'id="site-menu"']) {
+    if (!html.includes(sharedComponent)) errors.push(`${route.file}: shared component ${sharedComponent} missing`);
+  }
+  if (!html.includes('/styles.css?v=')) errors.push(`${route.file}: shared shell stylesheet missing`);
+  if (!html.includes('/script.js?v=')) errors.push(`${route.file}: shared shell script missing`);
   if (html.includes('/favicon.svg')) errors.push(`${route.file}: deleted favicon referenced`);
   if (html.includes('datePublished') || html.includes('application/ld+json')) errors.push(`${route.file}: unsupported schema/date marker found`);
   if (route.section && route.type !== "legal" && !html.includes(locale.common.preparation)) errors.push(`${route.file}: truthful preparation notice missing`);
+  if (route.type === "chapter") {
+    for (const label of Object.values(experience[route.localeKey].chapterLabels)) {
+      if (!html.includes(label)) errors.push(`${route.file}: localized chapter label ${label} missing`);
+    }
+  }
 }
 
 for (const file of [
@@ -41,6 +51,8 @@ for (const file of [
   "google00bfffcce9844575.html",
   "content-routes/route-foundation.css",
   "content-routes/route-search.js",
+  "scripts/components/page-head.mjs",
+  "scripts/components/site-shell.mjs",
   "assets/brand/logo.webp",
   "assets/brand/logo_icon_tab.png",
 ]) {

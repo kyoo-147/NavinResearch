@@ -47,8 +47,10 @@
 }
 
 .route-page__shell {
-  width: min(1120px, calc(100% - 40px));
+  width: calc(100% - (var(--edge) + var(--edge)));
+  max-width: none;
   margin: 0 auto;
+  padding-bottom: 4.5rem;
 }
 
 .route-page__header {
@@ -251,7 +253,7 @@
 
 @media (max-width: 520px) {
   .route-page__shell {
-    width: min(100% - 2.4rem, 1120px);
+    width: calc(100% - (var(--edge) + var(--edge)));
   }
 
   .route-page__brand span {
@@ -321,8 +323,7 @@
 
 /* Full-bleed editorial chapter composition */
 .chapter-page .route-page__shell {
-  width: calc(100% - clamp(3rem, 8vw, 7rem));
-  max-width: none;
+  width: calc(100% - (var(--edge) + var(--edge)));
 }
 
 .chapter-page .chapter-header {
@@ -433,7 +434,7 @@
 
 @media (max-width: 760px) {
   .chapter-page .route-page__shell {
-    width: calc(100% - 2.4rem);
+    width: calc(100% - (var(--edge) + var(--edge)));
   }
 
   .chapter-status {
@@ -484,8 +485,7 @@
 .content-search .content-field { background-image: url("/assets/field-5.webp"); }
 
 .content-page .route-page__shell {
-  width: calc(100% - clamp(3rem, 8vw, 7rem));
-  max-width: none;
+  width: calc(100% - (var(--edge) + var(--edge)));
 }
 
 .content-page .content-header {
@@ -597,7 +597,7 @@
 
 @media (max-width: 760px) {
   .content-page .route-page__shell {
-    width: calc(100% - 2.4rem);
+    width: calc(100% - (var(--edge) + var(--edge)));
   }
 
   .content-page .content-main {
@@ -613,4 +613,20 @@
   .content-footer {
     flex-direction: column;
   }
+}
+
+.route-page .site-footer {
+  color: rgba(244, 247, 236, .7);
+}
+
+.route-page .site-footer--flow {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.legal-route .legal-page {
+  min-height: calc(100svh - 11.5rem);
+  padding-bottom: 7rem;
 }
