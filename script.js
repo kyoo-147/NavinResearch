@@ -18,11 +18,18 @@ const menu = document.querySelector("#site-menu");
 const chaptersButton = document.querySelector("[data-chapters-toggle]");
 const chapterPanel = document.querySelector("#chapter-panel");
 const chapterBack = document.querySelector("[data-chapter-back]");
+const chapterLinks = [...document.querySelectorAll("[data-chapter-link]")];
+const chapterPreviews = [...document.querySelectorAll("[data-chapter-preview]")];
 let returnFocus = null;
 let closeTimer = null;
 
 function focusable() {
   return menu ? [...menu.querySelectorAll('a[href], button:not([disabled])')].filter((item) => item.offsetParent !== null) : [];
+}
+
+function setChapterPreview(slug) {
+  chapterLinks.forEach((link) => link.toggleAttribute("data-preview-active", link.dataset.chapterLink === slug));
+  chapterPreviews.forEach((preview) => { preview.hidden = preview.dataset.chapterPreview !== slug; });
 }
 
 function setChapters(open, manageFocus = true) {
@@ -31,6 +38,7 @@ function setChapters(open, manageFocus = true) {
   chaptersButton?.setAttribute("aria-expanded", String(open));
   chapterPanel?.setAttribute("aria-hidden", String(!open));
   if (chapterPanel) chapterPanel.inert = !open;
+  if (!open && chapterLinks[0]) setChapterPreview(chapterLinks[0].dataset.chapterLink);
   if (manageFocus && open) chapterPanel?.querySelector("a")?.focus();
   else if (manageFocus) chaptersButton?.focus();
 }
@@ -73,6 +81,10 @@ chaptersButton?.addEventListener("click", (event) => {
 if (finePointer) {
   chaptersButton?.addEventListener("pointerenter", () => setChapters(true, false));
 }
+chapterLinks.forEach((link) => {
+  link.addEventListener("pointerenter", () => setChapterPreview(link.dataset.chapterLink));
+  link.addEventListener("focus", () => setChapterPreview(link.dataset.chapterLink));
+});
 chapterBack?.addEventListener("click", () => setChapters(false));
 menu?.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {

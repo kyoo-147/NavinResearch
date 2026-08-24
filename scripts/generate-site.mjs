@@ -2,7 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, sections, site } from "../site.config.mjs";
 
 const localeEntries = Object.entries(locales);
-const homeAssetRevision = "20260824-07";
+const homeAssetRevision = "20260824-08";
 const escapeHtml = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 
 function alternates(suffix = "") {
@@ -16,6 +16,8 @@ function languageLinks(activeKey, suffix = "") {
 function head(localeKey, title, description, suffix = "", css = "/content-routes/route-foundation.css", script = "") {
   const locale = locales[localeKey];
   const canonical = `${site.origin}${localePath(localeKey, suffix)}`;
+  const cssHref = css.includes("?") ? css : `${css}?v=${homeAssetRevision}`;
+  const scriptSrc = script && !script.includes("?") ? `${script}?v=${homeAssetRevision}` : script;
   return `    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#04130e">
@@ -34,12 +36,15 @@ function head(localeKey, title, description, suffix = "", css = "/content-routes
     <link rel="canonical" href="${canonical}">
 ${alternates(suffix)}
     <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
-    <link rel="stylesheet" href="${css}">
-${script ? `    <script src="${script}" defer></script>\n` : ""}`;
+    <link rel="stylesheet" href="${cssHref}">
+${scriptSrc ? `    <script src="${scriptSrc}" defer></script>\n` : ""}`;
 }
 
-function chapterLinks(localeKey) {
-  return chapters.map((chapter) => `<a href="${localePath(localeKey, chapter.slug)}"><span class="chapter-link__number">${chapter.number}</span><span><small>NAVIN</small><strong>${chapter.key}</strong><em>${escapeHtml(chapter.domains[localeKey])}</em></span><span aria-hidden="true">↗</span></a>`).join("\n              ");
+function chapterExplorer(localeKey) {
+  const ui = experience[localeKey];
+  const links = chapters.map((chapter, index) => `<a href="${localePath(localeKey, chapter.slug)}" data-chapter-link="${chapter.slug}" aria-controls="chapter-preview-${chapter.slug}"${index === 0 ? " data-preview-active" : ""}><small>${chapter.number}</small><strong>${chapter.key}</strong></a>`).join("\n                ");
+  const previews = chapters.map((chapter, index) => `<article id="chapter-preview-${chapter.slug}" data-chapter-preview="${chapter.slug}"${index === 0 ? "" : " hidden"}><img src="/assets/${chapter.asset}" alt="" width="280" height="220"><p>${escapeHtml(ui.chapterIntro(chapter.domains[localeKey]))}</p><a href="${localePath(localeKey, chapter.slug)}">${escapeHtml(ui.menu.viewChapter)} <span aria-hidden="true">→</span></a></article>`).join("\n                ");
+  return `<div class="chapter-list"><p>${escapeHtml(ui.menu.chapters)}</p><nav aria-label="${escapeHtml(ui.menu.chapters)}">${links}</nav></div><div class="chapter-previews" aria-live="polite">${previews}</div>`;
 }
 
 function drawer(localeKey) {
@@ -60,10 +65,7 @@ function drawer(localeKey) {
         </div>
         <div class="chapter-panel" id="chapter-panel" aria-hidden="true" inert>
           <button class="chapter-back" type="button" data-chapter-back><span aria-hidden="true">←</span>${escapeHtml(ui.menu.back)}</button>
-          <p>${escapeHtml(ui.menu.chapters)}</p>
-          <nav aria-label="${escapeHtml(ui.menu.chapters)}">
-              ${chapterLinks(localeKey)}
-          </nav>
+          ${chapterExplorer(localeKey)}
         </div>
       </aside>`;
 }
@@ -127,8 +129,19 @@ function chapterTemplate(localeKey, chapter) {
   const domain = chapter.domains[localeKey];
   const title = `NAVIN / ${chapter.key} — ${chapter.number}`;
   const intro = ui.chapterIntro(domain);
+  const chapterIndex = chapters.findIndex((item) => item.slug === chapter.slug);
+  const previous = chapters[chapterIndex - 1];
+  const next = chapters[chapterIndex + 1];
   const nav = chapters.map((item) => `<a href="${localePath(localeKey, item.slug)}"${item.slug === chapter.slug ? ' aria-current="page"' : ""}><span>${item.number}</span><strong>${item.key}</strong></a>`).join("");
-  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>\n${head(localeKey, title, `${intro} ${ui.chapterNotice}`, chapter.slug, "/content-routes/route-foundation.css")}  </head><body class="route-page chapter-page chapter-${chapter.slug}"><div class="chapter-field" aria-hidden="true"></div><div class="route-page__shell"><header class="route-page__header"><a class="route-page__brand" href="${localePath(localeKey)}"><img src="/assets/brand/logo.webp" alt="" width="64" height="64"><span>NAVIN RESEARCH</span></a><a class="all-chapters" href="${localePath(localeKey)}#wealth-of-nature">← ${escapeHtml(ui.menu.chapters)}</a><nav class="route-page__languages" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, chapter.slug)}</nav></header><main class="chapter-main"><div><p class="route-page__eyebrow">CHAPTER ${chapter.number}</p><h1>NAVIN / ${chapter.key}<span> — ${chapter.number}</span></h1><p class="chapter-domain">${escapeHtml(domain)}</p><span class="chapter-rule" aria-hidden="true"></span><h2>${escapeHtml(domain)}</h2><p class="route-page__lede">${escapeHtml(intro)}</p><div class="route-page__notice"><strong>${escapeHtml(locale.common.preparation)}</strong><span>${escapeHtml(ui.chapterNotice)}</span></div></div><aside class="chapter-facts"><p><small>${escapeHtml(ui.menu.chapters)}</small><strong>${chapter.number} / 05</strong></p><p><small>Research program</small><strong>NAVIN / ${chapter.key}</strong></p><p><small>Core dimension</small><strong>${escapeHtml(domain)}</strong></p><p><small>Status</small><strong>${escapeHtml(locale.common.preparation)}</strong></p><nav class="chapter-nav" aria-label="${escapeHtml(ui.menu.chapters)}">${nav}</nav></aside></main><footer class="route-page__footer"><p>© <span data-current-year>2026</span> NAVIN RESEARCH</p><p><a href="${localePath(localeKey, "privacy-policy")}">${escapeHtml(ui.privacy)}</a> / <a href="${localePath(localeKey, "terms-of-use")}">${escapeHtml(ui.terms)}</a></p></footer></div></body></html>\n`;
+  const previousLink = previous ? `<a class="chapter-nav__arrow" href="${localePath(localeKey, previous.slug)}" aria-label="Previous chapter">←</a>` : '<span class="chapter-nav__arrow" aria-hidden="true">←</span>';
+  const nextLink = next ? `<a class="chapter-nav__arrow" href="${localePath(localeKey, next.slug)}" aria-label="Next chapter">→</a>` : '<span class="chapter-nav__arrow" aria-hidden="true">→</span>';
+  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
+${head(localeKey, title, `${intro} ${ui.chapterNotice}`, chapter.slug, "/content-routes/route-foundation.css")}  </head><body class="route-page chapter-page chapter-${chapter.slug}"><div class="chapter-field" aria-hidden="true"></div><div class="route-page__shell">
+    <header class="route-page__header chapter-header"><a class="route-page__brand chapter-wordmark" href="${localePath(localeKey)}"><span>NAVIN<br>RESEARCH</span></a><span class="chapter-status">${escapeHtml(locale.home.status)}</span><nav class="route-page__languages" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, chapter.slug)}</nav></header>
+    <a class="all-chapters" href="${localePath(localeKey)}#wealth-of-nature">← ${escapeHtml(ui.menu.chapters)}</a>
+    <main class="chapter-main"><div class="chapter-copy"><p class="route-page__eyebrow">CHAPTER ${chapter.number}</p><h1>NAVIN / ${chapter.key}<span> — ${chapter.number}</span></h1><p class="chapter-domain">${escapeHtml(domain)}</p><span class="chapter-rule" aria-hidden="true"></span><h2>${escapeHtml(domain)}</h2><p class="route-page__lede">${escapeHtml(intro)}</p><div class="route-page__notice"><strong>${escapeHtml(locale.common.preparation)}</strong><span>${escapeHtml(ui.chapterNotice)}</span></div></div><aside class="chapter-facts"><p><small>${escapeHtml(ui.menu.chapters)}</small><strong>${chapter.number} / 05</strong></p><p><small>Research program</small><strong>NAVIN / ${chapter.key}</strong></p><p><small>Core dimension</small><strong>${escapeHtml(domain)}</strong></p><p><small>Status</small><strong>${escapeHtml(locale.common.preparation)}</strong></p><p class="chapter-nav__label"><small>Chapter navigation</small></p><nav class="chapter-nav" aria-label="${escapeHtml(ui.menu.chapters)}">${previousLink}${nav}${nextLink}</nav></aside></main>
+    <footer class="route-page__footer"><p>© <span data-current-year>2026</span> NAVIN RESEARCH</p><p><a href="${localePath(localeKey, "privacy-policy")}">${escapeHtml(ui.privacy)}</a> / <a href="${localePath(localeKey, "terms-of-use")}">${escapeHtml(ui.terms)}</a></p></footer></div></body></html>
+`;
 }
 
 function legalTemplate(localeKey, slug) {
