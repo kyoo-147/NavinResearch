@@ -275,3 +275,46 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+::selection { color: #f6faef; background: rgba(91, 139, 105, 0.72); }
+.all-chapters { color: var(--route-muted); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
+.chapter-page { position: relative; background: #02110c; }
+.chapter-field { position: fixed; z-index: -2; inset: 0; background-position: center; background-size: cover; filter: saturate(1.05) contrast(1.08); }
+.chapter-field::after { position: absolute; content: ""; inset: 0; background: linear-gradient(90deg, rgba(1,12,8,.9), rgba(1,12,8,.62) 58%, rgba(1,12,8,.72)); }
+.chapter-physis .chapter-field { background-image: url("/assets/field-1.webp"); }
+.chapter-noema .chapter-field { background-image: url("/assets/field-2.webp"); }
+.chapter-lumen .chapter-field { background-image: url("/assets/field-3.webp"); }
+.chapter-pneuma .chapter-field { background-image: url("/assets/field-4.webp"); }
+.chapter-poiesis .chapter-field { background-image: url("/assets/field-5.webp"); }
+.chapter-main { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(17rem, .65fr); gap: clamp(3rem, 9vw, 9rem); min-height: calc(100svh - 12rem); align-items: center; padding: clamp(4rem, 8vw, 8rem) 0 6rem; }
+.chapter-main h1 { max-width: none; font-size: clamp(3rem, 6vw, 6rem); }
+.chapter-domain { margin: 1.2rem 0 0; font-size: clamp(1rem, 1.7vw, 1.45rem); letter-spacing: .22em; text-transform: uppercase; }
+.chapter-rule { display: block; width: 3rem; height: 1px; margin: 2.5rem 0; background: var(--route-accent); }
+.chapter-main h2 { margin: 0 0 1rem; font-size: clamp(2.3rem, 5vw, 5rem); font-weight: 400; letter-spacing: -.05em; }
+.chapter-main .route-page__notice { background: rgba(1,14,9,.24); }
+.chapter-facts > p { display: grid; gap: .65rem; margin: 0; padding: 1.3rem 0; border-top: 1px solid var(--route-line); }
+.chapter-facts small { color: var(--route-muted); font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; }
+.chapter-facts strong { font-size: 1rem; font-weight: 400; }
+.chapter-nav { display: flex; justify-content: space-between; padding-top: 1.4rem; border-top: 1px solid var(--route-line); }
+.chapter-nav a { display: grid; min-width: 44px; min-height: 44px; place-items: center; color: var(--route-muted); }
+.chapter-nav strong { display: none; }
+.chapter-nav a[aria-current="page"] { color: var(--route-accent); }
+.legal-page { max-width: 900px; }
+@media (max-width: 760px) {
+  .all-chapters { grid-column: 1 / -1; grid-row: 2; padding-bottom: 1rem; }
+  .chapter-main { grid-template-columns: 1fr; }
+  .chapter-facts { padding-top: 1rem; }
+}
+
+.chapter-page { overflow-x: hidden; }
+.chapter-main h1 span { white-space: nowrap; }
+@media (max-width: 760px) {
+  .chapter-main h1 { max-width: 100%; font-size: clamp(2.5rem, 12vw, 4rem); overflow-wrap: anywhere; }
+  .chapter-main h1 span { display: block; margin-top: .25rem; }
+  .chapter-main .route-page__lede { overflow-wrap: anywhere; }
+}
+
+.chapter-main > * { min-width: 0; }
+@media (max-width: 760px) {
+  .chapter-main h1 { font-size: clamp(2.35rem, 10vw, 3.5rem); }
+}

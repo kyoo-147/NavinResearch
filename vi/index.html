@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#04130e">
     <meta name="description" content="Navin Research nghiên cứu các mô hình AI ngôn ngữ, giọng nói và thị giác, đồng thời xây dựng các sản phẩm AI đầu cuối.">
+    <meta name="robots" content="index, follow">
     <meta property="og:site_name" content="Navin Research">
     <meta property="og:title" content="Navin Research — Sắp ra mắt">
-    <meta property="og:description" content="Các nghiên cứu về mô hình AI ngôn ngữ, giọng nói và thị giác, cùng những sản phẩm AI đầu cuối, đang dần thành hình.">
-    <meta property="og:locale" content="vi_VN">
-    <meta property="og:locale:alternate" content="en_US">
-    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:description" content="Navin Research nghiên cứu các mô hình AI ngôn ngữ, giọng nói và thị giác, đồng thời xây dựng các sản phẩm AI đầu cuối.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://navinresearch.com/vi/">
+    <meta property="og:locale" content="vi_VN">
     <meta property="og:image" content="https://navinresearch.com/assets/field-4.webp">
-    <meta property="og:image:type" content="image/webp">
-    <meta property="og:image:width" content="1600">
-    <meta property="og:image:height" content="900">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://navinresearch.com/assets/field-4.webp">
     <title>Navin Research — Sắp ra mắt</title>
@@ -26,53 +22,59 @@
     <link rel="alternate" hreflang="zh-CN" href="https://navinresearch.com/zh-cn/">
     <link rel="alternate" hreflang="x-default" href="https://navinresearch.com/">
     <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
-    <link rel="preload" href="/assets/field-1.webp" as="image" fetchpriority="high">
     <link rel="stylesheet" href="/styles.css">
     <script src="/script.js" defer></script>
   </head>
-  <body>
-    <div class="field" aria-hidden="true">
-      <div class="field__layer field__layer--1"></div>
-      <div class="field__layer field__layer--2"></div>
-      <div class="field__layer field__layer--3"></div>
-      <div class="field__layer field__layer--4"></div>
-      <div class="field__layer field__layer--5"></div>
-      <div class="field__wash"></div>
-      <div class="field__grain"></div>
-    </div>
+  <body class="home-page">
+    <div class="field" aria-hidden="true"><div class="field__layer field__layer--1"></div><div class="field__layer field__layer--2"></div><div class="field__layer field__layer--3"></div><div class="field__layer field__layer--4"></div><div class="field__layer field__layer--5"></div><div class="field__wash"></div><div class="field__grain"></div></div>
     <div class="shell">
       <header class="masthead">
-        <a class="brand" href="/vi/" aria-label="Navin Research home">
-          <img class="brand__logo" src="/assets/brand/logo.webp" alt="" width="80" height="80">
-        </a>
-        <div class="masthead__meta">
-          <span class="signal">Đang thực hiện bản cập nhật lớn</span>
-          <nav class="language" aria-label="Chọn ngôn ngữ">
-            <a href="/" hreflang="en" lang="en">EN</a><span aria-hidden="true">/</span><a href="/vi/" hreflang="vi" lang="vi" aria-current="page">VI</a><span aria-hidden="true">/</span><a href="/zh-cn/" hreflang="zh-CN" lang="zh-CN">CN</a>
-          </nav>
+        <div class="masthead__brand-group">
+          <button class="menu-toggle" type="button" data-menu-open aria-expanded="false" aria-controls="site-menu" aria-label="Mở menu"><span></span><span></span><span></span></button>
+          <a class="brand" href="/vi/" aria-label="Navin Research home"><img class="brand__logo" src="/assets/brand/logo.webp" alt="" width="80" height="80"></a>
         </div>
+        <div class="masthead__meta"><span class="signal">Đang thực hiện bản cập nhật lớn</span><nav class="language" aria-label="Chọn ngôn ngữ"><a href="/" hreflang="en" lang="en">EN</a><span aria-hidden="true">/</span><a href="/vi/" hreflang="vi" lang="vi" aria-current="page">VI</a><span aria-hidden="true">/</span><a href="/zh-cn/" hreflang="zh-CN" lang="zh-CN">CN</a></nav></div>
       </header>
-      <main class="hero">
-        <div class="hero__index" aria-hidden="true">NR — 01</div>
-        <div class="hero__content">
-          <p class="eyebrow">Sắp ra mắt</p>
-          <h1>Một chân trời mới<br>đang thành hình.</h1>
-          <p class="statement">Chúng tôi đang thực hiện một đợt cập nhật lớn và đầy tham vọng—quy tụ các nghiên cứu về mô hình AI ngôn ngữ, giọng nói và thị giác, cùng những sản phẩm AI đầu cuối được xây dựng từ các nghiên cứu đó. Vui lòng chờ đón.</p>
-        </div>
-        <aside class="contact" aria-label="Thông tin liên hệ">
-          <p>Trong thời gian chờ đợi</p>
-          <h2>Hãy bắt đầu một cuộc trò chuyện.</h2>
-          <nav class="contact__links" aria-label="Các kênh liên hệ">
-            <a href="mailto:michaelbui.contact@gmail.com"><span>Email</span><span aria-hidden="true">↗</span></a>
-            <a href="https://www.linkedin.com/in/michaelbui-engineer" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/kyoo-147" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a>
+      <div class="menu-backdrop" data-menu-backdrop hidden></div>
+      <aside class="site-menu" id="site-menu" aria-label="Điều hướng chính" aria-hidden="true" inert>
+        <div class="site-menu__primary">
+          <button class="menu-close" type="button" data-menu-close aria-label="Đóng menu"><span aria-hidden="true">×</span></button>
+          <nav aria-label="Điều hướng chính">
+            <a href="/vi/">Trang chủ</a>
+            <button type="button" data-chapters-toggle aria-expanded="false" aria-controls="chapter-panel">Các chương<span aria-hidden="true">→</span></button>
+            <a href="/vi/research/">Công trình</a>
+            <a href="/vi/blog/">Ghi chú</a>
+            <a href="/vi/#wealth-of-nature">Triết lý</a>
+            <a href="mailto:michaelbui.contact@gmail.com">Liên hệ</a>
           </nav>
-        </aside>
+        </div>
+        <div class="chapter-panel" id="chapter-panel" aria-hidden="true" inert>
+          <button class="chapter-back" type="button" data-chapter-back><span aria-hidden="true">←</span>Quay lại</button>
+          <p>Các chương</p>
+          <nav aria-label="Các chương">
+              <a href="/vi/physis/"><span class="chapter-link__number">01</span><span><small>NAVIN</small><strong>PHYSIS</strong><em>Trí tuệ hiện thân &amp; tự nhiên</em></span><span aria-hidden="true">↗</span></a>
+              <a href="/vi/noema/"><span class="chapter-link__number">02</span><span><small>NAVIN</small><strong>NOEMA</strong><em>Ngôn ngữ &amp; suy luận đa phương thức</em></span><span aria-hidden="true">↗</span></a>
+              <a href="/vi/lumen/"><span class="chapter-link__number">03</span><span><small>NAVIN</small><strong>LUMEN</strong><em>Thị giác &amp; nhận thức</em></span><span aria-hidden="true">↗</span></a>
+              <a href="/vi/pneuma/"><span class="chapter-link__number">04</span><span><small>NAVIN</small><strong>PNEUMA</strong><em>Lời nói &amp; giọng nói</em></span><span aria-hidden="true">↗</span></a>
+              <a href="/vi/poiesis/"><span class="chapter-link__number">05</span><span><small>NAVIN</small><strong>POIESIS</strong><em>Hệ thống sinh tạo</em></span><span aria-hidden="true">↗</span></a>
+          </nav>
+        </div>
+      </aside>
+      <main>
+        <section class="hero">
+          <div class="hero__index" aria-hidden="true">NR — 00</div>
+          <div class="hero__content"><p class="eyebrow">CHAPTER 00 / WEALTH OF NATURE — COMING SOON</p><h1>Một chân trời mới<br>đang thành hình.</h1><p class="statement">Chúng tôi đang thực hiện một đợt cập nhật lớn và đầy tham vọng—quy tụ các nghiên cứu về mô hình AI ngôn ngữ, giọng nói và thị giác, cùng những sản phẩm AI đầu cuối được xây dựng từ các nghiên cứu đó. Vui lòng chờ đón.</p></div>
+          <aside class="contact" aria-label="Thông tin liên hệ"><p>Trong thời gian chờ đợi</p><h2>Hãy bắt đầu một cuộc trò chuyện.</h2><nav class="contact__links" aria-label="Các kênh liên hệ"><a href="mailto:michaelbui.contact@gmail.com"><span>Email</span><span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/michaelbui-engineer" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span aria-hidden="true">↗</span></a><a href="https://github.com/kyoo-147" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a></nav></aside>
+        </section>
+        <section class="wealth" id="wealth-of-nature" aria-labelledby="wealth-title">
+          <div class="wealth__mark" aria-hidden="true"><span></span></div>
+          <p class="wealth__label">Chương 00</p>
+          <h2 id="wealth-title">SỰ PHONG PHÚ CỦA TỰ NHIÊN</h2>
+          <span class="wealth__rule" aria-hidden="true"></span>
+          <p class="wealth__statement">Trí tuệ không tồn tại tách rời tự nhiên. Nó hình thành qua tri giác, ngôn ngữ, ký ức và hành động.</p>
+        </section>
       </main>
-      <footer class="footer">
-        <p>© <span data-current-year>2026</span> NAVIN RESEARCH</p>
-        <p>Nghiên cứu AI độc lập · Việt Nam</p>
-      </footer>
+      <footer class="footer"><p>© <span data-current-year>2026</span> NAVIN RESEARCH</p><nav aria-label="Legal"><a href="/vi/privacy-policy/">Chính sách riêng tư</a><span aria-hidden="true">/</span><a href="/vi/terms-of-use/">Điều khoản sử dụng</a></nav></footer>
     </div>
   </body>
 </html>

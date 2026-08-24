@@ -3,18 +3,74 @@ document.querySelectorAll("[data-current-year]").forEach((node) => {
 });
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
 if (!reduceMotion.matches) {
-  window.setTimeout(() => {
-    document.documentElement.classList.add("motion-ready");
-  }, 3000);
-
-  window.addEventListener(
-    "pointermove",
-    (event) => {
-      document.documentElement.style.setProperty("--pointer-x", `${(event.clientX / innerWidth) * 100}%`);
-      document.documentElement.style.setProperty("--pointer-y", `${(event.clientY / innerHeight) * 100}%`);
-    },
-    { passive: true },
-  );
+  window.setTimeout(() => document.documentElement.classList.add("motion-ready"), 3000);
+  window.addEventListener("pointermove", (event) => {
+    document.documentElement.style.setProperty("--pointer-x", `${(event.clientX / innerWidth) * 100}%`);
+    document.documentElement.style.setProperty("--pointer-y", `${(event.clientY / innerHeight) * 100}%`);
+  }, { passive: true });
 }
+
+const openButton = document.querySelector("[data-menu-open]");
+const closeButton = document.querySelector("[data-menu-close]");
+const backdrop = document.querySelector("[data-menu-backdrop]");
+const menu = document.querySelector("#site-menu");
+const chaptersButton = document.querySelector("[data-chapters-toggle]");
+const chapterPanel = document.querySelector("#chapter-panel");
+const chapterBack = document.querySelector("[data-chapter-back]");
+let returnFocus = null;
+
+function focusable() {
+  return menu ? [...menu.querySelectorAll('a[href], button:not([disabled])')].filter((item) => item.offsetParent !== null) : [];
+}
+
+function setChapters(open) {
+  document.documentElement.classList.toggle("chapters-open", open);
+  chaptersButton?.setAttribute("aria-expanded", String(open));
+  chapterPanel?.setAttribute("aria-hidden", String(!open));
+  if (chapterPanel) chapterPanel.inert = !open;
+  if (open) chapterPanel?.querySelector("a")?.focus();
+  else chaptersButton?.focus();
+}
+
+function setMenu(open) {
+  document.documentElement.classList.toggle("menu-open", open);
+  openButton?.setAttribute("aria-expanded", String(open));
+  menu?.setAttribute("aria-hidden", String(!open));
+  if (menu) menu.inert = !open;
+  if (backdrop) backdrop.hidden = !open;
+  if (open) {
+    returnFocus = document.activeElement;
+    closeButton?.focus();
+  } else {
+    document.documentElement.classList.remove("chapters-open");
+    chaptersButton?.setAttribute("aria-expanded", "false");
+    chapterPanel?.setAttribute("aria-hidden", "true");
+    if (chapterPanel) chapterPanel.inert = true;
+    returnFocus?.focus?.();
+  }
+}
+
+openButton?.addEventListener("click", () => setMenu(true));
+closeButton?.addEventListener("click", () => setMenu(false));
+backdrop?.addEventListener("click", () => setMenu(false));
+chaptersButton?.addEventListener("click", () => setChapters(!document.documentElement.classList.contains("chapters-open")));
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+  chaptersButton?.addEventListener("pointerenter", () => setChapters(true));
+}
+chapterBack?.addEventListener("click", () => setChapters(false));
+menu?.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    event.preventDefault();
+    if (document.documentElement.classList.contains("chapters-open")) setChapters(false);
+    else setMenu(false);
+    return;
+  }
+  if (event.key !== "Tab") return;
+  const items = focusable();
+  if (!items.length) return;
+  const first = items[0];
+  const last = items[items.length - 1];
+  if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+  else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+});
