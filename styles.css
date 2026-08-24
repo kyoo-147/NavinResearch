@@ -458,7 +458,7 @@ h1 {
 .menu-toggle span { display: block; width: 25px; height: 1px; background: var(--ink); transition: transform 180ms ease; }
 .shell { padding-bottom: 4.5rem; }
 .hero { min-height: calc(100svh - 11.5rem); }
-.footer { position: fixed; z-index: 20; right: var(--edge); bottom: 0; left: var(--edge); min-height: 4.5rem; background: linear-gradient(180deg, rgba(3,18,13,0), rgba(3,18,13,.9) 35%); backdrop-filter: blur(8px); }
+.footer { position: fixed; z-index: 20; right: var(--edge); bottom: 0; left: var(--edge); min-height: 4.5rem; background: transparent; backdrop-filter: none; }
 .footer nav { display: flex; align-items: center; gap: .7rem; }
 .footer a:hover, .footer a:focus-visible { color: var(--acid); }
 .wealth { display: grid; min-height: calc(100svh - 4.5rem); padding: clamp(6rem, 13vh, 10rem) 1rem 7rem; place-items: center; align-content: center; border-top: 1px solid var(--line); text-align: center; }
