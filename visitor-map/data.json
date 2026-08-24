@@ -1,0 +1,11 @@
+{
+  "demo": true,
+  "minimumGroupSize": 5,
+  "privacy": {"contains": ["daily country aggregates"], "excludes": ["raw IP", "city", "region", "URL", "user agent", "individual trajectory"]},
+  "withheldVisits": 7,
+  "rows": [
+    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "visits": 42},
+    {"day": "2026-02-14", "countryCode": "DE", "country": "Germany", "visits": 18},
+    {"day": "2026-02-14", "countryCode": "US", "country": "United States", "visits": 11}
+  ]
+}

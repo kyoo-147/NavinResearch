@@ -1,0 +1,9 @@
+{
+  "demo": true,
+  "privacy": {"contains": ["daily region/city counts"], "excludes": ["raw IP", "URL", "user agent", "individual trajectory"]},
+  "rows": [
+    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "region": "Ho Chi Minh City", "city": "Ho Chi Minh City", "visits": 21},
+    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "region": "Hanoi", "city": "Hanoi", "visits": 14},
+    {"day": "2026-02-14", "countryCode": "DE", "country": "Germany", "region": "Berlin", "city": "Berlin", "visits": 9}
+  ]
+}
