@@ -111,7 +111,7 @@ for (const file of [
   }
 }
 
-if (!deploymentNginx.includes("location ~ \\.md$") || !deploymentNginx.includes("default_type text/markdown;")) {
+if (!deploymentNginx.includes("location ~ \\.md$") || !deploymentNginx.includes("default_type text/markdown;") || !deploymentNginx.includes("charset_types text/markdown;")) {
   errors.push("deployment nginx: public Markdown content type mapping missing");
 }
 
