@@ -139,6 +139,8 @@ export const experience = {
   en: {
     chapterEyebrow: "CHAPTER 00 / WEALTH OF NATURE — COMING SOON",
     menu: { open: "Open menu", close: "Close menu", chapters: "Chapters", home: "Home", work: "Work", notes: "Notes", philosophy: "Philosophy", contact: "Contact", back: "Back", viewChapter: "View chapter", explore: "Explore" },
+    aria: { home: "Navin Research home", legal: "Legal" },
+    chapterLabels: { researchProgram: "Research program", coreDimension: "Core dimension", status: "Status", navigation: "Chapter navigation" },
     wealth: { label: "Chapter 00", title: "WEALTH OF NATURE", statement: "Intelligence does not exist apart from nature. It emerges through perception, language, memory, and action." },
     privacy: "Privacy policy", terms: "Terms of use",
     chapterNotice: "This chapter is being prepared. No studies, findings, metrics, or publication dates are presented here yet.",
@@ -151,6 +153,8 @@ export const experience = {
   vi: {
     chapterEyebrow: "CHAPTER 00 / WEALTH OF NATURE — COMING SOON",
     menu: { open: "Mở menu", close: "Đóng menu", chapters: "Các chương", home: "Trang chủ", work: "Công trình", notes: "Ghi chú", philosophy: "Triết lý", contact: "Liên hệ", back: "Quay lại", viewChapter: "Xem chương", explore: "Khám phá" },
+    aria: { home: "Trang chủ Navin Research", legal: "Pháp lý" },
+    chapterLabels: { researchProgram: "Chương trình nghiên cứu", coreDimension: "Chiều kích cốt lõi", status: "Trạng thái", navigation: "Điều hướng chương" },
     wealth: { label: "Chương 00", title: "SỰ PHONG PHÚ CỦA TỰ NHIÊN", statement: "Trí tuệ không tồn tại tách rời tự nhiên. Nó hình thành qua tri giác, ngôn ngữ, ký ức và hành động." },
     privacy: "Chính sách riêng tư", terms: "Điều khoản sử dụng",
     chapterNotice: "Chương này đang được chuẩn bị. Hiện chưa có nghiên cứu, phát hiện, số liệu hay ngày công bố nào được trình bày.",
@@ -163,6 +167,8 @@ export const experience = {
   "zh-cn": {
     chapterEyebrow: "CHAPTER 00 / WEALTH OF NATURE — COMING SOON",
     menu: { open: "打开菜单", close: "关闭菜单", chapters: "章节", home: "首页", work: "工作", notes: "笔记", philosophy: "理念", contact: "联系", back: "返回", viewChapter: "查看章节", explore: "探索" },
+    aria: { home: "Navin Research 首页", legal: "法律信息" },
+    chapterLabels: { researchProgram: "研究计划", coreDimension: "核心维度", status: "状态", navigation: "章节导航" },
     wealth: { label: "第 00 章", title: "自然之丰", statement: "智能并非独立于自然而存在。它通过感知、语言、记忆与行动涌现。" },
     privacy: "隐私政策", terms: "使用条款",
     chapterNotice: "本章节正在准备中。目前尚未在此展示研究、发现、指标或发布日期。",

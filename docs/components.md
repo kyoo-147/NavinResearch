@@ -2,6 +2,17 @@
 
 This catalogue defines the reusable contracts behind the generated EN/VI/ZH-CN site. Runtime markup is generated from `site.config.mjs` by `scripts/generate-site.mjs`; generated HTML is deployable output, not the translation source of truth.
 
+## Source component architecture
+
+Shared page chrome is implemented as generator components rather than copied into page templates:
+
+- `scripts/components/page-head.mjs` — canonical, hreflang, social metadata, favicon, and versioned CSS/JavaScript imports.
+- `scripts/components/site-shell.mjs` — `siteHeader`, `siteFooter`, `siteDrawer`, language switching, and chapter preview explorer.
+- `scripts/generate-site.mjs` — page composition only: homepage, content routes, chapters, and legal content slots.
+- `site.config.mjs` — localized data and route contracts only.
+
+Every public generated page imports the same header, footer, drawer, language switcher, and page-head components. Do not reproduce their HTML inside an individual template. Structural changes belong in components, page-specific layout belongs in templates/CSS, and localized copy belongs in `site.config.mjs`.
+
 ## Field backdrop
 
 ```html
@@ -13,13 +24,13 @@ This catalogue defines the reusable contracts behind the generated EN/VI/ZH-CN s
 </div>
 ```
 
-Keep it decorative and outside reading order. The five optimized WebPs start after a 3-second calm state and crossfade over a 40-second loop. Wash opacity protects text contrast. Grain remains `pointer-events:none`. Reduced-motion mode fixes layer 1 and disables pointer response.
+Keep it decorative and outside reading order. The five optimized WebPs start after a short calm state and crossfade over a 40-second loop. Wash opacity protects text contrast. Grain remains `pointer-events:none`. Reduced-motion mode fixes layer 1 and disables pointer response.
 
 ## Masthead and brand
 
-The semantic `header` contains:
+The reusable `siteHeader(localeKey, suffix)` contains:
 
-- a home link with the approved transparent `assets/brand/logo.webp` and an accessible Navin Research label;
+- the hamburger menu and NAVIN RESEARCH text wordmark used consistently across homepage, content, chapter, and legal routes;
 - an uppercase update-status label, hidden as a whole below 900px;
 - a locale `nav` with real links to `/`, `/vi/`, and `/zh-cn/`, `hreflang`, valid BCP 47 language tags, and `aria-current="page"`.
 
@@ -37,7 +48,9 @@ The `aside` has a localized accessible label, section label, `h2`, and semantic 
 
 ## Footer
 
-The footer pairs a script-enhanced current year with a locale-specific institutional descriptor. It remains readable without JavaScript because the generated year is a valid fallback.
+The reusable `siteFooter(localeKey)` pairs a script-enhanced current year with localized Privacy Policy and Terms of Use links. It remains readable without JavaScript because the generated year is a valid fallback.
+
+Homepage composition uses the default fixed transparent footer. Content, chapter, and legal compositions call `siteFooter(localeKey, { flow: true })`, preserving identical markup and visual language while keeping long content and chapter navigation unobstructed.
 
 ## Content-route shell
 
