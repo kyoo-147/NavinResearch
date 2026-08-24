@@ -234,7 +234,7 @@ h1 {
 }
 
 .statement {
-  max-width: 36rem;
+  max-width: 48ch;
   margin: clamp(2.3rem, 5vh, 4.5rem) 0 0;
   color: rgba(244, 247, 236, 0.84);
   font-size: clamp(1.02rem, 1.4vw, 1.35rem);
@@ -309,7 +309,7 @@ h1 {
     transform: scale(1.12) translate3d(-1.5%, 1%, 0) rotate(-0.35deg);
     filter: saturate(1.1) contrast(1.04) blur(7px);
   }
-  4%, 18% {
+  5%, 18% {
     opacity: 1;
   }
   24%, 100% {
@@ -477,8 +477,9 @@ h1 {
 .wealth h2 { margin: 0; font-size: clamp(2.4rem, 6vw, 5.5rem); font-weight: 400; letter-spacing: .24em; line-height: 1; text-transform: uppercase; }
 .wealth__rule { width: 7.5rem; height: 1px; margin: 2.5rem 0 1.8rem; background: rgba(217,255,87,.78); }
 .wealth__statement { max-width: 34rem; margin: 0; color: rgba(244,247,236,.82); font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.5; }
-.menu-backdrop { position: fixed; z-index: 48; inset: 0; background: rgba(0,8,5,.6); backdrop-filter: blur(4px); }
-.site-menu { position: fixed; z-index: 50; top: 0; bottom: 0; left: 0; display: grid; width: min(22rem, 90vw); grid-template-columns: minmax(17rem, 22rem) minmax(20rem, 30rem); overflow: hidden; color: var(--ink); background: rgba(2,22,15,.97); border-right: 1px solid var(--line); transform: translateX(-100vw); visibility: hidden; transition: width 320ms ease, transform 420ms cubic-bezier(.2,.8,.2,1), visibility 420ms; }
+.menu-backdrop { position: fixed; z-index: 48; inset: 0; opacity: 0; visibility: hidden; background: rgba(0,8,5,.6); backdrop-filter: blur(4px); transition: opacity 620ms ease, visibility 620ms; }
+.menu-open .menu-backdrop { opacity: 1; visibility: visible; }
+.site-menu { position: fixed; z-index: 50; top: 0; bottom: 0; left: 0; display: grid; width: min(22rem, 90vw); grid-template-columns: minmax(17rem, 22rem) minmax(20rem, 30rem); overflow: hidden; color: var(--ink); background: rgba(2,22,15,.97); border-right: 1px solid var(--line); transform: translateX(-100vw); visibility: hidden; transition: width 380ms ease, transform 620ms cubic-bezier(.2,.8,.2,1), visibility 620ms; }
 .menu-open .site-menu { transform: translateX(0); visibility: visible; }
 .site-menu.site-menu--chapters { width: min(52rem, 76vw); }
 .site-menu__primary, .chapter-panel { padding: clamp(2rem, 5vw, 4rem); }

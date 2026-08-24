@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, sections, site } from "../site.config.mjs";
 
 const localeEntries = Object.entries(locales);
+const homeAssetRevision = "20260824-04";
 const escapeHtml = (value) => String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 
 function alternates(suffix = "") {
@@ -75,7 +76,7 @@ function homeTemplate(localeKey) {
   return `<!DOCTYPE html>
 <html lang="${locale.htmlLang}">
   <head>
-${head(localeKey, locale.meta.title, locale.meta.description, "", "/styles.css", "/script.js")}  </head>
+${head(localeKey, locale.meta.title, locale.meta.description, "", `/styles.css?v=${homeAssetRevision}`, `/script.js?v=${homeAssetRevision}`)}  </head>
   <body class="home-page">
     <div class="field" aria-hidden="true">${[1,2,3,4,5].map((n) => `<div class="field__layer field__layer--${n}"></div>`).join("")}<div class="field__wash"></div><div class="field__grain"></div></div>
     <div class="shell">
