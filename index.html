@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#04130e">
-    <meta id="meta-description" name="description" content="Navin Research is preparing a major update. New research across language, speech, and vision is coming soon.">
+    <meta id="meta-description" name="description" content="Navin Research studies language, speech, and vision AI models and builds end-to-end products.">
     <meta property="og:site_name" content="Navin Research">
     <meta id="og-title" property="og:title" content="Navin Research — Coming Soon">
-    <meta id="og-description" property="og:description" content="A new frontier is taking shape. We will be back soon with a major update.">
+    <meta id="og-description" property="og:description" content="Research into language, speech, and vision AI models, plus end-to-end products, is taking shape.">
     <meta id="og-locale" property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://navinresearch.com/">
@@ -19,7 +19,7 @@
     <meta name="twitter:image" content="https://navinresearch.com/assets/field-4.webp">
     <title>Navin Research — Coming Soon</title>
     <link rel="canonical" href="https://navinresearch.com/">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
     <link rel="preload" href="/assets/field-1.webp" as="image" fetchpriority="high">
     <link rel="stylesheet" href="/styles.css">
     <script src="/script.js" defer></script>
@@ -38,17 +38,16 @@
     <div class="shell">
       <header class="masthead">
         <a class="brand" href="/" aria-label="Navin Research home">
-          <svg class="brand__mark" viewBox="0 0 36 36" aria-hidden="true">
-            <path d="M5 27V9l13 18V9l13 18V9" />
-          </svg>
-          <span>NAVIN<em>RESEARCH</em></span>
+          <img class="brand__logo" src="/assets/brand/logo.webp" alt="Navin Research">
         </a>
 
         <div class="masthead__meta">
-          <span class="signal"><i></i><span data-copy="status">Major update in progress</span></span>
-          <button class="language" type="button" aria-label="Switch to Vietnamese" aria-pressed="false">
-            <span class="language__en">EN</span><span>/</span><span class="language__vi">VI</span>
-          </button>
+          <span class="signal" data-copy="status">Major update in progress</span>
+          <div class="language" role="group" aria-label="Language selection">
+            <button type="button" data-language="en" aria-pressed="true">EN</button><span aria-hidden="true">/</span>
+            <button type="button" data-language="vi" aria-pressed="false">VI</button><span aria-hidden="true">/</span>
+            <button type="button" data-language="zh" aria-pressed="false">CN</button>
+          </div>
         </div>
       </header>
 
@@ -58,7 +57,7 @@
           <p class="eyebrow" data-copy="eyebrow">Coming soon</p>
           <h1 data-copy="title">A new frontier<br>is taking shape.</h1>
           <p class="statement" data-copy="statement">
-            We are working on a major update at an ambitious scale—building a new home for our work across language, speech, and vision. Please stay tuned.
+            We are researching language, speech, and vision AI models—and building end-to-end products around them. A new home for this work is taking shape. Please stay tuned.
           </p>
         </div>
 

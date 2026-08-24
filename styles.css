@@ -79,6 +79,7 @@ button {
   filter: saturate(1.12) contrast(1.05) blur(2px);
   will-change: opacity, transform, filter;
   animation: field-shift 40s infinite both;
+  animation-play-state: paused;
 }
 
 .field__layer--1 {
@@ -147,24 +148,18 @@ button {
   line-height: 0.9;
 }
 
-.brand__mark {
-  width: 2.25rem;
-  height: 2.25rem;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.7;
+.brand__logo {
+  display: block;
+  width: 3.1rem;
+  height: 3.1rem;
+  object-fit: contain;
 }
 
-.brand em {
-  display: block;
-  margin-top: 0.42rem;
+.signal {
   color: var(--muted);
-  font-size: 0.56rem;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.31em;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .masthead__meta {
@@ -173,52 +168,29 @@ button {
   gap: clamp(1rem, 3vw, 3rem);
 }
 
-.signal {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  color: var(--muted);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.signal i {
-  width: 0.46rem;
-  height: 0.46rem;
-  border-radius: 50%;
-  background: var(--acid);
-  box-shadow: 0 0 0 0 rgba(217, 255, 87, 0.7);
-  animation: ping 2.8s ease-out infinite;
-}
-
 .language {
   display: flex;
+  align-items: center;
   gap: 0.55rem;
-  padding: 0.45rem 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
   font-size: 0.7rem;
   letter-spacing: 0.14em;
 }
 
-.language span {
+.language button {
+  padding: 0.45rem 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
   opacity: 0.45;
+  font: inherit;
+  letter-spacing: inherit;
   transition: opacity 180ms ease;
 }
 
-.language .language__en,
-.language[aria-pressed="true"] .language__vi {
-  opacity: 1;
-}
-
-.language[aria-pressed="true"] .language__en {
-  opacity: 0.45;
-}
-
-.language:hover span,
-.language:focus-visible span {
+.language button[aria-pressed="true"],
+.language button:hover,
+.language button:focus-visible {
   opacity: 1;
 }
 
@@ -345,10 +317,8 @@ h1 {
   }
 }
 
-@keyframes ping {
-  70%, 100% {
-    box-shadow: 0 0 0 0.5rem rgba(217, 255, 87, 0);
-  }
+.motion-ready .field__layer {
+  animation-play-state: running;
 }
 
 @media (max-width: 900px) {
@@ -357,10 +327,6 @@ h1 {
   }
   .masthead {
     min-height: 6rem;
-  }
-
-  .signal span {
-    display: none;
   }
 
   .hero {
@@ -401,17 +367,13 @@ h1 {
     font-size: 0.68rem;
   }
 
-  .brand__mark {
-    width: 1.9rem;
-    height: 1.9rem;
+  .brand__logo {
+    width: 2.55rem;
+    height: 2.55rem;
   }
 
   .masthead__meta {
     gap: 0.75rem;
-  }
-
-  .signal {
-    gap: 0;
   }
 
   .hero {
