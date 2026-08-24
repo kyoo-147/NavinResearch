@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, sections, site } from "../site.config.mjs";
 import { pageHead } from "./components/page-head.mjs";
 import { contentHeader, escapeHtml, routeFooter, siteDrawer, siteFooter, siteHeader } from "./components/site-shell.mjs";
+import { blogPostPath, blogPosts, renderBlogPost } from "./blog-posts.mjs";
 
 const localeEntries = Object.entries(locales);
 const homeAssetRevision = "20260824-11";
@@ -118,6 +119,15 @@ for (const [localeKey] of localeEntries) {
   for (const legalPage of legalPages) await emit(localeKey, legalPage, legalTemplate(localeKey, legalPage));
 }
 
+const markdownPosts = [];
+for (const post of blogPosts) {
+  const url = blogPostPath(post);
+  const file = url.slice(1);
+  await mkdir(file.slice(0, file.lastIndexOf("/")), { recursive: true });
+  await writeFile(file, renderBlogPost(post), "utf8");
+  markdownPosts.push({ ...post, file, url });
+}
+
 const searchIndex = pages.map(({ localeKey, suffix, url }) => {
   const locale = locales[localeKey];
   const ui = experience[localeKey];
@@ -127,6 +137,13 @@ const searchIndex = pages.map(({ localeKey, suffix, url }) => {
   if (legalPages.includes(suffix)) { const copy = ui.legal[suffix]; return { language: locale.shortLabel, url, title: copy[0], description: copy[1], text: copy[2] }; }
   const route = locale.routes[suffix]; return { language: locale.shortLabel, url, title: route.title, description: route.description, text: route.lede };
 });
+searchIndex.push(...markdownPosts.map((post) => ({
+  language: "EN",
+  url: post.url,
+  title: post.title,
+  description: post.description,
+  text: `${post.answer} ${post.keywords.join(" ")}`,
+})));
 await writeFile("content-routes/search-index.json", `${JSON.stringify(searchIndex, null, 2)}\n`, "utf8");
-await writeFile("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(({ url }) => `  <url><loc>${site.origin}${url}</loc></url>`).join("\n")}\n</urlset>\n`, "utf8");
-console.log(`Generated ${pages.length} localized pages.`);
+await writeFile("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...pages, ...markdownPosts].map(({ url }) => `  <url><loc>${site.origin}${url}</loc></url>`).join("\n")}\n</urlset>\n`, "utf8");
+console.log(`Generated ${pages.length} localized pages and ${markdownPosts.length} Markdown blog posts.`);

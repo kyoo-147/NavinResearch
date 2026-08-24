@@ -250,5 +250,355 @@
     "title": "使用条款",
     "description": "本网站用于提供公共信息。标记为即将推出的页面描述计划中的编辑与研究方向；它们不代表已发布研究、发现或交付承诺。",
     "text": "不得以误导方式重用原创文字与视觉资产。如需询问许可，请联系 michaelbui.contact@gmail.com。"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/single-agent-before-multi-agent.md",
+    "title": "Start With One AI Agent Before Building a Multi-Agent System",
+    "description": "A practical decision rule for choosing one agent, a workflow, or several collaborating agents.",
+    "text": "Use one agent until evaluation data shows that context size, tool ownership, or parallel work is the actual bottleneck. Multiple agents add coordination, latency, cost, and new failure modes; they are an architecture choice, not an automatic quality upgrade. single agent multi-agent system AI agent architecture"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/multi-agent-orchestration-patterns.md",
+    "title": "Multi-Agent Orchestration Patterns That Work in Production",
+    "description": "Choose among manager-worker, parallel fan-out, handoff, and evaluator loops without building an uncontrolled agent swarm.",
+    "text": "Prefer explicit orchestration. A manager-worker pattern suits decomposable tasks, parallel fan-out suits independent research, handoffs suit distinct permissions, and evaluator loops suit outputs that can be checked. Each pattern needs bounded turns and a typed result. multi-agent orchestration manager worker agents agent handoffs"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/agent-handoffs.md",
+    "title": "How to Design Reliable Handoffs Between AI Agents",
+    "description": "Use typed handoff packets, acceptance checks, and clear responsibility boundaries between specialist agents.",
+    "text": "A reliable handoff is a contract, not a conversational suggestion. Include the objective, relevant state, evidence, constraints, unresolved questions, and an explicit acceptance condition. The receiving agent should be able to reject malformed work. AI agent handoff agent routing typed agent state"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/agent-tool-design.md",
+    "title": "Design Better Tools for AI Agents",
+    "description": "Make agent tools easier to select, call, validate, and recover from with narrow schemas and actionable errors.",
+    "text": "Design tools around user intentions rather than low-level API endpoints. A good tool has a distinct name, a concise description, a strict input schema, a small response, and errors that tell the agent what can be corrected. AI agent tool design function calling schema tool use reliability"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/agent-memory.md",
+    "title": "AI Agent Memory: What to Store and What to Recompute",
+    "description": "Separate working context, durable user facts, episodic history, and external knowledge to reduce cost and privacy risk.",
+    "text": "Treat memory as several stores with different lifetimes. Keep task-local state in working context, verified preferences in a durable profile, reusable facts in a governed knowledge store, and execution traces in observability storage. Do not call an unfiltered transcript memory. AI agent memory long-term memory LLM context engineering"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/mcp-server-security.md",
+    "title": "Secure an MCP Server Before Connecting AI Agents",
+    "description": "A deployment checklist for authentication, authorization, consent, validation, and least-privilege Model Context Protocol tools.",
+    "text": "Treat an MCP server as a security boundary. Authenticate clients, authorize every operation, validate all arguments, minimize tool scope, protect tokens, and require user confirmation for consequential actions. A trusted model does not make an untrusted tool safe. MCP server security Model Context Protocol AI agent authorization"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/a2a-and-mcp.md",
+    "title": "A2A vs MCP: Different Layers for Agent Systems",
+    "description": "Understand when Agent2Agent and Model Context Protocol complement each other instead of competing.",
+    "text": "Use MCP to expose tools, resources, and prompts to an AI application. Use A2A when independently operated agents need to advertise capabilities, exchange task state, and collaborate. A system may use A2A between agents while each agent uses MCP for its local tools. A2A vs MCP Agent2Agent protocol Model Context Protocol"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/human-approval-gates.md",
+    "title": "Human Approval Gates for High-Risk AI Agent Actions",
+    "description": "Place approval at the last responsible moment and show people exactly what the agent intends to do.",
+    "text": "Require approval for irreversible, externally visible, expensive, or privilege-changing actions. Generate a preview from validated structured arguments, freeze those arguments while approval is pending, and execute exactly the approved operation. human in the loop AI agent approval gate safe AI actions"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/long-running-agent-jobs.md",
+    "title": "Build Long-Running AI Agent Jobs That Can Resume Safely",
+    "description": "Use checkpoints, idempotent tools, bounded retries, and cancellation for tasks that outlive one request.",
+    "text": "Persist explicit workflow state after meaningful steps instead of relying on a live model session. Each resumable step should have an idempotency key, recorded inputs, result status, and a clear rule for retry or human escalation. long-running AI agents resumable agent workflow idempotent tool calls"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/agents/agent-observability.md",
+    "title": "AI Agent Observability: Traces That Help Debug Failures",
+    "description": "Capture decisions, tool calls, latency, cost, and evidence without turning traces into a privacy liability.",
+    "text": "Trace the observable workflow: model request identifiers, selected tools, validated arguments, redacted results, state transitions, policy decisions, cost, and timing. Do not depend on hidden chain-of-thought; inspect outcomes and available summaries instead. AI agent observability agent tracing LLM monitoring"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/reasoning/reasoning-models-vs-chat-models.md",
+    "title": "Reasoning Models vs Chat Models: A Practical Selection Guide",
+    "description": "Choose the least expensive model behavior that reliably solves the task instead of enabling heavy reasoning everywhere.",
+    "text": "Use deeper reasoning for tasks with verifiable multi-step dependencies, difficult planning, or complex tool use. Use fast general models for extraction, rewriting, routing, and straightforward questions. Route with evaluation data rather than intuition. reasoning models reasoning effort AI model selection"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/reasoning/reasoning-effort-routing.md",
+    "title": "Route Reasoning Effort by Task Difficulty",
+    "description": "Build a simple difficulty router with escalation based on confidence and verification rather than one expensive default.",
+    "text": "Start low and escalate when a deterministic verifier fails, required evidence is absent, or the task belongs to a benchmarked hard class. The router should use observable features and never treat self-reported confidence as proof. reasoning effort routing adaptive inference LLM cost optimization"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/reasoning/verify-reasoning-results.md",
+    "title": "Verify AI Reasoning Without Requesting Chain-of-Thought",
+    "description": "Check final answers with tests, constraints, citations, and independent computation instead of collecting private reasoning traces.",
+    "text": "Verification should target observable claims. Use unit tests for code, calculators for arithmetic, schema and invariant checks for data, source inspection for factual answers, and independent judges only where deterministic checks are unavailable. verify AI reasoning LLM answer verification chain of thought privacy"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/reasoning/structured-outputs.md",
+    "title": "Structured Outputs for Reliable AI Pipelines",
+    "description": "Use JSON Schema for machine-consumed responses while preserving server-side validation and business rules.",
+    "text": "Structured output constrains syntax, not truth. Define the smallest schema your application needs, reject unknown fields where supported, validate again on your server, and apply domain rules before side effects. structured outputs JSON schema LLM reliable AI pipeline"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/reasoning/reasoning-with-tools.md",
+    "title": "Reasoning With Tools: Separate Planning From Execution",
+    "description": "Let models choose actions while deterministic code validates, executes, and records each operation.",
+    "text": "The model may propose a plan and tool calls, but the application owns permissions, validation, execution, retry policy, and stopping. This separation keeps failures inspectable and prevents natural language from bypassing control logic. reasoning with tools AI tool calling agent execution loop"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/reasoning/long-context-is-not-memory.md",
+    "title": "Long Context Is Not the Same as Memory",
+    "description": "Use large context windows deliberately; retrieval, summaries, and durable state still matter.",
+    "text": "A larger context window can hold more tokens, but it does not guarantee that every detail is used correctly or remain affordable. Keep authoritative state structured, retrieve relevant evidence, place instructions clearly, and evaluate performance at realistic context lengths. long context LLM AI memory context engineering"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/reasoning/context-engineering-checklist.md",
+    "title": "A Context Engineering Checklist for AI Agents",
+    "description": "Curate instructions, tools, evidence, state, and history as a limited resource on every model turn.",
+    "text": "Build context from explicit layers: stable policy, task contract, current state, relevant tools, retrieved evidence, and a compact recent history. Give each layer an owner and a removal rule. More context is useful only when it changes the correct next action. context engineering checklist AI agent context prompt context management"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/reasoning/reasoning-evaluation-dataset.md",
+    "title": "Build a Small Reasoning Evaluation Dataset That Matters",
+    "description": "Create a compact, versioned eval set from real failures before chasing broad benchmark scores.",
+    "text": "Begin with 30–100 representative cases tied to actual user value. Include normal, boundary, ambiguous, and adversarial inputs. Store expected properties and graders, not only one brittle reference sentence. reasoning evaluation dataset LLM evals AI regression testing"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/models/choose-ai-model.md",
+    "title": "How to Choose an AI Model for a Production Application",
+    "description": "Evaluate quality, latency, cost, context, tool use, deployment, and governance with your own workload.",
+    "text": "Choose from a task-specific scorecard, not a universal leaderboard. First eliminate models that fail mandatory privacy, deployment, modality, or tool requirements. Then compare end-to-end task success, p95 latency, and total cost on representative traffic. choose AI model LLM comparison production model selection"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/models/open-vs-closed-models.md",
+    "title": "Open-Weight vs Hosted AI Models: A Deployment Decision",
+    "description": "Compare control, operations, licensing, data handling, and performance before self-hosting or buying an API.",
+    "text": "Open weights can offer deployment control and customization, but the operator owns serving, patching, abuse prevention, and capacity. Hosted APIs reduce infrastructure work but introduce vendor, policy, and data-processing dependencies. Decide from total risk and cost. open-weight vs hosted models self-hosted LLM AI deployment decision"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/models/deepseek-api-integration.md",
+    "title": "Integrate the DeepSeek API Without Locking Your Application",
+    "description": "Use an adapter, capability checks, strict validation, and live documentation for a resilient DeepSeek integration.",
+    "text": "Treat API-format compatibility as a migration aid, not proof of identical behavior. Put provider-specific model names, thinking controls, tool semantics, errors, and rate limits behind an adapter and test every capability you depend on. DeepSeek API integration OpenAI compatible API DeepSeek function calling"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/models/kimi-k2-deployment-checklist.md",
+    "title": "A Deployment Checklist for Kimi Open-Weight Models",
+    "description": "Verify the model card, hardware fit, serving stack, tool format, and license before deploying Kimi models.",
+    "text": "Start with the official Moonshot repository and the exact checkpoint documentation. Confirm memory requirements, tokenizer and chat template, precision, supported serving engines, tool-call format, and license. Then benchmark your chosen quantization on your own tasks. Kimi K2 deployment Moonshot AI models open-weight model serving"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/models/qwen-deployment-checklist.md",
+    "title": "A Practical Qwen Model Deployment Checklist",
+    "description": "Select the right Qwen variant, template, precision, and serving engine while preserving reproducibility.",
+    "text": "Qwen is a family, not one interchangeable model. Match the exact variant to language, modality, context, and compute needs. Follow official documentation for templates and deployment, then record every artifact and runtime setting used in evaluation. Qwen deployment Qwen model selection open model inference"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/models/llama-self-hosting.md",
+    "title": "Self-Hosting Llama: What to Validate Before Production",
+    "description": "Cover licensing, weights, serving, safety, evaluation, and operations for a responsible Llama deployment.",
+    "text": "Self-hosting gives control over infrastructure, not freedom from product responsibilities. Verify the specific Llama license, obtain artifacts from an authorized source, select a maintained serving stack, and add your own access controls, moderation, monitoring, and incident process. self-host Llama Llama deployment LLM serving checklist"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/models/mistral-function-calling.md",
+    "title": "Reliable Function Calling With Mistral Models",
+    "description": "Build a provider adapter, validate arguments, and test tool selection with official Mistral capabilities.",
+    "text": "Function calling lets a model request application functions; it does not execute or authorize them. Define narrow tools, parse the returned call, validate against schema and permissions, execute in trusted code, and return a compact result for the next model turn. Mistral function calling Mistral AI tools LLM function calls"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/models/model-upgrade-playbook.md",
+    "title": "An AI Model Upgrade Playbook With Safe Rollback",
+    "description": "Change models through pinned versions, regression evals, shadow traffic, canaries, and reversible configuration.",
+    "text": "Treat a model upgrade like a dependency and behavior change. Pin the candidate where possible, run offline regressions, shadow representative traffic, canary a small share, and preserve a one-step rollback. Prompts and tool schemas may need migration even when the API shape stays stable. AI model upgrade LLM migration model rollback"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/multimodal/image-understanding-pipeline.md",
+    "title": "Build a Reliable Image Understanding Pipeline",
+    "description": "Prepare images, preserve provenance, structure outputs, and verify visual claims before using multimodal results.",
+    "text": "Use the original or an appropriate-resolution image, provide the task and expected output schema, and preserve image identifiers. Verify high-impact visual claims with deterministic processing, a second pass, or human review because confident descriptions can still be wrong. image understanding AI multimodal pipeline vision language model"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/multimodal/document-ai-extraction.md",
+    "title": "Extract Structured Data From Documents With Multimodal Models",
+    "description": "Combine file parsing, page images, schemas, citations, and validation for dependable document extraction.",
+    "text": "Use native text extraction when available, page images when layout matters, and a strict output schema for target fields. Preserve page references and mark uncertainty. Validate totals, dates, identifiers, and cross-field rules before downstream use. document AI extraction multimodal document processing structured data extraction"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/multimodal/video-understanding.md",
+    "title": "Practical Video Understanding With Multimodal AI",
+    "description": "Sample video deliberately, keep timestamps, separate audio and visual evidence, and evaluate event recall.",
+    "text": "Video analysis is an evidence-selection problem. Choose sampling and clipping based on event duration, preserve timestamps, transcribe audio separately when needed, and require outputs to identify whether a claim came from frames, audio, or both. video understanding AI multimodal video analysis video summarization"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/multimodal/audio-understanding.md",
+    "title": "Audio Understanding Beyond Transcription",
+    "description": "Design an audio pipeline for transcription, speaker turns, acoustic events, and grounded summaries.",
+    "text": "Separate tasks that need different evidence: speech transcription, speaker attribution, language identification, non-speech events, and semantic summarization. Keep timestamps and uncertainty so the final application can distinguish heard content from model inference. audio understanding AI speech transcription pipeline multimodal audio"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/multimodal/realtime-voice-agents.md",
+    "title": "Build Safer Real-Time Voice Agents",
+    "description": "Handle latency, interruptions, turn detection, tool calls, consent, and fallback in live voice systems.",
+    "text": "A voice agent needs an explicit real-time state machine. Track listening, thinking, speaking, interrupted, tool-pending, and ended states. Make interruption immediate, keep tool actions separately authorized, and provide a visible or audible route to a human. real-time voice agents voice AI safety Live API"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/multimodal/multimodal-rag.md",
+    "title": "Multimodal RAG for Text, Images, and Tables",
+    "description": "Index each modality with provenance, retrieve at the right granularity, and cite original evidence.",
+    "text": "Do not flatten every modality into one lossy text summary. Store extracted text, page or image regions, captions, table structure, and source metadata. Retrieve candidates across modalities, rerank for the question, and provide the original evidence to the model. multimodal RAG image retrieval augmented generation document retrieval AI"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/multimodal/visual-prompt-injection.md",
+    "title": "Defend Multimodal Agents Against Visual Prompt Injection",
+    "description": "Treat text inside images and documents as untrusted data, not system instructions.",
+    "text": "An image can contain instructions intended for the model rather than the user. Keep system policy separate, label visual content as untrusted, restrict tools, require authorization for side effects, and validate actions in code. No prompt can replace these controls. visual prompt injection multimodal AI security indirect prompt injection"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/multimodal/multimodal-evaluation.md",
+    "title": "Evaluate Multimodal AI With Evidence-Level Metrics",
+    "description": "Measure perception, grounding, extraction, reasoning, and abstention separately.",
+    "text": "A single similarity score hides where a multimodal system fails. Evaluate whether it perceived the right region or time, extracted the right value, connected evidence correctly, and abstained when evidence was missing. Keep task slices for quality, language, and input corruption. multimodal evaluation vision model evals AI grounding metrics"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/inference/reduce-llm-latency.md",
+    "title": "Reduce LLM Latency Before Changing Models",
+    "description": "Cut sequential calls, shorten outputs, stream useful progress, cache stable prefixes, and parallelize independent work.",
+    "text": "Start with architecture. The largest wins often come from fewer serial model calls and shorter generated outputs. Then optimize prompt size, cache reusable prefixes, parallelize independent retrieval, and choose a faster model only after measuring the quality trade-off. reduce LLM latency AI inference optimization time to first token"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/inference/prompt-caching.md",
+    "title": "Prompt Caching: Structure Requests for Reuse",
+    "description": "Place stable prefixes first, separate volatile data, monitor cache hits, and protect tenant boundaries.",
+    "text": "Caching works best when many requests share an identical or sufficiently similar prefix. Put stable instructions and reusable reference material before volatile user data, avoid meaningless prompt changes, and verify provider-specific caching, retention, and billing behavior. prompt caching LLM context cache AI inference cost"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/inference/batch-inference.md",
+    "title": "When to Use Batch Inference for AI Workloads",
+    "description": "Move delay-tolerant, independent jobs to batches while preserving identifiers, retries, and quality checks.",
+    "text": "Batching is appropriate when tasks do not depend on immediate responses and can be processed independently: offline classification, embeddings, backfills, and evaluation runs. Keep interactive and dependent agent loops on synchronous paths. batch inference LLM batch processing offline AI workloads"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/inference/quantization-quality.md",
+    "title": "Quantization for LLM Serving: Measure the Quality Trade-Off",
+    "description": "Reduce memory and increase throughput only after evaluating the exact quantized artifact on your tasks.",
+    "text": "Quantization changes numerical precision and can affect quality unevenly. Select a method supported by the model and runtime, verify hardware kernels, and compare the exact artifact against the higher-precision baseline on difficult and safety-critical slices. LLM quantization quantized model quality AI serving optimization"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/inference/kv-cache.md",
+    "title": "KV Cache Planning for LLM Inference",
+    "description": "Estimate memory from context, concurrency, model architecture, precision, and reuse before promising capacity.",
+    "text": "Weights are only part of serving memory. The key-value cache grows with active sequence length and concurrent requests, so long contexts can sharply reduce capacity. Measure with the exact runtime and scheduling policy rather than relying on a simple model-size estimate. KV cache LLM LLM inference memory long context serving"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/inference/prefill-decode-disaggregation.md",
+    "title": "Prefill and Decode Disaggregation: When It Helps",
+    "description": "Separate compute-heavy prompt processing from memory-bandwidth-heavy token generation only for the right workload and scale.",
+    "text": "Disaggregation can improve utilization when prefill and decode have different hardware or scaling needs, especially under large, variable prompts. It also adds networking, scheduling, state transfer, and operational complexity. Benchmark against a well-tuned combined deployment. prefill decode disaggregation LLM serving architecture distributed inference"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/inference/model-routing-cost.md",
+    "title": "Cost-Aware Model Routing Without Silent Quality Loss",
+    "description": "Route tasks among models using validated task classes, hard constraints, and escalation rather than price alone.",
+    "text": "A cost router should preserve a minimum quality threshold. Use observable task features, start with the cheapest qualified model, verify outputs where possible, and escalate on failure. Keep sensitive or regulated tasks out of routes that violate policy regardless of cost. cost-aware model routing LLM router AI inference cost optimization"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/inference/inference-benchmark.md",
+    "title": "Benchmark an LLM Inference Server Correctly",
+    "description": "Report workload, hardware, concurrency, prompt and output lengths, latency percentiles, throughput, and quality together.",
+    "text": "A useful benchmark reproduces the intended workload. Warm the server, control request distributions, report time to first token and inter-token latency, and include p95 or p99 under sustained concurrency. Throughput without quality and workload details is not comparable. LLM inference benchmark tokens per second time to first token"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/safety-evaluation/prompt-injection-defense.md",
+    "title": "Prompt Injection Defense for Tool-Using AI Agents",
+    "description": "Combine trust separation, least privilege, validation, approvals, and monitoring because prompts alone cannot secure agents.",
+    "text": "Treat retrieved pages, emails, files, images, and tool results as untrusted data. Keep policy separate, restrict available tools, validate every call in code, require approval for consequential actions, and minimize credentials and data exposure. prompt injection defense AI agent security indirect prompt injection"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/safety-evaluation/agent-evaluation.md",
+    "title": "Evaluate AI Agents End to End",
+    "description": "Measure task success, policy compliance, tool behavior, efficiency, and recovery across complete trajectories.",
+    "text": "Agent evaluation must inspect more than the final answer. Score whether the task was completed, tools were chosen and called correctly, evidence supports claims, policies were respected, and the system stopped efficiently or recovered safely. AI agent evaluation agent trajectory evals LLM task success"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/safety-evaluation/tool-call-evals.md",
+    "title": "Build Tool-Call Evaluations for AI Agents",
+    "description": "Test tool selection, arguments, sequencing, authorization, recovery, and unnecessary calls with executable fixtures.",
+    "text": "A tool-call eval should assert the intended operation and state transition, not demand one exact natural-language trace. Use fake or sandbox tools, seed controlled state, and check required calls, forbidden calls, argument properties, and final state. tool call evaluation AI agent evals function calling tests"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/safety-evaluation/rag-evaluation.md",
+    "title": "Evaluate RAG Before Tuning the Generator",
+    "description": "Separate retrieval recall, ranking, context quality, answer support, and citation correctness.",
+    "text": "Diagnose retrieval-augmented generation in stages. First confirm the needed evidence exists and is retrieved. Then test ranking and context assembly. Only after that should you evaluate whether the model answers faithfully and cites the supporting passage. RAG evaluation retrieval augmented generation evals citation accuracy"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/safety-evaluation/llm-as-judge.md",
+    "title": "Use LLM-as-a-Judge Carefully",
+    "description": "Design rubrics, randomize ordering, calibrate against humans, and keep deterministic checks first.",
+    "text": "Model judges are useful for nuanced qualities but can be biased by style, length, position, or self-preference. Give a concrete rubric and evidence, hide irrelevant identity, randomize pair order, and validate judge agreement against expert labels. LLM as a judge model-based evaluation AI evaluation rubric"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/safety-evaluation/red-team-agents.md",
+    "title": "Red-Team an AI Agent With Realistic Attack Paths",
+    "description": "Test untrusted content, tool abuse, data boundaries, identity, and recovery in a controlled environment.",
+    "text": "Red teaming should follow the agent's actual attack surface: prompts, retrieved content, files, browser pages, tools, credentials, memory, and remote agents. Use sandbox accounts and synthetic data, then turn each confirmed weakness into a regression test. red team AI agents agent security testing AI attack paths"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/safety-evaluation/privacy-ai-applications.md",
+    "title": "Privacy Engineering for AI Applications",
+    "description": "Minimize data, define retention, isolate tenants, control logs, and make deletion testable.",
+    "text": "Collect and send only data required for the task. Document where prompts, files, embeddings, caches, traces, and backups go; who can access them; how long they remain; and how deletion propagates. Provider settings do not replace application governance. AI privacy engineering LLM data retention tenant isolation AI"
+  },
+  {
+    "language": "EN",
+    "url": "/blog/safety-evaluation/continuous-ai-evals.md",
+    "title": "Continuous AI Evaluations in CI and Production",
+    "description": "Run fast regression gates on every change and monitor sampled real-world outcomes without leaking user data.",
+    "text": "Use a layered eval program: small deterministic checks in each pull request, broader offline suites before release, canary comparisons during rollout, and privacy-reviewed production monitoring. Every failure should map to an owner and a release decision. continuous AI evaluation LLM evals CI production AI monitoring"
   }
 ]
