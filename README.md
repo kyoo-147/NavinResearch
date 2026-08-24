@@ -5,7 +5,8 @@ Source for [navinresearch.com](https://navinresearch.com): a multilingual static
 ## Architecture
 
 - `site.config.mjs` — source of truth for EN/VI/ZH-CN copy, metadata, routes, and locale prefixes.
-- `scripts/generate-site.mjs` — generates 3 localized homepages, 12 localized content routes, search metadata, and sitemap.
+- `scripts/generate-site.mjs` — generates 36 localized pages, 50 English Markdown blog posts, search metadata, and sitemap.
+- `scripts/blog-posts.mjs` — source manifest and renderer for practical, source-linked AI engineering notes.
 - `styles.css` / `script.js` — homepage design and ambient motion.
 - `content-routes/` — shared editorial route styles, search, and validation.
 - `analytics/` — offline Nginx-log aggregator; no always-on tracking application.
@@ -29,6 +30,7 @@ Open:
 
 - `/`, `/vi/`, `/zh-cn/`
 - `/blog/`, `/research/`, `/docs/`, `/search/` and localized equivalents
+- Direct Markdown notes such as `/blog/agents/multi-agent-orchestration-patterns.md`
 - `/visitor-map/`
 - `/visitor-insights/` — locally demo-only; production is authenticated
 
@@ -46,7 +48,7 @@ Do not hand-edit generated HTML as the only source of a content change. CI rejec
 
 ## SEO boundary
 
-Blog, Research, Docs, and Search routes are real, indexable, and included in the sitemap, but they explicitly state that content is being prepared. Do not add hidden text, doorway pages, keyword stuffing, fabricated research, fake articles, fake dates, fake metrics, or unsupported schema.
+Blog, Research, Docs, and Search routes are real and indexable. The Blog library also publishes 50 concise English Markdown notes under `/blog/<category>/<slug>.md`; they are generated from `scripts/blog-posts.mjs`, included in the sitemap and public search index, and cite official primary documentation. The existing editorial route UI remains unchanged. Research and Docs still state that content is being prepared. Do not add hidden text, doorway pages, keyword stuffing, fabricated research, fake dates, fake metrics, or unsupported schema.
 
 ## Analytics boundary
 

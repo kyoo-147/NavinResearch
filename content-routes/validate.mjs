@@ -1,5 +1,6 @@
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, sections, site } from "../site.config.mjs";
+import { blogPostPath, blogPosts, blogSources, renderBlogPost } from "../scripts/blog-posts.mjs";
 
 const errors = [];
 const generatedRoutes = [];
@@ -15,6 +16,36 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   }
   for (const legalPage of legalPages) {
     generatedRoutes.push({ localeKey, section: legalPage, type: "legal", path: localePath(localeKey, legalPage), file: `${[locale.prefix, legalPage].filter(Boolean).join("/")}/index.html` });
+  }
+}
+
+if (blogPosts.length !== 50) errors.push(`blog library: expected 50 posts, found ${blogPosts.length}`);
+const expectedCategories = new Set(["agents", "reasoning", "models", "multimodal", "inference", "safety-evaluation"]);
+const allowedSourceHosts = new Set(["openai.com", "platform.openai.com", "www.anthropic.com", "docs.anthropic.com", "modelcontextprotocol.io", "a2a-protocol.org", "ai.google.dev", "api-docs.deepseek.com", "www.deepseek.com", "github.com", "qwen.readthedocs.io", "www.llama.com", "docs.mistral.ai", "nvidia.github.io", "docs.nvidia.com"]);
+const diskBlogFiles = (await readdir("blog", { recursive: true })).filter((file) => file.endsWith(".md")).map((file) => `blog/${file.replaceAll("\\", "/")}`);
+if (diskBlogFiles.length !== blogPosts.length) errors.push(`blog library: expected ${blogPosts.length} generated Markdown files, found ${diskBlogFiles.length}`);
+const blogPaths = new Set();
+for (const post of blogPosts) {
+  const url = blogPostPath(post);
+  const file = url.slice(1);
+  if (!expectedCategories.has(post.category)) errors.push(`${url}: unsupported category`);
+  if (!/^\/blog\/[a-z0-9-]+\/[a-z0-9-]+\.md$/.test(url)) errors.push(`${url}: invalid public Markdown URL`);
+  if (blogPaths.has(url)) errors.push(`${url}: duplicate Markdown URL`);
+  blogPaths.add(url);
+  const markdown = await readFile(file, "utf8");
+  if (markdown !== renderBlogPost(post)) errors.push(`${file}: generated Markdown is stale`);
+  for (const marker of ["---\n", `# ${post.title}`, "## Implementation steps", "## Validation checklist", "## Common mistakes", "## Official sources", `canonical: ${site.origin}${url}`]) {
+    if (!markdown.includes(marker)) errors.push(`${file}: required article marker missing: ${marker}`);
+  }
+  const words = markdown.replace(/https?:\/\/\S+/g, "").trim().split(/\s+/).length;
+  if (words < 220) errors.push(`${file}: article is too short (${words} words)`);
+  for (const sourceKey of post.sources) {
+    const source = blogSources[sourceKey];
+    if (!source || !source[1].startsWith("https://")) {
+      errors.push(`${file}: invalid source ${sourceKey}`);
+    } else if (!allowedSourceHosts.has(new URL(source[1]).hostname)) {
+      errors.push(`${file}: source host is not allowlisted: ${new URL(source[1]).hostname}`);
+    }
   }
 }
 
@@ -82,15 +113,20 @@ for (const file of [
 const robots = await readFile("robots.txt", "utf8");
 const sitemap = await readFile("sitemap.xml", "utf8");
 const searchIndex = JSON.parse(await readFile("content-routes/search-index.json", "utf8"));
-if (!Array.isArray(searchIndex) || searchIndex.length !== generatedRoutes.length) errors.push("search index: route count mismatch");
+if (!Array.isArray(searchIndex) || searchIndex.length !== generatedRoutes.length + blogPosts.length) errors.push("search index: route count mismatch");
 if (!robots.includes(`Sitemap: ${site.origin}/sitemap.xml`)) errors.push("robots.txt: sitemap missing");
 if (!robots.includes("Disallow: /visitor-insights/")) errors.push("robots.txt: private insights exclusion missing");
 for (const route of generatedRoutes) {
   if (!sitemap.includes(`${site.origin}${route.path}`)) errors.push(`sitemap.xml: ${route.path} missing`);
+}
+for (const post of blogPosts) {
+  const url = blogPostPath(post);
+  if (!sitemap.includes(`${site.origin}${url}`)) errors.push(`sitemap.xml: ${url} missing`);
+  if (!searchIndex.some((item) => item.url === url && item.title === post.title)) errors.push(`search index: ${url} missing`);
 }
 
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log(`Validated ${generatedRoutes.length} generated localized pages, assets, robots policy, and sitemap URLs.`);
+console.log(`Validated ${generatedRoutes.length} localized pages, ${blogPosts.length} Markdown posts, assets, robots policy, search metadata, and sitemap URLs.`);

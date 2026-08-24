@@ -31,5 +31,6 @@ jobs:
           node --check content-routes/route-search.js
           node --check visitor-map/script.js
           node --check visitor-insights/script.js
+          node --check scripts/blog-posts.mjs
       - name: Test privacy-preserving analytics
         run: python -m unittest analytics.test_aggregate -v
