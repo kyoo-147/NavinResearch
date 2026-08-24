@@ -1,0 +1,11 @@
+[Unit]
+Description=Schedule Navin Research visitor aggregate refresh
+
+[Timer]
+OnCalendar=*-*-* 03:20:00
+Persistent=true
+RandomizedDelaySec=10m
+Unit=navin-analytics.service
+
+[Install]
+WantedBy=timers.target

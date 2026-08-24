@@ -1,0 +1,19 @@
+[Unit]
+Description=Build privacy-preserving Navin Research visitor aggregates
+ConditionPathExists=/var/lib/navin-analytics/GeoLite2-City.mmdb
+ConditionPathExists=/var/log/nginx/navinresearch.access.log.1
+ConditionPathExists=/opt/navin-analytics/.venv/bin/python
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+UMask=0027
+WorkingDirectory=/opt/navin-analytics
+ExecStart=/opt/navin-analytics/.venv/bin/python /opt/navin-analytics/aggregate.py /var/log/nginx/navinresearch.access.log.1 --db /var/lib/navin-analytics/visitors.sqlite3 --mmdb /var/lib/navin-analytics/GeoLite2-City.mmdb --public-json /var/lib/navin-analytics/public.json --private-json /var/lib/navin-analytics/private.json --retention-days 90 --minimum 5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadOnlyPaths=/var/log/nginx
+ReadWritePaths=/var/lib/navin-analytics
