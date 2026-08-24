@@ -38,7 +38,7 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 ## Official sources
 
 - [Google, Gemini API long context](https://ai.google.dev/gemini-api/docs/long-context)
-- [Anthropic, “Effective context engineering for AI agents”](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- [Anthropic, Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
 
 ---
 

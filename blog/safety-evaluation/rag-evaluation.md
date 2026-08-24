@@ -37,7 +37,7 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 
 ## Official sources
 
-- [Anthropic, “Effective context engineering for AI agents”](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+- [Anthropic, Effective context engineering for AI agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
 - [OpenAI, Evaluations guide](https://platform.openai.com/docs/guides/evals)
 
 ---

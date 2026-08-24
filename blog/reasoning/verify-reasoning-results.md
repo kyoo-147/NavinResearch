@@ -15,7 +15,7 @@ Check final answers with tests, constraints, citations, and independent computat
 ## Implementation steps
 
 1. Convert the task requirements into executable or inspectable checks.
-2. Ask the model for a concise answer, assumptions, and evidence—not hidden reasoning.
+2. Ask the model for a concise answer, assumptions, and evidence - not hidden reasoning.
 3. Run deterministic checks before any model-based evaluator.
 4. Return precise failure feedback for one bounded correction pass.
 
@@ -38,7 +38,7 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 ## Official sources
 
 - [OpenAI, Evaluations guide](https://platform.openai.com/docs/guides/evals)
-- [Anthropic, “Demystifying evals for AI agents”](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
+- [Anthropic, Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
 
 ---
 

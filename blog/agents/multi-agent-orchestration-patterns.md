@@ -37,8 +37,8 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 
 ## Official sources
 
-- [Anthropic, “How we built our multi-agent research system”](https://www.anthropic.com/engineering/multi-agent-research-system)
-- [OpenAI, “New tools for building agents”](https://openai.com/index/new-tools-for-building-agents/)
+- [Anthropic, How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
+- [OpenAI, New tools for building agents](https://openai.com/index/new-tools-for-building-agents/)
 
 ---
 

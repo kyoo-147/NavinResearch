@@ -38,7 +38,7 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 ## Official sources
 
 - [OpenAI, Evaluations guide](https://platform.openai.com/docs/guides/evals)
-- [Anthropic, “Demystifying evals for AI agents”](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
+- [Anthropic, Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
 
 ---
 

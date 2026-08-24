@@ -38,7 +38,7 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 ## Official sources
 
 - [OpenAI, Evaluations guide](https://platform.openai.com/docs/guides/evals)
-- [Anthropic, “Writing effective tools for agents”](https://www.anthropic.com/engineering/writing-tools-for-agents)
+- [Anthropic, Writing effective tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents)
 
 ---
 
