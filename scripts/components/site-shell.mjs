@@ -1,4 +1,6 @@
-import { chapters, experience, locales, localePath, site } from "../../site.config.mjs";
+import { chapters, experience, locales, localePath, sections, site } from "../../site.config.mjs";
+
+const currentYear = new Date().getUTCFullYear();
 
 export const escapeHtml = (value) => String(value)
   .replaceAll("&", "&amp;")
@@ -52,6 +54,17 @@ export function siteHeader(localeKey, suffix = "") {
         </div>
         <div class="masthead__meta"><span class="signal">${escapeHtml(locale.home.status)}</span><nav class="language" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, suffix)}</nav></div>
       </header>`;
+}
+
+export function contentHeader(localeKey, currentSection) {
+  const locale = locales[localeKey];
+  const routes = sections.map((section) => `<a href="${localePath(localeKey, section)}"${section === currentSection ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`).join("\n          ");
+  return `<header class="route-page__header content-header"><a class="route-page__brand content-wordmark" href="${localePath(localeKey)}"><span>NAVIN<br>RESEARCH</span></a><nav class="route-page__nav" aria-label="${escapeHtml(locale.common.navAria)}">${routes}</nav><nav class="route-page__languages" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, currentSection)}</nav></header>`;
+}
+
+export function routeFooter(localeKey) {
+  const ui = experience[localeKey];
+  return `<footer class="route-page__footer content-footer"><p>© ${currentYear} NAVIN RESEARCH</p><nav aria-label="${escapeHtml(ui.aria.legal)}"><a href="${localePath(localeKey, "privacy-policy")}">${escapeHtml(ui.privacy)}</a><span aria-hidden="true">/</span><a href="${localePath(localeKey, "terms-of-use")}">${escapeHtml(ui.terms)}</a></nav></footer>`;
 }
 
 export function siteFooter(localeKey, { flow = false } = {}) {

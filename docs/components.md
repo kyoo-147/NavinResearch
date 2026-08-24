@@ -7,11 +7,11 @@ This catalogue defines the reusable contracts behind the generated EN/VI/ZH-CN s
 Shared page chrome is implemented as generator components rather than copied into page templates:
 
 - `scripts/components/page-head.mjs` — canonical, hreflang, social metadata, favicon, and versioned CSS/JavaScript imports.
-- `scripts/components/site-shell.mjs` — `siteHeader`, `siteFooter`, `siteDrawer`, language switching, and chapter preview explorer.
+- `scripts/components/site-shell.mjs` — homepage/chapter `siteHeader`, `siteFooter`, `siteDrawer`, content-route `contentHeader`/`routeFooter`, language switching, and chapter preview explorer.
 - `scripts/generate-site.mjs` — page composition only: homepage, content routes, chapters, and legal content slots.
 - `site.config.mjs` — localized data and route contracts only.
 
-Every public generated page imports the same header, footer, drawer, language switcher, and page-head components. Do not reproduce their HTML inside an individual template. Structural changes belong in components, page-specific layout belongs in templates/CSS, and localized copy belongs in `site.config.mjs`.
+Every public generated page imports reusable page-head and page-family shell components. Homepage and chapter routes share the interactive site header, drawer, and footer; Blog, Research, Docs, and Search retain their dedicated editorial header with visible route navigation and their route footer. Do not reproduce either family’s HTML inside an individual template. Structural changes belong in components, page-specific layout belongs in templates/CSS, and localized copy belongs in `site.config.mjs`.
 
 ## Field backdrop
 
@@ -50,7 +50,7 @@ The `aside` has a localized accessible label, section label, `h2`, and semantic 
 
 The reusable `siteFooter(localeKey)` pairs a script-enhanced current year with localized Privacy Policy and Terms of Use links. It remains readable without JavaScript because the generated year is a valid fallback.
 
-Homepage composition uses the default fixed transparent footer. Content, chapter, and legal compositions call `siteFooter(localeKey, { flow: true })`, preserving identical markup and visual language while keeping long content and chapter navigation unobstructed.
+Homepage composition uses the default fixed transparent footer. Chapter and legal compositions call `siteFooter(localeKey, { flow: true })`, preserving identical markup and visual language while keeping long content and chapter navigation unobstructed. Blog, Research, Docs, and Search use the reusable `routeFooter(localeKey)` so their full-width editorial family retains its established structure.
 
 ## Content-route shell
 
