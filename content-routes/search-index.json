@@ -375,7 +375,7 @@
     "url": "/blog/reasoning/reasoning-evaluation-dataset.md",
     "title": "Build a Small Reasoning Evaluation Dataset That Matters",
     "description": "Create a compact, versioned eval set from real failures before chasing broad benchmark scores.",
-    "text": "Begin with 30–100 representative cases tied to actual user value. Include normal, boundary, ambiguous, and adversarial inputs. Store expected properties and graders, not only one brittle reference sentence. reasoning evaluation dataset LLM evals AI regression testing"
+    "text": "Begin with 30-100 representative cases tied to actual user value. Include normal, boundary, ambiguous, and adversarial inputs. Store expected properties and graders, not only one brittle reference sentence. reasoning evaluation dataset LLM evals AI regression testing"
   },
   {
     "language": "EN",

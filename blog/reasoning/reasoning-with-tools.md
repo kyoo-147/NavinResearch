@@ -39,7 +39,7 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 
 - [OpenAI, Function calling guide](https://platform.openai.com/docs/guides/function-calling)
 - [Google, Gemini API function calling](https://ai.google.dev/gemini-api/docs/function-calling)
-- [Anthropic, “Writing effective tools for agents”](https://www.anthropic.com/engineering/writing-tools-for-agents)
+- [Anthropic, Writing effective tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents)
 
 ---
 

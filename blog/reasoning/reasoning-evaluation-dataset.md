@@ -10,7 +10,7 @@ topics: ["reasoning evaluation dataset", "LLM evals", "AI regression testing"]
 
 Create a compact, versioned eval set from real failures before chasing broad benchmark scores.
 
-**Short answer:** Begin with 30–100 representative cases tied to actual user value. Include normal, boundary, ambiguous, and adversarial inputs. Store expected properties and graders, not only one brittle reference sentence.
+**Short answer:** Begin with 30-100 representative cases tied to actual user value. Include normal, boundary, ambiguous, and adversarial inputs. Store expected properties and graders, not only one brittle reference sentence.
 
 ## Implementation steps
 
@@ -38,7 +38,7 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 ## Official sources
 
 - [OpenAI, Evaluations guide](https://platform.openai.com/docs/guides/evals)
-- [Anthropic, “Demystifying evals for AI agents”](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
+- [Anthropic, Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
 
 ---
 

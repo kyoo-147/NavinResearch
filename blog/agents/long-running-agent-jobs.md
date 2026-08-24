@@ -38,7 +38,7 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 ## Official sources
 
 - [OpenAI, Responses API reference](https://platform.openai.com/docs/api-reference/responses)
-- [Anthropic, “Building effective agents”](https://www.anthropic.com/engineering/building-effective-agents)
+- [Anthropic, Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
 
 ---
 

@@ -37,8 +37,8 @@ Ship the smallest design that passes the checks above. Record the model, prompt,
 
 ## Official sources
 
-- [Anthropic, “Building effective agents”](https://www.anthropic.com/engineering/building-effective-agents)
-- [OpenAI, “New tools for building agents”](https://openai.com/index/new-tools-for-building-agents/)
+- [Anthropic, Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
+- [OpenAI, New tools for building agents](https://openai.com/index/new-tools-for-building-agents/)
 
 ---
 
