@@ -5,6 +5,7 @@ import { blogPostPath, blogPosts, blogSources, renderBlogPost } from "../scripts
 const errors = [];
 const generatedRoutes = [];
 const routeCss = (await readFile("content-routes/route-foundation.css", "utf8")).replaceAll("\r\n", "\n");
+const deploymentNginx = await readFile("deployment-example/nginx.conf", "utf8");
 
 for (const [localeKey, locale] of Object.entries(locales)) {
   generatedRoutes.push({ localeKey, section: "", path: localePath(localeKey), file: locale.prefix ? `${locale.prefix}/index.html` : "index.html" });
@@ -108,6 +109,10 @@ for (const file of [
   } catch {
     errors.push(`${file}: required asset missing`);
   }
+}
+
+if (!deploymentNginx.includes("location ~ \\.md$") || !deploymentNginx.includes("default_type text/markdown;")) {
+  errors.push("deployment nginx: public Markdown content type mapping missing");
 }
 
 const robots = await readFile("robots.txt", "utf8");
