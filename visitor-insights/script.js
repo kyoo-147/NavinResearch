@@ -1,0 +1,81 @@
+function isValidDay(value) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const parsed = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(parsed.valueOf()) && parsed.toISOString().slice(0, 10) === value;
+}
+
+function isValidRow(row) {
+  return (
+    isValidDay(row.day) &&
+    /^[A-Z]{2}$/.test(row.countryCode) &&
+    [row.country, row.region, row.city].every(
+      (label) => typeof label === "string" && label.length > 0 && label.length <= 200,
+    ) &&
+    Number.isInteger(row.visitors) &&
+    row.visitors >= 0
+  );
+}
+
+function validateData(data) {
+  const providers = new Set(["demo", "none", "MaxMind GeoLite2 City"]);
+  if (
+    !data ||
+    typeof data !== "object" ||
+    data.schemaVersion !== 1 ||
+    typeof data.batchId !== "string" ||
+    !data.batchId ||
+    typeof data.generatedAt !== "string" ||
+    Number.isNaN(Date.parse(data.generatedAt)) ||
+    typeof data.demo !== "boolean" ||
+    data.metric !== "unique visitors per log day" ||
+    !providers.has(data.geolocationProvider) ||
+    (data.demo !== (data.geolocationProvider === "demo")) ||
+    !data.privacy ||
+    typeof data.privacy !== "object" ||
+    !Array.isArray(data.rows)
+  ) {
+    throw new Error("invalid private aggregate");
+  }
+  const rowKeys = new Set();
+  for (const row of data.rows) {
+    const key = `${row.day}:${row.countryCode}:${row.country}:${row.region}:${row.city}`;
+    if (!isValidRow(row) || rowKeys.has(key)) throw new Error("invalid private aggregate row");
+    rowKeys.add(key);
+  }
+}
+
+const dateNode = document.querySelector("#date");
+const locationsNode = document.querySelector("#locations");
+const statusNode = document.querySelector("#status");
+const demoBadge = document.querySelector("#demo-badge");
+
+fetch("/visitor-insights/data.json", { cache: "no-store" })
+  .then((response) => {
+    if (!response.ok) throw new Error("private aggregate unavailable");
+    return response.json();
+  })
+  .then((data) => {
+    validateData(data);
+    const rows = data.rows;
+    const latest = rows.map((row) => row.day).sort().pop();
+    dateNode.textContent = latest || "—";
+    demoBadge.hidden = !data.demo;
+    rows
+      .filter((row) => row.day === latest)
+      .sort((left, right) => right.visitors - left.visitors)
+      .forEach((row) => {
+        const item = document.createElement("li");
+        const location = document.createElement("span");
+        location.textContent = `${row.city}, ${row.region}, ${row.country}`;
+        const visitors = document.createElement("small");
+        visitors.textContent = `${row.visitors.toLocaleString()} visitors`;
+        item.append(location, visitors);
+        locationsNode.append(item);
+      });
+    statusNode.textContent = data.demo
+      ? "Demo data · aggregated daily; not a live feed."
+      : "Aggregated daily; not a live individual feed.";
+  })
+  .catch(() => {
+    statusNode.textContent = "Private aggregate data is unavailable.";
+  });

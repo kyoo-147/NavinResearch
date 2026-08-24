@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /visitor-insights/
 
 Sitemap: https://navinresearch.com/sitemap.xml

@@ -1,0 +1,277 @@
+@font-face {
+  font-family: "Atkinson";
+  src: url("/assets/fonts/atkinson-regular.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Atkinson";
+  src: url("/assets/fonts/atkinson-bold.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+:root {
+  color-scheme: dark;
+  --route-bg: #03120d;
+  --route-panel: #0a1d16;
+  --route-text: #f4f7ec;
+  --route-muted: rgba(244, 247, 236, 0.72);
+  --route-line: rgba(244, 247, 236, 0.2);
+  --route-accent: #d9ff57;
+  font-family: "Atkinson", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.route-page {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--route-text);
+  background:
+    radial-gradient(circle at 82% 8%, rgba(19, 107, 68, 0.3), transparent 34rem),
+    var(--route-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.route-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.route-page__shell {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.route-page__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  min-height: 7rem;
+  border-bottom: 1px solid var(--route-line);
+}
+
+.route-page__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.route-page__brand img {
+  width: 2.8rem;
+  height: 2.8rem;
+  object-fit: contain;
+}
+
+.route-page__nav,
+.route-page__languages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.route-page__nav {
+  justify-content: center;
+}
+
+.route-page__languages {
+  gap: 0.5rem;
+}
+
+.route-page__languages a {
+  display: inline-grid;
+  min-width: 44px;
+  min-height: 44px;
+  place-items: center;
+}
+
+.route-page__nav a,
+.route-page__languages a {
+  color: var(--route-muted);
+  transition: color 180ms ease;
+}
+
+.route-page__nav a[aria-current="page"],
+.route-page__languages a[aria-current="page"],
+.route-page__nav a:hover,
+.route-page__languages a:hover,
+.route-page__nav a:focus-visible,
+.route-page__languages a:focus-visible {
+  color: var(--route-accent);
+}
+
+.route-page__main {
+  padding: clamp(4.5rem, 10vw, 8rem) 0 clamp(6rem, 12vw, 10rem);
+}
+
+.route-page__eyebrow {
+  margin: 0;
+  color: var(--route-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.route-page h1 {
+  max-width: 760px;
+  margin: 1rem 0 1.5rem;
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.86;
+}
+
+.route-page__lede {
+  max-width: 680px;
+  margin: 0;
+  color: var(--route-muted);
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+}
+
+.route-page__notice {
+  display: grid;
+  max-width: 760px;
+  margin: 3rem 0 0;
+  padding: 1.4rem 1.5rem;
+  border-top: 1px solid var(--route-line);
+  border-bottom: 1px solid var(--route-line);
+  gap: 0.25rem;
+}
+
+.route-page__notice strong {
+  color: var(--route-accent);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.route-page__notice span {
+  color: var(--route-muted);
+}
+
+.route-search {
+  max-width: 720px;
+  margin-top: 3rem;
+}
+
+.route-search label {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-weight: 700;
+}
+
+.route-search input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--route-line);
+  border-radius: 0;
+  color: var(--route-text);
+  background: var(--route-panel);
+  font: inherit;
+}
+
+.route-search__results {
+  display: grid;
+  gap: 0;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--route-line);
+}
+
+.route-search__result {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--route-line);
+}
+
+.route-search__result h2 {
+  margin: 0 0 0.2rem;
+  font-size: 1.05rem;
+}
+
+.route-search__result h2 a:hover,
+.route-search__result h2 a:focus-visible {
+  color: var(--route-accent);
+}
+
+.route-search__result p,
+.route-search__empty {
+  margin: 0;
+  color: var(--route-muted);
+}
+
+.route-page__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 0 2.25rem;
+  border-top: 1px solid var(--route-line);
+  color: var(--route-muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.route-page :focus-visible {
+  outline: 2px solid var(--route-accent);
+  outline-offset: 5px;
+}
+
+@media (max-width: 800px) {
+  .route-page__header {
+    grid-template-columns: auto auto;
+  }
+
+  .route-page__nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    padding-bottom: 1.25rem;
+  }
+
+  .route-page__languages {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 520px) {
+  .route-page__shell {
+    width: min(100% - 2.4rem, 1120px);
+  }
+
+  .route-page__brand span {
+    display: none;
+  }
+
+  .route-page__nav {
+    gap: 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  .route-page__main {
+    padding-top: 3.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+  }
+}
