@@ -81,7 +81,7 @@ button {
 
 .field__layer--1 {
   background-image: url("/assets/field-1.webp");
-  animation-delay: -4s;
+  animation-delay: 0s;
 }
 
 .field__layer--2 {
@@ -150,6 +150,13 @@ button {
   width: 3.1rem;
   height: 3.1rem;
   object-fit: contain;
+}
+
+.brand__name {
+  font-size: .63rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  line-height: 1.35;
 }
 
 .signal {
@@ -227,7 +234,7 @@ h1 {
 }
 
 .statement {
-  max-width: 41rem;
+  max-width: 36rem;
   margin: clamp(2.3rem, 5vh, 4.5rem) 0 0;
   color: rgba(244, 247, 236, 0.84);
   font-size: clamp(1.02rem, 1.4vw, 1.35rem);
@@ -377,6 +384,8 @@ h1 {
     height: 2.55rem;
   }
 
+  .brand__name { font-size: .5rem; letter-spacing: .16em; }
+
   .masthead__meta {
     gap: 0.75rem;
   }
@@ -469,8 +478,9 @@ h1 {
 .wealth__rule { width: 7.5rem; height: 1px; margin: 2.5rem 0 1.8rem; background: rgba(217,255,87,.78); }
 .wealth__statement { max-width: 34rem; margin: 0; color: rgba(244,247,236,.82); font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.5; }
 .menu-backdrop { position: fixed; z-index: 48; inset: 0; background: rgba(0,8,5,.6); backdrop-filter: blur(4px); }
-.site-menu { position: fixed; z-index: 50; top: 0; bottom: 0; left: 0; display: grid; width: min(52rem, 76vw); grid-template-columns: minmax(17rem, .85fr) minmax(20rem, 1.15fr); color: var(--ink); background: rgba(2,22,15,.97); border-right: 1px solid var(--line); transform: translateX(-102%); visibility: hidden; transition: transform 420ms cubic-bezier(.2,.8,.2,1), visibility 420ms; }
+.site-menu { position: fixed; z-index: 50; top: 0; bottom: 0; left: 0; display: grid; width: min(22rem, 90vw); grid-template-columns: minmax(17rem, 22rem) minmax(20rem, 30rem); overflow: hidden; color: var(--ink); background: rgba(2,22,15,.97); border-right: 1px solid var(--line); transform: translateX(-102%); visibility: hidden; transition: width 320ms ease, transform 420ms cubic-bezier(.2,.8,.2,1), visibility 420ms; }
 .menu-open .site-menu { transform: translateX(0); visibility: visible; }
+.site-menu.site-menu--chapters { width: min(52rem, 76vw); }
 .site-menu__primary, .chapter-panel { padding: clamp(2rem, 5vw, 4rem); }
 .site-menu__primary { border-right: 1px solid var(--line); }
 .menu-close, .chapter-back { min-width: 44px; min-height: 44px; padding: 0; border: 0; color: var(--ink); background: transparent; cursor: pointer; }
@@ -529,4 +539,8 @@ main, .masthead, .hero, .wealth, .hero__content, .statement { min-width: 0; max-
 @media (max-width: 540px) {
   .shell { width: 100vw; overflow-x: clip; }
   .statement { width: 100%; overflow-wrap: break-word; }
+}
+
+@media (max-width: 720px) {
+  .site-menu.site-menu--chapters { width: min(100%, 28rem); }
 }

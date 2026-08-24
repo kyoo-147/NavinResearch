@@ -4,7 +4,7 @@ document.querySelectorAll("[data-current-year]").forEach((node) => {
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 if (!reduceMotion.matches) {
-  window.setTimeout(() => document.documentElement.classList.add("motion-ready"), 3000);
+  window.setTimeout(() => document.documentElement.classList.add("motion-ready"), 1200);
   window.addEventListener("pointermove", (event) => {
     document.documentElement.style.setProperty("--pointer-x", `${(event.clientX / innerWidth) * 100}%`);
     document.documentElement.style.setProperty("--pointer-y", `${(event.clientY / innerHeight) * 100}%`);
@@ -26,6 +26,7 @@ function focusable() {
 
 function setChapters(open) {
   document.documentElement.classList.toggle("chapters-open", open);
+  menu?.classList.toggle("site-menu--chapters", open);
   chaptersButton?.setAttribute("aria-expanded", String(open));
   chapterPanel?.setAttribute("aria-hidden", String(!open));
   if (chapterPanel) chapterPanel.inert = !open;
@@ -54,8 +55,12 @@ function setMenu(open) {
 openButton?.addEventListener("click", () => setMenu(true));
 closeButton?.addEventListener("click", () => setMenu(false));
 backdrop?.addEventListener("click", () => setMenu(false));
-chaptersButton?.addEventListener("click", () => setChapters(!document.documentElement.classList.contains("chapters-open")));
-if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+chaptersButton?.addEventListener("click", (event) => {
+  const isOpen = document.documentElement.classList.contains("chapters-open");
+  setChapters(finePointer && event.detail > 0 ? true : !isOpen);
+});
+if (finePointer) {
   chaptersButton?.addEventListener("pointerenter", () => setChapters(true));
 }
 chapterBack?.addEventListener("click", () => setChapters(false));

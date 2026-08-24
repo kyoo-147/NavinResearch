@@ -82,7 +82,7 @@ ${head(localeKey, locale.meta.title, locale.meta.description, "", "/styles.css",
       <header class="masthead">
         <div class="masthead__brand-group">
           <button class="menu-toggle" type="button" data-menu-open aria-expanded="false" aria-controls="site-menu" aria-label="${escapeHtml(ui.menu.open)}"><span></span><span></span><span></span></button>
-          <a class="brand" href="${localePath(localeKey)}" aria-label="Navin Research home"><img class="brand__logo" src="/assets/brand/logo.webp" alt="" width="80" height="80"></a>
+          <a class="brand brand--wordmark" href="${localePath(localeKey)}" aria-label="Navin Research home"><span class="brand__name">NAVIN<br>RESEARCH</span></a>
         </div>
         <div class="masthead__meta"><span class="signal">${escapeHtml(home.status)}</span><nav class="language" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey)}</nav></div>
       </header>
