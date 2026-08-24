@@ -67,10 +67,11 @@ backdrop?.addEventListener("click", () => setMenu(false));
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 chaptersButton?.addEventListener("click", (event) => {
   const isOpen = document.documentElement.classList.contains("chapters-open");
-  setChapters(finePointer && event.detail > 0 ? true : !isOpen);
+  const pointerClick = finePointer && event.detail > 0;
+  setChapters(pointerClick ? true : !isOpen, !pointerClick);
 });
 if (finePointer) {
-  chaptersButton?.addEventListener("pointerenter", () => setChapters(true));
+  chaptersButton?.addEventListener("pointerenter", () => setChapters(true, false));
 }
 chapterBack?.addEventListener("click", () => setChapters(false));
 menu?.addEventListener("keydown", (event) => {
