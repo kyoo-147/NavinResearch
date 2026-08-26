@@ -1,5 +1,5 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { chapters, experience, legalPages, locales, localePath, sections, site } from "../site.config.mjs";
+import { chapters, experience, legalPages, locales, localePath, releaseRoute, sections, site } from "../site.config.mjs";
 import { pageHead } from "./components/page-head.mjs";
 import { contentHeader, escapeHtml, routeFooter, siteDrawer, siteFooter, siteHeader } from "./components/site-shell.mjs";
 import { blogPostPath, blogPosts, renderBlogPost } from "./blog-posts.mjs";
@@ -93,6 +93,18 @@ ${head(localeKey, title, `${intro} ${ui.chapterNotice}`, chapter.slug, ["/styles
 `;
 }
 
+function releaseTemplate(localeKey) {
+  const locale = locales[localeKey];
+  const ui = experience[localeKey];
+  const slots = ["01", "02", "03"].map((number) => `<article class="release-slot"><p class="release-slot__number">${escapeHtml(ui.releases.slot)} / ${number}</p><h2>${escapeHtml(ui.releases.preparing)}</h2><p>${escapeHtml(ui.releases.details)}</p></article>`).join("\n          ");
+  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
+${head(localeKey, `${locale.routes.releases.title} — ${site.name}`, locale.routes.releases.description, releaseRoute, "/content-routes/route-foundation.css")}  </head><body class="route-page content-page release-page"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
+    ${contentHeader(localeKey, "")}
+    <main class="release-main"><div class="release-intro"><p class="route-page__eyebrow">${escapeHtml(ui.releases.eyebrow)}</p><h1>${escapeHtml(ui.releases.title)}</h1><p class="route-page__lede">${escapeHtml(locale.routes.releases.lede)}</p><div class="route-page__notice"><strong>${escapeHtml(locale.common.preparation)}</strong><span>${escapeHtml(ui.releases.notice)}</span></div></div><section class="release-shelf" aria-label="${escapeHtml(locale.routes.releases.title)}">${slots}</section></main>
+    ${routeFooter(localeKey)}
+  </div></body></html>`;
+}
+
 function legalTemplate(localeKey, slug) {
   const locale = locales[localeKey];
   const ui = experience[localeKey];
@@ -115,6 +127,7 @@ async function emit(localeKey, suffix, html) {
 for (const [localeKey] of localeEntries) {
   await emit(localeKey, "", homeTemplate(localeKey));
   for (const section of sections) await emit(localeKey, section, routeTemplate(localeKey, section));
+  await emit(localeKey, releaseRoute, releaseTemplate(localeKey));
   for (const chapter of chapters) await emit(localeKey, chapter.slug, chapterTemplate(localeKey, chapter));
   for (const legalPage of legalPages) await emit(localeKey, legalPage, legalTemplate(localeKey, legalPage));
 }
