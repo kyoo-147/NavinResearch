@@ -637,12 +637,12 @@
 
 /* Release shelf: a quiet archive frame for future documented model releases. */
 .release-page .content-field { background-image: url("/assets/field-3.webp"); }
-.release-main { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(20rem, .95fr); gap: clamp(4rem, 10vw, 11rem); min-height: calc(100svh - 10rem); align-items: center; padding: clamp(4rem, 9vh, 7rem) 1rem 5rem; }
-.release-intro { max-width: 46rem; }
+.release-main { min-height: calc(100svh - 10rem); padding: clamp(4rem, 9vh, 7rem) 1rem 5rem; }
+.release-intro { max-width: 68rem; margin: 0 auto; text-align: center; }
 .release-page .release-intro h1 { max-width: none; margin: 1rem 0 2rem; font-size: clamp(4rem, 8vw, 7.5rem); line-height: .83; }
-.release-page .release-intro .route-page__lede { max-width: 38rem; }
-.release-page .route-page__notice { margin-top: 3rem; }
-.release-registry { min-width: 0; }
+.release-page .release-intro .route-page__lede { max-width: 48rem; margin-right: auto; margin-left: auto; }
+.release-page .route-page__notice { max-width: 52rem; margin: 3rem auto 0; text-align: left; }
+.release-registry { min-width: 0; margin-top: clamp(4rem, 8vw, 7rem); }
 .release-registry__toolbar { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
 .release-registry__toolbar h2 { margin: 0; color: var(--route-accent); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; }
 .release-registry__toolbar label { margin-left: auto; color: var(--route-muted); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
@@ -656,5 +656,5 @@
 .release-table tbody td:nth-child(3), .release-table tbody td:nth-child(5), .release-table tbody td:nth-child(6), .release-table tbody td:nth-child(7) { white-space: nowrap; }
 .release-table tbody tr:hover { background: rgba(217, 255, 87, .06); }
 .release-table tbody tr[hidden] { display: none; }
-@media (max-width: 900px) { .release-main { grid-template-columns: 1fr; min-height: auto; gap: 3.5rem; } }
+@media (max-width: 900px) { .release-main { min-height: auto; } }
 @media (max-width: 760px) { .release-main { padding-right: 0; padding-left: 0; } .release-page .release-intro h1 { font-size: clamp(3.5rem, 18vw, 5rem); } .release-registry__toolbar { align-items: start; flex-wrap: wrap; } .release-registry__toolbar label { margin-left: 0; } .release-registry__toolbar input { width: 100%; order: 3; } }
