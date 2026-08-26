@@ -93,10 +93,24 @@ ${head(localeKey, title, `${intro} ${ui.chapterNotice}`, chapter.slug, ["/styles
 `;
 }
 
+const releaseModels = [
+  ["01", "Dossier-1B", "Document", "Fast document OCR, handwriting, layout analysis, tables, forms, receipts and key-value extraction.", "1B"],
+  ["02", "Dossier-2B", "Document", "Compact document understanding with structured extraction, classification, document QA and field-level validation.", "2B"],
+  ["03", "Dossier-4B", "Agentic Document", "Flagship Agentic Document Intelligence model. OCR, document reasoning, evidence grounding, verification, risk detection, tool use and bounded repair.", "4B"],
+  ["04", "Dossier-9B", "Document Reasoning", "Advanced multi-page and multi-document reasoning for complex contracts, financial documents, compliance workflows and high-quality verification.", "9B"],
+  ["05", "Sandora-3B", "Agent", "Lightweight agent model for tool calling, routing, delegation, local automation and basic computer-use tasks.", "3B"],
+  ["06", "Sandora-9B", "Adaptive Agent", "Flagship Adaptive Multimodal Agent. Planning, computer use, multi-agent orchestration, tool use, memory, skill learning, self-reflection and user adaptation.", "9B"],
+  ["07", "Sandora-27B", "Agent Reasoning", "High-capability agent model for long-horizon planning, complex orchestration, reasoning, trajectory generation, evaluation and teacher-model workloads.", "27B"],
+  ["08", "Moyi-T2.5-160M", "Speech", "Micro / embedded streaming speech model optimized for highly constrained edge devices and offline execution.", "160M"],
+  ["09", "Moyi-T2.5-350M", "Speech", "Ultra-edge multilingual speech intelligence for low-memory mobile and embedded hardware.", "350M"],
+  ["10", "Moyi-T2.5-600M", "Edge Speech", "Flagship Edge Speech Intelligence model. Real-time multilingual speech translation, streaming inference, context awareness and on-device execution.", "600M"],
+  ["11", "Moyi-T2.5-1.7B", "Speech", "Quality-oriented speech model for workstation, higher-end edge devices and teacher / distillation workloads.", "1.7B"],
+];
+
 function releaseTemplate(localeKey) {
   const locale = locales[localeKey];
   const ui = experience[localeKey];
-  const rows = ["01", "02", "03"].map((number) => `<tr data-release-row><td>${number}</td><th scope="row">${escapeHtml(ui.releases.preparing)} ${number}</th><td>—</td><td>${escapeHtml(ui.releases.details)}</td><td>—</td><td>—</td><td>—</td></tr>`).join("\n                ");
+  const rows = releaseModels.map(([number, name, type, details, size]) => `<tr data-release-row><td>${number}</td><th scope="row"><span class="release-model-name">${escapeHtml(name)}</span></th><td>${escapeHtml(type)}</td><td>${escapeHtml(details)}</td><td>—</td><td>—</td><td>${size}</td></tr>`).join("\n                ");
   const headers = ui.releases.headers.map((label) => `<th scope="col">${escapeHtml(label)}</th>`).join("");
   return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
 ${head(localeKey, `${locale.routes.releases.title} — ${site.name}`, locale.routes.releases.description, releaseRoute, "/content-routes/route-foundation.css", "/content-routes/release-search.js")}  </head><body class="route-page content-page release-page"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
