@@ -30,7 +30,7 @@
     if (index < value.length) {
       timer = window.setTimeout(() => type(value, index + 1), 78);
     } else {
-      timer = window.setTimeout(erase, 4000);
+      timer = window.setTimeout(erase, 2000);
     }
   };
 
@@ -47,6 +47,6 @@
   };
 
   title.style.fontFamily = `"${fonts[fontIndex]}", "Courier New", monospace`;
-  timer = window.setTimeout(erase, 4000);
+  timer = window.setTimeout(erase, 2000);
   window.addEventListener("pagehide", () => window.clearTimeout(timer), { once: true });
 })();
