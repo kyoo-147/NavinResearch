@@ -17,6 +17,7 @@ export const chapters = [
 ];
 
 export const legalPages = ["privacy-policy", "terms-of-use"];
+export const releaseRoute = "releases";
 
 export const locales = {
   en: {
@@ -55,6 +56,7 @@ export const locales = {
       research: { title: "Research", description: "Research directions and methods from Navin Research.", lede: "A future index for real work across language, speech, vision, multimodal systems, and end-to-end AI products." },
       docs: { title: "Docs", description: "Practical documentation for published Navin Research work and tools.", lede: "A future documentation library for work that has been released and can be accurately described." },
       search: { title: "Search", description: "Search the public Navin Research route directory.", lede: "Search the real public surfaces currently available on this website." },
+      releases: { title: "Releases", description: "Released models and systems from Navin Research.", lede: "A considered shelf for models and systems that are ready to be shared with the world." },
     },
   },
   vi: {
@@ -93,6 +95,7 @@ export const locales = {
       research: { title: "Nghiên cứu", description: "Định hướng và phương pháp nghiên cứu tại Navin Research.", lede: "Chỉ mục tương lai cho những công trình thực tế về ngôn ngữ, giọng nói, thị giác, hệ thống đa phương thức và sản phẩm AI đầu cuối." },
       docs: { title: "Tài liệu", description: "Tài liệu thực hành cho các công trình và công cụ đã được Navin Research công bố.", lede: "Thư viện tương lai dành cho những công trình đã được phát hành và có thể mô tả chính xác." },
       search: { title: "Tìm kiếm", description: "Tìm kiếm trong danh mục trang công khai của Navin Research.", lede: "Tìm trong các bề mặt công khai thực tế hiện có trên website." },
+      releases: { title: "Bản phát hành", description: "Các mô hình và hệ thống đã phát hành của Navin Research.", lede: "Một không gian được sắp đặt cẩn trọng cho những mô hình và hệ thống sẵn sàng được chia sẻ." },
     },
   },
   "zh-cn": {
@@ -131,6 +134,7 @@ export const locales = {
       research: { title: "研究", description: "Navin Research 的研究方向与方法。", lede: "未来用于索引语言、语音、视觉、多模态系统与端到端 AI 产品方面的真实工作。" },
       docs: { title: "文档", description: "Navin Research 已发布工作与工具的实用文档。", lede: "未来用于收录已经发布且能够准确描述的工作。" },
       search: { title: "搜索", description: "搜索 Navin Research 的公开页面目录。", lede: "搜索本网站当前真实存在的公开页面。" },
+      releases: { title: "发布", description: "Navin Research 已发布的模型与系统。", lede: "用于展示准备好与世界分享的模型与系统的精心策划空间。" },
     },
   },
 };
@@ -138,12 +142,13 @@ export const locales = {
 export const experience = {
   en: {
     chapterEyebrow: "CHAPTER 00 / WEALTH OF NATURE — COMING SOON",
-    menu: { open: "Open menu", close: "Close menu", chapters: "Chapters", home: "Home", work: "Work", notes: "Notes", philosophy: "Philosophy", contact: "Contact", back: "Back", viewChapter: "View chapter", explore: "Explore" },
+    menu: { open: "Open menu", close: "Close menu", chapters: "Chapters", home: "Home", work: "Work", notes: "Notes", releases: "Releases", philosophy: "Philosophy", contact: "Contact", back: "Back", viewChapter: "View chapter", explore: "Explore" },
     aria: { home: "Navin Research home", legal: "Legal" },
     chapterLabels: { researchProgram: "Research program", coreDimension: "Core dimension", status: "Status", navigation: "Chapter navigation" },
     wealth: { label: "Chapter 00", title: "WEALTH OF NATURE", statement: "Intelligence does not exist apart from nature. It emerges through perception, language, memory, and action." },
     privacy: "Privacy policy", terms: "Terms of use",
     chapterNotice: "This chapter is being prepared. No studies, findings, metrics, or publication dates are presented here yet.",
+    releases: { eyebrow: "RELEASES / MODEL PROGRAM", title: "A shelf for what is ready.", notice: "No models or systems have been released here yet. This page is the public structure for future, documented releases.", slot: "Release slot", preparing: "Preparing", details: "Model details will appear when a release is ready." },
     chapterIntro: (domain) => `A future home for carefully documented work concerning ${domain.toLowerCase()}.`,
     legal: {
       "privacy-policy": ["Privacy policy", "This static site does not set analytics cookies or run client-side behavioral tracking. Standard server access logs may be processed for security and operations, then reduced to coarse daily aggregates as described by the site.", "Questions about this website or information voluntarily sent to the contact address may be directed to michaelbui.contact@gmail.com."],
@@ -152,12 +157,13 @@ export const experience = {
   },
   vi: {
     chapterEyebrow: "CHAPTER 00 / WEALTH OF NATURE — COMING SOON",
-    menu: { open: "Mở menu", close: "Đóng menu", chapters: "Các chương", home: "Trang chủ", work: "Công trình", notes: "Ghi chú", philosophy: "Triết lý", contact: "Liên hệ", back: "Quay lại", viewChapter: "Xem chương", explore: "Khám phá" },
+    menu: { open: "Mở menu", close: "Đóng menu", chapters: "Các chương", home: "Trang chủ", work: "Công trình", notes: "Ghi chú", releases: "Bản phát hành", philosophy: "Triết lý", contact: "Liên hệ", back: "Quay lại", viewChapter: "Xem chương", explore: "Khám phá" },
     aria: { home: "Trang chủ Navin Research", legal: "Pháp lý" },
     chapterLabels: { researchProgram: "Chương trình nghiên cứu", coreDimension: "Chiều kích cốt lõi", status: "Trạng thái", navigation: "Điều hướng chương" },
     wealth: { label: "Chương 00", title: "SỰ PHONG PHÚ CỦA TỰ NHIÊN", statement: "Trí tuệ không tồn tại tách rời tự nhiên. Nó hình thành qua tri giác, ngôn ngữ, ký ức và hành động." },
     privacy: "Chính sách riêng tư", terms: "Điều khoản sử dụng",
     chapterNotice: "Chương này đang được chuẩn bị. Hiện chưa có nghiên cứu, phát hiện, số liệu hay ngày công bố nào được trình bày.",
+    releases: { eyebrow: "BẢN PHÁT HÀNH / CHƯƠNG TRÌNH MÔ HÌNH", title: "Nơi những gì sẵn sàng được đặt lên kệ.", notice: "Hiện chưa có mô hình hoặc hệ thống nào được phát hành tại đây. Trang này là cấu trúc công khai cho các bản phát hành được ghi chép trong tương lai.", slot: "Ô phát hành", preparing: "Đang chuẩn bị", details: "Thông tin mô hình sẽ xuất hiện khi bản phát hành sẵn sàng." },
     chapterIntro: (domain) => `Không gian tương lai cho các công trình được ghi chép cẩn trọng về ${domain.toLowerCase()}.`,
     legal: {
       "privacy-policy": ["Chính sách riêng tư", "Website tĩnh này không đặt cookie phân tích và không theo dõi hành vi phía trình duyệt. Nhật ký truy cập máy chủ tiêu chuẩn có thể được xử lý cho bảo mật và vận hành, sau đó chỉ được rút gọn thành số liệu tổng hợp theo ngày.", "Các câu hỏi về website hoặc thông tin tự nguyện gửi đến địa chỉ liên hệ có thể được gửi tới michaelbui.contact@gmail.com."],
@@ -166,12 +172,13 @@ export const experience = {
   },
   "zh-cn": {
     chapterEyebrow: "CHAPTER 00 / WEALTH OF NATURE — COMING SOON",
-    menu: { open: "打开菜单", close: "关闭菜单", chapters: "章节", home: "首页", work: "工作", notes: "笔记", philosophy: "理念", contact: "联系", back: "返回", viewChapter: "查看章节", explore: "探索" },
+    menu: { open: "打开菜单", close: "关闭菜单", chapters: "章节", home: "首页", work: "工作", notes: "笔记", releases: "发布", philosophy: "理念", contact: "联系", back: "返回", viewChapter: "查看章节", explore: "探索" },
     aria: { home: "Navin Research 首页", legal: "法律信息" },
     chapterLabels: { researchProgram: "研究计划", coreDimension: "核心维度", status: "状态", navigation: "章节导航" },
     wealth: { label: "第 00 章", title: "自然之丰", statement: "智能并非独立于自然而存在。它通过感知、语言、记忆与行动涌现。" },
     privacy: "隐私政策", terms: "使用条款",
     chapterNotice: "本章节正在准备中。目前尚未在此展示研究、发现、指标或发布日期。",
+    releases: { eyebrow: "发布 / 模型计划", title: "为已准备就绪的成果留出空间。", notice: "目前尚未在此发布模型或系统。本页面为未来经过记录的公开发布提供结构。", slot: "发布位置", preparing: "准备中", details: "发布就绪后，这里将显示模型详情。" },
     chapterIntro: (domain) => `未来用于认真记录与${domain}相关工作的空间。`,
     legal: {
       "privacy-policy": ["隐私政策", "本静态网站不设置分析 Cookie，也不运行客户端行为跟踪。标准服务器访问日志可能为安全与运维而处理，随后仅缩减为按日汇总的粗粒度数据。", "有关本网站或自愿发送至联系地址的信息，请联系 michaelbui.contact@gmail.com。"],

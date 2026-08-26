@@ -33,6 +33,7 @@ export function siteDrawer(localeKey) {
             <button type="button" data-chapters-toggle aria-expanded="false" aria-controls="chapter-panel">${escapeHtml(ui.menu.chapters)}<span aria-hidden="true">→</span></button>
             <a href="${localePath(localeKey, "research")}">${escapeHtml(ui.menu.work)}</a>
             <a href="${localePath(localeKey, "blog")}">${escapeHtml(ui.menu.notes)}</a>
+            <a href="${localePath(localeKey, "releases")}">${escapeHtml(ui.menu.releases)}</a>
             <a href="${localePath(localeKey)}#wealth-of-nature">${escapeHtml(ui.menu.philosophy)}</a>
             <a href="mailto:${site.email}">${escapeHtml(ui.menu.contact)}</a>
           </nav>

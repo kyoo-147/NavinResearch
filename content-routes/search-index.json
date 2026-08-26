@@ -36,6 +36,13 @@
   },
   {
     "language": "EN",
+    "url": "/releases/",
+    "title": "Releases",
+    "description": "Released models and systems from Navin Research.",
+    "text": "A considered shelf for models and systems that are ready to be shared with the world."
+  },
+  {
+    "language": "EN",
     "url": "/physis/",
     "title": "NAVIN / PHYSIS — 01",
     "description": "A future home for carefully documented work concerning embodied & natural intelligence.",
@@ -120,6 +127,13 @@
   },
   {
     "language": "VI",
+    "url": "/vi/releases/",
+    "title": "Bản phát hành",
+    "description": "Các mô hình và hệ thống đã phát hành của Navin Research.",
+    "text": "Một không gian được sắp đặt cẩn trọng cho những mô hình và hệ thống sẵn sàng được chia sẻ."
+  },
+  {
+    "language": "VI",
     "url": "/vi/physis/",
     "title": "NAVIN / PHYSIS — 01",
     "description": "Không gian tương lai cho các công trình được ghi chép cẩn trọng về trí tuệ hiện thân & tự nhiên.",
@@ -201,6 +215,13 @@
     "title": "搜索",
     "description": "搜索 Navin Research 的公开页面目录。",
     "text": "搜索本网站当前真实存在的公开页面。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/releases/",
+    "title": "发布",
+    "description": "Navin Research 已发布的模型与系统。",
+    "text": "用于展示准备好与世界分享的模型与系统的精心策划空间。"
   },
   {
     "language": "CN",

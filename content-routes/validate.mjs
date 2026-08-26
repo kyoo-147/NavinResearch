@@ -1,5 +1,5 @@
 import { access, readFile, readdir } from "node:fs/promises";
-import { chapters, experience, legalPages, locales, localePath, sections, site } from "../site.config.mjs";
+import { chapters, experience, legalPages, locales, localePath, releaseRoute, sections, site } from "../site.config.mjs";
 import { blogPostPath, blogPosts, blogSources, renderBlogPost } from "../scripts/blog-posts.mjs";
 
 const errors = [];
@@ -9,6 +9,7 @@ const deploymentNginx = await readFile("deployment-example/nginx.conf", "utf8");
 
 for (const [localeKey, locale] of Object.entries(locales)) {
   generatedRoutes.push({ localeKey, section: "", path: localePath(localeKey), file: locale.prefix ? `${locale.prefix}/index.html` : "index.html" });
+  generatedRoutes.push({ localeKey, section: releaseRoute, type: "release", path: localePath(localeKey, releaseRoute), file: `${[locale.prefix, releaseRoute].filter(Boolean).join("/")}/index.html` });
   for (const section of sections) {
     generatedRoutes.push({ localeKey, section, path: localePath(localeKey, section), file: `${[locale.prefix, section].filter(Boolean).join("/")}/index.html` });
   }
@@ -63,7 +64,11 @@ for (const route of generatedRoutes) {
     if (!html.includes(marker)) errors.push(`${route.file}: ${marker} missing`);
   }
   if (!html.includes('/assets/brand/logo_icon_tab.png')) errors.push(`${route.file}: current favicon missing`);
-  if (sections.includes(route.section)) {
+  if (route.type === "release") {
+    for (const marker of ['class="route-page__header content-header"', 'class="route-page__footer content-footer"', 'class="content-field"', 'class="release-shelf"', "release-page"]) {
+      if (!html.includes(marker)) errors.push(`${route.file}: release marker ${marker} missing`);
+    }
+  } else if (sections.includes(route.section)) {
     for (const routeComponent of ['class="route-page__header content-header"', 'class="route-page__footer content-footer"', 'class="content-field"']) {
       if (!html.includes(routeComponent)) errors.push(`${route.file}: content-route component ${routeComponent} missing`);
     }
