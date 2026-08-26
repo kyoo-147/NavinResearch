@@ -107,6 +107,7 @@ for (const file of [
   "content-routes/release-search.js",
   "scripts/components/page-head.mjs",
   "scripts/components/site-shell.mjs",
+  "assets/fonts/PixelatedEleganceRegular.ttf",
   "assets/brand/logo.webp",
   "assets/brand/logo_icon_tab.png",
 ]) {
