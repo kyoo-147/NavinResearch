@@ -668,8 +668,8 @@
 .release-table tbody td:first-child { width: 3.2rem; color: var(--route-accent); font-variant-numeric: tabular-nums; }
 .release-table tbody th { min-width: 10rem; font-weight: 400; white-space: nowrap; }
 .release-table tbody th { min-width: 10rem; font-weight: 400; white-space: nowrap; }
-.release-model-name { color: #6bbcff; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .16em; cursor: pointer; }
-.release-model-name:hover, .release-model-name:focus-visible { color: var(--route-accent); }
+.release-table .release-model-name { color: #6bbcff; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .16em; cursor: pointer; }
+.release-table .release-model-name:hover, .release-table .release-model-name:focus-visible { color: var(--route-accent); }
 .release-table tbody td:nth-child(3), .release-table tbody td:nth-child(5), .release-table tbody td:nth-child(6), .release-table tbody td:nth-child(7) { white-space: nowrap; }
 .release-table tbody tr:hover { background: rgba(217, 255, 87, .06); }
 .release-table tbody tr[hidden] { display: none; }
