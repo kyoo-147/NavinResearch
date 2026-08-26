@@ -110,7 +110,7 @@ const releaseModels = [
 function releaseTemplate(localeKey) {
   const locale = locales[localeKey];
   const ui = experience[localeKey];
-  const rows = releaseModels.map(([number, name, type, details, size]) => `<tr data-release-row><td>${number}</td><th scope="row"><span class="release-model-name">${escapeHtml(name)}</span></th><td>${escapeHtml(type)}</td><td>${escapeHtml(details)}</td><td>—</td><td>—</td><td>${size}</td></tr>`).join("\n                ");
+  const rows = releaseModels.map(([number, name, type, details, size]) => `<tr data-release-row><td>${number}</td><th scope="row"><a class="release-model-name" href="#" data-release-placeholder>${escapeHtml(name)}</a></th><td>${escapeHtml(type)}</td><td>${escapeHtml(details)}</td><td>—</td><td>—</td><td>${size}</td></tr>`).join("\n                ");
   const headers = ui.releases.headers.map((label) => `<th scope="col">${escapeHtml(label)}</th>`).join("");
   return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
 ${head(localeKey, `${locale.routes.releases.title} — ${site.name}`, locale.routes.releases.description, releaseRoute, "/content-routes/route-foundation.css", "/content-routes/release-search.js")}  </head><body class="route-page content-page release-page"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
