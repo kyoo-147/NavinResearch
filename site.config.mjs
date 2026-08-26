@@ -148,7 +148,7 @@ export const experience = {
     wealth: { label: "Chapter 00", title: "WEALTH OF NATURE", statement: "Intelligence does not exist apart from nature. It emerges through perception, language, memory, and action." },
     privacy: "Privacy policy", terms: "Terms of use",
     chapterNotice: "This chapter is being prepared. No studies, findings, metrics, or publication dates are presented here yet.",
-    releases: { eyebrow: "RELEASES / MODEL PROGRAM", title: "A shelf for what is ready.", notice: "No models or systems have been released here yet. This page is the public structure for future, documented releases.", search: "Search releases", headers: ["#", "Model / system", "Type", "Details", "Release date", "Version", "Size"], slot: "Release slot", preparing: "Preparing", details: "Model details will appear when a release is ready." },
+    releases: { eyebrow: "RELEASES / MODEL PROGRAM", title: "A shelf for what is ready.", subtitle: "A home for the models we build and release.", notice: "No models or systems have been released here yet. This page is the public structure for future, documented releases.", search: "Search releases", headers: ["#", "Model / system", "Type", "Details", "Release date", "Version", "Size"], slot: "Release slot", preparing: "Preparing", details: "Model details will appear when a release is ready." },
     chapterIntro: (domain) => `A future home for carefully documented work concerning ${domain.toLowerCase()}.`,
     legal: {
       "privacy-policy": ["Privacy policy", "This static site does not set analytics cookies or run client-side behavioral tracking. Standard server access logs may be processed for security and operations, then reduced to coarse daily aggregates as described by the site.", "Questions about this website or information voluntarily sent to the contact address may be directed to michaelbui.contact@gmail.com."],
@@ -163,7 +163,7 @@ export const experience = {
     wealth: { label: "Chương 00", title: "SỰ PHONG PHÚ CỦA TỰ NHIÊN", statement: "Trí tuệ không tồn tại tách rời tự nhiên. Nó hình thành qua tri giác, ngôn ngữ, ký ức và hành động." },
     privacy: "Chính sách riêng tư", terms: "Điều khoản sử dụng",
     chapterNotice: "Chương này đang được chuẩn bị. Hiện chưa có nghiên cứu, phát hiện, số liệu hay ngày công bố nào được trình bày.",
-    releases: { eyebrow: "BẢN PHÁT HÀNH / CHƯƠNG TRÌNH MÔ HÌNH", title: "Nơi những gì sẵn sàng được đặt lên kệ.", notice: "Hiện chưa có mô hình hoặc hệ thống nào được phát hành tại đây. Trang này là cấu trúc công khai cho các bản phát hành được ghi chép trong tương lai.", search: "Tìm kiếm bản phát hành", headers: ["#", "Mô hình / hệ thống", "Loại", "Chi tiết", "Ngày phát hành", "Phiên bản", "Kích thước"], slot: "Ô phát hành", preparing: "Đang chuẩn bị", details: "Thông tin mô hình sẽ xuất hiện khi bản phát hành sẵn sàng." },
+    releases: { eyebrow: "BẢN PHÁT HÀNH / CHƯƠNG TRÌNH MÔ HÌNH", title: "Nơi những gì sẵn sàng được đặt lên kệ.", subtitle: "Nơi lưu trữ những mô hình chúng tôi xây dựng và phát hành.", notice: "Hiện chưa có mô hình hoặc hệ thống nào được phát hành tại đây. Trang này là cấu trúc công khai cho các bản phát hành được ghi chép trong tương lai.", search: "Tìm kiếm bản phát hành", headers: ["#", "Mô hình / hệ thống", "Loại", "Chi tiết", "Ngày phát hành", "Phiên bản", "Kích thước"], slot: "Ô phát hành", preparing: "Đang chuẩn bị", details: "Thông tin mô hình sẽ xuất hiện khi bản phát hành sẵn sàng." },
     chapterIntro: (domain) => `Không gian tương lai cho các công trình được ghi chép cẩn trọng về ${domain.toLowerCase()}.`,
     legal: {
       "privacy-policy": ["Chính sách riêng tư", "Website tĩnh này không đặt cookie phân tích và không theo dõi hành vi phía trình duyệt. Nhật ký truy cập máy chủ tiêu chuẩn có thể được xử lý cho bảo mật và vận hành, sau đó chỉ được rút gọn thành số liệu tổng hợp theo ngày.", "Các câu hỏi về website hoặc thông tin tự nguyện gửi đến địa chỉ liên hệ có thể được gửi tới michaelbui.contact@gmail.com."],
@@ -178,7 +178,7 @@ export const experience = {
     wealth: { label: "第 00 章", title: "自然之丰", statement: "智能并非独立于自然而存在。它通过感知、语言、记忆与行动涌现。" },
     privacy: "隐私政策", terms: "使用条款",
     chapterNotice: "本章节正在准备中。目前尚未在此展示研究、发现、指标或发布日期。",
-    releases: { eyebrow: "发布 / 模型计划", title: "为已准备就绪的成果留出空间。", notice: "目前尚未在此发布模型或系统。本页面为未来经过记录的公开发布提供结构。", search: "搜索发布", headers: ["#", "模型 / 系统", "类型", "详情", "发布日期", "版本", "大小"], slot: "发布位置", preparing: "准备中", details: "发布就绪后，这里将显示模型详情。" },
+    releases: { eyebrow: "发布 / 模型计划", title: "为已准备就绪的成果留出空间。", subtitle: "这里保存我们构建并发布的模型。", notice: "目前尚未在此发布模型或系统。本页面为未来经过记录的公开发布提供结构。", search: "搜索发布", headers: ["#", "模型 / 系统", "类型", "详情", "发布日期", "版本", "大小"], slot: "发布位置", preparing: "准备中", details: "发布就绪后，这里将显示模型详情。" },
     chapterIntro: (domain) => `未来用于认真记录与${domain}相关工作的空间。`,
     legal: {
       "privacy-policy": ["隐私政策", "本静态网站不设置分析 Cookie，也不运行客户端行为跟踪。标准服务器访问日志可能为安全与运维而处理，随后仅缩减为按日汇总的粗粒度数据。", "有关本网站或自愿发送至联系地址的信息，请联系 michaelbui.contact@gmail.com。"],

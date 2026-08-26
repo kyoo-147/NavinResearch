@@ -108,6 +108,11 @@ for (const file of [
   "scripts/components/page-head.mjs",
   "scripts/components/site-shell.mjs",
   "assets/fonts/PixelatedEleganceRegular.ttf",
+  "assets/fonts/DominoBrick.ttf",
+  "assets/fonts/FortAvenue.ttf",
+  "assets/fonts/Matrixtype.ttf",
+  "assets/fonts/MatrixtypeDisplay.ttf",
+  "assets/fonts/SuperPixel.ttf",
   "assets/brand/logo.webp",
   "assets/brand/logo_icon_tab.png",
 ]) {

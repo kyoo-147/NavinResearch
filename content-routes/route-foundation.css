@@ -5,6 +5,12 @@
   font-style: normal;
   font-weight: 400;
 }
+
+@font-face { font-family: "Domino Brick"; src: url("/assets/fonts/DominoBrick.ttf") format("truetype"); font-display: swap; font-weight: 400; }
+@font-face { font-family: "Fort Avenue"; src: url("/assets/fonts/FortAvenue.ttf") format("truetype"); font-display: swap; font-weight: 400; }
+@font-face { font-family: "Matrixtype"; src: url("/assets/fonts/Matrixtype.ttf") format("truetype"); font-display: swap; font-weight: 400; }
+@font-face { font-family: "Matrixtype Display"; src: url("/assets/fonts/MatrixtypeDisplay.ttf") format("truetype"); font-display: swap; font-weight: 400; }
+@font-face { font-family: "Super Pixel"; src: url("/assets/fonts/SuperPixel.ttf") format("truetype"); font-display: swap; font-weight: 400; }
 @font-face {
   font-family: "Atkinson";
   src: url("/assets/fonts/atkinson-regular.woff") format("woff");
@@ -646,7 +652,8 @@
 .release-page .content-field { background-image: url("/assets/field-3.webp"); }
 .release-main { min-height: calc(100svh - 10rem); padding: clamp(2rem, 5vh, 4rem) 1rem 5rem; }
 .release-intro { max-width: 76rem; margin: 0 auto; text-align: center; }
-.release-page .release-intro h1 { max-width: none; margin: 0; color: var(--route-text); font-family: "Pixelated Elegance", "Courier New", monospace; font-size: clamp(3.5rem, 9vw, 8.5rem); font-weight: 400; letter-spacing: .02em; line-height: .9; text-transform: uppercase; }
+.release-page .release-intro h1 { max-width: none; margin: 0; color: var(--route-text); font-family: "Pixelated Elegance", "Courier New", monospace; font-size: clamp(2.35rem, 8.5vw, 8.5rem); font-weight: 400; letter-spacing: .02em; line-height: .9; text-transform: uppercase; white-space: nowrap; }
+.release-subtitle { margin: 1rem 0 0; color: var(--route-muted); font-size: clamp(.78rem, 1.3vw, 1rem); letter-spacing: .04em; }
 .release-registry { min-width: 0; margin-top: clamp(2rem, 4vw, 3.5rem); }
 .release-registry__toolbar { display: flex; align-items: center; justify-content: flex-end; gap: .55rem; margin-bottom: .4rem; }
 .release-registry__toolbar h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -664,4 +671,4 @@
 .release-table tbody tr:hover { background: rgba(217, 255, 87, .06); }
 .release-table tbody tr[hidden] { display: none; }
 @media (max-width: 900px) { .release-main { min-height: auto; } }
-@media (max-width: 760px) { .release-main { padding-right: 0; padding-left: 0; } .release-page .release-intro h1 { font-size: clamp(3rem, 16vw, 5rem); } .release-registry__toolbar { justify-content: flex-start; } .release-table { font-size: .92rem; } .release-table th, .release-table td { padding: 1rem .85rem; } }
+@media (max-width: 760px) { .release-main { padding-right: 0; padding-left: 0; } .release-page .release-intro h1 { font-size: clamp(2.35rem, 12.5vw, 5rem); } .release-registry__toolbar { justify-content: flex-start; } .release-table { font-size: .92rem; } .release-table th, .release-table td { padding: 1rem .85rem; } }
