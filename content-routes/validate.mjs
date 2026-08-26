@@ -65,7 +65,7 @@ for (const route of generatedRoutes) {
   }
   if (!html.includes('/assets/brand/logo_icon_tab.png')) errors.push(`${route.file}: current favicon missing`);
   if (route.type === "release") {
-    for (const marker of ['class="route-page__header content-header"', 'class="route-page__footer content-footer"', 'class="content-field"', 'class="release-shelf"', "release-page"]) {
+    for (const marker of ['class="route-page__header content-header"', 'class="route-page__footer content-footer"', 'class="content-field"', 'class="release-registry"', 'data-release-search', "release-page"]) {
       if (!html.includes(marker)) errors.push(`${route.file}: release marker ${marker} missing`);
     }
   } else if (sections.includes(route.section)) {
@@ -104,6 +104,7 @@ for (const file of [
   "google00bfffcce9844575.html",
   "content-routes/route-foundation.css",
   "content-routes/route-search.js",
+  "content-routes/release-search.js",
   "scripts/components/page-head.mjs",
   "scripts/components/site-shell.mjs",
   "assets/brand/logo.webp",
