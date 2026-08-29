@@ -57,9 +57,6 @@
     <section class="waitlist section-grid" id="waitlist"><div class="section-label"><span>04</span><span>Early access</span></div><div class="waitlist-body"><p class="eyebrow">A small door, for now</p><h2>Want to see<br><em>what’s taking shape?</em></h2><p>Leave a note and we’ll share the prototype when the timing is right. This is a demo-only interaction—nothing is sent anywhere.</p><form id="waitlist-form"><label for="email">Your work email</label><div class="input-row"><input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required><button class="button button-primary" type="submit">Join the preview <span aria-hidden="true">→</span></button></div><p class="form-status" id="form-status" role="status" aria-live="polite"></p></form></div></section>
   </main>
   <footer><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✳</span><span>sandora</span></a><p>Prototype preview · A more considered way to work with AI.</p><a href="#top">Back to top ↑</a></footer>
-  <script>
-    const form = document.querySelector('#waitlist-form');
-    form.addEventListener('submit', (event) => { event.preventDefault(); document.querySelector('#form-status').textContent = 'Thanks — your note is saved locally for this demo. Nothing was submitted.'; form.querySelector('button').textContent = 'Preview requested ✓'; });
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
