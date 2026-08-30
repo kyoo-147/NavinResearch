@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="dossier-title dossier-desc">
+  <title id="dossier-title">Dossier review path</title>
+  <desc id="dossier-desc">A technical editorial diagram showing a document page moving through observation, human review, validation, and an approved structured record. The path is conceptual and carries no performance claim.</desc>
+  <rect width="1200" height="620" fill="#e9e2d0"/>
+  <g fill="none" stroke="#171814" stroke-width="2">
+    <path d="M80 128H1120M80 492H1120" stroke="#a9a58f"/>
+    <path d="M292 310H390M584 310H682M876 310H974"/>
+    <path d="M378 302l12 8-12 8M672 302l12 8-12 8M964 302l12 8-12 8" fill="#171814"/>
+    <rect x="80" y="188" width="212" height="244"/>
+    <path d="M108 230h120M108 258h90M108 304h126M108 332h105M108 378h116" stroke="#5d604f"/>
+    <path d="M108 404h72" stroke="#a33d27" stroke-width="5"/>
+    <rect x="390" y="188" width="194" height="244"/>
+    <circle cx="438" cy="252" r="18"/>
+    <path d="M430 252l6 6 12-14M420 310h130M420 344h110M420 378h84"/>
+    <rect x="684" y="188" width="194" height="244"/>
+    <path d="M714 232h134M714 266h96M714 332h134M714 366h88"/>
+    <path d="M714 402h134" stroke="#a33d27" stroke-width="5"/>
+    <rect x="976" y="188" width="144" height="244"/>
+    <path d="M1004 232h88M1004 266h62M1004 332h88M1004 366h70"/>
+    <path d="M1004 402h46" stroke="#a33d27" stroke-width="5"/>
+  </g>
+  <g fill="#171814" font-family="Arial, sans-serif" font-size="16" letter-spacing="2">
+    <text x="80" y="90">SOURCE PAGE</text>
+    <text x="390" y="90">OBSERVE</text>
+    <text x="684" y="90">REVIEW + VALIDATE</text>
+    <text x="976" y="90">APPROVED DATA</text>
+    <text x="80" y="548" fill="#a33d27">CONCEPTUAL WORKFLOW / HUMAN GATE REMAINS EXPLICIT</text>
+  </g>
+</svg>

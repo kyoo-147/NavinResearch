@@ -1,0 +1,209 @@
+.product-dossier .product-field { display: none; }
+.product-dossier {
+  --dossier-paper: #e9e2d0;
+  --dossier-ink: #171814;
+  --dossier-muted: #5d604f;
+  --dossier-line: #a9a58f;
+  --dossier-signal: #a33d27;
+  --ink: var(--dossier-ink);
+  --muted: var(--dossier-muted);
+  --line: var(--dossier-line);
+  --acid: var(--dossier-signal);
+  min-height: 100%;
+  background: var(--dossier-paper);
+  color: var(--dossier-ink);
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.product-dossier .product-dossier__masthead {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: end;
+  padding: 2rem clamp(1.25rem, 5vw, 6rem) 1rem;
+  border-bottom: 1px solid var(--dossier-ink);
+}
+
+.product-dossier .product-dossier__wordmark {
+  margin: 0;
+  font-size: clamp(2.5rem, 7vw, 7.5rem);
+  font-weight: 400;
+  letter-spacing: -.08em;
+  line-height: .8;
+}
+
+.product-dossier .product-dossier__stamp {
+  max-width: 12rem;
+  color: var(--dossier-signal);
+  font-family: Arial, sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  line-height: 1.5;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.product-dossier .product-dossier__intro {
+  display: grid;
+  grid-template-columns: minmax(8rem, .55fr) minmax(0, 1.45fr);
+  gap: clamp(1.5rem, 6vw, 8rem);
+  padding: clamp(4rem, 12vw, 10rem) clamp(1.25rem, 5vw, 6rem);
+  border-bottom: 1px solid var(--dossier-line);
+}
+
+.product-dossier .product-dossier__intro h1 {
+  max-width: 9ch;
+  margin: 0;
+  font-size: clamp(3rem, 9vw, 9rem);
+  font-weight: 400;
+  letter-spacing: -.07em;
+  line-height: .82;
+}
+
+.product-dossier .product-dossier__intro-copy {
+  align-self: end;
+  max-width: 44rem;
+}
+
+.product-dossier .product-dossier__intro-copy p {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.35rem, 2.8vw, 2.4rem);
+  line-height: 1.12;
+}
+
+.product-dossier .product-dossier__eyebrow,
+.product-dossier .product-dossier__label {
+  margin: 0 0 1rem;
+  color: var(--dossier-signal);
+  font-family: Arial, sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.product-dossier .product-dossier__proof {
+  max-width: 36rem;
+  color: var(--dossier-muted);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+
+.product-dossier .product-dossier__diagram {
+  display: block;
+  width: min(100% - 2.5rem, 72rem);
+  height: auto;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--dossier-ink);
+}
+
+.product-dossier .product-dossier__sections {
+  padding: 0 clamp(1.25rem, 5vw, 6rem);
+}
+
+.product-dossier .product-dossier__section {
+  display: grid;
+  grid-template-columns: minmax(9rem, .55fr) minmax(0, 1.45fr);
+  gap: clamp(1.5rem, 6vw, 8rem);
+  padding: clamp(3rem, 8vw, 7rem) 0;
+  border-bottom: 1px solid var(--dossier-line);
+}
+
+.product-dossier .product-dossier__section h2 {
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -.06em;
+  line-height: .95;
+}
+
+.product-dossier .product-dossier__section-copy {
+  max-width: 46rem;
+}
+
+.product-dossier .product-dossier__section-copy p {
+  margin: 0 0 2rem;
+  color: var(--dossier-muted);
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+
+.product-dossier .product-dossier__points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-dossier .product-dossier__points li {
+  padding-top: .7rem;
+  border-top: 2px solid var(--dossier-signal);
+  font-family: Arial, sans-serif;
+  font-size: .8rem;
+  line-height: 1.35;
+}
+
+.product-dossier .product-dossier__availability {
+  display: grid;
+  grid-template-columns: minmax(9rem, .55fr) minmax(0, 1.45fr);
+  gap: clamp(1.5rem, 6vw, 8rem);
+  padding: clamp(4rem, 10vw, 9rem) clamp(1.25rem, 5vw, 6rem);
+  background: var(--dossier-ink);
+  color: var(--dossier-paper);
+}
+
+.product-dossier .product-dossier__availability h2 {
+  margin: 0;
+  color: var(--dossier-paper);
+  font-size: clamp(2.2rem, 5vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -.06em;
+  line-height: .9;
+}
+
+.product-dossier .product-dossier__availability p {
+  max-width: 38rem;
+  margin: 0 0 2rem;
+  color: #c6c0ae;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.product-dossier .product-dossier__cta {
+  display: inline-block;
+  padding: .85rem 1rem;
+  border: 1px solid var(--dossier-paper);
+  color: var(--dossier-paper);
+  font-family: Arial, sans-serif;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.product-dossier .product-dossier__cta:hover,
+.product-dossier .product-dossier__cta:focus-visible {
+  background: var(--dossier-signal);
+  border-color: var(--dossier-signal);
+}
+
+@media (max-width: 720px) {
+  .product-dossier .product-dossier__masthead,
+  .product-dossier .product-dossier__intro,
+  .product-dossier .product-dossier__section,
+  .product-dossier .product-dossier__availability {
+    grid-template-columns: 1fr;
+  }
+
+  .product-dossier .product-dossier__stamp {
+    text-align: left;
+  }
+
+  .product-dossier .product-dossier__points {
+    grid-template-columns: 1fr;
+  }
+}

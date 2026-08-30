@@ -4,14 +4,14 @@
     "url": "/",
     "title": "NAVIN RESEARCH | WEALTH OF NATURE",
     "description": "Navin Research studies language, speech, and vision AI models and builds end-to-end products.",
-    "text": "We are working on a major and ambitious update—bringing together our research into language, speech, and vision AI models, along with the end-to-end products built around them. Please stay tuned. Intelligence does not exist apart from nature. It emerges through perception, language, memory, and action."
+    "text": "Navin Research develops language, speech, perception, reasoning, and embodied-intelligence programs—then carries selected ideas into inspectable products with explicit evidence, limitations, and human decision boundaries. Intelligence does not exist apart from nature. It emerges through perception, language, memory, and action."
   },
   {
     "language": "EN",
-    "url": "/blog/",
-    "title": "Blog",
-    "description": "Notes and updates from Navin Research.",
-    "text": "A future home for carefully edited notes, project updates, and research reflections."
+    "url": "/products/",
+    "title": "Products",
+    "description": "Research systems and products developed by Navin Research.",
+    "text": "Seven distinct systems spanning organizational intelligence, speech, desktop voice, research, documents, autonomous vehicles, and personal robotics."
   },
   {
     "language": "EN",
@@ -19,6 +19,13 @@
     "title": "Research",
     "description": "Research directions and methods from Navin Research.",
     "text": "A future index for real work across language, speech, vision, multimodal systems, and end-to-end AI products."
+  },
+  {
+    "language": "EN",
+    "url": "/blog/",
+    "title": "Journal",
+    "description": "Notes and updates from Navin Research.",
+    "text": "Carefully edited field notes, project updates, and research reflections."
   },
   {
     "language": "EN",
@@ -38,8 +45,8 @@
     "language": "EN",
     "url": "/releases/",
     "title": "Releases",
-    "description": "Released models and systems from Navin Research.",
-    "text": "A considered shelf for models and systems that are ready to be shared with the world."
+    "description": "Model and system programs from Navin Research.",
+    "text": "A transparent registry for released, planned, and documented model programs."
   },
   {
     "language": "EN",
@@ -95,14 +102,14 @@
     "url": "/vi/",
     "title": "NAVIN RESEARCH | WEALTH OF NATURE",
     "description": "Navin Research nghiên cứu các mô hình AI ngôn ngữ, giọng nói và thị giác, đồng thời xây dựng các sản phẩm AI đầu cuối.",
-    "text": "Chúng tôi đang thực hiện một đợt cập nhật lớn và đầy tham vọng—quy tụ các nghiên cứu về mô hình AI ngôn ngữ, giọng nói và thị giác, cùng những sản phẩm AI đầu cuối được xây dựng từ các nghiên cứu đó. Vui lòng chờ đón. Trí tuệ không tồn tại tách rời tự nhiên. Nó hình thành qua tri giác, ngôn ngữ, ký ức và hành động."
+    "text": "Navin Research phát triển các chương trình về ngôn ngữ, giọng nói, tri giác, suy luận và trí tuệ hiện thân—sau đó đưa những hướng phù hợp thành sản phẩm có thể kiểm tra, với bằng chứng, giới hạn và ranh giới quyết định của con người được trình bày rõ ràng. Trí tuệ không tồn tại tách rời tự nhiên. Nó hình thành qua tri giác, ngôn ngữ, ký ức và hành động."
   },
   {
     "language": "VI",
-    "url": "/vi/blog/",
-    "title": "Blog",
-    "description": "Ghi chú và cập nhật từ Navin Research.",
-    "text": "Không gian tương lai cho các ghi chú được biên tập cẩn thận, cập nhật dự án và suy ngẫm nghiên cứu."
+    "url": "/vi/products/",
+    "title": "Sản phẩm",
+    "description": "Các hệ thống nghiên cứu và sản phẩm do Navin Research phát triển.",
+    "text": "Bảy hệ thống riêng biệt trải rộng từ trí tuệ tổ chức, giọng nói, nghiên cứu và tài liệu đến xe tự hành và robot cá nhân."
   },
   {
     "language": "VI",
@@ -110,6 +117,13 @@
     "title": "Nghiên cứu",
     "description": "Định hướng và phương pháp nghiên cứu tại Navin Research.",
     "text": "Chỉ mục tương lai cho những công trình thực tế về ngôn ngữ, giọng nói, thị giác, hệ thống đa phương thức và sản phẩm AI đầu cuối."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/blog/",
+    "title": "Nhật ký",
+    "description": "Ghi chú và cập nhật từ Navin Research.",
+    "text": "Các ghi chép thực địa, cập nhật dự án và suy ngẫm nghiên cứu được biên tập cẩn thận."
   },
   {
     "language": "VI",
@@ -129,8 +143,8 @@
     "language": "VI",
     "url": "/vi/releases/",
     "title": "Bản phát hành",
-    "description": "Các mô hình và hệ thống đã phát hành của Navin Research.",
-    "text": "Một không gian được sắp đặt cẩn trọng cho những mô hình và hệ thống sẵn sàng được chia sẻ."
+    "description": "Các chương trình mô hình và hệ thống của Navin Research.",
+    "text": "Danh mục minh bạch cho các chương trình mô hình đã phát hành, đang lên kế hoạch và được ghi chép."
   },
   {
     "language": "VI",
@@ -186,14 +200,14 @@
     "url": "/zh-cn/",
     "title": "NAVIN RESEARCH | WEALTH OF NATURE",
     "description": "Navin Research 专注于语言、语音和视觉 AI 模型研究，并打造端到端 AI 产品。",
-    "text": "我们正在进行一次大规模且充满雄心的更新——汇集我们对语言、语音与视觉 AI 模型的研究，以及基于这些研究打造的端到端产品。敬请期待。 智能并非独立于自然而存在。它通过感知、语言、记忆与行动涌现。"
+    "text": "Navin Research 开展语言、语音、感知、推理与具身智能研究，并将合适的方向转化为可检查的产品，明确呈现证据、局限与人类决策边界。 智能并非独立于自然而存在。它通过感知、语言、记忆与行动涌现。"
   },
   {
     "language": "CN",
-    "url": "/zh-cn/blog/",
-    "title": "博客",
-    "description": "Navin Research 的笔记与更新。",
-    "text": "未来用于发布经过认真编辑的笔记、项目更新与研究思考。"
+    "url": "/zh-cn/products/",
+    "title": "产品",
+    "description": "Navin Research 开发的研究系统与产品。",
+    "text": "七个独立系统，涵盖组织智能、语音、研究、文档、自动驾驶与个人机器人。"
   },
   {
     "language": "CN",
@@ -201,6 +215,13 @@
     "title": "研究",
     "description": "Navin Research 的研究方向与方法。",
     "text": "未来用于索引语言、语音、视觉、多模态系统与端到端 AI 产品方面的真实工作。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/blog/",
+    "title": "日志",
+    "description": "Navin Research 的笔记与更新。",
+    "text": "经过认真编辑的现场笔记、项目更新与研究思考。"
   },
   {
     "language": "CN",
@@ -220,8 +241,8 @@
     "language": "CN",
     "url": "/zh-cn/releases/",
     "title": "发布",
-    "description": "Navin Research 已发布的模型与系统。",
-    "text": "用于展示准备好与世界分享的模型与系统的精心策划空间。"
+    "description": "Navin Research 的模型与系统计划。",
+    "text": "透明记录已发布、计划中与已有文档的模型计划。"
   },
   {
     "language": "CN",
@@ -271,6 +292,55 @@
     "title": "使用条款",
     "description": "本网站用于提供公共信息。标记为即将推出的页面描述计划中的编辑与研究方向；它们不代表已发布研究、发现或交付承诺。",
     "text": "不得以误导方式重用原创文字与视觉资产。如需询问许可，请联系 michaelbui.contact@gmail.com。"
+  },
+  {
+    "language": "EN",
+    "url": "https://sandora.navinresearch.com/",
+    "title": "Sandora — Navin Research",
+    "description": "An organizational atlas for virtual AI teams, where automated work remains visible, reviewable, and human-governed.",
+    "text": "AI DEPARTMENT OS Sandora is an early product direction for coordinating virtual AI teams. It treats roles, context, handoffs, approvals, and audit as the connective tissue of automated workflows—not as hidden implementation detail. Role atlas Context routing Workflow handoffs Approval gates Audit record CONCEPT / EARLY ACCESS"
+  },
+  {
+    "language": "EN",
+    "url": "https://moyi.navinresearch.com/",
+    "title": "Moyi — Navin Research",
+    "description": "Translation that keeps the operational signal in the room.",
+    "text": "EDGE SPEECH INTELLIGENCE Moyi is an on-device AI translation runtime for multilingual operations where context, terminology, and safety messages matter. This is a research preview: the acoustic field is a design concept, not a claim of finished performance. On-device runtime Speech translation Operational terminology Acoustic context Safety-aware review RESEARCH PREVIEW"
+  },
+  {
+    "language": "EN",
+    "url": "https://sori.navinresearch.com/",
+    "title": "Sori — Navin Research",
+    "description": "A quiet, local-first voice runtime for desktop work.",
+    "text": "PROGRAMMABLE VOICE RUNTIME Sori is a Windows-first desktop MVP foundation: a small instrument for speaking into the active app, with the runtime, permissions, and boundaries kept visible when they matter. Local-first desktop runtime Hotkey-led voice interaction Model and provider routing Local history and metadata Skills, tools, and permissions BETA INTEREST ONLY"
+  },
+  {
+    "language": "EN",
+    "url": "https://howhow.navinresearch.com/",
+    "title": "HowHow — Navin Research",
+    "description": "A bounded research application that keeps approvals, provenance, and failure history beside every useful result.",
+    "text": "EVIDENCE-FIRST RESEARCH OS HowHow is an evidence-first Research OS for making bounded research work inspectable from question to review. Its current direction is approved for an integration spike; consequential decisions remain explicitly human-owned. Research briefing Evidence ledger Approval boundaries Failure memory Reviewable packaging READY FOR HUMAN REVIEW"
+  },
+  {
+    "language": "EN",
+    "url": "https://dossier.navinresearch.com/",
+    "title": "Dossier — Navin Research",
+    "description": "A local-first document desk for turning difficult pages into reviewable, approved, integration-ready structured data.",
+    "text": "Agentic Document Intelligence Dossier is a concept-stage direction for document work where extraction is only the beginning. Each proposed record stays connected to the page, the decision, and the person who approved it. OCR Handwriting Layout and tables Forms and extraction QA and evidence Early-access interest"
+  },
+  {
+    "language": "EN",
+    "url": "https://autopilot.navinresearch.com/",
+    "title": "Autopilot — Navin Research",
+    "description": "A ROS and deep-learning stack for autonomous scale-model vehicles, documented as a test-track chronicle rather than a production promise.",
+    "text": "AUTONOMOUS SCALE-MODEL VEHICLES Autopilot follows the vehicle from sensor input to control output: camera, IMU, sonar, and localisation feed a ROS-based loop, while learned perception and classical control share the work. ROS sensor graph Deep-learning perception Camera and IMU fusion Lane-keeping control Embedded actuation OPEN RESEARCH REFERENCE"
+  },
+  {
+    "language": "EN",
+    "url": "https://lajvard.navinresearch.com/",
+    "title": "Lajvard — Navin Research",
+    "description": "A cute, compact humanoid companion imagined for the small rituals of a room: noticing where it is, remembering what matters, and answering with a personality that feels present without pretending to be human.",
+    "text": "Warm companion field notes / blueprint 01 Lajvard is a product direction, not a shipping promise. This notebook describes the questions we are testing around a portable robot with spatial awareness, a private journal, and a gentle social presence. Compact humanoid form LiDAR mapping direction Spatial memory direction Owner voice recognition direction Local-first journal direction Concept stage · updates, not preorder"
   },
   {
     "language": "EN",

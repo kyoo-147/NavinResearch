@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-labelledby="moyi-title moyi-desc">
+  <title id="moyi-title">Moyi acoustic field system</title>
+  <desc id="moyi-desc">An editorial technical diagram showing a local acoustic field entering a context and terminology layer before producing a reviewed translation output.</desc>
+  <rect width="960" height="520" fill="#111616"/>
+  <g fill="none" stroke="#43504d" stroke-width="2">
+    <path d="M52 126H908M52 260H908M52 394H908"/>
+    <path d="M160 60V460M320 60V460M480 60V460M640 60V460M800 60V460"/>
+  </g>
+  <g fill="none" stroke="#81b8af" stroke-width="3">
+    <ellipse cx="170" cy="260" rx="112" ry="166" transform="rotate(-18 170 260)"/>
+    <ellipse cx="170" cy="260" rx="76" ry="166" transform="rotate(-18 170 260)"/>
+    <ellipse cx="170" cy="260" rx="40" ry="166" transform="rotate(-18 170 260)"/>
+    <path d="M281 260H364"/>
+    <path d="m350 250 14 10-14 10"/>
+  </g>
+  <g fill="#e8e2d5" font-family="IBM Plex Mono, Courier New, monospace" font-size="16">
+    <text x="70" y="82" fill="#d5b36a" letter-spacing="3">MOYI / ACOUSTIC FIELD</text>
+    <text x="101" y="475">LOCAL SCENE</text>
+    <text x="375" y="226">CONTEXT</text>
+    <text x="375" y="250">+ LEXICON</text>
+    <text x="375" y="274">+ SAFETY</text>
+    <text x="681" y="226">REVIEWED</text>
+    <text x="681" y="250">TRANSLATION</text>
+  </g>
+  <g fill="none" stroke="#d5b36a" stroke-width="3">
+    <rect x="356" y="184" width="180" height="150"/>
+    <path d="M536 260H656"/>
+    <path d="m642 250 14 10-14 10"/>
+    <rect x="656" y="184" width="230" height="150"/>
+  </g>
+  <g fill="#9c9b91" font-family="IBM Plex Mono, Courier New, monospace" font-size="12">
+    <text x="70" y="110">sound / distance / turns</text>
+    <text x="374" y="366">runtime boundary: on-device direction</text>
+    <text x="681" y="366">human check remains visible</text>
+  </g>
+  <g fill="#81b8af">
+    <circle cx="170" cy="260" r="5"/>
+    <circle cx="446" cy="260" r="5"/>
+    <circle cx="771" cy="260" r="5"/>
+  </g>
+</svg>

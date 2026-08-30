@@ -30,6 +30,7 @@ export function siteDrawer(localeKey) {
           <button class="menu-close" type="button" data-menu-close aria-label="${escapeHtml(ui.menu.close)}"><span aria-hidden="true">×</span></button>
           <nav aria-label="${escapeHtml(locale.common.navAria)}">
             <a href="${localePath(localeKey)}">${escapeHtml(ui.menu.home)}</a>
+            <a href="${localePath(localeKey, "products")}">${escapeHtml(ui.menu.products)}</a>
             <button type="button" data-chapters-toggle aria-expanded="false" aria-controls="chapter-panel">${escapeHtml(ui.menu.chapters)}<span aria-hidden="true">→</span></button>
             <a href="${localePath(localeKey, "research")}">${escapeHtml(ui.menu.work)}</a>
             <a href="${localePath(localeKey, "blog")}">${escapeHtml(ui.menu.notes)}</a>
@@ -59,7 +60,8 @@ export function siteHeader(localeKey, suffix = "") {
 
 export function contentHeader(localeKey, currentSection) {
   const locale = locales[localeKey];
-  const routes = sections.map((section) => `<a href="${localePath(localeKey, section)}"${section === currentSection ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`).join("\n          ");
+  const navSections = ["products", "research", "releases", "blog", "docs", "search"];
+  const routes = navSections.map((section) => `<a href="${localePath(localeKey, section)}"${section === currentSection ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`).join("\n          ");
   return `<header class="route-page__header content-header"><a class="route-page__brand content-wordmark" href="${localePath(localeKey)}"><span>NAVIN<br>RESEARCH</span></a><nav class="route-page__nav" aria-label="${escapeHtml(locale.common.navAria)}">${routes}</nav><nav class="route-page__languages" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, currentSection)}</nav></header>`;
 }
 

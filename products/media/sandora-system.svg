@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="sandora-title sandora-desc">
+  <title id="sandora-title">Sandora organizational atlas</title>
+  <desc id="sandora-desc">A conceptual diagram showing a human approval point connecting three virtual roles through shared context and an audit record.</desc>
+  <rect width="1200" height="520" fill="#111613"/>
+  <g fill="none" stroke="#4b5149" stroke-width="2">
+    <path d="M160 260H1040"/>
+    <path d="M600 92V428"/>
+    <path d="M600 260L310 130M600 260L890 130M600 260L310 390M600 260L890 390"/>
+  </g>
+  <g fill="#111613" stroke="#e1a457" stroke-width="2">
+    <rect x="500" y="205" width="200" height="110"/>
+    <rect x="190" y="70" width="240" height="84"/>
+    <rect x="770" y="70" width="240" height="84"/>
+    <rect x="190" y="366" width="240" height="84"/>
+    <rect x="770" y="366" width="240" height="84"/>
+  </g>
+  <g fill="#e7e2d5" font-family="monospace" font-size="18" letter-spacing="2">
+    <text x="530" y="242">HUMAN GATE</text>
+    <text x="530" y="272" fill="#a9aa9c" font-size="14" letter-spacing="1">explicit approval</text>
+    <text x="220" y="105">ROLE / CONTEXT</text>
+    <text x="220" y="130" fill="#a9aa9c" font-size="14" letter-spacing="1">briefing node</text>
+    <text x="800" y="105">ROLE / CONTEXT</text>
+    <text x="800" y="130" fill="#a9aa9c" font-size="14" letter-spacing="1">working node</text>
+    <text x="220" y="401">HANDOFF</text>
+    <text x="220" y="426" fill="#a9aa9c" font-size="14" letter-spacing="1">workflow step</text>
+    <text x="800" y="401">AUDIT RECORD</text>
+    <text x="800" y="426" fill="#a9aa9c" font-size="14" letter-spacing="1">decision history</text>
+  </g>
+  <g fill="#e1a457">
+    <circle cx="600" cy="260" r="5"/>
+    <circle cx="310" cy="130" r="5"/>
+    <circle cx="890" cy="130" r="5"/>
+    <circle cx="310" cy="390" r="5"/>
+    <circle cx="890" cy="390" r="5"/>
+  </g>
+</svg>

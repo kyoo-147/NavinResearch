@@ -6,7 +6,7 @@ export const site = {
   github: "https://github.com/kyoo-147",
 };
 
-export const sections = ["blog", "research", "docs", "search"];
+export const sections = ["products", "research", "blog", "docs", "search"];
 
 export const chapters = [
   { slug: "physis", key: "PHYSIS", number: "01", asset: "field-1.webp", domains: { en: "Embodied & Natural Intelligence", vi: "Trí tuệ hiện thân & tự nhiên", "zh-cn": "具身与自然智能" } },
@@ -32,11 +32,11 @@ export const locales = {
       ogDescription: "Research into language, speech, and vision AI models, plus end-to-end products, is taking shape.",
     },
     home: {
-      status: "Major update in progress",
-      eyebrow: "Coming soon",
-      title: ["A new frontier", "is taking shape."],
-      statement: "We are working on a major and ambitious update—bringing together our research into language, speech, and vision AI models, along with the end-to-end products built around them. Please stay tuned.",
-      contactLabel: "In the meantime",
+      status: "Research and product systems",
+      eyebrow: "Independent AI research · Vietnam",
+      title: ["Research that", "becomes systems."],
+      statement: "Navin Research develops language, speech, perception, reasoning, and embodied-intelligence programs—then carries selected ideas into inspectable products with explicit evidence, limitations, and human decision boundaries.",
+      contactLabel: "Research and product enquiries",
       contactTitle: "Start a conversation.",
       contactAria: "Contact information",
       contactLinksAria: "Contact links",
@@ -52,11 +52,12 @@ export const locales = {
       noResults: "No matching public page was found.",
     },
     routes: {
-      blog: { title: "Blog", description: "Notes and updates from Navin Research.", lede: "A future home for carefully edited notes, project updates, and research reflections." },
+      products: { title: "Products", description: "Research systems and products developed by Navin Research.", lede: "Seven distinct systems spanning organizational intelligence, speech, desktop voice, research, documents, autonomous vehicles, and personal robotics." },
+      blog: { title: "Journal", description: "Notes and updates from Navin Research.", lede: "Carefully edited field notes, project updates, and research reflections." },
       research: { title: "Research", description: "Research directions and methods from Navin Research.", lede: "A future index for real work across language, speech, vision, multimodal systems, and end-to-end AI products." },
       docs: { title: "Docs", description: "Practical documentation for published Navin Research work and tools.", lede: "A future documentation library for work that has been released and can be accurately described." },
       search: { title: "Search", description: "Search the public Navin Research route directory.", lede: "Search the real public surfaces currently available on this website." },
-      releases: { title: "Releases", description: "Released models and systems from Navin Research.", lede: "A considered shelf for models and systems that are ready to be shared with the world." },
+      releases: { title: "Releases", description: "Model and system programs from Navin Research.", lede: "A transparent registry for released, planned, and documented model programs." },
     },
   },
   vi: {
@@ -71,11 +72,11 @@ export const locales = {
       ogDescription: "Các nghiên cứu về mô hình AI ngôn ngữ, giọng nói và thị giác, cùng những sản phẩm AI đầu cuối, đang dần thành hình.",
     },
     home: {
-      status: "Đang thực hiện bản cập nhật lớn",
-      eyebrow: "Sắp ra mắt",
-      title: ["Một chân trời mới", "đang thành hình."],
-      statement: "Chúng tôi đang thực hiện một đợt cập nhật lớn và đầy tham vọng—quy tụ các nghiên cứu về mô hình AI ngôn ngữ, giọng nói và thị giác, cùng những sản phẩm AI đầu cuối được xây dựng từ các nghiên cứu đó. Vui lòng chờ đón.",
-      contactLabel: "Trong thời gian chờ đợi",
+      status: "Nghiên cứu và hệ thống sản phẩm",
+      eyebrow: "Nghiên cứu AI độc lập · Việt Nam",
+      title: ["Nghiên cứu trở thành", "hệ thống thực tế."],
+      statement: "Navin Research phát triển các chương trình về ngôn ngữ, giọng nói, tri giác, suy luận và trí tuệ hiện thân—sau đó đưa những hướng phù hợp thành sản phẩm có thể kiểm tra, với bằng chứng, giới hạn và ranh giới quyết định của con người được trình bày rõ ràng.",
+      contactLabel: "Trao đổi nghiên cứu và sản phẩm",
       contactTitle: "Hãy bắt đầu một cuộc trò chuyện.",
       contactAria: "Thông tin liên hệ",
       contactLinksAria: "Các kênh liên hệ",
@@ -91,11 +92,12 @@ export const locales = {
       noResults: "Không tìm thấy trang công khai phù hợp.",
     },
     routes: {
-      blog: { title: "Blog", description: "Ghi chú và cập nhật từ Navin Research.", lede: "Không gian tương lai cho các ghi chú được biên tập cẩn thận, cập nhật dự án và suy ngẫm nghiên cứu." },
+      products: { title: "Sản phẩm", description: "Các hệ thống nghiên cứu và sản phẩm do Navin Research phát triển.", lede: "Bảy hệ thống riêng biệt trải rộng từ trí tuệ tổ chức, giọng nói, nghiên cứu và tài liệu đến xe tự hành và robot cá nhân." },
+      blog: { title: "Nhật ký", description: "Ghi chú và cập nhật từ Navin Research.", lede: "Các ghi chép thực địa, cập nhật dự án và suy ngẫm nghiên cứu được biên tập cẩn thận." },
       research: { title: "Nghiên cứu", description: "Định hướng và phương pháp nghiên cứu tại Navin Research.", lede: "Chỉ mục tương lai cho những công trình thực tế về ngôn ngữ, giọng nói, thị giác, hệ thống đa phương thức và sản phẩm AI đầu cuối." },
       docs: { title: "Tài liệu", description: "Tài liệu thực hành cho các công trình và công cụ đã được Navin Research công bố.", lede: "Thư viện tương lai dành cho những công trình đã được phát hành và có thể mô tả chính xác." },
       search: { title: "Tìm kiếm", description: "Tìm kiếm trong danh mục trang công khai của Navin Research.", lede: "Tìm trong các bề mặt công khai thực tế hiện có trên website." },
-      releases: { title: "Bản phát hành", description: "Các mô hình và hệ thống đã phát hành của Navin Research.", lede: "Một không gian được sắp đặt cẩn trọng cho những mô hình và hệ thống sẵn sàng được chia sẻ." },
+      releases: { title: "Bản phát hành", description: "Các chương trình mô hình và hệ thống của Navin Research.", lede: "Danh mục minh bạch cho các chương trình mô hình đã phát hành, đang lên kế hoạch và được ghi chép." },
     },
   },
   "zh-cn": {
@@ -110,11 +112,11 @@ export const locales = {
       ogDescription: "语言、语音和视觉 AI 模型研究，以及基于这些研究打造的端到端产品，正在逐步成形。",
     },
     home: {
-      status: "重大更新正在进行",
-      eyebrow: "即将推出",
-      title: ["新的前沿", "正在成形。"],
-      statement: "我们正在进行一次大规模且充满雄心的更新——汇集我们对语言、语音与视觉 AI 模型的研究，以及基于这些研究打造的端到端产品。敬请期待。",
-      contactLabel: "在此期间",
+      status: "研究与产品系统",
+      eyebrow: "独立人工智能研究 · 越南",
+      title: ["让研究成为", "可运行的系统。"],
+      statement: "Navin Research 开展语言、语音、感知、推理与具身智能研究，并将合适的方向转化为可检查的产品，明确呈现证据、局限与人类决策边界。",
+      contactLabel: "研究与产品合作",
       contactTitle: "与我们交流。",
       contactAria: "联系信息",
       contactLinksAria: "联系方式",
@@ -130,19 +132,20 @@ export const locales = {
       noResults: "未找到匹配的公开页面。",
     },
     routes: {
-      blog: { title: "博客", description: "Navin Research 的笔记与更新。", lede: "未来用于发布经过认真编辑的笔记、项目更新与研究思考。" },
+      products: { title: "产品", description: "Navin Research 开发的研究系统与产品。", lede: "七个独立系统，涵盖组织智能、语音、研究、文档、自动驾驶与个人机器人。" },
+      blog: { title: "日志", description: "Navin Research 的笔记与更新。", lede: "经过认真编辑的现场笔记、项目更新与研究思考。" },
       research: { title: "研究", description: "Navin Research 的研究方向与方法。", lede: "未来用于索引语言、语音、视觉、多模态系统与端到端 AI 产品方面的真实工作。" },
       docs: { title: "文档", description: "Navin Research 已发布工作与工具的实用文档。", lede: "未来用于收录已经发布且能够准确描述的工作。" },
       search: { title: "搜索", description: "搜索 Navin Research 的公开页面目录。", lede: "搜索本网站当前真实存在的公开页面。" },
-      releases: { title: "发布", description: "Navin Research 已发布的模型与系统。", lede: "用于展示准备好与世界分享的模型与系统的精心策划空间。" },
+      releases: { title: "发布", description: "Navin Research 的模型与系统计划。", lede: "透明记录已发布、计划中与已有文档的模型计划。" },
     },
   },
 };
 
 export const experience = {
   en: {
-    chapterEyebrow: "CHAPTER 00 / WEALTH OF NATURE — COMING SOON",
-    menu: { open: "Open menu", close: "Close menu", chapters: "Chapters", home: "Home", work: "Work", notes: "Notes", releases: "Releases", philosophy: "Philosophy", contact: "Contact", back: "Back", viewChapter: "View chapter", explore: "Explore" },
+    chapterEyebrow: "INDEPENDENT AI RESEARCH / VIETNAM",
+    menu: { open: "Open menu", close: "Close menu", chapters: "Chapters", home: "Home", products: "Products", work: "Research", notes: "Journal", releases: "Releases", philosophy: "Philosophy", contact: "Contact", back: "Back", viewChapter: "View chapter", explore: "Explore" },
     aria: { home: "Navin Research home", legal: "Legal" },
     chapterLabels: { researchProgram: "Research program", coreDimension: "Core dimension", status: "Status", navigation: "Chapter navigation" },
     wealth: { label: "Chapter 00", title: "WEALTH OF NATURE", statement: "Intelligence does not exist apart from nature. It emerges through perception, language, memory, and action." },
@@ -156,8 +159,8 @@ export const experience = {
     },
   },
   vi: {
-    chapterEyebrow: "CHAPTER 00 / WEALTH OF NATURE — COMING SOON",
-    menu: { open: "Mở menu", close: "Đóng menu", chapters: "Các chương", home: "Trang chủ", work: "Công trình", notes: "Ghi chú", releases: "Bản phát hành", philosophy: "Triết lý", contact: "Liên hệ", back: "Quay lại", viewChapter: "Xem chương", explore: "Khám phá" },
+    chapterEyebrow: "NGHIÊN CỨU AI ĐỘC LẬP / VIỆT NAM",
+    menu: { open: "Mở menu", close: "Đóng menu", chapters: "Các chương", home: "Trang chủ", products: "Sản phẩm", work: "Nghiên cứu", notes: "Nhật ký", releases: "Bản phát hành", philosophy: "Triết lý", contact: "Liên hệ", back: "Quay lại", viewChapter: "Xem chương", explore: "Khám phá" },
     aria: { home: "Trang chủ Navin Research", legal: "Pháp lý" },
     chapterLabels: { researchProgram: "Chương trình nghiên cứu", coreDimension: "Chiều kích cốt lõi", status: "Trạng thái", navigation: "Điều hướng chương" },
     wealth: { label: "Chương 00", title: "SỰ PHONG PHÚ CỦA TỰ NHIÊN", statement: "Trí tuệ không tồn tại tách rời tự nhiên. Nó hình thành qua tri giác, ngôn ngữ, ký ức và hành động." },
@@ -171,8 +174,8 @@ export const experience = {
     },
   },
   "zh-cn": {
-    chapterEyebrow: "CHAPTER 00 / WEALTH OF NATURE — COMING SOON",
-    menu: { open: "打开菜单", close: "关闭菜单", chapters: "章节", home: "首页", work: "工作", notes: "笔记", releases: "发布", philosophy: "理念", contact: "联系", back: "返回", viewChapter: "查看章节", explore: "探索" },
+    chapterEyebrow: "独立人工智能研究 / 越南",
+    menu: { open: "打开菜单", close: "关闭菜单", chapters: "章节", home: "首页", products: "产品", work: "研究", notes: "日志", releases: "发布", philosophy: "理念", contact: "联系", back: "返回", viewChapter: "查看章节", explore: "探索" },
     aria: { home: "Navin Research 首页", legal: "法律信息" },
     chapterLabels: { researchProgram: "研究计划", coreDimension: "核心维度", status: "状态", navigation: "章节导航" },
     wealth: { label: "第 00 章", title: "自然之丰", statement: "智能并非独立于自然而存在。它通过感知、语言、记忆与行动涌现。" },

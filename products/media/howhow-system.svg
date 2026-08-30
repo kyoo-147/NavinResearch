@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="howhow-title howhow-desc">
+  <title id="howhow-title">HowHow evidence and approval loop</title>
+  <desc id="howhow-desc">An original editorial systems diagram showing a bounded question becoming a brief, evidence ledger, review gate, and preserved failure path.</desc>
+  <rect width="960" height="560" fill="#101714"/>
+  <g fill="none" stroke="#d5ff55" stroke-width="2">
+    <path d="M160 120H800M160 240H800M160 360H800M160 480H800" opacity=".2"/>
+    <path d="M160 120V480M320 120V480M480 120V480M640 120V480M800 120V480" opacity=".2"/>
+    <path d="M124 280h112m112 0h112m112 0h112m112 0h112"/>
+    <path d="M224 272l12 8-12 8M336 272l12 8-12 8M448 272l12 8-12 8M560 272l12 8-12 8M672 272l12 8-12 8"/>
+    <path d="M480 280v104H272" stroke="#f2eee4"/>
+    <path d="M272 384l10-7M272 384l10 7" stroke="#f2eee4"/>
+  </g>
+  <g fill="#101714" stroke="#f2eee4" stroke-width="2">
+    <rect x="48" y="218" width="176" height="124"/>
+    <rect x="236" y="218" width="176" height="124"/>
+    <rect x="424" y="218" width="176" height="124"/>
+    <rect x="612" y="218" width="176" height="124"/>
+    <rect x="800" y="218" width="112" height="124"/>
+    <rect x="160" y="384" width="224" height="64" stroke="#ff8066"/>
+  </g>
+  <g fill="#f2eee4" font-family="Arial, sans-serif" font-size="16" letter-spacing="1">
+    <text x="72" y="255">QUESTION</text><text x="72" y="286" fill="#aaa99f">scope + stop</text>
+    <text x="260" y="255">BRIEF</text><text x="260" y="286" fill="#aaa99f">permission + plan</text>
+    <text x="448" y="255">LEDGER</text><text x="448" y="286" fill="#aaa99f">source + run</text>
+    <text x="636" y="255">REVIEW</text><text x="636" y="286" fill="#aaa99f">claim + dissent</text>
+    <text x="820" y="255">HANDOFF</text><text x="820" y="286" fill="#aaa99f">human</text>
+    <text x="184" y="412" fill="#ff8066">FAILURE / PRESERVE</text>
+  </g>
+  <g fill="#d5ff55" font-family="Arial, sans-serif" font-size="12" letter-spacing="2">
+    <text x="48" y="64">HOWHOW / BOUNDED RESEARCH LOOP</text>
+    <text x="48" y="520">EVIDENCE BEFORE PROSE · APPROVALS BEFORE CONSEQUENCE</text>
+  </g>
+</svg>

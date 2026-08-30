@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-labelledby="sori-title sori-desc">
+  <title id="sori-title">Sori local-first runtime diagram</title>
+  <desc id="sori-desc">A technical editorial diagram showing a desktop shell communicating with the Sori daemon over loopback IPC, then passing through routing and permissions toward the focused app.</desc>
+  <rect width="960" height="520" fill="#101312"/>
+  <g fill="none" stroke="#69736b" stroke-width="2">
+    <path d="M80 88h800M80 432h800M80 88v344M880 88v344"/>
+    <path d="M256 260h120M584 260h120"/>
+    <path d="M360 248l16 12-16 12M688 248l16 12-16 12" stroke="#d4b36a"/>
+    <rect x="80" y="176" width="176" height="168"/>
+    <rect x="376" y="136" width="208" height="248" stroke="#d4b36a"/>
+    <rect x="704" y="176" width="176" height="168"/>
+    <path d="M424 200h112M424 232h112M424 264h80M424 328h112M424 360h64"/>
+    <circle cx="480" cy="296" r="18" stroke="#d4b36a"/>
+    <path d="M464 296h32M480 280v32" stroke="#d4b36a"/>
+    <path d="M132 220h72M132 252h96M132 284h48M756 220h72M756 252h96M756 284h56"/>
+  </g>
+  <g fill="#e8e4d8" font-family="monospace" font-size="16" letter-spacing="2">
+    <text x="80" y="124">01 / DESKTOP SHELL</text>
+    <text x="376" y="100" fill="#d4b36a">02 / SORI DAEMON</text>
+    <text x="704" y="124">03 / FOCUSED APP</text>
+  </g>
+  <g fill="#a6aaa0" font-family="monospace" font-size="13">
+    <text x="112" y="316">overlay · tray</text>
+    <text x="112" y="336">hold hotkey</text>
+    <text x="400" y="408">loopback IPC · local state</text>
+    <text x="410" y="458">context → audio → route</text>
+    <text x="720" y="316">text insertion</text>
+    <text x="720" y="336">boundary: UNVERIFIED</text>
+  </g>
+  <g fill="#d4b36a" font-family="monospace" font-size="12" letter-spacing="1">
+    <text x="80" y="476">LOCAL-FIRST / QUIET DESKTOP INSTRUMENT / BETA INTEREST ONLY</text>
+  </g>
+</svg>

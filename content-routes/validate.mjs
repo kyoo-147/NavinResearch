@@ -1,5 +1,6 @@
 import { access, readFile, readdir } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, releaseRoute, sections, site } from "../site.config.mjs";
+import { products } from "../scripts/product-data.mjs";
 import { blogPostPath, blogPosts, blogSources, renderBlogPost } from "../scripts/blog-posts.mjs";
 
 const errors = [];
@@ -75,6 +76,7 @@ for (const route of generatedRoutes) {
     if (!html.includes('/content-routes/route-foundation.css?v=')) errors.push(`${route.file}: route stylesheet missing`);
     if (!html.includes(`content-${route.section}`)) errors.push(`${route.file}: route background class missing`);
     if (!routeCss.includes(`.content-${route.section} .content-field { background-image:`)) errors.push(`${route.file}: route background image mapping missing`);
+    if (route.section === "products" && !html.includes('class="product-directory"')) errors.push(`${route.file}: product directory missing`);
   } else {
     for (const sharedComponent of ['class="masthead site-header"', 'class="footer site-footer', 'id="site-menu"']) {
       if (!html.includes(sharedComponent)) errors.push(`${route.file}: shared component ${sharedComponent} missing`);
@@ -84,7 +86,7 @@ for (const route of generatedRoutes) {
   }
   if (html.includes('/favicon.svg')) errors.push(`${route.file}: deleted favicon referenced`);
   if (html.includes('datePublished') || html.includes('application/ld+json')) errors.push(`${route.file}: unsupported schema/date marker found`);
-  if (route.section && route.type !== "legal" && route.type !== "release" && !html.includes(locale.common.preparation)) errors.push(`${route.file}: truthful preparation notice missing`);
+  if (route.section && route.section !== "products" && route.type !== "legal" && route.type !== "release" && !html.includes(locale.common.preparation)) errors.push(`${route.file}: truthful preparation notice missing`);
   if (route.type === "chapter") {
     if (!html.includes(`chapter-${route.section}`) || !html.includes('class="chapter-field"')) errors.push(`${route.file}: chapter background structure missing`);
     if (!routeCss.includes(`.chapter-${route.section} .chapter-field { background-image:`)) errors.push(`${route.file}: chapter background image mapping missing`);
@@ -127,6 +129,17 @@ for (const file of [
   }
 }
 
+for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {
+  for (const file of [`products/content/${slug}.mjs`, `products/themes/${slug}.css`, `products/media/${slug}-system.svg`, `${slug}/index.html`]) {
+    try { await access(file); } catch { errors.push(`${file}: required product asset missing`); }
+  }
+  const productHtml = await readFile(`${slug}/index.html`, "utf8");
+  for (const marker of [`https://${slug}.navinresearch.com/`, `product-${slug}`, `/products/themes/${slug}.css`, `/products/media/${slug}-system.svg`, 'name="robots"', 'property="og:title"', 'class="skip-link"', 'id="main-content"', 'id="evidence"', 'id="availability"', 'class="product-switcher"']) {
+    if (!productHtml.includes(marker)) errors.push(`${slug}/index.html: product marker missing: ${marker}`);
+  }
+  if (productHtml.includes("Details to be announced") || productHtml.includes("product-pricing")) errors.push(`${slug}/index.html: obsolete generic pricing scaffold remains`);
+}
+
 if (!deploymentNginx.includes("location ~ \\.md$") || !deploymentNginx.includes("default_type text/markdown;") || !deploymentNginx.includes("charset_types text/markdown;")) {
   errors.push("deployment nginx: public Markdown content type mapping missing");
 }
@@ -134,7 +147,11 @@ if (!deploymentNginx.includes("location ~ \\.md$") || !deploymentNginx.includes(
 const robots = await readFile("robots.txt", "utf8");
 const sitemap = await readFile("sitemap.xml", "utf8");
 const searchIndex = JSON.parse(await readFile("content-routes/search-index.json", "utf8"));
-if (!Array.isArray(searchIndex) || searchIndex.length !== generatedRoutes.length + blogPosts.length) errors.push("search index: route count mismatch");
+if (!Array.isArray(searchIndex) || searchIndex.length !== generatedRoutes.length + blogPosts.length + products.length) errors.push("search index: route count mismatch");
+for (const product of products) {
+  const productUrl = `https://${product.slug}.navinresearch.com/`;
+  if (!searchIndex.some((item) => item.url === productUrl && item.title.includes(product.name))) errors.push(`search index: ${productUrl} missing`);
+}
 if (!robots.includes(`Sitemap: ${site.origin}/sitemap.xml`)) errors.push("robots.txt: sitemap missing");
 if (!robots.includes("Disallow: /visitor-insights/")) errors.push("robots.txt: private insights exclusion missing");
 for (const route of generatedRoutes) {

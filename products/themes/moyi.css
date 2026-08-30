@@ -1,0 +1,139 @@
+.product-moyi .product-field { display: none; }
+.product-moyi {
+  --moyi-ink: #e8e2d5;
+  --moyi-muted: #9c9b91;
+  --moyi-field: #111616;
+  --moyi-line: #43504d;
+  --moyi-signal: #d5b36a;
+  --moyi-cyan: #81b8af;
+  background: var(--moyi-field);
+  color: var(--moyi-ink);
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  letter-spacing: 0.01em;
+}
+
+.product-moyi .product-hero {
+  border-block: 1px solid var(--moyi-line);
+  min-height: 72vh;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.product-moyi .product-hero::before,
+.product-moyi .product-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border: 1px solid color-mix(in srgb, var(--moyi-cyan) 45%, transparent);
+  border-radius: 50%;
+  transform: scaleX(1.8);
+  opacity: 0.42;
+}
+
+.product-moyi .product-hero::before {
+  width: 48rem;
+  height: 18rem;
+  inset: 30% -8rem auto auto;
+}
+
+.product-moyi .product-hero::after {
+  width: 34rem;
+  height: 12rem;
+  inset: 48% 8rem auto auto;
+  border-color: color-mix(in srgb, var(--moyi-signal) 42%, transparent);
+}
+
+.product-moyi .product-kicker {
+  color: var(--moyi-signal);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.product-moyi h1,
+.product-moyi h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.product-moyi h1 {
+  max-width: 11ch;
+  font-size: clamp(3.5rem, 11vw, 9rem);
+  line-height: 0.86;
+}
+
+.product-moyi h2 {
+  color: var(--moyi-cyan);
+  font-size: clamp(2rem, 5vw, 4.4rem);
+  line-height: 0.96;
+}
+
+.product-moyi .product-intro,
+.product-moyi .product-proof,
+.product-moyi .product-section__body {
+  color: var(--moyi-muted);
+  max-width: 58ch;
+  line-height: 1.7;
+}
+
+.product-moyi .product-section {
+  border-bottom: 1px solid var(--moyi-line);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(8rem, 0.35fr) 1fr;
+  padding-block: clamp(3rem, 9vw, 8rem);
+}
+
+.product-moyi .product-section__points {
+  border-left: 2px solid var(--moyi-signal);
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0 0 0 1.25rem;
+}
+
+.product-moyi .product-section__points li {
+  border-bottom: 1px solid var(--moyi-line);
+  padding: 0.8rem 0;
+}
+
+.product-moyi .product-evidence {
+  border-top: 1px solid var(--moyi-line);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.product-moyi .product-evidence__item {
+  border-right: 1px solid var(--moyi-line);
+  padding: 1.5rem;
+}
+
+.product-moyi .product-evidence__state {
+  color: var(--moyi-signal);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+}
+
+.product-moyi a {
+  color: var(--moyi-ink);
+  text-decoration-color: var(--moyi-signal);
+  text-underline-offset: 0.3em;
+}
+
+.product-moyi a:hover,
+.product-moyi a:focus-visible {
+  color: var(--moyi-signal);
+}
+
+@media (max-width: 700px) {
+  .product-moyi .product-section,
+  .product-moyi .product-evidence {
+    grid-template-columns: 1fr;
+  }
+
+  .product-moyi .product-evidence__item {
+    border-bottom: 1px solid var(--moyi-line);
+    border-right: 0;
+  }
+}

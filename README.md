@@ -1,11 +1,13 @@
 # Navin Research
 
-Source for [navinresearch.com](https://navinresearch.com): a multilingual static research site, coming-soon homepage, truthful crawlable content foundation, reusable design system, and privacy-preserving visitor geography prototype.
+Source for [navinresearch.com](https://navinresearch.com): a multilingual static research and product site, truthful crawlable content foundation, seven distinct product microsites, reusable design system, and privacy-preserving visitor geography prototype.
 
 ## Architecture
 
 - `site.config.mjs` — source of truth for EN/VI/ZH-CN copy, metadata, routes, and locale prefixes.
-- `scripts/generate-site.mjs` — generates 36 localized pages, 50 English Markdown blog posts, search metadata, and sitemap.
+- `scripts/generate-site.mjs` — generates 42 localized pages, 50 English Markdown blog posts, search metadata, and sitemap.
+- `scripts/generate-products.mjs` — generates seven source-backed product microsites with distinct themes, evidence, access states, and cross-navigation.
+- `products/` — product content contracts, original diagrams, project-owned media, themes, and architecture documentation in `docs/products.md`.
 - `scripts/blog-posts.mjs` — source manifest and renderer for practical, source-linked AI engineering notes.
 - `styles.css` / `script.js` — homepage design and ambient motion.
 - `content-routes/` — shared editorial route styles, search, and validation.
@@ -29,7 +31,8 @@ uv run python -m http.server 4173
 Open:
 
 - `/`, `/vi/`, `/zh-cn/`
-- `/blog/`, `/research/`, `/docs/`, `/search/` and localized equivalents
+- `/products/`, `/blog/`, `/research/`, `/releases/`, `/docs/`, `/search/` and localized equivalents
+- Product hosts such as `https://dossier.navinresearch.com/` and `https://sori.navinresearch.com/`
 - Direct Markdown notes such as `/blog/agents/multi-agent-orchestration-patterns.md`
 - `/visitor-map/`
 - `/visitor-insights/` — locally demo-only; production is authenticated
@@ -48,7 +51,7 @@ Do not hand-edit generated HTML as the only source of a content change. CI rejec
 
 ## SEO boundary
 
-Blog, Research, Docs, and Search routes are real and indexable. The Blog library also publishes 50 concise English Markdown notes under `/blog/<category>/<slug>.md`; they are generated from `scripts/blog-posts.mjs`, included in the sitemap and public search index, and cite official primary documentation. The existing editorial route UI remains unchanged. Research and Docs still state that content is being prepared. Do not add hidden text, doorway pages, keyword stuffing, fabricated research, fake dates, fake metrics, or unsupported schema.
+Products, Blog, Research, Releases, Docs, and Search routes are real and indexable. The Blog library also publishes 50 concise English Markdown notes under `/blog/<category>/<slug>.md`; they are generated from `scripts/blog-posts.mjs`, included in the sitemap and public search index, and cite official primary documentation. Product pages expose explicit evidence and availability states; Research and Docs still state that content is being prepared. Do not add hidden text, doorway pages, keyword stuffing, fabricated research, fake dates, fake metrics, prices, customer claims, or unsupported schema.
 
 ## Analytics boundary
 

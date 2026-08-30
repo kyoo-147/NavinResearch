@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="lajvard-title lajvard-desc">
+  <title id="lajvard-title">Lajvard companion system sketch</title>
+  <desc id="lajvard-desc">An editorial blueprint showing an imagined compact companion, a room map, a local journal, and an optional network boundary. The diagram describes design intentions, not working product claims.</desc>
+  <rect width="960" height="560" fill="#f2e5cf"/>
+  <g fill="none" stroke="#2d2722" stroke-width="2">
+    <path d="M52 74H908M52 486H908" stroke="#b8a58e"/>
+    <path d="M68 125H893M68 431H893" stroke="#b8a58e" stroke-dasharray="5 8"/>
+    <path d="M480 94V455M286 94V455M674 94V455" stroke="#b8a58e" stroke-dasharray="2 9"/>
+    <circle cx="480" cy="274" r="94" stroke="#47758a"/>
+    <circle cx="480" cy="274" r="65" stroke="#47758a" stroke-dasharray="8 7"/>
+    <path d="M480 180L519 218L560 238L570 274L549 315L510 344L480 368L445 346L407 315L390 274L402 235L440 215Z" fill="#e6d4b7"/>
+    <path d="M435 254Q480 220 525 254M440 304Q480 326 520 304"/>
+    <circle cx="454" cy="269" r="4" fill="#bf5a45" stroke="none"/>
+    <circle cx="506" cy="269" r="4" fill="#bf5a45" stroke="none"/>
+    <path d="M480 180V145M461 145H499"/>
+    <path d="M380 274H300M580 274H660" stroke="#47758a"/>
+    <path d="M300 274l14-8v16zM660 274l-14-8v16z" fill="#47758a" stroke="none"/>
+    <rect x="84" y="185" width="170" height="178" fill="#f2e5cf"/>
+    <path d="M106 222H232M106 244H215M106 286H232M106 308H198M106 350H225" stroke="#47758a"/>
+    <path d="M106 198h52" stroke="#bf5a45" stroke-width="4"/>
+    <rect x="706" y="185" width="170" height="178" fill="#f2e5cf"/>
+    <path d="M730 220h122M730 242h88M730 286h122M730 308h105M730 350h122" stroke="#47758a"/>
+    <path d="M730 198h62" stroke="#bf5a45" stroke-width="4"/>
+    <path d="M254 238h32M674 238h32" stroke="#bf5a45" stroke-dasharray="4 5"/>
+  </g>
+  <g fill="#2d2722" font-family="Arial, sans-serif">
+    <text x="68" y="52" font-size="18" font-weight="700" letter-spacing="4">LAJVARD / SYSTEM SKETCH 01</text>
+    <text x="84" y="170" font-size="12" letter-spacing="2" fill="#47758a">SPATIAL MEMORY / INTENDED</text>
+    <text x="706" y="170" font-size="12" letter-spacing="2" fill="#47758a">PRIVATE JOURNAL / INTENDED</text>
+    <text x="480" y="414" text-anchor="middle" font-size="12" letter-spacing="2" fill="#bf5a45">COMPACT COMPANION / CONCEPT</text>
+    <text x="480" y="528" text-anchor="middle" font-size="11" fill="#75685d">BLUEPRINT, NOT A PERFORMANCE CLAIM · UPDATES, NOT PREORDER</text>
+  </g>
+</svg>

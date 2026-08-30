@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, releaseRoute, sections, site } from "../site.config.mjs";
 import { pageHead } from "./components/page-head.mjs";
 import { contentHeader, escapeHtml, routeFooter, siteDrawer, siteFooter, siteHeader } from "./components/site-shell.mjs";
+import { products } from "./product-data.mjs";
 import { blogPostPath, blogPosts, renderBlogPost } from "./blog-posts.mjs";
 
 const localeEntries = Object.entries(locales);
@@ -15,6 +16,17 @@ const head = (localeKey, title, description, suffix = "", styles = ["/content-ro
   scripts: Array.isArray(scripts) ? scripts : [scripts],
   revision: homeAssetRevision,
 });
+
+const productCopy = {
+  en: { eyebrow: "PRODUCT SYSTEMS / 01—07", title: "Research, made operational.", lede: "Seven independent product programs. Each has its own interface, evidence standard, and path to availability.", status: "Current status", homeLabel: "Product systems", homeTitle: "Seven systems, built as distinct worlds.", homeLink: "View all products" },
+  vi: { eyebrow: "HỆ THỐNG SẢN PHẨM / 01—07", title: "Nghiên cứu được đưa vào vận hành.", lede: "Bảy chương trình sản phẩm độc lập. Mỗi sản phẩm có giao diện, chuẩn bằng chứng và lộ trình tiếp cận riêng.", status: "Trạng thái hiện tại", homeLabel: "Hệ thống sản phẩm", homeTitle: "Bảy hệ thống, bảy thế giới riêng.", homeLink: "Xem tất cả sản phẩm" },
+  "zh-cn": { eyebrow: "产品系统 / 01—07", title: "让研究进入实际运行。", lede: "七个独立产品计划，每一个都有自己的界面、证据标准与开放路径。", status: "当前状态", homeLabel: "产品系统", homeTitle: "七个系统，七个独立世界。", homeLink: "查看全部产品" },
+};
+
+function productGrid(localeKey, compact = false) {
+  const copy = productCopy[localeKey];
+  return products.map((product, index) => `<article class="product-entry${compact ? " product-entry--compact" : ""}"><a href="https://${product.slug}.navinresearch.com/"><span class="product-entry__number">${String(index + 1).padStart(2, "0")}</span><span class="product-entry__identity"><small>${escapeHtml(product.eyebrow)}</small><strong>${escapeHtml(product.name)}</strong></span><span class="product-entry__statement">${escapeHtml(product.thesis)}</span><span class="product-entry__state"><small>${escapeHtml(copy.status)}</small>${escapeHtml(product.status)}</span><span class="product-entry__arrow" aria-hidden="true">↗</span></a></article>`).join("\n");
+}
 
 function homeTemplate(localeKey) {
   const locale = locales[localeKey];
@@ -36,6 +48,7 @@ ${head(localeKey, locale.meta.title, locale.meta.description, "", `/styles.css?v
           <div class="hero__content"><p class="eyebrow">${escapeHtml(ui.chapterEyebrow)}</p><h1>${title}</h1><p class="statement">${escapeHtml(home.statement)}</p></div>
           <aside class="contact" aria-label="${escapeHtml(home.contactAria)}"><p>${escapeHtml(home.contactLabel)}</p><h2>${escapeHtml(home.contactTitle)}</h2><nav class="contact__links" aria-label="${escapeHtml(home.contactLinksAria)}"><a href="mailto:${site.email}"><span>Email</span><span aria-hidden="true">↗</span></a><a href="${site.linkedin}" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span aria-hidden="true">↗</span></a><a href="${site.github}" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a></nav></aside>
         </section>
+        <section class="home-products" aria-labelledby="home-products-title"><div class="home-products__intro"><p>${escapeHtml(productCopy[localeKey].homeLabel)}</p><h2 id="home-products-title">${escapeHtml(productCopy[localeKey].homeTitle)}</h2><a href="${localePath(localeKey, "products")}">${escapeHtml(productCopy[localeKey].homeLink)} <span aria-hidden="true">→</span></a></div><div class="product-directory product-directory--home">${productGrid(localeKey, true)}</div></section>
         <section class="wealth" id="wealth-of-nature" aria-labelledby="wealth-title">
           <div class="wealth__mark" aria-hidden="true"><span></span></div>
           <p class="wealth__label">${escapeHtml(ui.wealth.label)}</p>
@@ -53,7 +66,8 @@ ${head(localeKey, locale.meta.title, locale.meta.description, "", `/styles.css?v
 
 function routeNav(localeKey, current) {
   const locale = locales[localeKey];
-  return sections.map((section) => `<a href="${localePath(localeKey, section)}"${section === current ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`).join("\n          ");
+  const navSections = ["products", "research", "releases", "blog", "docs", "search"];
+  return navSections.map((section) => `<a href="${localePath(localeKey, section)}"${section === current ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`).join("\n          ");
 }
 
 function routeTemplate(localeKey, section) {
@@ -69,6 +83,17 @@ ${head(localeKey, `${route.title} — ${site.name}`, route.description, section,
     ${routeFooter(localeKey)}
   </div></body></html>
 `;
+}
+
+function productsTemplate(localeKey) {
+  const locale = locales[localeKey];
+  const copy = productCopy[localeKey];
+  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
+${head(localeKey, `${locale.routes.products.title} — ${site.name}`, locale.routes.products.description, "products", "/content-routes/route-foundation.css")}  </head><body class="route-page content-page content-products products-page"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
+    ${contentHeader(localeKey, "products")}
+    <main class="products-main"><header class="products-intro"><p class="route-page__eyebrow">${escapeHtml(copy.eyebrow)}</p><h1>${escapeHtml(copy.title)}</h1><p>${escapeHtml(copy.lede)}</p></header><section class="product-directory" aria-label="${escapeHtml(locale.routes.products.title)}">${productGrid(localeKey)}</section></main>
+    ${routeFooter(localeKey)}
+  </div></body></html>`;
 }
 
 function chapterTemplate(localeKey, chapter) {
@@ -141,7 +166,7 @@ async function emit(localeKey, suffix, html) {
 
 for (const [localeKey] of localeEntries) {
   await emit(localeKey, "", homeTemplate(localeKey));
-  for (const section of sections) await emit(localeKey, section, routeTemplate(localeKey, section));
+  for (const section of sections) await emit(localeKey, section, section === "products" ? productsTemplate(localeKey) : routeTemplate(localeKey, section));
   await emit(localeKey, releaseRoute, releaseTemplate(localeKey));
   for (const chapter of chapters) await emit(localeKey, chapter.slug, chapterTemplate(localeKey, chapter));
   for (const legalPage of legalPages) await emit(localeKey, legalPage, legalTemplate(localeKey, legalPage));
@@ -165,6 +190,14 @@ const searchIndex = pages.map(({ localeKey, suffix, url }) => {
   if (legalPages.includes(suffix)) { const copy = ui.legal[suffix]; return { language: locale.shortLabel, url, title: copy[0], description: copy[1], text: copy[2] }; }
   const route = locale.routes[suffix]; return { language: locale.shortLabel, url, title: route.title, description: route.description, text: route.lede };
 });
+searchIndex.push(...products.map((product) => ({
+  language: "EN",
+  url: `https://${product.slug}.navinresearch.com/`,
+  title: `${product.name} — Navin Research`,
+  description: product.thesis,
+  text: `${product.eyebrow} ${product.intro} ${product.capabilities.join(" ")} ${product.status}`,
+})));
+
 searchIndex.push(...markdownPosts.map((post) => ({
   language: "EN",
   url: post.url,

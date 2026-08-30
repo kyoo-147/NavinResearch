@@ -1,51 +1,9 @@
-export const products = [
-  {
-    slug: "sandora", name: "Sandora", eyebrow: "AI DEPARTMENT OS", status: "IN DEVELOPMENT",
-    thesis: "A coordinated operating layer for teams of AI agents.",
-    description: "Sandora brings roles, context, workflows, approvals, and audit trails into one human-governed system.",
-    capabilities: ["Departments", "Roles + memory", "Workflows", "Approvals", "Audit trail"],
-    stage: "Product direction / development",
-  },
-  {
-    slug: "moyi", name: "Moyi", eyebrow: "EDGE SPEECH INTELLIGENCE", status: "RESEARCH PREVIEW",
-    thesis: "Speech intelligence for multilingual systems that listen and respond.",
-    description: "An on-device translation and speech direction for operations where context, terminology, and safety messages matter.",
-    capabilities: ["Speech", "Translation", "Multilingual context", "Streaming", "Edge execution"],
-    stage: "Runtime and model research",
-  },
-  {
-    slug: "sori", name: "Sori", eyebrow: "PROGRAMMABLE VOICE RUNTIME", status: "MVP FOUNDATION",
-    thesis: "A local-first voice runtime for desktop work.",
-    description: "Sori connects a desktop shell to a local runtime so speaking, context, routing, history, and controlled actions can remain close to the user.",
-    capabilities: ["Local-first", "Desktop voice", "Model routing", "History", "Skills + permissions"],
-    stage: "Windows-first MVP foundation",
-  },
-  {
-    slug: "howhow", name: "HowHow", eyebrow: "EVIDENCE-FIRST RESEARCH OS", status: "READY FOR HUMAN REVIEW",
-    thesis: "A research system that turns bounded questions into reviewable evidence.",
-    description: "HowHow organizes briefing, literature, candidate directions, experiments, claims, provenance, review, and reproducible packages.",
-    capabilities: ["Briefing", "Evidence ledger", "Candidate comparison", "Experiment loop", "Review gates"],
-    stage: "Approved for integration spike",
-  },
-  {
-    slug: "dossier", name: "Dossier", eyebrow: "AGENTIC DOCUMENT INTELLIGENCE", status: "IN DEVELOPMENT",
-    thesis: "Documents, understood with evidence.",
-    description: "A local-first direction for turning sensitive documents into structured, reviewable, and validated data.",
-    capabilities: ["OCR", "Handwriting", "Layout analysis", "Structured extraction", "Validation"],
-    stage: "Product direction / development",
-  },
-  {
-    slug: "autopilot", name: "Autopilot", eyebrow: "AUTONOMOUS SCALE-MODEL VEHICLES", status: "OPEN RESEARCH REFERENCE",
-    thesis: "A ROS and deep-learning stack for autonomous scale-model vehicles.",
-    description: "A research reference combining perception, localization, embedded hardware, lane keeping, and vehicle control.",
-    capabilities: ["ROS", "Camera + IMU", "Localization", "Lane keeping", "Embedded control"],
-    stage: "Academic / research reference",
-  },
-  {
-    slug: "lajvard", name: "Lajvard", eyebrow: "PERSONAL ROBOT RESEARCH", status: "CONCEPT / DESIGN RESEARCH",
-    thesis: "A personal robot that grows alongside everyday life.",
-    description: "A long-horizon design research program for friendly humanoid and compact robots with spatial awareness, memory, personality, and a portable intelligence layer.",
-    capabilities: ["LiDAR mapping", "Spatial memory", "Voice identity", "Offline + online", "Modular firmware"],
-    stage: "Concept and prototype research",
-  },
-];
+import sandora from "../products/content/sandora.mjs";
+import moyi from "../products/content/moyi.mjs";
+import sori from "../products/content/sori.mjs";
+import howhow from "../products/content/howhow.mjs";
+import dossier from "../products/content/dossier.mjs";
+import autopilot from "../products/content/autopilot.mjs";
+import lajvard from "../products/content/lajvard.mjs";
+
+export const products = [sandora, moyi, sori, howhow, dossier, autopilot, lajvard];

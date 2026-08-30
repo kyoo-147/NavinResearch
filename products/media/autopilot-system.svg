@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Autopilot vehicle research loop</title>
+  <desc id="desc">Editorial diagram showing camera, IMU, sonar, and localisation entering a ROS topic spine, then perception and control leading to an embedded vehicle.</desc>
+  <rect width="1200" height="620" fill="#101315"/>
+  <g fill="none" stroke="#53605d" stroke-width="2">
+    <path d="M80 112H1120M80 508H1120"/>
+    <path d="M300 80V540M600 80V540M900 80V540" stroke-dasharray="5 9"/>
+  </g>
+  <g fill="#aab3ad" font-family="Arial, sans-serif" font-size="16" letter-spacing="2">
+    <text x="80" y="70">SENSORS</text><text x="385" y="70">ROS TOPICS</text><text x="680" y="70">DRIVING LOOP</text><text x="980" y="70">VEHICLE</text>
+  </g>
+  <g fill="#171c1e" stroke="#8bb6aa" stroke-width="2">
+    <rect x="80" y="158" width="180" height="62"/><rect x="80" y="280" width="180" height="62"/><rect x="80" y="402" width="180" height="62"/>
+    <rect x="370" y="180" width="180" height="62"/><rect x="370" y="362" width="180" height="62"/>
+    <rect x="670" y="158" width="180" height="62"/><rect x="670" y="280" width="180" height="62"/><rect x="670" y="402" width="180" height="62"/>
+    <rect x="970" y="250" width="150" height="120"/>
+  </g>
+  <g fill="#eef0e8" font-family="Arial, sans-serif" font-size="18">
+    <text x="112" y="196">CAMERA</text><text x="112" y="318">BNO055 IMU</text><text x="112" y="440">SONAR / GPS</text>
+    <text x="398" y="218">IMAGE / IMU</text><text x="398" y="400">LOCALISATION</text>
+    <text x="700" y="196">PERCEPTION</text><text x="700" y="318">LANE ERROR</text><text x="700" y="440">PURE PURSUIT + PID</text>
+    <text x="1000" y="294">SERIAL</text><text x="1000" y="326">MOTOR +</text><text x="1000" y="350">STEERING</text>
+  </g>
+  <g fill="none" stroke="#e4c45b" stroke-width="3">
+    <path d="M260 189H370"/><path d="M260 311H370"/><path d="M260 433H370"/><path d="M550 211H670"/><path d="M550 393H670"/><path d="M760 220V280"/><path d="M760 342V402"/><path d="M850 433H970"/>
+  </g>
+  <g fill="#e4c45b"><path d="m360 181 12 8-12 8z"/><path d="m660 181 12 8-12 8z"/><path d="m958 425 12 8-12 8z"/><path d="m752 270 8 12 8-12z"/><path d="m752 392 8 12 8-12z"/></g>
+  <text x="80" y="575" fill="#aab3ad" font-family="Arial, sans-serif" font-size="14" letter-spacing="1">DOCUMENTED RESEARCH PATH · IMPLEMENTATION REFERENCES, NOT A GENERAL-ROAD AUTONOMY CLAIM</text>
+</svg>
