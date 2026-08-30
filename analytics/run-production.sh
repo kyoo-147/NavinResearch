@@ -20,3 +20,8 @@ cat "${logs[@]}" | "$python" "$aggregate" - \
   --private-json "$state_dir/private.json" \
   --retention-days 90 \
   --minimum 5
+
+chown root:www-data "$state_dir/public.json" "$state_dir/private.json"
+chmod 0644 "$state_dir/public.json"
+chmod 0640 "$state_dir/private.json"
+chmod 0600 "$state_dir/visitors.sqlite3"
