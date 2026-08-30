@@ -51,6 +51,7 @@ export default {
   name: "HowHow",
   eyebrow: "EVIDENCE-FIRST RESEARCH OS",
   status: "READY FOR HUMAN REVIEW",
+  catalogStatus: "product",
   thesis: "A bounded research application that keeps approvals, provenance, and failure history beside every useful result.",
   intro: "HowHow is an evidence-first Research OS for making bounded research work inspectable from question to review. Its current direction is approved for an integration spike; consequential decisions remain explicitly human-owned.",
   proofNote: "The direction is grounded in the HowHow-Reasoner requirements: evidence before prose, human-owned consequential decisions, durable provenance, and truthful readiness. This page describes a research application, not a claim of completed product capability.",

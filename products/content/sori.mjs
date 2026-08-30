@@ -3,6 +3,7 @@ const sori = {
   name: "Sori",
   eyebrow: "PROGRAMMABLE VOICE RUNTIME",
   status: "BETA INTEREST ONLY",
+  catalogStatus: "product",
   thesis: "A quiet, local-first voice runtime for desktop work.",
   intro: "Sori is a Windows-first desktop MVP foundation: a small instrument for speaking into the active app, with the runtime, permissions, and boundaries kept visible when they matter.",
   proofNote: "The repository documents a Rust daemon, loopback IPC, SQLite persistence, and explicit capability diagnostics. Microphone speech, physical hotkey delivery, focused-app insertion, and transcript persistence from a real session remain UNVERIFIED and machine-dependent.",

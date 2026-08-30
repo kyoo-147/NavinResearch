@@ -53,7 +53,7 @@ const pages = pageSpecs.map(([path, title, description, eyebrow, headline, lede,
 });
 
 const sandora = {
-  slug: 'sandora', name: 'Sandora', eyebrow: 'AI DEPARTMENT OS', status: 'CONCEPT / EARLY ACCESS',
+  slug: 'sandora', name: 'Sandora', eyebrow: 'AI DEPARTMENT OS', status: 'CONCEPT / EARLY ACCESS', catalogStatus: 'product',
   thesis: 'An organizational atlas for virtual AI teams, where automated work remains visible, reviewable, and human-governed.',
   intro: 'Sandora is an early product direction for coordinating virtual AI teams. It treats roles, context, handoffs, approvals, and audit as the connective tissue of automated workflows—not as hidden implementation detail.',
   proofNote: 'Concept-stage description only. No production deployment, performance claim, pricing, customer result, certification, or physical proof is being asserted.',

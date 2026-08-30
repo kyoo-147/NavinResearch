@@ -16,6 +16,7 @@ const lajvard = {
   name: 'Lajvard',
   eyebrow: 'WARM COMPANION FIELD NOTES / BLUEPRINT 01',
   status: 'CONCEPT STAGE · UPDATES, NOT PREORDER',
+  catalogStatus: 'research',
   thesis: 'A cute, compact humanoid companion imagined for the small rituals of a room: noticing where it is, remembering what matters, and answering with a personality that feels present without pretending to be human.',
   intro: 'Lajvard is a product direction, not a shipping promise. This notebook describes the questions we are testing around a portable robot with spatial awareness, a private journal, and a gentle social presence.',
   proofNote: 'The capabilities below are intentions and design hypotheses. No Lajvard hardware, firmware, availability, performance, or offline/online behavior is being claimed here.',

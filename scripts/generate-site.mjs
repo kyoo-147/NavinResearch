@@ -18,14 +18,18 @@ const head = (localeKey, title, description, suffix = "", styles = ["/content-ro
 });
 
 const productCopy = {
-  en: { eyebrow: "PRODUCT SYSTEMS / 01—07", title: "Research, made operational.", lede: "Seven independent product programs. Each has its own interface, evidence standard, and path to availability.", status: "Current status", homeLabel: "Product systems", homeTitle: "Seven systems, built as distinct worlds.", homeLink: "View all products" },
-  vi: { eyebrow: "HỆ THỐNG SẢN PHẨM / 01—07", title: "Nghiên cứu được đưa vào vận hành.", lede: "Bảy chương trình sản phẩm độc lập. Mỗi sản phẩm có giao diện, chuẩn bằng chứng và lộ trình tiếp cận riêng.", status: "Trạng thái hiện tại", homeLabel: "Hệ thống sản phẩm", homeTitle: "Bảy hệ thống, bảy thế giới riêng.", homeLink: "Xem tất cả sản phẩm" },
-  "zh-cn": { eyebrow: "产品系统 / 01—07", title: "让研究进入实际运行。", lede: "七个独立产品计划，每一个都有自己的界面、证据标准与开放路径。", status: "当前状态", homeLabel: "产品系统", homeTitle: "七个系统，七个独立世界。", homeLink: "查看全部产品" },
+  en: { eyebrow: "PRODUCT SYSTEMS / 01—07", title: "Research, made operational.", lede: "Seven independent product programs. Each has its own interface, evidence standard, and path to availability.", status: "Current status", product: "PRODUCT", research: "IN RESEARCH", homeLabel: "Product systems", homeTitle: "Seven systems, built as distinct worlds.", homeLink: "View all products" },
+  vi: { eyebrow: "HỆ THỐNG SẢN PHẨM / 01—07", title: "Nghiên cứu được đưa vào vận hành.", lede: "Bảy chương trình sản phẩm độc lập. Mỗi sản phẩm có giao diện, chuẩn bằng chứng và lộ trình tiếp cận riêng.", status: "Trạng thái hiện tại", product: "SẢN PHẨM", research: "ĐANG NGHIÊN CỨU", homeLabel: "Hệ thống sản phẩm", homeTitle: "Bảy hệ thống, bảy thế giới riêng.", homeLink: "Xem tất cả sản phẩm" },
+  "zh-cn": { eyebrow: "产品系统 / 01—07", title: "让研究进入实际运行。", lede: "七个独立产品计划，每一个都有自己的界面、证据标准与开放路径。", status: "当前状态", product: "产品", research: "研究中", homeLabel: "产品系统", homeTitle: "七个系统，七个独立世界。", homeLink: "查看全部产品" },
 };
 
 function productGrid(localeKey, compact = false) {
   const copy = productCopy[localeKey];
-  return products.map((product, index) => `<article class="product-entry${compact ? " product-entry--compact" : ""}"><a href="https://${product.slug}.navinresearch.com/"><span class="product-entry__number">${String(index + 1).padStart(2, "0")}</span><span class="product-entry__identity"><small>${escapeHtml(product.eyebrow)}</small><strong>${escapeHtml(product.name)}</strong></span><span class="product-entry__statement">${escapeHtml(product.thesis)}</span><span class="product-entry__state"><small>${escapeHtml(copy.status)}</small>${escapeHtml(product.status)}</span><span class="product-entry__arrow" aria-hidden="true">↗</span></a></article>`).join("\n");
+  return products.map((product, index) => {
+    const catalogStatus = copy[product.catalogStatus];
+    if (!catalogStatus) throw new Error(`Missing catalog status for ${product.slug}`);
+    return `<article class="product-entry${compact ? " product-entry--compact" : ""}"><a href="https://${product.slug}.navinresearch.com/"><span class="product-entry__number">${String(index + 1).padStart(2, "0")}</span><span class="product-entry__identity"><small>${escapeHtml(product.eyebrow)}</small><strong>${escapeHtml(product.name)}</strong></span><span class="product-entry__statement">${escapeHtml(product.thesis)}</span><span class="product-entry__state"><small>${escapeHtml(copy.status)}</small>${escapeHtml(catalogStatus)}</span><span class="product-entry__arrow" aria-hidden="true">↗</span></a></article>`;
+  }).join("\n");
 }
 
 function homeTemplate(localeKey) {
