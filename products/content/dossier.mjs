@@ -25,8 +25,8 @@ const pageSpecs = [
 const pages = pageSpecs.map(([path, title, description, headline, lede, kind, items, sectionTitle, body]) => ({
   path, title, description, eyebrow: "DOSSIER / DOCUMENT INTELLIGENCE", headline, lede,
   visual: { kind, title: "Illustrative interface state", items, caption: "Illustrative only — not a live processing result." },
-  sections: [{ kind: "editorial", title: sectionTitle, body, points: items, status: "CONCEPT / SOURCE-BOUND" }],
-  cta: { title: "Continue with context", body: "Bring the workflow and its evidence requirements into the next conversation.", label: "Contact Dossier", href: "/products/dossier/contact/" }
+  sections: [{ kind, title: sectionTitle, body, points: items, status: "CONCEPT / SOURCE-BOUND" }, { kind: "evidence", title: `What this ${path === "/" ? "desk" : "route"} is for`, body: `${body} The page stays deliberately separate from a live processing result: this is a product direction and interface contract, not a performance claim.`, points: ["Source context stays adjacent", "Uncertainty remains addressable", "A reviewer can stop the handoff"] }],
+  cta: { title: "Continue with context", body: "Bring the workflow and its evidence requirements into the next conversation.", label: "Contact Dossier", href: "/contact/" }
 }));
 
 const dossier = {
@@ -40,9 +40,9 @@ const dossier = {
   availability: { label: "Availability", title: "A desk being drawn in public.", body: "Dossier is not presented as a launched product. Share an early-access signal to help shape the review workflow and the documents it should respect.", cta: "Register interest" },
   sourceLinks: [{ label: "W3C Web Annotation Data Model", url: "https://www.w3.org/TR/annotation-model/" }, { label: "JSON Schema specification", url: "https://json-schema.org/specification" }, { label: "NIST AI Risk Management Framework", url: "https://www.nist.gov/itl/ai-risk-management-framework" }],
   site: {
-    primaryCta: { label: "Contact Dossier", href: "/products/dossier/contact/" },
-    navigation: [{ label: "Product", href: "/products/dossier/product/" }, { label: "Workflows", href: "/products/dossier/workflows/" }, { label: "Developers", href: "/products/dossier/developers/" }, { label: "Contact", href: "/products/dossier/contact/" }],
-    footerGroups: [{ title: "Explore", links: [{ label: "Document processing", href: "/products/dossier/document-processing/" }, { label: "Use cases", href: "/products/dossier/use-cases/" }, { label: "Security", href: "/products/dossier/security/" }] }, { title: "Reference", links: [{ label: "Docs", href: "/products/dossier/docs/" }, { label: "Pricing", href: "/products/dossier/pricing/" }, { label: "Contact", href: "/products/dossier/contact/" }] }],
+    primaryCta: { label: "Contact Dossier", href: "/contact/" },
+    navigation: [{ label: "The desk", href: "/product/" }, { label: "Processing", children: [{ label: "Document processing", href: "/document-processing/" }, { label: "Extraction", href: "/extraction/" }, { label: "Validation", href: "/validation/" }] }, { label: "Review", children: [{ label: "Reconciliation", href: "/reconciliation/" }, { label: "Human review", href: "/review/" }, { label: "Workflows", href: "/workflows/" }] }, { label: "Build", children: [{ label: "Integrations", href: "/integrations/" }, { label: "Developers", href: "/developers/" }, { label: "Docs", href: "/docs/" }] }, { label: "Contact", href: "/contact/" }],
+    footerGroups: [{ title: "The desk", links: [{ label: "Document processing", href: "/document-processing/" }, { label: "Extraction", href: "/extraction/" }, { label: "Human review", href: "/review/" }] }, { title: "Decisions", links: [{ label: "Reconciliation", href: "/reconciliation/" }, { label: "Use cases", href: "/use-cases/" }, { label: "Workflows", href: "/workflows/" }] }, { title: "Build", links: [{ label: "Integrations", href: "/integrations/" }, { label: "Developers", href: "/developers/" }, { label: "Docs", href: "/docs/" }] }, { title: "Boundaries", links: [{ label: "Security", href: "/security/" }, { label: "Availability", href: "/pricing/" }, { label: "Contact", href: "/contact/" }] }],
     pages
   }
 };

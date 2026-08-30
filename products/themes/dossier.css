@@ -250,3 +250,22 @@
 .product-dossier .product-menu-button { color: #f4f0e6; }
 .product-dossier .product-header .product-nav a[aria-current="page"] { color: #f4f0e6; text-decoration: underline; }
 .product-dossier .product-evidence-block li small { color: #f4f0e6; }
+
+/* Dossier route grammar: the desk changes instrument by stage, rather than repeating a landing-page card. */
+.product-dossier .product-page-hero { align-items: end; grid-template-columns: minmax(0, .82fr) minmax(22rem, 1.18fr); }
+.product-dossier .product-page-hero__copy h1, .product-dossier .product-page-cta h2, .product-dossier .product-page-section h2 { font-family: Georgia, 'Times New Roman', serif; }
+.product-dossier .product-page-hero__copy h1 { max-width: 11ch; }
+.product-dossier .product-visual__stage { --visual-bg: #f5efdf; --visual-ink: var(--dossier-ink); min-height: 30rem; border: 2px solid var(--dossier-ink); background: var(--visual-bg); box-shadow: .7rem .7rem 0 rgba(23,24,20,.16); }
+.product-dossier .product-visual__stage::after { content: 'SOURCE / REVIEW / HANDOFF'; position: absolute; right: 1rem; bottom: 1rem; color: var(--dossier-muted); font: 700 .58rem/1 Arial, sans-serif; letter-spacing: .12em; }
+.product-dossier .product-visual__stage::before { background: linear-gradient(90deg, rgba(93,96,79,.22) 1px, transparent 1px), linear-gradient(rgba(93,96,79,.22) 1px, transparent 1px); background-size: 2.5rem 2.5rem; }
+.product-dossier .product-visual__items span { border-left: 3px solid var(--dossier-signal); background: #fffaf0; box-shadow: .3rem .3rem 0 rgba(23,24,20,.12); }
+.product-dossier .product-visual--bounding-boxes .product-visual__items span:nth-child(2) { transform: translateX(24%) rotate(-1deg); }
+.product-dossier .product-visual--discrepancy .product-visual__items span:nth-child(2) { border-left-color: #6f735f; }
+.product-dossier .product-visual--review-queue .product-visual__items span { border-left-color: #6f735f; }
+.product-dossier .product-visual--integration .product-visual__stage { background: #e4dcc8; }
+.product-dossier .product-page-section[data-kind="evidence"] { background: #e4dcc8; margin-inline: calc(var(--edge) * -1); padding-inline: var(--edge); }
+.product-dossier .product-page-section[data-kind="editorial"] { background: #f5efdf; }
+.product-dossier .product-page-section[data-kind="evidence"] li { background: #f5efdf; }
+.product-dossier .product-page-section__status { font-family: Arial, sans-serif; }
+.product-dossier .product-footer { border-top: 1px solid var(--dossier-line); }
+@media (max-width: 800px) { .product-dossier .product-page-hero { grid-template-columns: 1fr; } .product-dossier .product-visual__stage { min-height: 23rem; } }

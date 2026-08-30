@@ -1,7 +1,7 @@
 # Dossier design DNA
 
 ## Direction
-Dark-editorial fieldwork translated into a warm paper dossier: a document desk, not a SaaS dashboard. Every visual state is explicitly illustrative unless backed by a live receipt.
+Warm forensic document desk: a paper working file opened beside a dark instrument strip. The page follows a document through intake, extraction, validation, reconciliation, review, and handoff; each stage gets its own evidence posture instead of a generic feature-card treatment. Every visual state is explicitly illustrative unless backed by a live receipt.
 
 ## Typography
 Use a high-contrast editorial serif for page titles and a restrained system sans for labels, status, navigation, and controls. Tight display tracking; generous readable body measure.
@@ -15,6 +15,17 @@ Use a high-contrast editorial serif for page titles and a restrained system sans
 
 ## Spacing and layout
 Use ruled sections, asymmetric two-column editorial composition from 768px upward, and 1rem–6rem responsive gutters. At 375px collapse to one column, preserve 44px-equivalent target area, and never require horizontal scrolling.
+
+## Primitives
+## Information architecture
+- **The desk**: product thesis and the review workstation.
+- **Processing**: document processing, extraction, and validation explain how source pages become candidate records.
+- **Review**: reconciliation, human review, and workflows explain disagreement, decisions, and ownership.
+- **Build**: integrations, developers, and docs explain contracts without implying a live API.
+- **Boundaries**: security, availability/pricing, privacy, terms, and contact state what is known and what remains unannounced.
+
+## Reference reconstruction notes
+Reducto's document-first extraction story, Rossum's document-to-workflow framing, and Nanonets' OCR/API/solutions split informed the route map. Dossier adapts those category patterns into a local-first, source-adjacent review desk: no copied identity, no fabricated demo output, and no invented commercial terms.
 
 ## Primitives
 Illustrative document canvas; restrained bounding boxes; evidence links; confidence/status labels; discrepancy rows; retry and human-review states; source trail. Prefer borders, rules, and whitespace over cards.
