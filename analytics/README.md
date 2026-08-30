@@ -23,7 +23,8 @@ Use a complete Navin-specific log whose accepted requests are chronological by U
 uv run --with 'geoip2>=4.8,<5' analytics/aggregate.py \
   /var/log/nginx/navinresearch.access.log \
   --db /var/lib/navin-analytics/visitors.sqlite3 \
-  --mmdb /var/lib/navin-analytics/GeoLite2-City.mmdb \
+  --mmdb /var/lib/navin-analytics/DBIP-City-Lite.mmdb \
+  --provider "DB-IP City Lite" \
   --public-json /var/lib/navin-analytics/public.json \
   --private-json /var/lib/navin-analytics/private.json \
   --retention-days 90 \

@@ -5,7 +5,7 @@ Source for [navinresearch.com](https://navinresearch.com): a multilingual static
 ## Architecture
 
 - `site.config.mjs` — source of truth for EN/VI/ZH-CN copy, metadata, routes, and locale prefixes.
-- `scripts/generate-site.mjs` — generates 42 localized pages, 50 English Markdown blog posts, search metadata, and sitemap.
+- `scripts/generate-site.mjs` — generates 60 localized pages, 50 English Markdown blog posts, search metadata, and sitemap.
 - `scripts/generate-products.mjs` — generates seven source-backed product microsites with distinct themes, evidence, access states, and cross-navigation.
 - `products/` — product content contracts, original diagrams, project-owned media, themes, and architecture documentation in `docs/products.md`.
 - `scripts/blog-posts.mjs` — source manifest and renderer for practical, source-linked AI engineering notes.
@@ -17,13 +17,12 @@ Source for [navinresearch.com](https://navinresearch.com): a multilingual static
 - `docs/` — design system, reusable component contracts, accessibility, SEO, and privacy rules.
 - `deployment-example/` — Nginx boundaries for public/private analytics data.
 
-The root `1.png`–`5.png` files are versioned design sources. Production deploys only optimized `assets/field-*.webp` files.
+The root `1.png`–`5.png` files are versioned design sources. For field backgrounds, a production release allowlist must include the optimized `assets/field-*.webp` files and exclude the root source PNGs; required HTML, CSS, JavaScript, fonts, brand assets, and product media remain separate allowlisted assets.
 
 ## Local development
 
 ```bash
-node scripts/generate-site.mjs
-node content-routes/validate.mjs
+npm test
 uv run python -m unittest analytics.test_aggregate -v
 uv run python -m http.server 4173
 ```
@@ -47,7 +46,7 @@ Open:
 6. Commit, push, open a pull request, review, and merge.
 7. Deploy an allowlisted release atomically and keep the prior release for rollback.
 
-Do not hand-edit generated HTML as the only source of a content change. CI rejects stale generated output.
+Do not hand-edit generated HTML as the only source of a content change. Local `npm test` is the complete generated-output freshness gate; the current CI workflow checks parent generation only and must not be treated as product-generation coverage.
 
 ## SEO boundary
 
