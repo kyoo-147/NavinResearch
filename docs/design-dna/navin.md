@@ -19,3 +19,7 @@ Every public claim must be traceable to an owned source. Planned work is labelle
 ## Interaction and access
 
 The page remains usable at 375, 768, 1440, and wide desktop widths. Focus states, semantic landmarks, labelled controls, sufficient contrast, and keyboard navigation are required. Ambient motion must stop under `prefers-reduced-motion`; no interaction should depend on motion or hover.
+
+## Structural boundary
+
+Navin is the institutional index: research programs, evidence, notes, releases, and product provenance. Its routes should remain editorial indexes and source trails rather than inheriting product-site navigation or conversion shells. Product sites may reuse accessibility and metadata mechanics, but their information architecture and composition remain independently owned.

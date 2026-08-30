@@ -156,9 +156,16 @@ if (!Array.isArray(productManifest) || !productManifest.length) errors.push("pro
 for (const entry of productManifest) {
   try { await access(entry.output); } catch { errors.push(`product site manifest: missing ${entry.output}`); }
   const routeHtml = await readFile(entry.output, "utf8");
-  for (const marker of ['class="product-header"', 'class="product-main"', 'class="product-footer"', '<meta name="description"']) {
+  for (const marker of ['class="product-header"', 'class="product-main"', 'class="product-footer"', '<meta name="description"', 'data-layout="', 'product-page-hero--']) {
     if (!routeHtml.includes(marker)) errors.push(`${entry.output}: route marker missing: ${marker}`);
   }
+  if (!entry.layout) errors.push(`${entry.output}: manifest layout missing`);
+  if (entry.layout && !routeHtml.includes(`data-layout="${entry.layout}"`)) errors.push(`${entry.output}: manifest/layout mismatch`);
+}
+
+for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {
+  const layouts = new Set(productManifest.filter((entry) => entry.product === slug).map((entry) => entry.layout));
+  if (layouts.size < 3) errors.push(`${slug}: route architecture is too repetitive (${layouts.size} layouts)`);
 }
 
 const robots = await readFile("robots.txt", "utf8");

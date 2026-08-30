@@ -25,6 +25,21 @@ const outputPath = (slug, route) => route === "/"
     ? `${slug}/404.html`
     : `${slug}${route}index.html`;
 const absolute = (product, path) => `https://${product.slug}.navinresearch.com${path}`;
+const layouts = new Set(["editorial", "index", "workflow", "docs", "specs", "media", "ledger", "timeline", "comparison", "availability"]);
+const layoutFor = (page) => {
+  if (page.layout && layouts.has(page.layout)) return page.layout;
+  const path = normalizePath(page.path);
+  if (path === "/") return "editorial";
+  if (/pricing|contact|availability/.test(path)) return "availability";
+  if (/docs|developers|github/.test(path)) return "docs";
+  if (/research|releases|changelog/.test(path)) return "timeline";
+  if (/benchmarks|specs|hardware|models|api/.test(path)) return "specs";
+  if (/use-cases|solutions|workflows|planning|control|movement/.test(path)) return "workflow";
+  if (/integrations|devices|gallery|media/.test(path)) return "media";
+  if (/security|privacy|terms/.test(path)) return "ledger";
+  return page.visual?.kind === "comparison" ? "comparison" : "index";
+};
+const layoutClass = (layout) => `product-layout-${layout}`;
 
 function fallbackSite(product) {
   const sources = product.sourceLinks.map((source) => source.url);
@@ -117,11 +132,21 @@ function visualMarkup(product, visual = {}) {
   return `<figure class="product-visual product-visual--${esc(visual.kind)}" data-visual="${esc(visual.kind)}"><div class="product-visual__stage"><span class="product-visual__title">${esc(visual.title || product.name)}</span><div class="product-visual__items">${items.map((item, index) => `<span style="--item:${index}">${esc(item)}</span>`).join("")}</div></div>${visual.caption ? `<figcaption>${esc(visual.caption)}</figcaption>` : ""}</figure>`;
 }
 
+function renderSectionPoints(section, layout) {
+  if (!section.points?.length) return "";
+  const items = section.points.map((point) => `<li>${esc(point)}</li>`).join("");
+  if (["workflow", "timeline"].includes(layout)) return `<ol class="product-section-points product-section-points--ordered">${items}</ol>`;
+  if (["specs", "ledger"].includes(layout)) return `<dl class="product-section-points product-section-points--ledger">${section.points.map((point, index) => `<div><dt>${String(index + 1).padStart(2, "0")}</dt><dd>${esc(point)}</dd></div>`).join("")}</dl>`;
+  return `<ul class="product-section-points">${items}</ul>`;
+}
+
 function sectionsMarkup(page) {
-  return (page.sections || []).map((section, index) => `<section class="product-page-section" data-kind="${esc(section.kind || "narrative")}">
+  const layout = layoutFor(page);
+  const rendererClass = `product-section--${layout}`;
+  return (page.sections || []).map((section, index) => `<section class="product-page-section ${rendererClass}" data-kind="${esc(section.kind || "narrative")}" data-renderer="${layout}">
     <div class="product-page-section__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div>
     <div class="product-page-section__copy"><h2>${esc(section.title)}</h2><p>${esc(section.body)}</p>${section.status ? `<strong class="product-page-section__status">${esc(section.status)}</strong>` : ""}</div>
-    ${section.points?.length ? `<ul>${section.points.map((point) => `<li>${esc(point)}</li>`).join("")}</ul>` : ""}
+    ${renderSectionPoints(section, layout)}
     ${section.cta ? `<a class="product-text-link" href="${esc(section.cta.href)}"${linkAttrs(section.cta.href)}>${esc(section.cta.label)} <span aria-hidden="true">→</span></a>` : ""}
   </section>`).join("");
 }
@@ -135,6 +160,7 @@ function footerMarkup(product, site) {
 function pageTemplate(product, site, page) {
   const path = normalizePath(page.path);
   const canonicalPath = path === "/404.html" ? "/404.html" : path;
+  const layout = layoutFor(page);
   const canonical = absolute(product, canonicalPath);
   const isHome = path === "/";
   const cta = page.cta || site.primaryCta;
@@ -163,7 +189,7 @@ function pageTemplate(product, site, page) {
   <script src="/products/product-site.js?v=20260830-2" defer></script>
   <title>${esc(page.title)}${isHome ? "" : ` | ${esc(product.name)}`}</title>
 </head>
-<body class="product-${product.slug}" data-product="${product.slug}" data-route="${esc(path)}">
+<body class="product-${product.slug} product-layout-${layout}" data-product="${product.slug}" data-route="${esc(path)}" data-layout="${layout}">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="product-field" aria-hidden="true"></div>
   <header class="product-header">
@@ -175,11 +201,11 @@ function pageTemplate(product, site, page) {
     </div>
   </header>
   <main id="main-content" class="product-main">
-    <section class="product-page-hero${isHome ? " product-page-hero--home" : ""}">
+    <section class="product-page-hero product-page-hero--${layout}${isHome ? " product-page-hero--home" : ""}">
       <div class="product-page-hero__copy">${page.eyebrow ? `<p class="product-eyebrow">${esc(page.eyebrow)}</p>` : ""}<h1>${esc(page.headline || page.title)}</h1><p>${esc(page.lede || page.description)}</p>${isHome ? `<div class="product-page-hero__actions"><a class="product-button" href="${esc(site.primaryCta.href)}"${linkAttrs(site.primaryCta.href)}>${esc(site.primaryCta.label)}</a><a class="product-text-link" href="${esc(productRoute)}">Explore the product <span aria-hidden="true">→</span></a></div>` : ""}</div>
       ${visualMarkup(product, page.visual)}
     </section>
-    <div class="product-page-sections">${sectionsMarkup(page)}</div>
+    <div class="product-page-sections product-page-sections--${layout}">${sectionsMarkup(page)}</div>
     ${cta ? `<section class="product-page-cta"><div><h2>${esc(cta.title || "Continue")}</h2><p>${esc(cta.body || product.availability.body)}</p></div><a class="product-button" href="${esc(cta.href)}"${linkAttrs(cta.href)}>${esc(cta.label)}</a></section>` : ""}
     ${isHome && product.media?.length ? `<section class="product-source-gallery"><h2>Project source material</h2><div>${product.media.map((item) => `<figure><img src="${esc(item.src)}" alt="${esc(item.alt)}" loading="lazy"><figcaption>${esc(item.caption)}</figcaption></figure>`).join("")}</div></section>` : ""}
     ${isHome ? `<section class="product-evidence-block"><div><h2>Evidence and limitations</h2><p>${esc(product.proofNote)}</p></div><ul>${product.evidence.map((item) => `<li><span>${esc(item.label)}</span><strong>${esc(item.value)}</strong><small>${esc(item.state)}</small></li>`).join("")}</ul></section>` : ""}
@@ -207,7 +233,7 @@ for (const product of products) {
     await mkdir(output.slice(0, output.lastIndexOf("/")), { recursive: true });
     const html = pageTemplate(product, site, { ...page, path: route }).replace(/[ \t]+$/gm, "");
     await writeFile(output, html, "utf8");
-    manifest.push({ product: product.slug, name: product.name, path: route, output, url: absolute(product, route), title: page.title });
+    manifest.push({ product: product.slug, name: product.name, path: route, layout: layoutFor({ ...page, path: route }), output, url: absolute(product, route), title: page.title });
   }
   const publicRoutes = pages.map((page) => normalizePath(page.path)).filter((route) => route !== "/404.html");
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicRoutes.map((route) => `  <url><loc>${absolute(product, route)}</loc></url>`).join("\n")}\n</urlset>\n`;

@@ -54,3 +54,20 @@ Current non-commercial product CTAs are either:
 - a direct open-research source link.
 
 Do not add deposits, checkout, pricing numbers, delivery estimates, or an email-marketing form until the owner approves packages, terms, privacy/retention, consent copy, regions, support obligations, and a production data processor.
+
+## Layout contract
+
+The generator separates shared technical primitives from page composition. Every route resolves an explicit `data-layout` value (or a future `page.layout` override) from this vocabulary:
+
+- `editorial` — thesis-led product landing page;
+- `index` — route directory or orientation;
+- `workflow` — sequential steps, use cases, and handoffs;
+- `docs` — developer and documentation entry points;
+- `specs` — models, APIs, hardware, and bounded technical detail;
+- `media` — source imagery, galleries, and visual evidence;
+- `ledger` — privacy, security, and evidence boundaries;
+- `timeline` — research and release chronology;
+- `comparison` — explicit side-by-side distinctions;
+- `availability` — access, contact, and commercial-status boundaries.
+
+These layouts intentionally share semantic markup, focus behavior, and responsive primitives, while CSS modifiers change composition per page and product theme. Validation fails when a generated route omits its layout contract or a product collapses to fewer than three route layouts.
