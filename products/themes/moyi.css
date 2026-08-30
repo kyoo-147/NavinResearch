@@ -219,3 +219,17 @@
 .product-dossier .product-header .product-nav > a,
 .product-dossier .product-header .product-nav summary { color: #f4f0e6; }
 .product-dossier .product-header .product-nav a[aria-current="page"] { color: var(--accent); }
+
+/* Moyi's sonic language: ruled signal traces, not generic product cards. */
+.product-moyi .product-page-hero { grid-template-columns: minmax(0, .9fr) minmax(22rem, 1.1fr); align-items: end; }
+.product-moyi .product-page-hero__copy h1 { font-family: Georgia, "Times New Roman", serif; max-width: 10ch; }
+.product-moyi .product-visual__stage { border-color: var(--moyi-cyan); background: #0d1716; }
+.product-moyi .product-visual__stage::before { background: repeating-linear-gradient(0deg, transparent 0 2.4rem, color-mix(in srgb, var(--moyi-cyan) 35%, transparent) 2.4rem 2.45rem); background-size: auto; opacity: .38; }
+.product-moyi .product-visual__items { gap: 1.1rem; margin-top: 7rem; }
+.product-moyi .product-visual__items span { border-left: 0; border-bottom: 1px solid var(--moyi-signal); padding: .65rem 0; background: transparent; transform: none; }
+.product-moyi .product-visual__items span::before { content: "◌  "; color: var(--moyi-cyan); }
+.product-moyi .product-page-section[data-kind$="-field"] { background: color-mix(in srgb, var(--moyi-cyan) 5%, transparent); }
+.product-moyi .product-page-section[data-kind$="-field"] h2 { color: var(--moyi-signal); font-family: "IBM Plex Mono", "Courier New", monospace; font-size: clamp(1.35rem, 2.7vw, 2.5rem); letter-spacing: -.02em; }
+.product-moyi .product-page-section[data-kind$="-field"] li { background: transparent; }
+.product-moyi .product-page-section[data-kind="architecture"] { grid-template-columns: 3rem minmax(14rem, .5fr) minmax(18rem, 1.5fr); }
+@media (max-width: 800px) { .product-moyi .product-page-hero { grid-template-columns: 1fr; } .product-moyi .product-visual__items { margin-top: 4rem; } }
