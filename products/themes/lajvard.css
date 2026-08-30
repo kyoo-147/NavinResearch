@@ -45,3 +45,37 @@
 .product-lajvard .product-header .product-nav a[aria-current="page"] { color: #f4f0e6; text-decoration: underline; }
 .product-lajvard .product-menu-button { color: #f4f0e6; }
 .product-lajvard .product-evidence-block li small { color: #f4f0e6; }
+
+/* Lajvard page grammar: a paper field notebook, with route-specific editorial instruments. */
+.product-lajvard { --ground: var(--product-lajvard-paper); --surface: #e8ddc8; --surface-2: #ddd0b8; --accent: var(--product-lajvard-coral); --line: var(--product-lajvard-rule); --muted: var(--product-lajvard-quiet); }
+.product-lajvard .product-main { max-width: 92rem; }
+.product-lajvard .product-page-hero { align-items: end; min-height: 44rem; padding-top: clamp(5rem, 13vw, 11rem); border-bottom: 2px solid var(--product-lajvard-ink); }
+.product-lajvard .product-page-hero__copy h1 { max-width: 9ch; font-family: Georgia, serif; font-size: clamp(4rem, 11vw, 10rem); line-height: .8; }
+.product-lajvard .product-page-hero__copy > p:not(.product-eyebrow) { max-width: 31rem; color: var(--product-lajvard-ink); font-family: Georgia, serif; }
+.product-lajvard .product-eyebrow { color: var(--product-lajvard-coral); font-family: Arial, sans-serif; }
+.product-lajvard .product-visual__stage { min-height: 25rem; border: 1px solid var(--product-lajvard-rule); background: var(--surface); color: var(--product-lajvard-ink); box-shadow: .8rem .8rem 0 rgba(50,109,120,.12); }
+.product-lajvard .product-visual__stage:before { background: linear-gradient(90deg, rgba(50,109,120,.2) 1px, transparent 1px), linear-gradient(rgba(50,109,120,.2) 1px, transparent 1px); background-size: 2rem 2rem; }
+.product-lajvard .product-visual__items span { border-left: 0; border-bottom: 2px solid var(--product-lajvard-blue); background: transparent; color: var(--product-lajvard-ink); font-family: Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+.product-lajvard .product-page-section { grid-template-columns: 5rem minmax(15rem,.8fr) minmax(16rem,1fr); border-top: 1px solid var(--product-lajvard-rule); }
+.product-lajvard .product-page-section__index { color: var(--product-lajvard-blue); font-family: Arial, sans-serif; }
+.product-lajvard .product-page-section h2 { font-family: Georgia, serif; }
+.product-lajvard .product-page-section__copy p { color: var(--product-lajvard-quiet); font-family: Georgia, serif; }
+.product-lajvard .product-page-section li { background: var(--product-lajvard-paper); color: var(--product-lajvard-ink); border-top: 1px solid var(--product-lajvard-rule); }
+.product-lajvard .product-page-section li:before { color: var(--product-lajvard-coral); content: '↳'; }
+.product-lajvard .product-page-section__status { color: var(--product-lajvard-blue); border-color: var(--product-lajvard-blue); font-family: Arial, sans-serif; }
+.product-lajvard .product-page-cta { border-top: 2px solid var(--product-lajvard-ink); }
+.product-lajvard .product-page-cta h2, .product-lajvard .product-source-gallery > h2, .product-lajvard .product-evidence-block h2 { font-family: Georgia, serif; }
+.product-lajvard .product-button { border-color: var(--product-lajvard-coral); background: var(--product-lajvard-coral); }
+.product-lajvard .product-text-link { color: var(--product-lajvard-blue); }
+.product-lajvard .product-evidence-block li { background: var(--surface); color: var(--product-lajvard-ink); }
+.product-lajvard .product-evidence-block li small { color: var(--product-lajvard-coral); }
+.product-lajvard .product-footer { border-top: 2px solid var(--product-lajvard-ink); }
+.product-lajvard .product-footer__brand p, .product-lajvard .product-footer__groups a { color: var(--product-lajvard-quiet); }
+.product-lajvard .product-footer__brand > span { color: var(--product-lajvard-coral); }
+.product-lajvard[data-route='/movement/'] .product-visual__stage, .product-lajvard[data-route='/life-with-lajvard/'] .product-visual__stage { border-radius: 50%; }
+.product-lajvard[data-route='/spatial-memory/'] .product-visual__stage { background: repeating-linear-gradient(0deg, transparent 0 1.9rem, rgba(50,109,120,.18) 2rem), var(--surface); }
+.product-lajvard[data-route='/hardware/'] .product-visual__stage, .product-lajvard[data-route='/specs/'] .product-visual__stage { box-shadow: .8rem .8rem 0 rgba(173,68,53,.14); }
+.product-lajvard[data-route='/research/'] .product-visual__stage, .product-lajvard[data-route='/privacy/'] .product-visual__stage, .product-lajvard[data-route='/terms/'] .product-visual__stage { background: #eee4d1; border-style: dashed; }
+.product-lajvard[data-route='/availability/'] .product-visual__stage { border: 2px solid var(--product-lajvard-coral); transform: rotate(-1deg); }
+.product-lajvard[data-route='/gallery/'] .product-visual__stage { border-width: 0 0 1px; box-shadow: none; background: transparent; }
+@media (max-width: 800px) { .product-lajvard .product-page-hero { min-height: auto; padding-top: 4rem; } .product-lajvard .product-page-section { grid-template-columns: 1fr; } .product-lajvard .product-page-section__index { margin-bottom: -.5rem; } .product-lajvard .product-page-section ul { border-top: 1px solid var(--product-lajvard-rule); } }

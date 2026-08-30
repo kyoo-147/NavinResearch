@@ -1,19 +1,27 @@
 # Lajvard design DNA
 
-## Direction
-A daily field notebook for a warm robot companion: cute through proportion and restraint, never toy-like. Lead with lived moments, then disclose architecture. Keep the Navin dark-editorial discipline while letting Lajvard use paper, ink, and marked-up research.
+## Reference reconstruction (adapted, not cloned)
+- **Pollen MicroDuck**: personality-led entry point, then behavior, simulator/interaction, physical details, media/archive, and access. Adapted as `life-with-lajvard`, `gallery`, and scenario-led storytelling; no borrowed imagery, price, or preorder language.
+- **Casio Moflin**: emotional character is expressed through small daily rituals and care, not an enterprise feature grid. Adapted as the four-gesture daybook and dismissible-presence principles; Lajvard makes no sentience claim.
+- **LimX Dynamics**: robot identity is grounded in embodiment, movement, hardware, software, and developer/research surfaces. Adapted into separate `robot`, `movement`, `hardware`, `software`, `developer`, and `research` routes.
+- **Figure / Menlo**: separate embodiment from intelligence/platform, and explain research, architecture, developer boundaries, and evidence independently. Adapted as separate intelligence, spatial-memory, software, specs, and evidence sections.
 
-## Type
-Use a literary serif for large headlines and body rhythm; use a compact sans-serif for labels, status, navigation, and evidence. Tight display leading, generous readable body measure, no novelty display font.
+## Information architecture
+`/` (life-led story) → `/robot/` (form) → `/movement/`, `/spatial-memory/`, `/hardware/`; `/intelligence/` → `/software/`, `/developer/`; `/research/` (source shelf); `/gallery/` (media provenance); `/specs/` (known/unknown ledger); `/availability/`, `/support/`; `/about/`, `/contact/`, legal.
 
-## Palette
-Warm paper `#f3ead7`; near-black ink `#202522`; quiet green-gray `#596057`; thin sage rules `#aeb5a7`; coral action mark `#b84f3d`; blue-green research marker `#326d78`. Coral and blue-green are accents, not fills or gradients.
+## Page grammar
+Every substantive route uses a distinct editorial instrument: daybook, silhouette/form study, movement storyboard, room-memory map, hardware parts ledger, state vocabulary, layered architecture, developer contract, source shelf, archive taxonomy, honest spec ledger, availability stamp, or support inbox. Pages contain multiple sections with separate purpose and explicit status labels.
 
-## Layout and primitives
-Editorial two-column hero; numbered ruled sections; marginal labels; short evidence ledgers; annotated diagrams; plain text links; one clear action. Use a 12-column desktop grid and collapse to a single reading column at 720px. Maintain comfortable 375px wrapping, 768px tablet rhythm, 1440px desktop measure, and wide-desktop max-width.
+## Visual direction
+A warm paper field notebook for a robot companion: literary serif for narrative, compact sans for labels, ruled margins, blue-green research marks, coral action stamps, annotated diagrams, and restrained asymmetry. The parent site's dark field is not inherited. Lajvard is paper, ink, and marginalia.
 
-## Motion and accessibility
-Motion is optional and quiet: only reveal/underline emphasis, never parallax or looping decoration. Respect `prefers-reduced-motion: reduce`. Keep visible focus, semantic headings, readable contrast, keyboard navigation, and no information conveyed by color alone.
+## Tokens
+- Paper `#f3ead7`; ink `#202522`; quiet green-gray `#596057`; sage rule `#aeb5a7`.
+- Coral `#ad4435` for action/status; blue-green `#326d78` for research/context.
+- No gradients, glass panels, generic SaaS cards, or novelty robot render claims.
 
-## Prohibited
-No generic AI gradients, glassmorphism, floating SaaS cards, dashboard-first storytelling, fake product renders, invented specifications, prices, customers, benchmarks, certifications, availability, or claims of sentience. Never present a reference product's behavior as Lajvard evidence. Label concepts, prototypes, demonstrations, and releases separately.
+## Evidence boundary
+All visuals are original concept diagrams or text states. No hardware, firmware, dimensions, battery, sensor, speed, autonomy, availability, pricing, customer, benchmark, certification, or sentience claim is made. Public references are research context only and never presented as Lajvard proof.
+
+## Responsive/accessibility contract
+The hero becomes one reading column at 720px; sections preserve comfortable 375px wrapping; controls retain visible focus and touch-sized links; reduced motion disables transitions. Validate desktop 1440px and mobile 375px after generation.
