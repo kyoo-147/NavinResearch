@@ -26,3 +26,29 @@
 
 /* Map the shared route shell to Sandora's terminal palette. */
 .product-sandora { --ground:var(--sandora-dark); --surface:#191f1b; --surface-2:#222a24; --ink:var(--sandora-ink); --muted:var(--sandora-muted); --line:var(--sandora-line); --accent:var(--sandora-accent); --accent-ink:var(--sandora-dark); }
+
+/* Sandora route grammar: each surface reads like a different instrument, not a recoloured landing page. */
+.product-sandora .product-page-hero__copy h1 { font-family:'Pixelated Elegance', monospace; text-transform:uppercase; }
+.product-sandora .product-page-section { border-top-color:var(--sandora-line); }
+.product-sandora .product-page-section__index { font-family:monospace; }
+.product-sandora .product-page-section h2 { font-family:'Pixelated Elegance', monospace; font-size:clamp(1.7rem,3.6vw,3.8rem); text-transform:uppercase; }
+.product-sandora .product-page-section ul { grid-template-columns:repeat(3,minmax(0,1fr)); background:transparent; gap:.6rem; }
+.product-sandora .product-page-section li { min-height:4.8rem; border:1px solid var(--sandora-line); background:#191f1b; }
+.product-sandora .product-page-section li::before { content:'[ ]'; margin-bottom:.7rem; font-family:monospace; }
+.product-sandora .product-visual__stage { border:1px solid var(--sandora-line); background:#191f1b; }
+.product-sandora .product-visual__stage:before { background-size:1.5rem 1.5rem; opacity:.22; }
+.product-sandora .product-visual--terminal .product-visual__stage { border-color:var(--sandora-accent); background:#0b0f0c; font-family:monospace; }
+.product-sandora .product-visual--terminal .product-visual__title:before { content:'sandora://runtime $ '; color:var(--sandora-accent); }
+.product-sandora .product-visual--org-chart .product-visual__items span { border-left:0; border-bottom:1px solid var(--sandora-accent); }
+.product-sandora .product-visual--approval-gate .product-visual__stage { background:linear-gradient(90deg,#191f1b 49.5%,var(--sandora-accent) 49.5%,var(--sandora-accent) 50.5%,#191f1b 50.5%); }
+.product-sandora .product-visual--schema .product-visual__items span { border:1px dashed var(--sandora-accent); border-left-width:2px; background:transparent; }
+.product-sandora .product-visual--route-error .product-visual__title { color:var(--sandora-accent); }
+body.product-sandora[data-route='/departments/'] .product-page-hero { grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr); }
+body.product-sandora[data-route='/runtime/'] .product-page-hero, body.product-sandora[data-route='/agents/'] .product-page-hero { background:#0b0f0c; padding-inline:clamp(1rem,3vw,3rem); }
+body.product-sandora[data-route='/pricing/'] .product-page-hero, body.product-sandora[data-route='/security/'] .product-page-hero { min-height:clamp(26rem,60vh,42rem); }
+body.product-sandora[data-route='/research/'] .product-page-section { border-left:2px solid var(--sandora-accent); padding-left:clamp(1rem,3vw,3rem); }
+@media (max-width:800px) { .product-sandora .product-page-section ul { grid-template-columns:1fr; } body.product-sandora[data-route='/departments/'] .product-page-hero { grid-template-columns:1fr; } }
+.product-sandora .product-visual__title { overflow-wrap:anywhere; }
+.product-sandora .product-visual__items span { overflow-wrap:anywhere; }
+.product-sandora .product-page-hero, .product-sandora .product-page-hero__copy { min-width:0; }
+@media (max-width:800px) { .product-sandora .product-page-hero { width:100%; overflow:hidden; } }
