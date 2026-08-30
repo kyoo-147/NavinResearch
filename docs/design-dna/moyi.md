@@ -35,3 +35,8 @@ Motion is optional and quiet: no essential animated content. Honor `prefers-redu
 
 ## Prohibited patterns
 No AI gradients, glassmorphism, invented model names, benchmarks, prices, customers, certifications, availability, or physical-proof language. Do not use decorative cards to imply product maturity. Do not present concept diagrams as measured system evidence.
+
+## Route-specific composition contract
+
+Moyi must not collapse into a universal hero. Model routes use a split family map and stepped transformation layers; Speech uses an acoustic ellipse and centered signal markers; Translation uses a directional loop with a raised middle handoff; Streaming uses a horizontal chunk timeline; Edge uses a hard device boundary; API and Developers use a monospaced request/receipt surface; Solutions use a scenario-to-review path; Research uses a sparse notebook treatment. These are CSS-level visual primitives that keep the same evidence boundary while giving each page family a different reading rhythm.
+The `/evaluation/` surface is a matrix-like protocol page: scene conditions, language context, and human review are peers, not a marketing scorecard.
