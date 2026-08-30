@@ -35,3 +35,8 @@ Motion is optional and quiet. Respect `prefers-reduced-motion`; keep visible foc
 
 ## Prohibited patterns
 No generic AI gradients, glassmorphism, invented customer logos or metrics, fake processing results, unsupported prices/availability/certifications, or decorative visuals presented as physical/product proof.
+## Route-specific visual grammar
+- Processing pages use a page canvas and candidate bounding boxes to keep source context visible.
+- Validation uses a rule ledger; reconciliation uses a split record field with an open center seam.
+- Review uses an offset queue of decision slips; integrations use a stamped export boundary.
+- Availability, security, and legal pages use register/dashed-paper treatments rather than product feature cards.

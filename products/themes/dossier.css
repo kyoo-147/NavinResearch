@@ -269,3 +269,33 @@
 .product-dossier .product-page-section__status { font-family: Arial, sans-serif; }
 .product-dossier .product-footer { border-top: 1px solid var(--dossier-line); }
 @media (max-width: 800px) { .product-dossier .product-page-hero { grid-template-columns: 1fr; } .product-dossier .product-visual__stage { min-height: 23rem; } }
+
+/* Forensic stage primitives: the same paper desk, different document states. */
+.product-dossier .product-visual__stage { isolation: isolate; }
+.product-dossier .product-visual__title { font-family: Georgia, 'Times New Roman', serif; }
+.product-dossier .product-visual--document-canvas .product-visual__stage { background: #f5efdf; }
+.product-dossier .product-visual--document-canvas .product-visual__items { margin-top: 5rem; }
+.product-dossier .product-visual--document-canvas .product-visual__items span { width: min(88%, 25rem); }
+.product-dossier .product-visual--bounding-boxes .product-visual__stage { background: #efe6d2; }
+.product-dossier .product-visual--bounding-boxes .product-visual__items { margin-top: 3rem; }
+.product-dossier .product-visual--bounding-boxes .product-visual__items span { width: 68%; min-height: 3rem; }
+.product-dossier .product-visual--bounding-boxes .product-visual__items span:nth-child(1) { margin-left: 8%; }
+.product-dossier .product-visual--bounding-boxes .product-visual__items span:nth-child(3) { margin-left: 18%; }
+.product-dossier .product-visual--validation .product-visual__stage { background: #e7deca; }
+.product-dossier .product-visual--validation .product-visual__items span { border-left-color: #6f735f; border-bottom: 1px solid var(--dossier-line); background: transparent; box-shadow: none; }
+.product-dossier .product-visual--discrepancy .product-visual__stage { background: linear-gradient(90deg, #f5efdf 0 49%, #e6ddc8 49% 51%, #f5efdf 51%); }
+.product-dossier .product-visual--discrepancy .product-visual__items { margin-top: 3rem; }
+.product-dossier .product-visual--discrepancy .product-visual__items span { width: 44%; }
+.product-dossier .product-visual--discrepancy .product-visual__items span:nth-child(2) { margin-left: 48%; }
+.product-dossier .product-visual--review-queue .product-visual__stage { background: #eee5d2; }
+.product-dossier .product-visual--review-queue .product-visual__items span { width: 82%; border-left-color: #6f735f; }
+.product-dossier .product-visual--review-queue .product-visual__items span:nth-child(2) { margin-left: 7%; }
+.product-dossier .product-visual--review-queue .product-visual__items span:nth-child(3) { margin-left: 14%; }
+.product-dossier .product-visual--integration .product-visual__stage { background: #ded4bd; }
+.product-dossier .product-visual--integration .product-visual__items span { border: 1px solid var(--dossier-ink); border-left: 4px solid var(--dossier-signal); background: #f5efdf; box-shadow: none; }
+.product-dossier .product-visual--security .product-visual__stage, .product-dossier .product-visual--legal .product-visual__stage { border-style: dashed; background: #f1e8d6; }
+.product-dossier .product-page-section[data-kind="evidence"] h2 { max-width: 18ch; }
+@media (max-width: 800px) {
+  .product-dossier .product-visual--discrepancy .product-visual__items span { width: 72%; }
+  .product-dossier .product-visual--discrepancy .product-visual__items span:nth-child(2) { margin-left: 22%; }
+}
