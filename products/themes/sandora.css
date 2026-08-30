@@ -53,3 +53,13 @@ body.product-sandora[data-route='/research/'] .product-page-section { border-lef
 .product-sandora .product-visual__items span { overflow-wrap:anywhere; }
 .product-sandora .product-page-hero, .product-sandora .product-page-hero__copy { min-width:0; }
 @media (max-width:800px) { .product-sandora .product-page-hero { width:100%; overflow:hidden; } }
+
+/* Observability is a ledger, not another marketing panel. */
+.product-sandora[data-route='/observability/'] .product-page-hero { grid-template-columns: minmax(0,.7fr) minmax(22rem,1.3fr); align-items: stretch; }
+.product-sandora[data-route='/observability/'] .product-page-hero__copy { display:flex; flex-direction:column; justify-content:center; }
+.product-sandora[data-route='/observability/'] .product-visual__stage { min-height:30rem; border-color:var(--sandora-accent); background:#0b0f0c; font-family:monospace; }
+.product-sandora[data-route='/observability/'] .product-visual__stage:before { background-size:100% 3rem; opacity:.28; }
+.product-sandora[data-route='/observability/'] .product-visual__items { margin-top:3rem; gap:0; }
+.product-sandora[data-route='/observability/'] .product-visual__items span { width:100%; max-width:none; padding:1rem .8rem; border-left:0; border-bottom:1px solid var(--sandora-line); background:transparent; transform:none; }
+.product-sandora[data-route='/observability/'] .product-visual__items span:before { content:'EVENT // '; color:var(--sandora-accent); }
+@media (max-width:800px) { .product-sandora[data-route='/observability/'] .product-page-hero { grid-template-columns:1fr; } }
