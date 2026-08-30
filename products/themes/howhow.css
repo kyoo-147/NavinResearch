@@ -1,3 +1,52 @@
-.product-howhow{--howhow-ink:#f2eee4;--howhow-dim:#aaa99f;--howhow-line:rgba(242,238,228,.25);--howhow-signal:#d5ff55;--howhow-paper:#101714;min-height:100svh;background:var(--howhow-paper);color:var(--howhow-ink);font-family:Georgia,serif}.product-howhow .product-shell{max-width:90rem}.product-howhow .product-header{border-color:var(--howhow-line)}.product-howhow .product-brand{font-family:Arial,sans-serif;letter-spacing:.24em}.product-howhow .product-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(16rem,25rem);gap:3rem;align-items:end}.product-howhow .product-eyebrow,.product-howhow .product-label{color:var(--howhow-signal);font-family:Arial,sans-serif}.product-howhow .product-hero h1{max-width:8ch;margin-bottom:0;color:var(--howhow-ink);font-size:clamp(4.5rem,13vw,12rem);letter-spacing:-.08em;line-height:.78;text-transform:none}.product-howhow .product-thesis{border-left:2px solid var(--howhow-signal);padding-left:1rem;font-size:clamp(1.15rem,2vw,1.7rem);line-height:1.18}.product-howhow .product-status{border-color:var(--howhow-signal);color:var(--howhow-signal);font-family:Arial,sans-serif}.product-howhow .product-section{border-color:var(--howhow-line)}.product-howhow .product-section__head{grid-template-columns:minmax(9rem,.55fr) minmax(0,1.45fr)}.product-howhow .product-section h2{font-size:clamp(2rem,4.8vw,5rem);font-weight:400;letter-spacing:-.07em}.product-howhow .product-description{color:var(--howhow-dim);font-size:clamp(1.05rem,1.6vw,1.4rem);line-height:1.35}.product-howhow .capability-grid{border-color:var(--howhow-line)}.product-howhow .capability{border-color:var(--howhow-line);background:transparent}.product-howhow .capability b{color:var(--howhow-signal);font-family:Arial,sans-serif}.product-howhow .capability span{font-size:1.05rem}.product-howhow .product-pricing{grid-template-columns:1fr}.product-howhow .price-card{border-color:var(--howhow-line);border-left:4px solid var(--howhow-signal);background:transparent}.product-howhow .price-card h3{font-size:1.4rem}.product-howhow .price-card p{color:var(--howhow-dim)}.product-howhow .product-footer{border-color:var(--howhow-line);font-family:Arial,sans-serif}.product-howhow a:focus-visible{outline:2px solid var(--howhow-signal);outline-offset:4px}@media(max-width:760px){.product-howhow .product-hero{grid-template-columns:1fr;gap:2rem}.product-howhow .product-hero h1{font-size:clamp(4.5rem,24vw,8rem)}.product-howhow .product-section__head{grid-template-columns:1fr}.product-howhow .capability-grid{grid-template-columns:1fr 1fr}}
-
-.product-howhow .product-hero{grid-template-columns:minmax(0,1.3fr) minmax(20rem,.7fr)}.product-howhow .product-hero h1{max-width:6ch;font-size:clamp(4rem,8vw,8rem)}.product-howhow .product-thesis{max-width:34rem}@media(max-width:760px){.product-howhow .product-hero{grid-template-columns:1fr}.product-howhow .product-hero h1{font-size:clamp(4rem,20vw,7rem)}}
+.product-howhow {
+  --howhow-ink: #f2eee4;
+  --howhow-dim: #aaa99f;
+  --howhow-line: rgba(242, 238, 228, .25);
+  --howhow-signal: #d5ff55;
+  --howhow-tomato: #ff8066;
+  --howhow-paper: #101714;
+  min-height: 100svh;
+  background: var(--howhow-paper);
+  color: var(--howhow-ink);
+  font-family: Georgia, serif;
+}
+.product-howhow .product-shell { max-width: 90rem; }
+.product-howhow .product-header { border-color: var(--howhow-line); }
+.product-howhow .product-brand { font-family: Arial, sans-serif; letter-spacing: .24em; }
+.product-howhow .product-hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(20rem, .7fr); gap: 3rem; align-items: end; }
+.product-howhow .product-eyebrow,
+.product-howhow .product-label { color: var(--howhow-signal); font-family: Arial, sans-serif; }
+.product-howhow .product-hero h1 { max-width: 6ch; margin-bottom: 0; color: var(--howhow-ink); font-size: clamp(4rem, 8vw, 8rem); letter-spacing: -.08em; line-height: .78; }
+.product-howhow .product-thesis { max-width: 34rem; border-left: 2px solid var(--howhow-signal); padding-left: 1rem; font-size: clamp(1.15rem, 2vw, 1.7rem); line-height: 1.18; }
+.product-howhow .product-status { border-color: var(--howhow-signal); color: var(--howhow-signal); font-family: Arial, sans-serif; }
+.product-howhow .product-section { border-color: var(--howhow-line); }
+.product-howhow .product-section__head { grid-template-columns: minmax(9rem, .55fr) minmax(0, 1.45fr); }
+.product-howhow .product-section h2 { font-size: clamp(2rem, 4.8vw, 5rem); font-weight: 400; letter-spacing: -.07em; }
+.product-howhow .product-description { color: var(--howhow-dim); font-size: clamp(1.05rem, 1.6vw, 1.4rem); line-height: 1.35; }
+.product-howhow .capability-grid { border-color: var(--howhow-line); }
+.product-howhow .capability { border-color: var(--howhow-line); background: transparent; }
+.product-howhow .capability b { color: var(--howhow-signal); font-family: Arial, sans-serif; }
+.product-howhow .capability span { font-size: 1.05rem; }
+.product-howhow .product-pricing { grid-template-columns: 1fr; }
+.product-howhow .price-card { border-color: var(--howhow-line); border-left: 4px solid var(--howhow-signal); background: transparent; }
+.product-howhow .price-card h3 { font-size: 1.4rem; }
+.product-howhow .price-card p { color: var(--howhow-dim); }
+.product-howhow .product-footer { border-color: var(--howhow-line); font-family: Arial, sans-serif; }
+.product-howhow a:focus-visible { outline: 2px solid var(--howhow-signal); outline-offset: 4px; }
+.product-howhow .product-diagram-frame { position: relative; border: 1px solid var(--howhow-line); background: #0a0f0c; }
+.product-howhow .product-diagram-frame::after { content: "OPEN / INSPECT / REVIEW"; position: absolute; right: 1rem; bottom: .75rem; color: var(--howhow-signal); font: .65rem/1 Arial, sans-serif; letter-spacing: .16em; }
+.product-howhow .product-proof { border-top: 4px solid var(--howhow-tomato); }
+.product-howhow .product-availability { border: 1px solid var(--howhow-signal); background: #151e17; }
+@media (max-width: 760px) {
+  .product-howhow .product-hero { grid-template-columns: 1fr; gap: 2rem; }
+  .product-howhow .product-hero h1 { font-size: clamp(4rem, 20vw, 7rem); }
+  .product-howhow .product-section__head { grid-template-columns: 1fr; }
+  .product-howhow .capability-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) {
+  .product-howhow .capability-grid { grid-template-columns: 1fr; }
+  .product-howhow .product-diagram-frame::after { right: .5rem; font-size: .55rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-howhow *, .product-howhow *::before, .product-howhow *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
