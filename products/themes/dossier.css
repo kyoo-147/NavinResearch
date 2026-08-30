@@ -299,3 +299,25 @@
   .product-dossier .product-visual--discrepancy .product-visual__items span { width: 72%; }
   .product-dossier .product-visual--discrepancy .product-visual__items span:nth-child(2) { margin-left: 22%; }
 }
+
+/* Each desk route gets a distinct forensic state treatment. */
+.product-dossier .product-page-section[data-kind="intake"],
+.product-dossier .product-page-section[data-kind="candidates"] { background: #efe6d2; }
+.product-dossier .product-page-section[data-kind="exceptions"],
+.product-dossier .product-page-section[data-kind="resolution"] { background: #e4dcc8; border-left: .35rem solid var(--dossier-signal); }
+.product-dossier .product-page-section[data-kind="decision"],
+.product-dossier .product-page-section[data-kind="ownership"] { background: #f5efdf; }
+.product-dossier .product-page-section[data-kind="export"],
+.product-dossier .product-page-section[data-kind="schema"] { background: #ded4bd; }
+.product-dossier .product-page-section[data-kind="control"],
+.product-dossier .product-page-section[data-kind="policy"] { border-top: 1px dashed var(--dossier-signal); border-bottom: 1px dashed var(--dossier-signal); }
+.product-dossier .product-page-section[data-kind="access"],
+.product-dossier .product-page-section[data-kind="scope"] { background: var(--dossier-ink); color: var(--dossier-paper); }
+.product-dossier .product-page-section[data-kind="access"] p,
+.product-dossier .product-page-section[data-kind="scope"] p { color: #c6c0ae; }
+.product-dossier .product-page-section[data-kind="invoice-check"] .product-page-section__status,
+.product-dossier .product-page-section[data-kind="commitment-check"] .product-page-section__status { letter-spacing: .16em; }
+@media (max-width: 800px) {
+  .product-dossier .product-page-section[data-kind="exceptions"],
+  .product-dossier .product-page-section[data-kind="resolution"] { border-left-width: .2rem; }
+}
