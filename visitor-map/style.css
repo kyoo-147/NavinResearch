@@ -146,6 +146,7 @@ header > span {
   font-weight: 400;
 }
 
+.demo-badge {
   display: inline-block;
   margin: 1rem 0 0;
   padding: 0.25rem 0.45rem;
