@@ -300,3 +300,27 @@
 .product-moyi[data-route="/evaluation/"] .product-visual__items { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; margin-top: 10rem; }
 .product-moyi[data-route="/evaluation/"] .product-page-section { border-top-style: dashed; }
 @media (max-width: 800px) { .product-moyi[data-route="/evaluation/"] .product-page-hero { grid-template-columns: 1fr; } .product-moyi[data-route="/evaluation/"] .product-visual__items { grid-template-columns: 1fr; margin-top: 5rem; } }
+
+/* Route surfaces use a sonic reading rhythm rather than a card grid. */
+.product-moyi .product-page-sections--specs,
+.product-moyi .product-page-sections--docs,
+.product-moyi .product-page-sections--ledger { background: color-mix(in srgb, var(--moyi-field) 88%, var(--moyi-cyan)); }
+.product-moyi[data-route="/models/"] .product-page-sections,
+.product-moyi[data-route="/models/family/"] .product-page-sections { border-top: 2px solid var(--moyi-signal); }
+.product-moyi[data-route="/models/family/"] .product-page-section:first-child { border-left: 4px solid var(--moyi-cyan); }
+.product-moyi[data-route="/speech/"] .product-page-section { border-left: 1px solid var(--moyi-cyan); padding-left: clamp(1rem, 5vw, 5rem); }
+.product-moyi[data-route="/translation/"] .product-page-section:nth-child(2) { border-left: 3px solid var(--moyi-signal); padding-left: clamp(1rem, 5vw, 5rem); }
+.product-moyi[data-route="/streaming/"] .product-page-section { border-top: 1px dashed var(--moyi-cyan); }
+.product-moyi[data-route="/edge/"] .product-page-section { background: linear-gradient(90deg, color-mix(in srgb, var(--moyi-cyan) 6%, transparent), transparent 45%); }
+.product-moyi[data-route="/api/"] .product-page-section__status,
+.product-moyi[data-route="/docs/"] .product-page-section__status { font-family: "IBM Plex Mono", "Courier New", monospace; }
+.product-moyi[data-route="/evaluation/"] .product-page-section { background: repeating-linear-gradient(0deg, transparent 0 2.9rem, color-mix(in srgb, var(--moyi-cyan) 10%, transparent) 2.9rem 2.95rem); }
+.product-moyi[data-route="/benchmarks/"] .product-page-section { border-left: 2px dashed var(--moyi-signal); padding-left: clamp(1rem, 4vw, 4rem); }
+@media (max-width: 700px) {
+  .product-moyi .product-page-sections--specs,
+  .product-moyi .product-page-sections--docs,
+  .product-moyi .product-page-sections--ledger { overflow: hidden; }
+  .product-moyi[data-route="/speech/"] .product-page-section,
+  .product-moyi[data-route="/translation/"] .product-page-section,
+  .product-moyi[data-route="/benchmarks/"] .product-page-section { padding-left: 1rem; }
+}
