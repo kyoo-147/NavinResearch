@@ -252,3 +252,40 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+/* Shared product renderer overrides: Sori is a native utility, not a marketing dashboard. */
+.product-sori {
+  --ground: var(--sori-deep);
+  --surface: var(--sori-paper);
+  --surface-2: #20231f;
+  --ink: var(--sori-ink);
+  --muted: var(--sori-dim);
+  --line: var(--sori-line);
+  --accent: var(--sori-signal);
+  background: var(--sori-deep);
+}
+.product-sori .product-field { background: var(--sori-deep); }
+.product-sori .product-field::after { background: repeating-linear-gradient(0deg, transparent 0 5rem, rgba(212,179,106,.035) 5rem 5.05rem); }
+.product-sori .product-header { background: rgba(13,15,14,.94); backdrop-filter: none; }
+.product-sori .product-wordmark { font-family: Georgia, serif; letter-spacing: -.04em; text-transform: none; }
+.product-sori .product-page-hero__copy h1,
+.product-sori .product-page-section h2,
+.product-sori .product-page-cta h2 { font-family: Georgia, "Times New Roman", serif; }
+.product-sori .product-page-hero__copy h1 { max-width: 11ch; letter-spacing: -.075em; line-height: .9; }
+.product-sori .product-page-hero__copy > p:not(.product-eyebrow) { max-width: 34rem; }
+.product-sori .product-eyebrow,
+.product-sori .product-page-section__index,
+.product-sori .product-page-section__status { color: var(--sori-signal); }
+.product-sori .product-button { color: var(--sori-deep) !important; background: var(--sori-signal); border-color: var(--sori-signal); }
+.product-sori .product-text-link { color: var(--sori-signal); }
+.product-sori .product-visual__stage { border-color: var(--sori-line); background: var(--sori-paper); }
+.product-sori .product-visual__stage::before { background: linear-gradient(90deg, rgba(212,179,106,.18) 1px, transparent 1px), linear-gradient(rgba(212,179,106,.12) 1px, transparent 1px); background-size: 2.5rem 2.5rem; }
+.product-sori .product-visual__items span { border-left-color: var(--sori-signal); background: rgba(212,179,106,.08); }
+.product-sori .product-page-section { grid-template-columns: 4rem minmax(15rem,.9fr) minmax(16rem,1fr); }
+.product-sori .product-page-section li { background: var(--sori-paper); }
+.product-sori .product-page-section li::before { content: "//"; color: var(--sori-signal); }
+.product-sori .product-evidence-block li { background: var(--sori-paper); }
+.product-sori .product-footer { border-top: 1px solid var(--sori-line); }
+@media (max-width: 800px) {
+  .product-sori .product-page-section { grid-template-columns: 2rem 1fr; }
+}
