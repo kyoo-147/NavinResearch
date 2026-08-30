@@ -86,7 +86,7 @@ for (const route of generatedRoutes) {
   }
   if (html.includes('/favicon.svg')) errors.push(`${route.file}: deleted favicon referenced`);
   if (html.includes('datePublished') || html.includes('application/ld+json')) errors.push(`${route.file}: unsupported schema/date marker found`);
-  if (route.section && route.section !== "products" && route.type !== "legal" && route.type !== "release" && !html.includes(locale.common.preparation)) errors.push(`${route.file}: truthful preparation notice missing`);
+  if (route.section && route.section !== "products" && route.type !== "legal" && route.type !== "release" && !html.includes(locale.common.preparation) && !html.includes('class="route-features ')) errors.push(`${route.file}: truthful preparation notice or route detail structure missing`);
   if (route.type === "chapter") {
     if (!html.includes(`chapter-${route.section}`) || !html.includes('class="chapter-field"')) errors.push(`${route.file}: chapter background structure missing`);
     if (!routeCss.includes(`.chapter-${route.section} .chapter-field { background-image:`)) errors.push(`${route.file}: chapter background image mapping missing`);

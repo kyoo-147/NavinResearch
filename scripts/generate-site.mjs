@@ -4,6 +4,7 @@ import { pageHead } from "./components/page-head.mjs";
 import { contentHeader, escapeHtml, routeFooter, siteDrawer, siteFooter, siteHeader } from "./components/site-shell.mjs";
 import { products } from "./product-data.mjs";
 import { blogPostPath, blogPosts, renderBlogPost } from "./blog-posts.mjs";
+import { routeDetails, routeLinks } from "./route-details.mjs";
 
 const localeEntries = Object.entries(locales);
 const homeAssetRevision = "20260824-11";
@@ -74,17 +75,36 @@ function routeNav(localeKey, current) {
   return navSections.map((section) => `<a href="${localePath(localeKey, section)}"${section === current ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`).join("\n          ");
 }
 
+function localizedRouteHref(localeKey, href) {
+  if (!href.startsWith("/") || href.startsWith("/blog/")) return href;
+  const suffix = href.replace(/^\//, "").replace(/\/$/, "");
+  return localePath(localeKey, suffix);
+}
+
+function routeFeatureMarkup(localeKey, section) {
+  const details = routeDetails[localeKey]?.[section];
+  if (!details) return "";
+  const links = routeLinks[section] || [];
+  const items = details.map(([label, title, body], index) => {
+    const href = links[index];
+    const attrs = href?.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : "";
+    return `<article class="route-feature"><p>${escapeHtml(label)}</p><h2>${escapeHtml(title)}</h2><span>${escapeHtml(body)}</span>${href ? `<a href="${escapeHtml(localizedRouteHref(localeKey, href))}"${attrs}>${escapeHtml(title)} <span aria-hidden="true">→</span></a>` : ""}</article>`;
+  }).join("");
+  return `<section class="route-features route-features--${section}" aria-label="${escapeHtml(locales[localeKey].routes[section].title)}">${items}</section>`;
+}
+
 function routeTemplate(localeKey, section) {
   const locale = locales[localeKey];
   const route = locale.routes[section];
   const ui = experience[localeKey];
   const routeNumber = String(sections.indexOf(section) + 1).padStart(2, "0");
   const search = section === "search" ? `<section class="route-search" aria-labelledby="search-label"><label id="search-label" for="route-search">${escapeHtml(locale.common.searchLabel)}</label><input id="route-search" type="search" data-route-search placeholder="${escapeHtml(locale.common.searchPlaceholder)}" autocomplete="off"><div class="route-search__results" data-search-results data-empty-label="${escapeHtml(locale.common.noResults)}" aria-live="polite"></div></section>` : "";
-  const contact = section === "contact" ? `<p class="route-contact"><a href="mailto:${site.email}">${site.email}</a></p>` : "";
+  const contact = section === "contact" ? `<address class="route-contact"><a href="mailto:${site.email}">${site.email}</a></address>` : "";
+  const features = routeFeatureMarkup(localeKey, section);
   return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
 ${head(localeKey, `${route.title} — ${site.name}`, route.description, section, "/content-routes/route-foundation.css", section === "search" ? "/content-routes/route-search.js" : "")}  </head><body class="route-page content-page content-${section}"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
     ${contentHeader(localeKey, section)}
-    <main class="route-page__main content-main"><div class="content-copy"><p class="route-page__eyebrow">SECTION ${routeNumber} / ${escapeHtml(route.title)}</p><h1>${escapeHtml(route.title)}</h1><p class="route-page__lede">${escapeHtml(route.lede)}</p><div class="route-page__notice"><strong>${escapeHtml(locale.common.preparation)}</strong><span>${escapeHtml(route.description)}</span></div>${contact}${search}</div><aside class="content-index" aria-label="${escapeHtml(ui.menu.explore)}"><p>${escapeHtml(ui.menu.explore)}</p><nav aria-label="${escapeHtml(ui.menu.explore)}">${routeNav(localeKey, section)}</nav></aside></main>
+    <main class="route-page__main content-main"><div class="content-copy"><p class="route-page__eyebrow">SECTION ${routeNumber} / ${escapeHtml(route.title)}</p><h1>${escapeHtml(route.title)}</h1><p class="route-page__lede">${escapeHtml(route.lede)}</p>${contact}${search}</div><aside class="content-index" aria-label="${escapeHtml(ui.menu.explore)}"><p>${escapeHtml(ui.menu.explore)}</p><nav aria-label="${escapeHtml(ui.menu.explore)}">${routeNav(localeKey, section)}</nav></aside>${features}</main>
     ${routeFooter(localeKey)}
   </div></body></html>
 `;
