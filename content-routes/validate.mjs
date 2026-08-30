@@ -171,6 +171,10 @@ for (const product of products) {
 }
 if (!robots.includes(`Sitemap: ${site.origin}/sitemap.xml`)) errors.push("robots.txt: sitemap missing");
 if (!robots.includes("Disallow: /visitor-insights/")) errors.push("robots.txt: private insights exclusion missing");
+const visitorMapCss = await readFile("visitor-map/style.css", "utf8");
+if (!visitorMapCss.includes(".demo-badge[hidden]") || !visitorMapCss.includes("display: none !important")) {
+  errors.push("visitor-map/style.css: hidden demo badge must remain visually hidden");
+}
 for (const route of generatedRoutes) {
   if (!sitemap.includes(`${site.origin}${route.path}`)) errors.push(`sitemap.xml: ${route.path} missing`);
 }
