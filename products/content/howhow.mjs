@@ -15,21 +15,28 @@ const page = (path, title, description, eyebrow, headline, lede, visual, section
 });
 const contact = { title: "Keep a human in the loop.", body: "A bounded research question is the right starting point for an integration-spike conversation.", label: "Discuss a research episode", href: "/contact/" };
 
+const sourcesPage = page("/sources/", "Sources", "HowHow source records preserve identity, access, license, and exact locators.", "EVIDENCE / SOURCE REGISTER", "Keep the source attached to the claim.", "A source register is the first shelf in an evidence-first research system: it records what was read, where it came from, and whether it can be used.", { kind: "register", title: "SOURCE REGISTER", items: ["IDENTITY", "ACCESS", "LICENSE", "LOCATOR"] }, [
+      section("source-register", "A citation is a record, not a decoration.", "Each source should carry a stable identifier, title, publisher, retrieval context, version or date when available, access state, license state, and a locator precise enough for another reader to inspect.", ["Stable source ID", "Retrieval context", "Exact locator"], "SOURCE RECORD"),
+      section("boundary", "Availability does not settle permission.", "A reachable page may still have restrictions, an unclear license, or content that cannot be copied into a research artifact. The register keeps access, license, and reuse decisions separate.", ["Access status", "License status", "Reuse decision"], "LICENSE REVIEW"),
+      section("unknown", "Unknown stays visible.", "When a version, license, locator, or provenance field cannot be established, the record remains incomplete rather than silently becoming evidence. This page reports no live source inventory.", ["Complete", "Needs review", "UNKNOWN"], "NO LIVE REGISTER PUBLISHED"),
+    ], contact);
+
 const site = {
   primaryCta: { label: "Review the integration spike", href: "/access/" },
   navigation: [
     { label: "System", href: "/product/", children: [{ label: "How it works", href: "/how-it-works/" }, { label: "Workflow", href: "/research-workflow/" }] },
-    { label: "Evidence", href: "/evidence/", children: [{ label: "Experiments", href: "/experiments/" }, { label: "Projects", href: "/projects/" }] },
+    { label: "Evidence", href: "/evidence/", children: [{ label: "Sources", href: "/sources/" }, { label: "Experiments", href: "/experiments/" }, { label: "Projects", href: "/projects/" }] },
     { label: "Project", href: "/projects/", children: [{ label: "Docs", href: "/docs/" }, { label: "GitHub", href: "/github/" }, { label: "Releases", href: "/releases/" }] },
     { label: "About", href: "/about/", children: [{ label: "Contact", href: "/contact/" }, { label: "Access", href: "/access/" }] },
   ],
   footerGroups: [
-    { title: "Research loop", links: [{ label: "How it works", href: "/how-it-works/" }, { label: "Workflow", href: "/research-workflow/" }, { label: "Evidence", href: "/evidence/" }] },
+    { title: "Research loop", links: [{ label: "How it works", href: "/how-it-works/" }, { label: "Workflow", href: "/research-workflow/" }, { label: "Evidence", href: "/evidence/" }, { label: "Sources", href: "/sources/" }] },
     { title: "Review shelf", links: [{ label: "Experiments", href: "/experiments/" }, { label: "Projects", href: "/projects/" }, { label: "Releases", href: "/releases/" }] },
     { title: "Source", links: [{ label: "Docs", href: "/docs/" }, { label: "GitHub", href: "/github/" }, { label: "Navin Research", href: navin }] },
     { title: "Legal", links: [{ label: "Privacy", href: "/privacy/" }, { label: "Terms", href: "/terms/" }, { label: "Contact", href: "/contact/" }] },
   ],
   pages: [
+    sourcesPage,
     page("/", "HowHow", "An evidence-first research system direction with human review at consequential boundaries.", "HOWHOW / EVIDENCE-FIRST RESEARCH OS", "Serious research. Served like instant noodles.", "HowHow turns a bounded question into a reviewable trail: brief, sources, claims, checks, and a human-owned handoff.", { kind: "package", title: "THE RESEARCH NOODLE PACK", items: ["QUESTION / BOUNDED", "EVIDENCE / LINKED", "REVIEW / HUMAN"] }, [
       section("evidence", "The wrapper is playful. The chain is not.", "A research episode begins with scope and ends at a package a person can inspect. The public HowHow-Reasoner README is the source for this direction.", ["Versioned brief before work", "Source spans beside claims", "Failure history preserved"], evidence.stamp),
       section("ledger", "A bowl is not a result.", "The visual language makes the path memorable without turning an illustrative diagram into scientific evidence. Every conclusion still needs its source, run, or explicit unknown.", ["Brief", "Evidence ledger", "Review gate"], "ILLUSTRATIVE SYSTEM"),

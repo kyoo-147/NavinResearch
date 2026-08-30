@@ -71,3 +71,11 @@
 @media (prefers-reduced-motion: reduce) {
   .product-howhow *, .product-howhow *::before, .product-howhow *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Source register: a filing-drawer primitive for provenance, not a generic feature grid. */
+.product-howhow[data-route="/sources/"] .product-visual__stage { border-style: dashed; background: #0b110f; box-shadow: .45rem .45rem 0 rgba(255,128,102,.16); }
+.product-howhow[data-route="/sources/"] .product-visual__stage::before { background: repeating-linear-gradient(0deg, transparent 0 2.8rem, var(--howhow-line) 2.8rem 2.85rem); opacity: .55; }
+.product-howhow[data-route="/sources/"] .product-visual__items span { border-left-color: var(--howhow-tomato); }
+.product-howhow[data-route="/sources/"] .product-page-section[data-kind="source-register"] { border-left: 4px solid var(--howhow-signal); padding-left: 1.4rem; }
+.product-howhow[data-route="/sources/"] .product-page-section[data-kind="boundary"] { border-left-color: var(--howhow-tomato); }
+.product-howhow[data-route="/sources/"] .product-page-section[data-kind="unknown"] { opacity: .92; }
