@@ -41,6 +41,22 @@ class AggregateTests(unittest.TestCase):
             self.assertNotIn("url", columns)
             database.close()
 
+    def test_provider_label_is_preserved_without_demo_state(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            database = open_db(Path(temporary) / "visitors.sqlite3")
+            database.execute(
+                "INSERT INTO daily_locations VALUES (?,?,?,?,?,?)",
+                ("2026-02-14", "VN", "Vietnam", "Hanoi", "Hanoi", 5),
+            )
+            database.commit()
+            output = Path(temporary) / "public.json"
+            export(database, output, provider="DB-IP City Lite")
+            payload = json.loads(output.read_text(encoding="utf-8"))
+            self.assertFalse(payload["demo"])
+            self.assertEqual(payload["geolocationProvider"], "DB-IP City Lite")
+            self.assertEqual(payload["rows"][0]["countryCode"], "VN")
+            database.close()
+
     def test_public_threshold_hides_small_groups(self):
         with tempfile.TemporaryDirectory() as temporary:
             database = open_db(Path(temporary) / "visitors.sqlite3")

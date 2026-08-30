@@ -2,9 +2,10 @@
 Description=Schedule Navin Research visitor aggregate refresh
 
 [Timer]
-OnCalendar=*-*-* 03:20:00
+OnBootSec=2m
+OnUnitActiveSec=5m
 Persistent=true
-RandomizedDelaySec=10m
+RandomizedDelaySec=30s
 Unit=navin-analytics.service
 
 [Install]

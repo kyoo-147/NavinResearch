@@ -1,6 +1,6 @@
 # Lightweight visitor geography
 
-This is an **offline batch pipeline**, not an always-on analytics application. It reads one complete Navin Research Nginx access log, resolves an optional operator-supplied GeoLite2 City database, and writes privacy-preserving daily aggregates to SQLite and static JSON.
+This is a **real, privacy-preserving production pipeline**, not a demo feed or an event-level tracking application. It reads Navin Research Nginx access logs, resolves an operator-installed MMDB, and writes daily aggregates to SQLite and static JSON. Production refreshes every five minutes from the previous rotated log plus the active log, so the current day converges as requests arrive without storing an individual trail.
 
 ## Privacy boundary
 
@@ -32,11 +32,16 @@ uv run --with 'geoip2>=4.8,<5' analytics/aggregate.py \
 
 The exporter writes each JSON file through a same-directory temporary file and atomic `os.replace`. Public and private payloads share `schemaVersion`, `batchId`, and `generatedAt` metadata from one database snapshot. Their final renames are necessarily sequential; the two audiences do not depend on cross-file consistency, and operators should alert on a batch-ID mismatch if they compare them. Production Nginx serves these stable operator-owned files through exact `alias` locations, so analytics refreshes never mutate an immutable site release.
 
-## GeoLite2
+## Geolocation databases
 
-The database is not included in git. Create a MaxMind account, accept the current GeoLite EULA, download `GeoLite2-City.mmdb` directly from MaxMind, keep it updated, and never expose or redistribute the MMDB.
+The database is not included in git or the web release. Production uses **DB-IP City Lite**, downloaded directly from DB-IP and stored as `/var/lib/navin-analytics/DBIP-City-Lite.mmdb`. It is approximate, updated monthly, and licensed under CC BY 4.0. `analytics/update-dbip-city.sh` performs a validated atomic refresh; the public map provides the required DB-IP attribution.
+
+MaxMind GeoLite2 City remains supported when an operator supplies it and accepts its license obligations. Pass the matching `--provider` value so exported data never misstates its source.
 
 Official references:
+
+- https://db-ip.com/db/lite.php
+- https://db-ip.com/db/download/ip-to-city-lite
 
 - https://dev.maxmind.com/geoip/geolite2-free-geolocation-data/
 - https://www.maxmind.com/en/geolite/eula
@@ -45,6 +50,22 @@ Official references:
 When GeoLite2 powers the public map, keep the visible attribution:
 
 > This product includes GeoLite2 Data created by MaxMind, available from https://www.maxmind.com.
+
+When DB-IP City Lite powers the map, keep the visible link:
+
+> IP Geolocation by DB-IP — https://db-ip.com
+
+## Production schedule
+
+`analytics/run-production.sh` concatenates the previous uncompressed rotated log, when present, and the active Navin log in chronological order. The importer replaces days represented in that input, so repeated five-minute runs are idempotent and the active day updates without accumulating raw identifiers. `navin-analytics.timer` drives this refresh; `navin-analytics-db.timer` refreshes DB-IP City Lite monthly.
+
+Production readiness requires all of the following:
+
+- `demo` is `false` in both published JSON files;
+- both files share the latest `batchId` and `generatedAt`;
+- `geolocationProvider` names the installed database;
+- the service and timer are active and the last service result succeeded;
+- `/visitor-insights/data.json` remains authenticated and `no-store`.
 
 ## Why polling instead of WebSockets
 

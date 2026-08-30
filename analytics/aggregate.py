@@ -261,6 +261,11 @@ def main(argv=None):
     parser.add_argument("--public-json", default="visitor-map/data.json")
     parser.add_argument("--private-json", default="visitor-insights/data.json")
     parser.add_argument("--mmdb", help="user-supplied GeoLite2-City.mmdb")
+    parser.add_argument(
+        "--provider",
+        choices=("MaxMind GeoLite2 City", "DB-IP City Lite"),
+        help="truthful provider label for the supplied MMDB (defaults to MaxMind for compatibility)",
+    )
     parser.add_argument("--retention-days", type=int, default=90)
     parser.add_argument("--minimum", type=int, default=5)
     args = parser.parse_args(argv)
@@ -272,13 +277,15 @@ def main(argv=None):
 
     reader = None
     provider = "none"
+    if args.provider and not args.mmdb:
+        parser.error("--provider requires --mmdb")
     if args.mmdb:
         try:
             from geoip2.database import Reader
         except ImportError:
             parser.error("--mmdb requires the optional geoip2 package")
         reader = Reader(args.mmdb)
-        provider = "MaxMind GeoLite2 City"
+        provider = args.provider or "MaxMind GeoLite2 City"
 
     database = open_db(args.db)
     source = sys.stdin if args.log == "-" else open(args.log, encoding="utf-8", errors="replace")

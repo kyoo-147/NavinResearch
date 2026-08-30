@@ -13,12 +13,13 @@ The production Nginx vhost must:
 
 ## Aggregate schedule
 
-`navin-analytics.service` and `navin-analytics.timer` are hardened systemd examples for a daily batch over the complete rotated Navin log. Install the aggregator and a dedicated virtual environment under `/opt/navin-analytics`, then install these units under `/etc/systemd/system`.
+`navin-analytics.service` and `navin-analytics.timer` are hardened systemd examples for a five-minute aggregate refresh over the previous rotated Navin log plus the active log. Install the aggregator, production runner, DB-IP updater, and a dedicated virtual environment under `/opt/navin-analytics`, then install all four analytics units under `/etc/systemd/system`.
 
-The service is condition-gated until all three operator prerequisites exist:
+The service is condition-gated until all operator prerequisites exist:
 
-- `/var/lib/navin-analytics/GeoLite2-City.mmdb`
-- `/var/log/nginx/navinresearch.access.log.1`
+- `/var/lib/navin-analytics/DBIP-City-Lite.mmdb`
+- `/var/log/nginx/navinresearch.access.log`
 - `/opt/navin-analytics/.venv/bin/python`
+- `/opt/navin-analytics/run-production.sh`
 
-Enable the timer only when the server and daily log rotation are aligned to UTC; otherwise one rotated local-day log may split a UTC deduplication day. The public and private JSON paths stay operator-owned and outside immutable releases.
+Keep the server and daily log rotation aligned to UTC; otherwise a rotated local-day log may split a UTC deduplication day. The public and private JSON paths, MMDB, SQLite database, and raw logs stay operator-owned and outside immutable releases. Never seed production with the repository demo JSON.

@@ -1,0 +1,11 @@
+[Unit]
+Description=Schedule monthly DB-IP City Lite refresh
+
+[Timer]
+OnCalendar=*-*-02 02:20:00 UTC
+Persistent=true
+RandomizedDelaySec=30m
+Unit=navin-analytics-db.service
+
+[Install]
+WantedBy=timers.target

@@ -17,7 +17,7 @@ function isValidRow(row) {
 }
 
 function validateData(data) {
-  const providers = new Set(["demo", "none", "MaxMind GeoLite2 City"]);
+  const providers = new Set(["demo", "none", "MaxMind GeoLite2 City", "DB-IP City Lite"]);
   if (
     !data ||
     typeof data !== "object" ||

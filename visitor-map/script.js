@@ -128,7 +128,7 @@ function isIsoTimestamp(value) {
 }
 
 function validateData(data) {
-  const providers = new Set(["demo", "none", "MaxMind GeoLite2 City"]);
+  const providers = new Set(["demo", "none", "MaxMind GeoLite2 City", "DB-IP City Lite"]);
   if (
     !data ||
     typeof data !== "object" ||
@@ -210,7 +210,21 @@ function renderData(data) {
   });
 
   demoBadge.hidden = !data.demo;
-  attribution.hidden = !String(data.geolocationProvider || "").startsWith("MaxMind");
+  const provider = String(data.geolocationProvider || "");
+  attribution.hidden = !["MaxMind GeoLite2 City", "DB-IP City Lite"].includes(provider);
+  if (!attribution.hidden) {
+    const link = document.createElement("a");
+    link.rel = "noreferrer";
+    if (provider === "DB-IP City Lite") {
+      attribution.replaceChildren("IP Geolocation by ", link, ". DB-IP Lite data is approximate.");
+      link.href = "https://db-ip.com";
+      link.textContent = "DB-IP";
+    } else {
+      attribution.replaceChildren("This product includes GeoLite2 Data created by MaxMind, available from ", link, ".");
+      link.href = "https://www.maxmind.com";
+      link.textContent = "maxmind.com";
+    }
+  }
   const withheld = data.withheldVisitors;
   statusNode.textContent = rows.length
     ? `${withheld} visitors withheld below the minimum group size. Updated periodically; not a live individual feed.`
