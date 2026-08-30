@@ -14,13 +14,13 @@
   <meta name="theme-color" content="#03120d">
   <link rel="canonical" href="https://howhow.navinresearch.com/docs/">
   <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
-  <link rel="stylesheet" href="/products/product-foundation.css?v=20260830-2">
-  <link rel="stylesheet" href="/products/themes/howhow.css?v=20260830-2">
+  <link rel="stylesheet" href="/products/product-foundation.css?v=20260830-3">
+  <link rel="stylesheet" href="/products/themes/howhow.css?v=20260830-3">
   <script>document.documentElement.classList.remove('no-js')</script>
-  <script src="/products/product-site.js?v=20260830-2" defer></script>
+  <script src="/products/product-site.js?v=20260830-3" defer></script>
   <title>Docs | HowHow</title>
 </head>
-<body class="product-howhow" data-product="howhow" data-route="/docs/">
+<body class="product-howhow product-layout-docs" data-product="howhow" data-route="/docs/" data-layout="docs">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="product-field" aria-hidden="true"></div>
   <header class="product-header">
@@ -32,20 +32,30 @@
     </div>
   </header>
   <main id="main-content" class="product-main">
-    <section class="product-page-hero">
-      <div class="product-page-hero__copy"><p class="product-eyebrow">HOWHOW / RESEARCH SYSTEM</p><h1>Read the label before you cook.</h1><p>The public repository is the authoritative starting point for current implementation context and stated boundaries.</p></div>
-      <figure class="product-visual product-visual--manual" data-visual="manual"><div class="product-visual__stage"><span class="product-visual__title">A short instruction leaflet</span><div class="product-visual__items"><span style="--item:0">README</span><span style="--item:1">Source trail</span><span style="--item:2">Open questions</span></div></div><figcaption>Concept direction; not evidence of a shipped capability.</figcaption></figure>
+    <section class="product-page-hero product-page-hero--docs">
+      <div class="product-page-hero__copy"><p class="product-eyebrow">PROJECT / INSTRUCTION LEAFLET</p><h1>Read the label before you cook.</h1><p>The public repository is the authoritative starting point for current implementation context and stated boundaries.</p></div>
+      <figure class="product-visual product-visual--manual" data-visual="manual"><div class="product-visual__stage"><span class="product-visual__title">INSTRUCTION LEAFLET</span><div class="product-visual__items"><span style="--item:0">README</span><span style="--item:1">REQUIREMENTS</span><span style="--item:2">OPEN QUESTIONS</span></div></div><figcaption>Concept direction; not evidence of a shipped capability.</figcaption></figure>
     </section>
-    <div class="product-page-sections"><section class="product-page-section" data-kind="evidence">
+    <div class="product-page-sections product-page-sections--docs"><section class="product-page-section product-section--docs" data-kind="read" data-renderer="docs">
     <div class="product-page-section__index" aria-hidden="true">01</div>
-    <div class="product-page-section__copy"><h2>What this page can claim</h2><p>Documentation links point to public source material; this product page does not reproduce repository code.</p><strong class="product-page-section__status">SOURCE-BACKED DIRECTION</strong></div>
-    <ul><li>README</li><li>Source trail</li><li>Open questions</li></ul>
+    <div class="product-page-section__copy"><h2>Start with the public source.</h2><p>The README and product requirements describe the intended Research OS, its canonical records, human gates, and provider boundaries.</p><strong class="product-page-section__status">SOURCE-BACKED</strong></div>
+    <ul class="product-section-points"><li>Product thesis</li><li>Requirements</li><li>Status labels</li></ul>
+
+  </section><section class="product-page-section product-section--docs" data-kind="orient" data-renderer="docs">
+    <div class="product-page-section__index" aria-hidden="true">02</div>
+    <div class="product-page-section__copy"><h2>Use the vocabulary precisely.</h2><p>Brief, TaskSpec, SourceRecord, EvidenceSpan, RunManifest, ClaimRecord, ReviewRecord, ApprovalRecord, and ArtifactManifest each carry a different responsibility.</p><strong class="product-page-section__status">DOCUMENTATION MAP</strong></div>
+    <ul class="product-section-points"><li>Canonical records</li><li>Append-only events</li><li>Rebuildable state</li></ul>
+
+  </section><section class="product-page-section product-section--docs" data-kind="limits" data-renderer="docs">
+    <div class="product-page-section__index" aria-hidden="true">03</div>
+    <div class="product-page-section__copy"><h2>Open questions stay open.</h2><p>No public documentation here should be mistaken for a live API reference, supported deployment, or proof that an integration spike has been executed.</p><strong class="product-page-section__status">UNKNOWN</strong></div>
+    <ul class="product-section-points"><li>Runtime choice</li><li>Readiness</li><li>Availability</li></ul>
 
   </section></div>
     <section class="product-page-cta"><div><h2>Open the source</h2><p>Inspect the public HowHow-Reasoner README.</p></div><a class="product-button" href="https://github.com/kyoo-147/HowHow-Reasoner/blob/main/README.md" target="_blank" rel="noopener noreferrer">Read README</a></section>
 
 
   </main>
-  <footer class="product-footer"><div class="product-footer__brand"><a href="/" class="product-wordmark">HowHow</a><p>A bounded research application that keeps approvals, provenance, and failure history beside every useful result.</p><span>A Navin Research project</span></div><div class="product-footer__groups"><section><h2>Explore</h2><a href="/product/">Product</a><a href="/evidence/">Evidence</a><a href="/projects/">Projects</a></section><section><h2>Project</h2><a href="/docs/">Docs</a><a href="/github/">GitHub</a><a href="/releases/">Releases</a></section><section><h2>Legal</h2><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a></section></div><div class="product-footer__base"><span>© <span data-current-year></span> HowHow</span><a href="https://navinresearch.com/products/">Navin Research products</a></div></footer>
+  <footer class="product-footer"><div class="product-footer__brand"><a href="/" class="product-wordmark">HowHow</a><p>A bounded research application that keeps approvals, provenance, and failure history beside every useful result.</p><span>A Navin Research project</span></div><div class="product-footer__groups"><section><h2>Research loop</h2><a href="/how-it-works/">How it works</a><a href="/research-workflow/">Workflow</a><a href="/evidence/">Evidence</a></section><section><h2>Review shelf</h2><a href="/experiments/">Experiments</a><a href="/projects/">Projects</a><a href="/releases/">Releases</a></section><section><h2>Source</h2><a href="/docs/">Docs</a><a href="/github/">GitHub</a><a href="https://navinresearch.com/" target="_blank" rel="noopener noreferrer">Navin Research</a></section><section><h2>Legal</h2><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/contact/">Contact</a></section></div><div class="product-footer__base"><span>© <span data-current-year></span> HowHow</span><a href="https://navinresearch.com/products/">Navin Research products</a></div></footer>
 </body>
 </html>

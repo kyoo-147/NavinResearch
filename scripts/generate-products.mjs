@@ -183,10 +183,10 @@ function pageTemplate(product, site, page) {
   <meta name="theme-color" content="#03120d">
   <link rel="canonical" href="${canonical}">
   <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
-  <link rel="stylesheet" href="/products/product-foundation.css?v=20260830-2">
-  <link rel="stylesheet" href="/products/themes/${product.slug}.css?v=20260830-2">
+  <link rel="stylesheet" href="/products/product-foundation.css?v=20260830-3">
+  <link rel="stylesheet" href="/products/themes/${product.slug}.css?v=20260830-3">
   <script>document.documentElement.classList.remove('no-js')</script>
-  <script src="/products/product-site.js?v=20260830-2" defer></script>
+  <script src="/products/product-site.js?v=20260830-3" defer></script>
   <title>${esc(page.title)}${isHome ? "" : ` | ${esc(product.name)}`}</title>
 </head>
 <body class="product-${product.slug} product-layout-${layout}" data-product="${product.slug}" data-route="${esc(path)}" data-layout="${layout}">

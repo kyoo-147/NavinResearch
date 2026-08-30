@@ -7,9 +7,17 @@ const source = {
   roboracer: 'https://roboracer.ai/'
 };
 
+const visualMedia = {
+  '/': { src: '/products/media/autopilot/model.jpeg', alt: 'Project scale-model autonomous vehicle on its documented test surface', caption: 'PROJECT SOURCE / SCALE-MODEL VEHICLE / CAPABILITY NOT INFERRED FROM IMAGE' },
+  '/vehicle/': { src: '/products/media/autopilot/track.jpeg', alt: 'Scale-model vehicle on a BFMC-style test track', caption: 'PROJECT SOURCE / TEST-TRACK CONTEXT / CURRENT OPERATION UNVERIFIED' },
+  '/hardware/': { src: '/products/media/autopilot/hardware-connection.jpg', alt: 'Project hardware connection diagram', caption: 'PROJECT SOURCE / HARDWARE CONNECTION REFERENCE' },
+  '/localization/': { src: '/products/media/autopilot/map.jpeg', alt: 'Local map representation documented by the project', caption: 'PROJECT SOURCE / LOCAL MAP REFERENCE / ACCURACY NOT CLAIMED' },
+  '/software/': { src: '/products/media/autopilot/work.jpeg', alt: 'Project workbench with scale-model vehicle', caption: 'PROJECT SOURCE / BUILD RECORD / RUNTIME NOT INFERRED' }
+};
+
 const page = (path, title, description, headline, lede, kind, visualTitle, sections, cta = { title: 'Read the source trail', body: 'Start with the public references. No deployment, benchmark, or commercial availability is implied.', label: 'Open repository', href: source.repo }) => ({
   path, title, description, headline, lede,
-  visual: { kind, title: visualTitle, caption: 'Editorial system view; source material and simulation are labeled, not presented as physical proof.' },
+  visual: { kind, title: visualTitle, caption: 'Editorial system view; source material and simulation are labeled, not presented as physical proof.', ...visualMedia[path] },
   sections, cta
 });
 const section = (kind, title, body, points = [], status, cta) => ({ kind, title, body, points, ...(status ? { status } : {}), ...(cta ? { cta } : {}) });

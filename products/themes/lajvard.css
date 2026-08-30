@@ -38,13 +38,14 @@
 @media (prefers-reduced-motion: reduce) { .product-lajvard *, .product-lajvard *::before, .product-lajvard *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
 
 /* The paper theme meets a dark navigation and visual instrument. */
-.product-lajvard .product-header { color: #f4f0e6; }
+.product-lajvard .product-header { color: #f4f0e6; background: rgba(32,37,34,.96); border-bottom-color: var(--product-lajvard-ink); }
 .product-lajvard .product-header .product-wordmark,
 .product-lajvard .product-header .product-nav > a,
 .product-lajvard .product-header .product-nav summary { color: #f4f0e6; }
 .product-lajvard .product-header .product-nav a[aria-current="page"] { color: #f4f0e6; text-decoration: underline; }
-.product-lajvard .product-menu-button { color: #f4f0e6; }
-.product-lajvard .product-evidence-block li small { color: #f4f0e6; }
+.product-lajvard .product-menu-button { color: #f4f0e6; border-color: rgba(244,240,230,.55); }
+.product-lajvard .product-evidence-block li small { color: var(--product-lajvard-coral); }
+@media (max-width: 800px) { .product-lajvard .product-menu { background: var(--product-lajvard-ink); } }
 
 /* Lajvard page grammar: a paper field notebook, with route-specific editorial instruments. */
 .product-lajvard { --ground: var(--product-lajvard-paper); --surface: #e8ddc8; --surface-2: #ddd0b8; --accent: var(--product-lajvard-coral); --line: var(--product-lajvard-rule); --muted: var(--product-lajvard-quiet); }
