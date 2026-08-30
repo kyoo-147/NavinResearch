@@ -8,9 +8,10 @@ const sources = {
   figure: 'https://www.figure.ai/figure',
   menlo: 'https://menlo.ai/'
 };
+const layoutFor = (path) => ({ '/': 'editorial', '/life-with-lajvard/': 'editorial', '/robot/': 'editorial', '/movement/': 'workflow', '/spatial-memory/': 'workflow', '/hardware/': 'specs', '/software/': 'ledger', '/intelligence/': 'comparison', '/developer/': 'docs', '/research/': 'timeline', '/gallery/': 'media', '/specs/': 'specs', '/availability/': 'availability', '/support/': 'docs', '/about/': 'editorial', '/contact/': 'docs', '/privacy/': 'ledger', '/terms/': 'ledger', '/404.html': 'index' }[path] || 'index');
 
 const section = (kind, title, body, points, status = 'CONCEPT STAGE') => ({ kind, title, body, points, status });
-const page = (path, title, description, eyebrow, headline, lede, visual, sections, cta) => ({ path, title, description, eyebrow, headline, lede, visual, sections, ...(cta ? { cta } : {}) });
+const page = (path, title, description, eyebrow, headline, lede, visual, sections, cta) => ({ path, title, description, eyebrow, headline, lede, visual, sections, layout: layoutFor(path), ...(cta ? { cta } : {}) });
 const contact = { title: 'Keep the notebook open', body: 'Follow future field notes as the direction becomes more concrete.', label: 'Follow field notes', href: '/availability/' };
 
 const lajvard = {

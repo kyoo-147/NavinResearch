@@ -80,3 +80,25 @@
 .product-lajvard[data-route='/availability/'] .product-visual__stage { border: 2px solid var(--product-lajvard-coral); transform: rotate(-1deg); }
 .product-lajvard[data-route='/gallery/'] .product-visual__stage { border-width: 0 0 1px; box-shadow: none; background: transparent; }
 @media (max-width: 800px) { .product-lajvard .product-page-hero { min-height: auto; padding-top: 4rem; } .product-lajvard .product-page-section { grid-template-columns: 1fr; } .product-lajvard .product-page-section__index { margin-bottom: -.5rem; } .product-lajvard .product-page-section ul { border-top: 1px solid var(--product-lajvard-rule); } }
+
+/* Route instruments: the robot notebook changes medium by question, not by copied card skin. */
+.product-lajvard[data-route='/gallery/'] .product-page-hero { grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr); align-items: start; }
+.product-lajvard[data-route='/gallery/'] .product-visual__stage { min-height: 18rem; display: grid; align-content: end; }
+.product-lajvard[data-route='/gallery/'] .product-visual__items { grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 7rem; }
+.product-lajvard[data-route='/gallery/'] .product-visual__items span { min-height: 5rem; padding: .8rem; border-right: 1px solid var(--product-lajvard-rule); }
+.product-lajvard[data-route='/specs/'] .product-page-hero { min-height: 30rem; }
+.product-lajvard[data-route='/specs/'] .product-page-section__copy { border-left: 3px solid var(--product-lajvard-blue); padding-left: 1.2rem; }
+.product-lajvard[data-route='/developer/'] .product-visual__stage { border: 2px solid var(--product-lajvard-ink); background: #202522; color: var(--product-lajvard-paper); font-family: monospace; }
+.product-lajvard[data-route='/developer/'] .product-visual__title:before { content: 'lajvard://future-api $ '; color: #d6b36a; }
+.product-lajvard[data-route='/developer/'] .product-page-section { grid-template-columns: 3rem minmax(14rem,.5fr) minmax(18rem,1.5fr); }
+.product-lajvard[data-route='/support/'] .product-page-hero__copy { border: 1px solid var(--product-lajvard-rule); padding: 1.5rem; background: #eee4d1; }
+.product-lajvard[data-route='/support/'] .product-page-section { border-top-style: dashed; }
+.product-lajvard[data-route='/availability/'] .product-page-hero__copy { max-width: 38rem; }
+.product-lajvard[data-route='/availability/'] .product-page-cta { background: #e8ddc8; padding-inline: clamp(1rem,3vw,3rem); }
+.product-lajvard[data-route='/research/'] .product-page-section__copy h2 { font-style: italic; }
+.product-lajvard[data-route='/research/'] .product-page-section ul { grid-template-columns: 1fr; }
+@media (max-width: 800px) {
+  .product-lajvard[data-route='/gallery/'] .product-page-hero { grid-template-columns: 1fr; }
+  .product-lajvard[data-route='/gallery/'] .product-visual__items { grid-template-columns: repeat(2,1fr); }
+  .product-lajvard[data-route='/gallery/'] .product-visual__items span { min-height: 4rem; }
+}

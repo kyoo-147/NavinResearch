@@ -25,3 +25,6 @@ All visuals are original concept diagrams or text states. No hardware, firmware,
 
 ## Responsive/accessibility contract
 The hero becomes one reading column at 720px; sections preserve comfortable 375px wrapping; controls retain visible focus and touch-sized links; reduced motion disables transitions. Validate desktop 1440px and mobile 375px after generation.
+
+## Route-specific reconstruction pass
+The gallery is an archive taxonomy rather than a generic media grid; specs is an honest ledger; developer is a dark terminal contract; support is an inbox boundary; availability is a stamped field-note gate; research is a reading shelf with source-versus-evidence separation. These pages intentionally use different compositions while retaining the paper, marginalia, coral, and blue-green vocabulary.
