@@ -94,7 +94,7 @@ function productsTemplate(localeKey) {
   const locale = locales[localeKey];
   const copy = productCopy[localeKey];
   return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
-${head(localeKey, `${locale.routes.products.title} — ${site.name}`, locale.routes.products.description, "products", "/content-routes/route-foundation.css")}  </head><body class="route-page content-page content-products products-page"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
+${head(localeKey, `${locale.routes.products.title} — ${site.name}`, locale.routes.products.description, "products", "/content-routes/route-foundation.css?v=20260830-12")}  </head><body class="route-page content-page content-products products-page"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
     ${contentHeader(localeKey, "products")}
     <main class="products-main"><header class="products-intro"><p class="route-page__eyebrow">${escapeHtml(copy.eyebrow)}</p><h1>${escapeHtml(copy.title)}</h1><p>${escapeHtml(copy.lede)}</p></header><section class="product-directory" aria-label="${escapeHtml(locale.routes.products.title)}">${productGrid(localeKey)}</section></main>
     ${routeFooter(localeKey)}
