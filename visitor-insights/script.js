@@ -48,6 +48,10 @@ const dateNode = document.querySelector("#date");
 const locationsNode = document.querySelector("#locations");
 const statusNode = document.querySelector("#status");
 const demoBadge = document.querySelector("#demo-badge");
+const totalVisitorsNode = document.querySelector("#total-visitors");
+const totalLocationsNode = document.querySelector("#total-locations");
+const totalCountriesNode = document.querySelector("#total-countries");
+const rowCountNode = document.querySelector("#row-count");
 
 fetch("/visitor-insights/data.json", { cache: "no-store" })
   .then((response) => {
@@ -60,18 +64,28 @@ fetch("/visitor-insights/data.json", { cache: "no-store" })
     const latest = rows.map((row) => row.day).sort().pop();
     dateNode.textContent = latest || "—";
     demoBadge.hidden = !data.demo;
-    rows
+    const latestRows = rows
       .filter((row) => row.day === latest)
-      .sort((left, right) => right.visitors - left.visitors)
-      .forEach((row) => {
-        const item = document.createElement("li");
-        const location = document.createElement("span");
-        location.textContent = `${row.city}, ${row.region}, ${row.country}`;
-        const visitors = document.createElement("small");
-        visitors.textContent = `${row.visitors.toLocaleString()} visitors`;
-        item.append(location, visitors);
-        locationsNode.append(item);
-      });
+      .sort((left, right) => right.visitors - left.visitors || left.country.localeCompare(right.country));
+    const totalVisitors = latestRows.reduce((total, row) => total + row.visitors, 0);
+    totalVisitorsNode.textContent = totalVisitors.toLocaleString();
+    totalLocationsNode.textContent = latestRows.length.toLocaleString();
+    totalCountriesNode.textContent = new Set(latestRows.map((row) => row.countryCode)).size.toLocaleString();
+    rowCountNode.textContent = `${latestRows.length.toLocaleString()} locations`;
+    locationsNode.replaceChildren();
+    latestRows.forEach((row) => {
+      const item = document.createElement("tr");
+      for (const value of [row.city, row.region, row.country]) {
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        item.append(cell);
+      }
+      const visitors = document.createElement("td");
+      visitors.textContent = row.visitors.toLocaleString();
+      visitors.className = "visitor-count";
+      item.append(visitors);
+      locationsNode.append(item);
+    });
     statusNode.hidden = true;
     statusNode.textContent = "";
   })

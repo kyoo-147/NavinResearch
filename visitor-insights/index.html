@@ -5,20 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow, noarchive">
     <meta name="referrer" content="no-referrer">
+    <meta name="theme-color" content="#03120d">
+    <meta name="description" content="Authenticated aggregate visitor analytics for Navin Research.">
     <title>Private visitor insights · Navin Research</title>
     <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
-    <link rel="stylesheet" href="/visitor-map/style.css?v=20260830-all-countries">
-    <script src="/visitor-insights/script.js?v=20260830-all-countries" defer></script>
+    <link rel="stylesheet" href="/visitor-map/style.css?v=20260830-insights-shell">
+    <script src="/visitor-insights/script.js?v=20260830-insights-shell" defer></script>
   </head>
-  <body>
-    <main class="wrap">
-      <header><a class="map-brand" href="/visitor-map/"><img src="/assets/brand/logo.webp" alt="" width="56" height="56"><span>NAVIN RESEARCH</span></a><span>PRIVATE / AUTHENTICATED</span></header>
-      <section class="panel">
-        <div class="panel-title"><span>Daily location aggregates</span><strong id="date">—</strong></div>
-        <p class="demo-badge" id="demo-badge" hidden>DEMO DATA</p>
-        <ol id="locations"></ol>
-        <p class="note" id="status" hidden></p>
-      </section>
-    </main>
+  <body class="insights-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="wrap">
+      <header class="site-header">
+        <a class="map-brand" href="/"><img src="/assets/brand/logo.webp" alt="" width="56" height="56"><span>NAVIN RESEARCH</span></a>
+        <nav class="site-nav" aria-label="Analytics navigation">
+          <a href="/visitor-map/">Public map</a>
+          <a href="/">Research site</a>
+        </nav>
+        <span class="access-state"><i aria-hidden="true"></i>Authenticated</span>
+      </header>
+
+      <main class="insights-main" id="main-content">
+        <section class="insights-hero" aria-labelledby="insights-title">
+          <div>
+            <p class="insights-eyebrow">Private analytics</p>
+            <h1 id="insights-title">Visitor insights</h1>
+          </div>
+          <p class="snapshot"><span>Latest snapshot</span><strong id="date">—</strong></p>
+        </section>
+
+        <section class="insights-stats" aria-label="Latest visitor summary">
+          <article><span>Total visitors</span><strong id="total-visitors">—</strong></article>
+          <article><span>Locations</span><strong id="total-locations">—</strong></article>
+          <article><span>Countries</span><strong id="total-countries">—</strong></article>
+        </section>
+
+        <section class="insights-panel" aria-labelledby="locations-title">
+          <div class="insights-panel__heading">
+            <h2 id="locations-title">Locations</h2>
+            <span id="row-count">—</span>
+          </div>
+          <p class="demo-badge" id="demo-badge" hidden>DEMO DATA</p>
+          <div class="insights-table-wrap">
+            <table>
+              <thead><tr><th scope="col">City</th><th scope="col">Region</th><th scope="col">Country</th><th scope="col">Visitors</th></tr></thead>
+              <tbody id="locations"></tbody>
+            </table>
+          </div>
+          <p class="note" id="status" hidden></p>
+        </section>
+      </main>
+
+      <footer class="insights-footer">
+        <span>Navin Research</span>
+        <a href="/visitor-map/">Open public map ↗</a>
+      </footer>
+    </div>
   </body>
 </html>

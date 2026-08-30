@@ -4,6 +4,7 @@ const dateNode = document.querySelector("#date");
 const countriesNode = document.querySelector("#countries");
 const statusNode = document.querySelector("#status");
 const demoBadge = document.querySelector("#demo-badge");
+const totalVisitorsNode = document.querySelector("#total-visitors");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let centroids = {};
@@ -194,6 +195,7 @@ function renderData(data) {
   const latest = allRows.map((row) => row.day).sort().pop();
   rows = allRows.filter((row) => row.day === latest).sort((left, right) => right.visitors - left.visitors);
   dateNode.textContent = latest || "—";
+  totalVisitorsNode.textContent = rows.reduce((total, row) => total + row.visitors, 0).toLocaleString();
   countriesNode.replaceChildren();
 
   rows.forEach((row, index) => {
