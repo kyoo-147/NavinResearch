@@ -34,3 +34,18 @@
   .product-autopilot[data-route='/'] .product-visual--media img { aspect-ratio: 4 / 3; }
   .product-autopilot[data-route='/about/'] .product-page-hero__copy { padding-left: 1rem; }
 }
+
+/* Instrument treatments keep each route leg visually distinct without implying a live dashboard. */
+.product-autopilot[data-route='/perception/'] .product-page-section[data-kind='capture'] { border-left: 3px solid var(--autopilot-track); padding-left: clamp(1rem, 2vw, 2rem); }
+.product-autopilot[data-route='/control/'] .product-page-section[data-kind='actuation'] { border-right: 3px solid var(--autopilot-signal); padding-right: clamp(1rem, 2vw, 2rem); }
+.product-autopilot[data-route='/simulation/'] .product-page-section[data-kind='scenario'] { background: repeating-linear-gradient(135deg, transparent 0 1.5rem, rgba(139,182,170,.035) 1.5rem 1.56rem); }
+.product-autopilot[data-route='/benchmarks/'] .product-page-section[data-kind='matrix'] { border-top: 2px solid var(--autopilot-signal); }
+.product-autopilot[data-route='/vehicle/'] .product-page-section[data-kind='inspection'] { background: linear-gradient(90deg, rgba(139,182,170,.08), transparent 45%); }
+.product-autopilot[data-route='/localization/'] .product-page-section[data-kind='map'] { background: linear-gradient(135deg, rgba(139,182,170,.08), transparent 55%); }
+.product-autopilot[data-route='/hardware/'] .product-page-section[data-kind='wiring'] { border-left: 3px solid var(--autopilot-track); padding-left: clamp(1rem, 2vw, 2rem); }
+.product-autopilot[data-route='/software/'] .product-page-section[data-kind='interfaces'] { border-top: 2px dotted var(--autopilot-track); }
+.product-autopilot[data-route='/releases/'] .product-page-section[data-kind='archive'] { font-variant-numeric: tabular-nums; }
+.product-autopilot[data-route='/access/'] .product-page-section[data-kind='gate'] { box-shadow: inset 0 0 0 1px rgba(228,196,91,.32); }
+@media (max-width:760px) {
+  .product-autopilot[data-route='/control/'] .product-page-section[data-kind='actuation'] { border-right:0; border-left:3px solid var(--autopilot-signal); padding-right:0; padding-left:1rem; }
+}

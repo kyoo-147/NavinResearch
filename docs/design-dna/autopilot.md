@@ -36,3 +36,7 @@ The overview uses a vehicle-loop thesis; system pages use handoff diagrams; the 
 ### Source retrieval status
 
 The linked repository URL was checked during reconstruction but its GitHub `main` README raw path returned HTTP 404; therefore repository-specific statements remain bounded by the existing source-backed content and are not upgraded to fresh execution evidence. Official reference pages inspected: https://comma.ai/openpilot, https://appliedintuition.com/, and https://roboracer.ai/. Their tracking scripts/assets were not copied.
+
+## Checkpoint 4 refinements
+
+The route notebook now gives each high-impact loop edge an instrument treatment: perception records capture conditions, localisation records coordinate context, planning records intent, control records actuation boundaries, and simulation records synthetic assumptions. Hardware and software use wiring/interface grammar, while benchmarks use a protocol contract and releases use an archive treatment. These are editorial distinctions only; they do not indicate that the stack has been called or that the pictured vehicle is operational.
