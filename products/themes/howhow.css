@@ -1,52 +1,73 @@
 .product-howhow {
+  --howhow-paper: #101714;
   --howhow-ink: #f2eee4;
   --howhow-dim: #aaa99f;
   --howhow-line: rgba(242, 238, 228, .25);
   --howhow-signal: #d5ff55;
   --howhow-tomato: #ff8066;
-  --howhow-paper: #101714;
-  min-height: 100svh;
+  --howhow-broth: #18261c;
+  --accent: var(--howhow-signal);
   background: var(--howhow-paper);
   color: var(--howhow-ink);
   font-family: Georgia, serif;
 }
-.product-howhow .product-shell { max-width: 90rem; }
-.product-howhow .product-header { border-color: var(--howhow-line); }
-.product-howhow .product-brand { font-family: Arial, sans-serif; letter-spacing: .24em; }
-.product-howhow .product-hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(20rem, .7fr); gap: 3rem; align-items: end; }
-.product-howhow .product-eyebrow,
-.product-howhow .product-label { color: var(--howhow-signal); font-family: Arial, sans-serif; }
-.product-howhow .product-hero h1 { max-width: 6ch; margin-bottom: 0; color: var(--howhow-ink); font-size: clamp(4rem, 8vw, 8rem); letter-spacing: -.08em; line-height: .78; }
-.product-howhow .product-thesis { max-width: 34rem; border-left: 2px solid var(--howhow-signal); padding-left: 1rem; font-size: clamp(1.15rem, 2vw, 1.7rem); line-height: 1.18; }
-.product-howhow .product-status { border-color: var(--howhow-signal); color: var(--howhow-signal); font-family: Arial, sans-serif; }
-.product-howhow .product-section { border-color: var(--howhow-line); }
-.product-howhow .product-section__head { grid-template-columns: minmax(9rem, .55fr) minmax(0, 1.45fr); }
-.product-howhow .product-section h2 { font-size: clamp(2rem, 4.8vw, 5rem); font-weight: 400; letter-spacing: -.07em; }
-.product-howhow .product-description { color: var(--howhow-dim); font-size: clamp(1.05rem, 1.6vw, 1.4rem); line-height: 1.35; }
-.product-howhow .capability-grid { border-color: var(--howhow-line); }
-.product-howhow .capability { border-color: var(--howhow-line); background: transparent; }
-.product-howhow .capability b { color: var(--howhow-signal); font-family: Arial, sans-serif; }
-.product-howhow .capability span { font-size: 1.05rem; }
-.product-howhow .product-pricing { grid-template-columns: 1fr; }
-.product-howhow .price-card { border-color: var(--howhow-line); border-left: 4px solid var(--howhow-signal); background: transparent; }
-.product-howhow .price-card h3 { font-size: 1.4rem; }
-.product-howhow .price-card p { color: var(--howhow-dim); }
-.product-howhow .product-footer { border-color: var(--howhow-line); font-family: Arial, sans-serif; }
-.product-howhow a:focus-visible { outline: 2px solid var(--howhow-signal); outline-offset: 4px; }
-.product-howhow .product-diagram-frame { position: relative; border: 1px solid var(--howhow-line); background: #0a0f0c; }
-.product-howhow .product-diagram-frame::after { content: "OPEN / INSPECT / REVIEW"; position: absolute; right: 1rem; bottom: .75rem; color: var(--howhow-signal); font: .65rem/1 Arial, sans-serif; letter-spacing: .16em; }
-.product-howhow .product-proof { border-top: 4px solid var(--howhow-tomato); }
-.product-howhow .product-availability { border: 1px solid var(--howhow-signal); background: #151e17; }
-@media (max-width: 760px) {
-  .product-howhow .product-hero { grid-template-columns: 1fr; gap: 2rem; }
-  .product-howhow .product-hero h1 { font-size: clamp(4rem, 20vw, 7rem); }
-  .product-howhow .product-section__head { grid-template-columns: 1fr; }
-  .product-howhow .capability-grid { grid-template-columns: 1fr 1fr; }
+.product-howhow .product-field {
+  background: var(--howhow-paper);
+  background-image: repeating-linear-gradient(0deg, transparent 0 5rem, rgba(213,255,85,.025) 5rem 5.05rem), radial-gradient(circle at 80% 15%, rgba(213,255,85,.08), transparent 28rem);
 }
-@media (max-width: 420px) {
-  .product-howhow .capability-grid { grid-template-columns: 1fr; }
-  .product-howhow .product-diagram-frame::after { right: .5rem; font-size: .55rem; }
+.product-howhow .product-field::after { display: none; }
+.product-howhow .product-header { border-color: var(--howhow-line); background: rgba(16,23,20,.94); }
+.product-howhow .product-wordmark { font-family: Arial, sans-serif; font-weight: 700; letter-spacing: .24em; }
+.product-howhow .product-nav { font-family: Arial, sans-serif; }
+.product-howhow .product-nav>a:hover,
+.product-howhow .product-nav summary:hover,
+.product-howhow .product-nav a[aria-current="page"],
+.product-howhow .product-nav__group[data-active]>summary { color: var(--howhow-signal); }
+.product-howhow .product-eyebrow { color: var(--howhow-signal); font-family: Arial, sans-serif; letter-spacing: .18em; }
+.product-howhow .product-page-hero { grid-template-columns: minmax(0,1fr) minmax(18rem,.72fr); gap: clamp(2rem,8vw,9rem); align-items: center; }
+.product-howhow .product-page-hero__copy h1 { max-width: 8ch; font-size: clamp(3.8rem,8vw,8.5rem); letter-spacing: -.085em; line-height: .8; }
+.product-howhow .product-page-hero__copy>p:not(.product-eyebrow) { max-width: 34rem; color: var(--howhow-dim); font-size: clamp(1.05rem,1.8vw,1.45rem); }
+.product-howhow .product-page-hero__copy::after { content: "OPEN / INSPECT / REVIEW"; display: block; width: fit-content; margin-top: 2rem; padding: .55rem .7rem; border: 1px solid var(--howhow-signal); color: var(--howhow-signal); font: 700 .62rem/1 Arial,sans-serif; letter-spacing: .16em; }
+.product-howhow .product-visual__stage { min-height: 29rem; border: 1px solid var(--howhow-line); background: var(--howhow-broth); box-shadow: .8rem .8rem 0 rgba(213,255,85,.12); }
+.product-howhow .product-visual__stage::before { background: repeating-linear-gradient(0deg, transparent 0 2.8rem, var(--howhow-line) 2.8rem 2.85rem); background-size: auto; opacity: .4; }
+.product-howhow .product-visual__title { color: var(--howhow-signal); font: 700 .7rem/1.2 Arial,sans-serif; letter-spacing: .16em; }
+.product-howhow .product-visual__items { margin-top: 4rem; gap: .9rem; }
+.product-howhow .product-visual__items span { width: 100%; max-width: 24rem; padding: .9rem 1rem; border: 1px solid var(--howhow-line); border-left: 5px solid var(--howhow-signal); background: rgba(16,23,20,.84); font: 700 .76rem/1.3 Arial,sans-serif; letter-spacing: .08em; }
+.product-howhow .product-visual--package .product-visual__stage { border: 3px solid var(--howhow-signal); border-radius: .15rem; transform: rotate(-1deg); }
+.product-howhow .product-visual--package .product-visual__stage::after { content: "HOWHOW / INSTANT RESEARCH"; position: absolute; right: 1rem; top: 1rem; color: var(--howhow-tomato); font: 700 .62rem Arial,sans-serif; letter-spacing: .14em; }
+.product-howhow .product-visual--stamp .product-visual__stage { display: grid; place-content: center; text-align: center; }
+.product-howhow .product-visual--stamp .product-visual__title { font-size: clamp(1.6rem,4vw,3rem); }
+.product-howhow .product-page-section { border-color: var(--howhow-line); }
+.product-howhow .product-page-section__index { color: var(--howhow-signal); font-family: Arial,sans-serif; }
+.product-howhow .product-page-section h2 { font-size: clamp(2rem,4.6vw,5rem); letter-spacing: -.075em; }
+.product-howhow .product-page-section__copy p { color: var(--howhow-dim); }
+.product-howhow .product-page-section__status { border-color: var(--howhow-signal); color: var(--howhow-signal); font: 700 .65rem Arial,sans-serif; letter-spacing: .1em; }
+.product-howhow .product-page-section ul { background: var(--howhow-line); }
+.product-howhow .product-page-section li { min-height: 7rem; background: var(--howhow-broth); font: .86rem/1.45 Arial,sans-serif; }
+.product-howhow .product-page-section li::before { color: var(--howhow-signal); }
+.product-howhow .product-page-section[data-kind="policy"],
+.product-howhow .product-page-section[data-kind="boundary"] { border-left: 4px solid var(--howhow-tomato); padding-left: 1.4rem; }
+.product-howhow .product-page-section[data-kind="receipt"],
+.product-howhow .product-page-section[data-kind="ledger"] { background: linear-gradient(90deg, rgba(213,255,85,.045), transparent 55%); }
+.product-howhow .product-page-cta { border-color: var(--howhow-line); }
+.product-howhow .product-page-cta h2 { letter-spacing: -.075em; }
+.product-howhow .product-footer { border-color: var(--howhow-line); font-family: Arial,sans-serif; }
+.product-howhow .product-footer__brand>span { color: var(--howhow-signal); }
+.product-howhow .product-text-link { color: var(--howhow-signal); }
+.product-howhow .product-button { color: #132000 !important; background: var(--howhow-signal); border-color: var(--howhow-signal); }
+.product-howhow .product-button:hover { background: #efffa8; }
+.product-howhow .product-page-hero[data-route="/"] { min-height: calc(100svh - var(--nav-height)); }
+@media (max-width: 800px) {
+  .product-howhow .product-page-hero { grid-template-columns: 1fr; }
+  .product-howhow .product-page-hero__copy h1 { font-size: clamp(3.6rem,18vw,7rem); }
+  .product-howhow .product-visual__stage { min-height: 23rem; }
+  .product-howhow .product-page-section[data-kind="policy"],
+  .product-howhow .product-page-section[data-kind="boundary"] { padding-left: 1rem; }
+}
+@media (max-width: 500px) {
+  .product-howhow .product-page-hero__copy::after { font-size: .55rem; }
+  .product-howhow .product-visual--package .product-visual__stage { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .product-howhow *, .product-howhow *::before, .product-howhow *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .product-howhow *, .product-howhow *::before, .product-howhow *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
