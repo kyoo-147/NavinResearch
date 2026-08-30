@@ -12,7 +12,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/product/",
-    "layout": "index",
+    "layout": "editorial",
     "output": "sandora/product/index.html",
     "url": "https://sandora.navinresearch.com/product/",
     "title": "Product"
@@ -30,7 +30,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/agents/",
-    "layout": "index",
+    "layout": "workflow",
     "output": "sandora/agents/index.html",
     "url": "https://sandora.navinresearch.com/agents/",
     "title": "Agents"
@@ -48,7 +48,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/runtime/",
-    "layout": "index",
+    "layout": "workflow",
     "output": "sandora/runtime/index.html",
     "url": "https://sandora.navinresearch.com/runtime/",
     "title": "Runtime"
@@ -56,8 +56,17 @@
   {
     "product": "sandora",
     "name": "Sandora",
+    "path": "/observability/",
+    "layout": "ledger",
+    "output": "sandora/observability/index.html",
+    "url": "https://sandora.navinresearch.com/observability/",
+    "title": "Observability"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
     "path": "/memory/",
-    "layout": "index",
+    "layout": "workflow",
     "output": "sandora/memory/index.html",
     "url": "https://sandora.navinresearch.com/memory/",
     "title": "Memory"
@@ -66,7 +75,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/approvals/",
-    "layout": "index",
+    "layout": "ledger",
     "output": "sandora/approvals/index.html",
     "url": "https://sandora.navinresearch.com/approvals/",
     "title": "Approvals"
@@ -102,7 +111,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/pricing/",
-    "layout": "availability",
+    "layout": "ledger",
     "output": "sandora/pricing/index.html",
     "url": "https://sandora.navinresearch.com/pricing/",
     "title": "Pricing"
@@ -111,7 +120,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/enterprise/",
-    "layout": "index",
+    "layout": "ledger",
     "output": "sandora/enterprise/index.html",
     "url": "https://sandora.navinresearch.com/enterprise/",
     "title": "Enterprise"
@@ -129,7 +138,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/releases/",
-    "layout": "timeline",
+    "layout": "docs",
     "output": "sandora/releases/index.html",
     "url": "https://sandora.navinresearch.com/releases/",
     "title": "Releases"
@@ -304,6 +313,15 @@
     "output": "moyi/solutions/realtime/index.html",
     "url": "https://moyi.navinresearch.com/solutions/realtime/",
     "title": "Moyi realtime solutions"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/evaluation/",
+    "layout": "index",
+    "output": "moyi/evaluation/index.html",
+    "url": "https://moyi.navinresearch.com/evaluation/",
+    "title": "Moyi language and context evaluation"
   },
   {
     "product": "moyi",
@@ -592,6 +610,15 @@
     "output": "sori/404.html",
     "url": "https://sori.navinresearch.com/404.html",
     "title": "Sori — page not found"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/sources/",
+    "layout": "index",
+    "output": "howhow/sources/index.html",
+    "url": "https://howhow.navinresearch.com/sources/",
+    "title": "Sources"
   },
   {
     "product": "howhow",
@@ -1119,7 +1146,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/robot/",
-    "layout": "index",
+    "layout": "editorial",
     "output": "lajvard/robot/index.html",
     "url": "https://lajvard.navinresearch.com/robot/",
     "title": "The robot"
@@ -1137,7 +1164,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/spatial-memory/",
-    "layout": "index",
+    "layout": "workflow",
     "output": "lajvard/spatial-memory/index.html",
     "url": "https://lajvard.navinresearch.com/spatial-memory/",
     "title": "Spatial memory"
@@ -1155,7 +1182,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/software/",
-    "layout": "index",
+    "layout": "ledger",
     "output": "lajvard/software/index.html",
     "url": "https://lajvard.navinresearch.com/software/",
     "title": "Software"
@@ -1164,7 +1191,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/intelligence/",
-    "layout": "index",
+    "layout": "comparison",
     "output": "lajvard/intelligence/index.html",
     "url": "https://lajvard.navinresearch.com/intelligence/",
     "title": "Intelligence"
@@ -1173,7 +1200,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/developer/",
-    "layout": "index",
+    "layout": "docs",
     "output": "lajvard/developer/index.html",
     "url": "https://lajvard.navinresearch.com/developer/",
     "title": "Developer"
@@ -1191,7 +1218,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/life-with-lajvard/",
-    "layout": "index",
+    "layout": "editorial",
     "output": "lajvard/life-with-lajvard/index.html",
     "url": "https://lajvard.navinresearch.com/life-with-lajvard/",
     "title": "Life with Lajvard"
@@ -1227,7 +1254,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/support/",
-    "layout": "index",
+    "layout": "docs",
     "output": "lajvard/support/index.html",
     "url": "https://lajvard.navinresearch.com/support/",
     "title": "Support"
@@ -1236,7 +1263,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/about/",
-    "layout": "index",
+    "layout": "editorial",
     "output": "lajvard/about/index.html",
     "url": "https://lajvard.navinresearch.com/about/",
     "title": "About Lajvard"
@@ -1245,7 +1272,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/contact/",
-    "layout": "availability",
+    "layout": "docs",
     "output": "lajvard/contact/index.html",
     "url": "https://lajvard.navinresearch.com/contact/",
     "title": "Contact Lajvard"

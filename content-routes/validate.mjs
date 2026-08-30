@@ -161,6 +161,13 @@ for (const entry of productManifest) {
   }
   if (!entry.layout) errors.push(`${entry.output}: manifest layout missing`);
   if (entry.layout && !routeHtml.includes(`data-layout="${entry.layout}"`)) errors.push(`${entry.output}: manifest/layout mismatch`);
+  if (entry.path !== "/404.html") {
+    const sectionCount = (routeHtml.match(/class="product-page-section /g) || []).length;
+    if (!sectionCount && !routeHtml.includes('class="product-specs-frame"') && !routeHtml.includes('class="product-docs-frame"')) errors.push(`${entry.output}: route has no purpose/content section`);
+    if (!/<h1>[^<]+<\/h1>/.test(routeHtml) || !/<p>[^<]{24,}<\/p>/.test(routeHtml)) errors.push(`${entry.output}: route purpose requires a descriptive heading and paragraph`);
+  }
+  const requiredFrame = { workflow: 'product-workflow', ledger: 'product-ledger', docs: 'product-docs-frame', specs: 'product-specs-frame', media: 'product-media-frame', availability: 'product-availability-frame' }[entry.layout];
+  if (requiredFrame && !routeHtml.includes(`class="${requiredFrame}"`)) errors.push(`${entry.output}: ${entry.layout} layout frame missing`);
 }
 
 for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {

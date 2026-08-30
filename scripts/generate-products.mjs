@@ -142,13 +142,7 @@ function renderSectionPoints(section, layout) {
 
 function sectionsMarkup(page) {
   const layout = layoutFor(page);
-  const rendererClass = `product-section--${layout}`;
-  return (page.sections || []).map((section, index) => `<section class="product-page-section ${rendererClass}" data-kind="${esc(section.kind || "narrative")}" data-renderer="${layout}">
-    <div class="product-page-section__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div>
-    <div class="product-page-section__copy"><h2>${esc(section.title)}</h2><p>${esc(section.body)}</p>${section.status ? `<strong class="product-page-section__status">${esc(section.status)}</strong>` : ""}</div>
-    ${renderSectionPoints(section, layout)}
-    ${section.cta ? `<a class="product-text-link" href="${esc(section.cta.href)}"${linkAttrs(section.cta.href)}>${esc(section.cta.label)} <span aria-hidden="true">→</span></a>` : ""}
-  </section>`).join("");
+  return layoutSectionMarkup(page, layout);
 }
 
 function footerMarkup(product, site) {
@@ -242,3 +236,15 @@ for (const product of products) {
 }
 await writeFile("products/site-manifest.json", `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
 console.log(`Generated ${manifest.length} product-site pages across ${products.length} domains.`);
+
+function layoutSectionMarkup(page, layout) {
+  const sections = page.sections || [];
+  const item = (section, index, pointsMarkup, tag = "section") => `<${tag} class="product-page-section product-section--${layout}" data-kind="${esc(section.kind || "narrative")}" data-renderer="${layout}"><div class="product-page-section__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div><div class="product-page-section__copy"><h2>${esc(section.title)}</h2><p>${esc(section.body)}</p>${section.status ? `<strong class="product-page-section__status">${esc(section.status)}</strong>` : ""}</div>${pointsMarkup}${section.cta ? `<a class="product-text-link" href="${esc(section.cta.href)}"${linkAttrs(section.cta.href)}>${esc(section.cta.label)} <span aria-hidden="true">→</span></a>` : ""}</${tag}>`;
+  if (layout === "workflow") return `<ol class="product-workflow" aria-label="Workflow sequence">${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout), "li")).join("")}</ol>`;
+  if (layout === "ledger") return `<aside class="product-ledger" aria-label="Evidence register">${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</aside>`;
+  if (layout === "docs") return `<article class="product-docs-frame"><header><p class="product-docs-frame__label">Documentation index</p><p>Read the concepts, boundaries, and source trail in sequence.</p></header><div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</div></article>`;
+  if (layout === "specs") return `<dl class="product-specs-frame">${sections.map((section, index) => `<div><dt><span>${String(index + 1).padStart(2, "0")}</span>${esc(section.title)}</dt><dd>${esc(section.body)}${renderSectionPoints(section, layout)}</dd></div>`).join("")}</dl>`;
+  if (layout === "media") return `<section class="product-media-frame" aria-label="Source material"><div class="product-media-frame__intro"><p>Source material</p><p>Images and visual references stay close to their provenance.</p></div><div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</div></section>`;
+  if (layout === "availability") return `<section class="product-availability-frame" aria-label="Availability status"><div class="product-availability-frame__status">STATUS / ${esc(sections.length ? sections[0].status || "NOT ANNOUNCED" : "NOT ANNOUNCED")}</div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</section>`;
+  return sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("");
+}

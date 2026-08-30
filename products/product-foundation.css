@@ -50,3 +50,12 @@
 .product-page-section .product-section-points--ordered { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 0; padding: 1px; background: var(--line); list-style: none; }
 .product-page-section .product-section-points--ordered li { min-height: 6.5rem; padding: 1rem; background: var(--ground); color: var(--list-ink, var(--ink)); font-size: .88rem; line-height: 1.45; }
 @media (max-width: 800px) { .product-page-section .product-section-points--ordered { grid-template-columns: 1fr; } }
+
+/* Semantic layout frames: shared primitives, distinct reading modes. */
+.product-workflow,.product-ledger,.product-docs-frame,.product-specs-frame,.product-media-frame,.product-availability-frame{border-bottom:1px solid var(--line)}
+.product-workflow{margin:0;padding:0;list-style:none;counter-reset:workflow}.product-workflow>.product-page-section{counter-increment:workflow}.product-workflow>.product-page-section .product-page-section__index:before{content:counter(workflow,decimal-leading-zero)}
+.product-ledger{display:grid;border-left:2px dashed var(--accent);padding-left:clamp(1rem,3vw,3rem)}.product-ledger .product-page-section{border-top:1px dashed var(--line)}
+.product-docs-frame>header,.product-media-frame__intro{display:grid;grid-template-columns:.6fr 1fr;gap:2rem;padding:2rem 0;border-bottom:2px solid var(--accent)}.product-docs-frame>header p,.product-media-frame__intro p{margin:0;color:var(--muted)}.product-docs-frame__label,.product-media-frame__intro p:first-child{color:var(--accent)!important;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.product-specs-frame{margin:0}.product-specs-frame>div{display:grid;grid-template-columns:minmax(12rem,.55fr) 1fr;gap:clamp(1rem,5vw,5rem);padding:clamp(2rem,5vw,5rem) 0;border-top:1px solid var(--line)}.product-specs-frame dt{font-size:clamp(1.6rem,3.5vw,3.5rem);line-height:1}.product-specs-frame dt span{display:block;margin-bottom:.8rem;color:var(--accent);font-size:.7rem}.product-specs-frame dd{margin:0;color:var(--muted);line-height:1.6}.product-specs-frame dd .product-section-points{margin-top:1.5rem}
+.product-availability-frame__status{padding:1rem 0;border-top:2px solid var(--accent);border-bottom:1px solid var(--line);color:var(--accent);font-size:.7rem;font-weight:700;letter-spacing:.14em}
+@media(max-width:800px){.product-docs-frame>header,.product-media-frame__intro,.product-specs-frame>div{grid-template-columns:1fr}.product-specs-frame>div{gap:1.5rem}}
