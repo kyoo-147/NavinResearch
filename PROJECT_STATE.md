@@ -60,6 +60,7 @@ The current reconstruction implementation milestone is committed, pushed, and de
 - Current web implementation release: `/var/www/navinresearch.com/releases/20260830134043-aa0ab2a`.
 - Previous rollback release: `/var/www/navinresearch.com/releases/20260830092725-614006f`.
 - The deployed page content was compared against all 255 generated public parent/product files during this checkpoint and matched after newline normalization.
+- Validated allowlisted deployment candidate: `D:/work/michael/artifacts/navin-release-20260830212841-b3e6b7c.tar.gz` (SHA-256 `9a2359933874a11eb51834086b9acaa3f204b96ad1befa1d844fbfe81aec5917`, 2,363,623 bytes). It was extracted to a disposable directory and independently reverified as the exact 323-file release.
 
 ## Completed Work
 
@@ -222,6 +223,7 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
   - Adversarial checks rejected internal Markdown, operator Python, an unlisted web asset, a modified hash, a missing file, unsafe output containment, sitemap drift/host mutation/output collisions, and symlinked release roots or ancestors.
 - `npm run release:build -- release/candidate` followed by `npm run release:verify -- release/candidate`
   - **PASS:** exact 323-file allowlist and SHA-256 source parity; no forbidden paths found.
+  - The commit-addressed archive was extracted into a separate disposable directory and `release:verify` passed again with the same 323-file inventory.
 - Playwright against the isolated candidate at 375px and 1440px
   - **PASS: 24 page/viewport checks** across all parent locales and representative routes for all seven products.
   - Every tested page returned 200 with one `h1`, one `main`, no horizontal overflow, and zero console errors.
@@ -261,7 +263,7 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ### P0 — must do next
 
-1. Commit and push the validated release-builder change, then build and archive a commit-addressed allowlisted candidate outside the repository.
+1. Push the three validated local commits (`f00554b`, `fc1e237`, `b3e6b7c`) to `origin/main`. The commit-addressed candidate archive is already built and independently reverified outside the repository.
 2. **USER ACTION REQUIRED FOR ACCESS:** provide or restore an approved authenticated deployment channel without placing credentials in Git, logs, commands, or this document. Deploy the verified artifact atomically to a new immutable release while preserving the current release as rollback and switching both active symlinks together.
 3. After deployment, verify public source/design/operator paths return 404, all 255 generated URLs still match, all eight hosts/redirects/robots/sitemaps pass, analytics public JSON works, private analytics remains unauthenticated 401/no-store, and both symlinks plus rollback are correct.
 4. Rotate any administrative server credential that has been exposed outside the approved secret-management channel. Do not record the replacement. Use a distinct owner-approved credential for private insights if resetting it.
@@ -331,7 +333,7 @@ For deployment, use a reviewed ephemeral operator procedure rather than checking
 
 - Current branch: `main`.
 - Latest deployed implementation commit: `aa0ab2a83e240f8161628667671c1b43eccee6d8` (`fix(sites): finalize product route generation`).
-- Release hardening starts at `fc1e237` and is followed by the sitemap/symlink test hardening documented in this revision. Neither release-hardening commit is deployed while the SSH access blocker remains.
+- Release hardening starts at `fc1e237` and is completed by `b3e6b7c` for sitemap collision checks and ancestor-symlink tests. Neither release-hardening commit is deployed while the SSH access blocker remains.
 - The durable checkpoint commit is `f00554b`. Verify `git status`, local HEAD, and `origin/main` directly before continuing; the tree must be clean after each focused commit.
 - Several historical local branches and temporary Pi worktrees still exist. They are not pending integration into `main`; do not merge them merely because they exist. Do not delete ambiguous worktrees as part of ordinary feature work.
 
@@ -340,6 +342,7 @@ For deployment, use a reviewed ephemeral operator procedure rather than checking
 - Start a fresh session by reading `AGENTS.md`, then this file, then inspect `git status` and current commits. Do not rely on the dated milestone review as current release status.
 - The website reconstruction itself is complete and live. Do not redo the seven product redesigns or parent-route deepening.
 - The most important newly discovered issue is deployment packaging, not page-generation correctness: live pages match source, but the public release contains too much of the tracked repository.
+- The corrected allowlisted archive is ready at the path recorded under Production delivery. Do not fall back to a Git archive; deployment remains blocked until an approved authenticated channel is restored.
 - Production reachability proves website delivery only. It does not prove product runtimes, model behavior, physical devices, commercial availability, or scientific results.
 - Analytics totals are genuine aggregate production data, but source-channel attribution is not implemented.
 - The previous recurring implementation schedule is permanently cancelled. Continue manually unless the owner explicitly requests a new schedule.
