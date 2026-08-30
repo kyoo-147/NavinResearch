@@ -29,7 +29,15 @@ function focusable() {
 
 function setChapterPreview(slug) {
   chapterLinks.forEach((link) => link.toggleAttribute("data-preview-active", link.dataset.chapterLink === slug));
-  chapterPreviews.forEach((preview) => { preview.hidden = preview.dataset.chapterPreview !== slug; });
+  chapterPreviews.forEach((preview) => {
+    const active = preview.dataset.chapterPreview === slug;
+    preview.hidden = !active;
+    const image = active ? preview.querySelector("img[data-src]") : null;
+    if (image) {
+      image.src = image.dataset.src;
+      image.removeAttribute("data-src");
+    }
+  });
 }
 
 function setChapters(open, manageFocus = true) {

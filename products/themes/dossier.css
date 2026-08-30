@@ -5,6 +5,8 @@
   --dossier-muted: #5d604f;
   --dossier-line: #a9a58f;
   --dossier-signal: #a33d27;
+  --accent: var(--dossier-signal);
+  --accent-ink: var(--dossier-paper);
   --ink: var(--dossier-ink);
   --muted: var(--dossier-muted);
   --line: var(--dossier-line);
@@ -239,3 +241,12 @@
 .product-dossier .product-header .product-nav > a,
 .product-dossier .product-header .product-nav summary { color: #f4f0e6; }
 .product-dossier .product-header .product-nav a[aria-current="page"] { color: var(--accent); }
+
+/* Paper routes retain a dark navigation strip with legible mobile controls. */
+.product-dossier .product-header,
+.product-dossier .product-header .product-wordmark,
+.product-dossier .product-header .product-nav > a,
+.product-dossier .product-header .product-nav summary,
+.product-dossier .product-menu-button { color: #f4f0e6; }
+.product-dossier .product-header .product-nav a[aria-current="page"] { color: #f4f0e6; text-decoration: underline; }
+.product-dossier .product-evidence-block li small { color: #f4f0e6; }

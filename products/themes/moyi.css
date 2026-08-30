@@ -6,6 +6,15 @@
   --moyi-line: #43504d;
   --moyi-signal: #d5b36a;
   --moyi-cyan: #81b8af;
+  --ground: var(--moyi-field);
+  --surface: #18201f;
+  --surface-2: #202a28;
+  --ink: var(--moyi-ink);
+  --muted: var(--moyi-muted);
+  --line: var(--moyi-line);
+  --accent: var(--moyi-signal);
+  --accent-ink: var(--moyi-field);
+
   background: var(--moyi-field);
   color: var(--moyi-ink);
   font-family: "IBM Plex Mono", "Courier New", monospace;

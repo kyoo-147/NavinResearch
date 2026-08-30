@@ -17,7 +17,7 @@ export function languageLinks(activeKey, suffix = "") {
 function chapterExplorer(localeKey) {
   const ui = experience[localeKey];
   const links = chapters.map((chapter, index) => `<a href="${localePath(localeKey, chapter.slug)}" data-chapter-link="${chapter.slug}" aria-controls="chapter-preview-${chapter.slug}"${index === 0 ? " data-preview-active" : ""}><small>${chapter.number}</small><strong>${chapter.key}</strong></a>`).join("\n                ");
-  const previews = chapters.map((chapter, index) => `<article id="chapter-preview-${chapter.slug}" data-chapter-preview="${chapter.slug}"${index === 0 ? "" : " hidden"}><img src="/assets/${chapter.asset}" alt="" width="280" height="220"><p>${escapeHtml(ui.chapterIntro(chapter.domains[localeKey]))}</p><a href="${localePath(localeKey, chapter.slug)}">${escapeHtml(ui.menu.viewChapter)} <span aria-hidden="true">→</span></a></article>`).join("\n                ");
+  const previews = chapters.map((chapter, index) => `<article id="chapter-preview-${chapter.slug}" data-chapter-preview="${chapter.slug}"${index === 0 ? "" : " hidden"}><img data-src="/assets/${chapter.asset}" alt="" width="280" height="220" decoding="async"><p>${escapeHtml(ui.chapterIntro(chapter.domains[localeKey]))}</p><a href="${localePath(localeKey, chapter.slug)}">${escapeHtml(ui.menu.viewChapter)} <span aria-hidden="true">→</span></a></article>`).join("\n                ");
   return `<div class="chapter-list"><p>${escapeHtml(ui.menu.chapters)}</p><nav aria-label="${escapeHtml(`${ui.menu.chapters} — ${ui.menu.explore}`)}">${links}</nav></div><div class="chapter-previews" aria-live="polite">${previews}</div>`;
 }
 

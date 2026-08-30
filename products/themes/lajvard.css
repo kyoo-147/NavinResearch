@@ -4,12 +4,14 @@
   --product-lajvard-ink: #202522;
   --product-lajvard-quiet: #596057;
   --product-lajvard-rule: #aeb5a7;
-  --product-lajvard-coral: #b84f3d;
+  --product-lajvard-coral: #ad4435;
   --product-lajvard-blue: #326d78;
   --ink: var(--product-lajvard-ink);
   --muted: var(--product-lajvard-quiet);
   --line: var(--product-lajvard-rule);
   --acid: var(--product-lajvard-coral);
+  --accent: var(--product-lajvard-coral);
+  --accent-ink: var(--product-lajvard-paper);
   background: var(--product-lajvard-paper);
   color: var(--product-lajvard-ink);
   font-family: Georgia, 'Times New Roman', serif;
@@ -40,4 +42,6 @@
 .product-lajvard .product-header .product-wordmark,
 .product-lajvard .product-header .product-nav > a,
 .product-lajvard .product-header .product-nav summary { color: #f4f0e6; }
-.product-lajvard .product-header .product-nav a[aria-current="page"] { color: var(--accent); }
+.product-lajvard .product-header .product-nav a[aria-current="page"] { color: #f4f0e6; text-decoration: underline; }
+.product-lajvard .product-menu-button { color: #f4f0e6; }
+.product-lajvard .product-evidence-block li small { color: #f4f0e6; }

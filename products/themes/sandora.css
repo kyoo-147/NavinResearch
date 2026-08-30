@@ -23,3 +23,6 @@
 .product-sandora .product-hero h1 { max-width:7ch; font-size:clamp(4rem,7vw,7rem); }
 @media (max-width:760px) { .product-sandora .product-sandora__masthead { padding-top:1.25rem; padding-bottom:1.25rem; } .product-sandora .product-sandora__hero,.product-sandora .product-hero { grid-template-columns:1fr; gap:3rem; } .product-sandora .product-sandora__hero h1,.product-sandora .product-hero h1 { font-size:clamp(4rem,19vw,7rem); } .product-sandora .product-sandora__sections { grid-template-columns:1fr; } }
 @media (prefers-reduced-motion: reduce) { .product-sandora *, .product-sandora *::before, .product-sandora *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; } }
+
+/* Map the shared route shell to Sandora's terminal palette. */
+.product-sandora { --ground:var(--sandora-dark); --surface:#191f1b; --surface-2:#222a24; --ink:var(--sandora-ink); --muted:var(--sandora-muted); --line:var(--sandora-line); --accent:var(--sandora-accent); --accent-ink:var(--sandora-dark); }
