@@ -17,3 +17,22 @@ No essential information depends on motion. Honor `prefers-reduced-motion: reduc
 
 ## Prohibited patterns
 No generic AI gradients, glassmorphism, floating card forests, invented metrics, pricing, customer logos, certification badges, autonomous-road claims, or simulation presented as physical proof. Do not copy upstream code or assets; use only project-owned media with provenance captions.
+
+## Reference reconstruction notes
+
+The information architecture is adapted from inspected official category references, not copied: comma/openpilot separates the vehicle product from open-source code and community documentation; Applied Intuition foregrounds simulation and validation as a product surface; RoboRacer uses a compact technical platform story; and the public Autopilot repository supplies the BFMC-oriented scale-model context. The resulting route order is intentionally physical-to-software: `Vehicle → Perception → Localisation → Planning → Control`, with `Hardware → Software → Simulation` as the lab layer and `Research → Benchmarks → Releases` as the evidence layer.
+
+### Evidence rules
+
+- `PROJECT SOURCE` means an owned image or public repository fact, not a live runtime observation.
+- `SIMULATION` means synthetic or diagrammatic material and cannot support physical or public-road claims.
+- `NOT_CALLED` / `UNVERIFIED` remain visible when this site has not executed the vehicle stack.
+- No route may imply driverless operation, safety certification, customer deployment, or benchmark performance without a captured, reproducible receipt.
+
+### Page grammar
+
+The overview uses a vehicle-loop thesis; system pages use handoff diagrams; the vehicle page uses physical context and a reproduction checklist; perception/localisation/planning/control pages isolate transformations; simulation uses a dashed synthetic grid; benchmarks are protocol-first; and research is a field-notebook evidence taxonomy. This is a deliberate test-track instrument language rather than a generic SaaS feature grid.
+
+### Source retrieval status
+
+The linked repository URL was checked during reconstruction but its GitHub `main` README raw path returned HTTP 404; therefore repository-specific statements remain bounded by the existing source-backed content and are not upgraded to fresh execution evidence. Official reference pages inspected: https://comma.ai/openpilot, https://appliedintuition.com/, and https://roboracer.ai/. Their tracking scripts/assets were not copied.

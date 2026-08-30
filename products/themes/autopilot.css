@@ -3,3 +3,17 @@
 
 /* Map the shared route shell to Autopilot's field palette. */
 .product-autopilot{--ground:var(--autopilot-ground);--surface:var(--autopilot-panel);--surface-2:#202729;--ink:var(--autopilot-ink);--muted:var(--autopilot-muted);--line:var(--autopilot-line);--accent:var(--autopilot-signal);--accent-ink:var(--autopilot-ground)}
+
+/* Route-specific test-track grammar: each chapter has a distinct instrument surface. */
+.product-autopilot[data-route="/"] .product-page-hero__copy { border-left: 3px solid var(--autopilot-signal); padding-left: clamp(1rem, 2vw, 2rem); }
+.product-autopilot[data-route="/vehicle/"] .product-visual__stage { background: var(--autopilot-panel); background-image: linear-gradient(90deg, transparent 49.5%, rgba(139,182,170,.16) 50%, transparent 50.5%), linear-gradient(rgba(139,182,170,.12) 1px, transparent 1px); background-size: 100% 100%, 100% 3.5rem; }
+.product-autopilot[data-route="/perception/"] .product-visual__stage { background: #12191a; background-image: radial-gradient(circle at 22% 64%, rgba(228,196,91,.7) 0 .18rem, transparent .22rem), radial-gradient(circle at 62% 32%, rgba(139,182,170,.65) 0 .18rem, transparent .22rem), linear-gradient(165deg, transparent 48%, rgba(228,196,91,.34) 49%, transparent 50%); }
+.product-autopilot[data-route="/localization/"] .product-visual__stage { background: #11191a; background-image: linear-gradient(30deg, rgba(139,182,170,.16) 12%, transparent 12.5%, transparent 87%, rgba(139,182,170,.16) 87.5%); background-size: 3.5rem 2rem; }
+.product-autopilot[data-route="/planning/"] .product-visual__stage { background: #11191a; background-image: repeating-linear-gradient(90deg, transparent 0 3rem, rgba(228,196,91,.15) 3rem 3.05rem), repeating-linear-gradient(0deg, transparent 0 3rem, rgba(228,196,91,.12) 3rem 3.05rem); }
+.product-autopilot[data-route="/control/"] .product-visual__stage { background: #141919; background-image: linear-gradient(155deg, transparent 48%, rgba(228,196,91,.5) 49%, transparent 50%), linear-gradient(25deg, transparent 48%, rgba(139,182,170,.35) 49%, transparent 50%); }
+.product-autopilot[data-route="/simulation/"] .product-visual__stage { border-style: dashed; background: #111719; background-image: linear-gradient(135deg, rgba(139,182,170,.13) 25%, transparent 25% 50%, rgba(139,182,170,.13) 50% 75%, transparent 75%); background-size: 2.25rem 2.25rem; }
+.product-autopilot[data-route="/benchmarks/"] .product-visual__stage { background: #111719; background-image: linear-gradient(to top, rgba(228,196,91,.3) 1px, transparent 1px); background-size: 100% 2.5rem; }
+.product-autopilot[data-route="/research/"] .product-visual__stage { background: #15191a; background-image: repeating-linear-gradient(0deg, transparent 0 1.8rem, rgba(139,182,170,.14) 1.8rem 1.86rem); }
+.product-autopilot[data-route="/hardware/"] .product-visual__stage, .product-autopilot[data-route="/software/"] .product-visual__stage { background: #101617; background-image: linear-gradient(90deg, rgba(139,182,170,.18) 1px, transparent 1px), linear-gradient(rgba(139,182,170,.18) 1px, transparent 1px); background-size: 1.5rem 1.5rem; }
+.product-autopilot .product-page-section[data-kind="safety"] .product-page-section__status, .product-autopilot .product-page-section[data-kind="separation"] .product-page-section__status { color: var(--autopilot-signal); border-color: var(--autopilot-signal); }
+.product-autopilot .product-visual__stage span { font-variant-numeric: tabular-nums; }
