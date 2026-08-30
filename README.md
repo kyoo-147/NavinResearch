@@ -25,6 +25,10 @@ The root `1.png`–`5.png` files are versioned design sources. For field backgro
 npm test
 uv run python -m unittest analytics.test_aggregate -v
 uv run python -m http.server 4173
+
+# Build and independently re-verify the exact public release file set.
+npm run release:build -- release/candidate
+npm run release:verify -- release/candidate
 ```
 
 Open:

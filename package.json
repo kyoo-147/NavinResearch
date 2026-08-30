@@ -5,7 +5,10 @@
   "scripts": {
     "generate": "node scripts/generate-site.mjs && node scripts/generate-products.mjs",
     "validate": "node content-routes/validate.mjs",
-    "check:js": "node --check script.js && node --check content-routes/route-search.js && node --check content-routes/release-search.js && node --check products/product-site.js && node --check visitor-map/script.js && node --check visitor-insights/script.js && node --check scripts/blog-posts.mjs && node --check scripts/generate-site.mjs && node --check scripts/generate-products.mjs && node --check products/content/sandora.mjs && node --check products/content/moyi.mjs && node --check products/content/sori.mjs && node --check products/content/howhow.mjs && node --check products/content/dossier.mjs && node --check products/content/autopilot.mjs && node --check products/content/lajvard.mjs",
-    "test": "npm run generate && npm run validate && npm run check:js"
+    "check:js": "node --check script.js && node --check content-routes/route-search.js && node --check content-routes/release-search.js && node --check products/product-site.js && node --check visitor-map/script.js && node --check visitor-insights/script.js && node --check scripts/blog-posts.mjs && node --check scripts/build-release.mjs && node --check scripts/generate-site.mjs && node --check scripts/generate-products.mjs && node --check products/content/sandora.mjs && node --check products/content/moyi.mjs && node --check products/content/sori.mjs && node --check products/content/howhow.mjs && node --check products/content/dossier.mjs && node --check products/content/autopilot.mjs && node --check products/content/lajvard.mjs",
+    "check:release": "node scripts/build-release.mjs --self-test",
+    "release:build": "node scripts/build-release.mjs --build",
+    "release:verify": "node scripts/build-release.mjs --verify",
+    "test": "npm run generate && npm run validate && npm run check:js && npm run check:release"
   }
 }
