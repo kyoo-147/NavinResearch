@@ -7,7 +7,7 @@ Maintain the deployed multilingual Navin Research ecosystem as eight truthful, p
 - parent: `navinresearch.com`
 - products: `sandora`, `moyi`, `sori`, `howhow`, `dossier`, `autopilot`, and `lajvard` under `*.navinresearch.com`
 
-The current reconstruction implementation milestone is committed, pushed, and deployed at implementation commit `aa0ab2a`. This handoff adds documentation only. The immediate milestone is now **checkpoint stability and production hardening**, not new feature work: preserve the generated architecture, keep claims/evidence boundaries intact, and correct the release packaging boundary discovered during this checkpoint before adding features.
+The current reconstruction implementation milestone is committed, pushed, and deployed at implementation commit `aa0ab2a`. The repository now includes a fail-closed public release allowlist builder, but production still serves the previous over-broad full-tree artifact until an authenticated atomic deployment is completed. The immediate milestone remains **checkpoint stability and production hardening**, not new feature work.
 
 ## Current Architecture
 
@@ -91,7 +91,7 @@ The current reconstruction implementation milestone is committed, pushed, and de
 - Product sites remain English-only; no product localization decision has been approved.
 - Referrer/UTM summaries are not implemented because privacy/retention design is not approved.
 - Automated browser E2E is currently an ad-hoc Playwright CLI check, not a committed test suite.
-- Release packaging needs hardening: the most recent deployment used a full tracked Git archive instead of the documented public allowlist. Pages are correct, but non-public source/design files are currently reachable; see Known Issues and P0 actions.
+- Local release packaging is hardened and validated. `scripts/build-release.mjs` builds only tracked public pages/assets, cross-checks parent/product inventories, rejects symlinks and internal/extra/missing/modified files, and excludes demo analytics JSON. Production still needs an authenticated atomic redeployment of this artifact; see Known Issues and P0 actions.
 
 ## Important Decisions
 
@@ -141,6 +141,7 @@ The current reconstruction implementation milestone is committed, pushed, and de
 - `products/product-foundation.css` — shared product layout/accessibility primitives.
 - `products/product-site.js` — product navigation/year runtime.
 - `scripts/generate-products.mjs` — product renderer, layout selection, manifest, robots/sitemaps.
+- `scripts/build-release.mjs` — fail-closed public artifact allowlist, sitemap/manifest cross-checks, byte verification, and adversarial self-test.
 - `products/site-manifest.json` — generated 145-route product inventory.
 - `docs/design-dna/*.md` — approved product/parent design directions.
 - `docs/products.md` — product architecture, status, media, CTA, and layout contracts.
@@ -154,6 +155,9 @@ The current reconstruction implementation milestone is committed, pushed, and de
 - `.github/workflows/validate.yml` — GitHub validation workflow; currently unable to start due account billing lock.
 
 ## Recent Changes
+
+- `fc1e237` — add the public release allowlist builder and package-script gate; the current follow-up hardens sitemap output collisions and ancestor-symlink tests.
+- `f00554b` — add the durable agent rules and continuation checkpoint.
 
 Most recent implementation commits, newest first:
 
@@ -209,6 +213,20 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 - unauthenticated `https://navinresearch.com/visitor-insights/data.json`
   - **PASS:** HTTP 401 with `Cache-Control: private, no-store`.
 
+
+### Passed for local release hardening
+
+- `npm run check:release`
+  - **PASS:** built and verified an isolated 323-file artifact containing 209 HTML files, 50 intentional public blog Markdown files, 110 parent URLs, and 145 product URLs (138 indexable product sitemap URLs plus seven product 404s).
+  - Cross-checked the parent sitemap, all seven product sitemaps, and `products/site-manifest.json` without hard-coded route totals.
+  - Adversarial checks rejected internal Markdown, operator Python, an unlisted web asset, a modified hash, a missing file, unsafe output containment, sitemap drift/host mutation/output collisions, and symlinked release roots or ancestors.
+- `npm run release:build -- release/candidate` followed by `npm run release:verify -- release/candidate`
+  - **PASS:** exact 323-file allowlist and SHA-256 source parity; no forbidden paths found.
+- Playwright against the isolated candidate at 375px and 1440px
+  - **PASS: 24 page/viewport checks** across all parent locales and representative routes for all seven products.
+  - Every tested page returned 200 with one `h1`, one `main`, no horizontal overflow, and zero console errors.
+  - Internal/source/operator paths and repository demo analytics JSON returned 404 from the isolated artifact. Production analytics JSON is intentionally supplied by Nginx aliases outside the release.
+
 ### Failed or unavailable
 
 - GitHub Actions run `33314706771` for `aa0ab2a`
@@ -221,7 +239,7 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ## Known Issues
 
-- **Production artifact is over-broad:** tracked source/design/operator files are publicly reachable because the last release used the whole Git archive. This is the primary new checkpoint finding.
+- **Production artifact is still over-broad:** tracked source/design/operator files remain publicly reachable from the currently active full-tree release. The local allowlisted replacement passes validation but has not yet been deployed.
 - GitHub Actions cannot start while the account billing lock remains. Local gates are authoritative until resolved.
 - `.github/workflows/validate.yml` runs `generate-site.mjs` rather than `npm test`; when CI becomes available it should be checked for product-generation freshness coverage.
 - Product sites are English-only while the parent site is EN/VI/ZH-CN; this is a known policy/product decision, not an accidental missing locale.
@@ -234,7 +252,7 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 ## Current Blockers
 
 - GitHub account billing lock prevents GitHub Actions jobs from starting.
-- Secure production release hardening requires a new allowlisted artifact/deployment pass; never store or reuse credentials while doing it.
+- Secure production release hardening is locally ready, but deployment is **BLOCKED** because this environment has no authenticated non-interactive SSH channel; a batch-mode SSH probe was denied. Never store or reuse credentials to bypass this boundary.
 - Commercial features are blocked on owner-approved pricing, terms, privacy/retention, consent, support, and data-processing decisions.
 - Physical claims are blocked on actual device/runtime acceptance evidence.
 - Private dashboard password reset requires a dedicated owner-approved password; the server/root password must not be reused.
@@ -243,9 +261,9 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ### P0 — must do next
 
-1. Replace full-tree deployment packaging with an explicit reviewed public allowlist containing only generated web pages, required CSS/JS/fonts/images, robots, sitemaps, and public route assets.
-2. Build the allowlisted artifact locally, assert sensitive/internal patterns are absent (`1.png`-`5.png`, `.git`, `.github`, `analytics/`, `deployment-example/`, source modules, tests, docs, credentials, databases, MMDB, logs), then deploy atomically to a new release while preserving rollback.
-3. After deployment, verify public source/design/operator paths return 404, all 255 generated pages still match, all eight hosts/redirects/robots/sitemaps pass, analytics public JSON works, and private analytics remains unauthenticated 401/no-store.
+1. Commit and push the validated release-builder change, then build and archive a commit-addressed allowlisted candidate outside the repository.
+2. **USER ACTION REQUIRED FOR ACCESS:** provide or restore an approved authenticated deployment channel without placing credentials in Git, logs, commands, or this document. Deploy the verified artifact atomically to a new immutable release while preserving the current release as rollback and switching both active symlinks together.
+3. After deployment, verify public source/design/operator paths return 404, all 255 generated URLs still match, all eight hosts/redirects/robots/sitemaps pass, analytics public JSON works, private analytics remains unauthenticated 401/no-store, and both symlinks plus rollback are correct.
 4. Rotate any administrative server credential that has been exposed outside the approved secret-management channel. Do not record the replacement. Use a distinct owner-approved credential for private insights if resetting it.
 
 ### P1 — important
@@ -311,10 +329,10 @@ For deployment, use a reviewed ephemeral operator procedure rather than checking
 
 ## Git State
 
-- Current branch: `main`
-- Latest implementation commit: `aa0ab2a83e240f8161628667671c1b43eccee6d8` (`fix(sites): finalize product route generation`)
-- At the start of this checkpoint, local `main` exactly matched `origin/main` and the working tree was clean.
-- This checkpoint intentionally adds/updates only durable documentation (`AGENTS.md`, `PROJECT_STATE.md`, `README.md`, `analytics/README.md`, and `deployment-example/README.md`). After the checkpoint commit, the tree must be clean; verify and report separately whether local HEAD has been pushed to `origin/main`.
+- Current branch: `main`.
+- Latest deployed implementation commit: `aa0ab2a83e240f8161628667671c1b43eccee6d8` (`fix(sites): finalize product route generation`).
+- Release hardening starts at `fc1e237` and is followed by the sitemap/symlink test hardening documented in this revision. Neither release-hardening commit is deployed while the SSH access blocker remains.
+- The durable checkpoint commit is `f00554b`. Verify `git status`, local HEAD, and `origin/main` directly before continuing; the tree must be clean after each focused commit.
 - Several historical local branches and temporary Pi worktrees still exist. They are not pending integration into `main`; do not merge them merely because they exist. Do not delete ambiguous worktrees as part of ordinary feature work.
 
 ## Handoff Notes

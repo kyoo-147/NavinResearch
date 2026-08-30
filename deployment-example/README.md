@@ -20,7 +20,7 @@ npm run release:build -- release/candidate
 npm run release:verify -- release/candidate
 ```
 
-`scripts/build-release.mjs` derives generated parent URLs from the root sitemap, product pages from `products/site-manifest.json`, and adds only explicit runtime assets. It requires tracked regular files, compares every artifact file byte-for-byte with its source, rejects missing or extra files, and fails closed on source modules, operator code, internal Markdown, credentials, databases, logs, demo analytics JSON, and source design PNGs. The self-test is part of `npm test` and proves that an injected internal file is rejected.
+`scripts/build-release.mjs` derives generated parent URLs from the root sitemap, cross-checks product pages against both `products/site-manifest.json` and every product sitemap, and adds only explicit runtime assets. It requires tracked regular files, rejects symlinked release paths and entries, compares every artifact file byte-for-byte with its source, and rejects missing or extra files. The 50 generated `blog/**/*.md` notes are intentional public content; other Markdown, source modules, operator code, credentials, databases, logs, demo analytics JSON, and source design PNGs fail closed. The adversarial self-test is part of `npm test`.
 
 Archive the contents of the verified candidate directory, not its parent and not the Git checkout. On the server, extract into a new immutable release directory, verify the expected public file inventory before switching either symlink, then point both `current` and `ecosystem-current` to the same release. Production analytics JSON remains outside the release and is served by the exact Nginx aliases in `nginx.conf`.
 
