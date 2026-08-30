@@ -17,3 +17,20 @@
 .product-autopilot[data-route="/hardware/"] .product-visual__stage, .product-autopilot[data-route="/software/"] .product-visual__stage { background: #101617; background-image: linear-gradient(90deg, rgba(139,182,170,.18) 1px, transparent 1px), linear-gradient(rgba(139,182,170,.18) 1px, transparent 1px); background-size: 1.5rem 1.5rem; }
 .product-autopilot .product-page-section[data-kind="safety"] .product-page-section__status, .product-autopilot .product-page-section[data-kind="separation"] .product-page-section__status { color: var(--autopilot-signal); border-color: var(--autopilot-signal); }
 .product-autopilot .product-visual__stage span { font-variant-numeric: tabular-nums; }
+
+/* Autopilot route-specific instruments: track, map, wiring, archive, and safety gate. */
+.product-autopilot[data-route='/'] .product-visual--media img { aspect-ratio: 16 / 9; object-fit: cover; filter: saturate(.78) contrast(1.08); }
+.product-autopilot[data-route='/localization/'] .product-visual__stage { border-left: 3px solid var(--autopilot-track); background-image: linear-gradient(30deg, transparent 48%, rgba(139,182,170,.45) 49%, transparent 50%), repeating-linear-gradient(0deg, transparent 0 2.2rem, rgba(139,182,170,.15) 2.2rem 2.25rem); }
+.product-autopilot[data-route='/planning/'] .product-visual__stage { border-top: 3px solid var(--autopilot-signal); background-image: repeating-linear-gradient(90deg, transparent 0 3rem, rgba(228,196,91,.16) 3rem 3.05rem), linear-gradient(155deg, transparent 45%, rgba(228,196,91,.55) 46% 47%, transparent 48%); }
+.product-autopilot[data-route='/hardware/'] .product-visual--media img { aspect-ratio: 4 / 3; object-fit: contain; background: var(--autopilot-panel); }
+.product-autopilot[data-route='/software/'] .product-visual--media { border-top: 1px solid var(--autopilot-track); padding-top: .8rem; }
+.product-autopilot[data-route='/docs/'] .product-page-section { border-left: 2px solid var(--autopilot-track); padding-left: clamp(1rem, 3vw, 3rem); }
+.product-autopilot[data-route='/github/'] .product-visual__stage { border-style: dashed; font-family: monospace; }
+.product-autopilot[data-route='/releases/'] .product-page-section { border-top-style: dotted; }
+.product-autopilot[data-route='/about/'] .product-page-hero__copy { border-left: 2px solid var(--autopilot-track); padding-left: clamp(1rem, 2vw, 2rem); }
+.product-autopilot[data-route='/access/'] .product-page-cta { border-top: 2px solid var(--autopilot-signal); }
+.product-autopilot[data-route='/privacy/'] .product-page-section, .product-autopilot[data-route='/terms/'] .product-page-section { border-top-style: dashed; }
+@media (max-width: 800px) {
+  .product-autopilot[data-route='/'] .product-visual--media img { aspect-ratio: 4 / 3; }
+  .product-autopilot[data-route='/about/'] .product-page-hero__copy { padding-left: 1rem; }
+}
