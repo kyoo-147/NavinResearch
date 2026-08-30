@@ -63,3 +63,22 @@ body.product-sandora[data-route='/research/'] .product-page-section { border-lef
 .product-sandora[data-route='/observability/'] .product-visual__items span { width:100%; max-width:none; padding:1rem .8rem; border-left:0; border-bottom:1px solid var(--sandora-line); background:transparent; transform:none; }
 .product-sandora[data-route='/observability/'] .product-visual__items span:before { content:'EVENT // '; color:var(--sandora-accent); }
 @media (max-width:800px) { .product-sandora[data-route='/observability/'] .product-page-hero { grid-template-columns:1fr; } }
+
+/* Instrument-specific surfaces for governance, build, and operating boundaries. */
+.product-sandora[data-route='/approvals/'] .product-page-hero { border-left: 3px solid var(--sandora-accent); padding-left: clamp(1rem, 3vw, 3rem); }
+.product-sandora[data-route='/approvals/'] .product-workflow { counter-reset: workflow; }
+.product-sandora[data-route='/approvals/'] .product-page-section__status { color: var(--sandora-accent); }
+.product-sandora[data-route='/developers/'] .product-docs-frame { border: 1px dashed var(--sandora-line); background: #0b0f0c; }
+.product-sandora[data-route='/developers/'] .product-page-section { border-left: 2px solid var(--sandora-accent); }
+.product-sandora[data-route='/docs/'] .product-docs-frame { border-top: 3px solid var(--sandora-accent); }
+.product-sandora[data-route='/docs/'] .product-docs-frame__label::before { content: 'sandora://docs / '; color: var(--sandora-muted); }
+.product-sandora[data-route='/pricing/'] .product-availability-frame { border: 1px solid var(--sandora-accent); background: repeating-linear-gradient(0deg, #0b0f0c, #0b0f0c 2.9rem, #242b25 3rem); }
+.product-sandora[data-route='/pricing/'] .product-availability-frame__status { font-family: monospace; letter-spacing: .16em; }
+.product-sandora[data-route='/enterprise/'] .product-page-hero { background: linear-gradient(90deg, #0b0f0c 0 33%, transparent 33%); }
+.product-sandora[data-route='/enterprise/'] .product-page-section { border-top-style: double; }
+.product-sandora[data-route='/security/'] .product-ledger { border-left: 3px solid var(--sandora-accent); }
+.product-sandora[data-route='/security/'] .product-page-section__status { font-family: monospace; }
+@media (max-width: 800px) {
+  .product-sandora[data-route='/enterprise/'] .product-page-hero { background: #0b0f0c; }
+  .product-sandora[data-route='/approvals/'] .product-page-hero { padding-left: 1rem; }
+}
