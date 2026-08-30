@@ -102,3 +102,19 @@
   .product-lajvard[data-route='/gallery/'] .product-visual__items { grid-template-columns: repeat(2,1fr); }
   .product-lajvard[data-route='/gallery/'] .product-visual__items span { min-height: 4rem; }
 }
+
+/* Each notebook question gets its own instrument, while the paper palette stays shared. */
+.product-lajvard[data-route='/robot/'] .product-visual__stage { border-radius: 0 2.5rem 0 2.5rem; }
+.product-lajvard[data-route='/movement/'] .product-visual__stage { background: repeating-linear-gradient(135deg, transparent 0 2.2rem, rgba(50,109,120,.14) 2.25rem), var(--surface); }
+.product-lajvard[data-route='/software/'] .product-visual__stage { background: #202522; color: var(--product-lajvard-paper); border-style: dashed; }
+.product-lajvard[data-route='/software/'] .product-visual__items span { color: var(--product-lajvard-paper); border-color: #d6b36a; }
+.product-lajvard[data-route='/intelligence/'] .product-visual__stage { background: linear-gradient(90deg, var(--surface) 0 33%, #e2d4bd 33% 66%, #d8c9b0 66%); }
+.product-lajvard[data-route='/intelligence/'] .product-visual__items { align-self: end; }
+.product-lajvard[data-route='/support/'] .product-visual__stage { border-style: dashed; box-shadow: none; }
+.product-lajvard[data-route='/contact/'] .product-visual__stage { border-width: 2px 0; box-shadow: none; background: transparent; }
+.product-lajvard[data-route='/robot/'] .product-page-section__status,
+.product-lajvard[data-route='/movement/'] .product-page-section__status { transform: rotate(-1deg); }
+@media (max-width: 800px) {
+  .product-lajvard[data-route='/intelligence/'] .product-visual__stage { min-height: 16rem; }
+  .product-lajvard[data-route='/software/'] .product-visual__stage { min-height: 18rem; }
+}

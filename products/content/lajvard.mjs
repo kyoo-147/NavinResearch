@@ -11,7 +11,21 @@ const sources = {
 const layoutFor = (path) => ({ '/': 'editorial', '/life-with-lajvard/': 'editorial', '/robot/': 'editorial', '/movement/': 'workflow', '/spatial-memory/': 'workflow', '/hardware/': 'specs', '/software/': 'ledger', '/intelligence/': 'comparison', '/developer/': 'docs', '/research/': 'timeline', '/gallery/': 'media', '/specs/': 'specs', '/availability/': 'availability', '/support/': 'docs', '/about/': 'editorial', '/contact/': 'docs', '/privacy/': 'ledger', '/terms/': 'ledger', '/404.html': 'index' }[path] || 'index');
 
 const section = (kind, title, body, points, status = 'CONCEPT STAGE') => ({ kind, title, body, points, status });
-const page = (path, title, description, eyebrow, headline, lede, visual, sections, cta) => ({ path, title, description, eyebrow, headline, lede, visual, sections, layout: layoutFor(path), ...(cta ? { cta } : {}) });
+const routeCtas = {
+  '/robot/': { title: 'Keep the form open', body: 'Follow the design questions before any physical specification exists.', label: 'Read movement notes', href: '/movement/' },
+  '/movement/': { title: 'Follow the safe pause', body: 'Read how intent, uncertainty, and stopping shape the movement study.', label: 'Read room memory', href: '/spatial-memory/' },
+  '/spatial-memory/': { title: 'Keep memory editable', body: 'Compare the room-memory questions with the wider software state vocabulary.', label: 'Read software states', href: '/software/' },
+  '/hardware/': { title: 'Read the tradeoffs', body: 'Hardware remains a question map until a real prototype and evidence exist.', label: 'Read the honest specs', href: '/specs/' },
+  '/software/': { title: 'Make state visible', body: 'A future software surface should explain listening, access, and recovery without overclaiming.', label: 'Read intelligence boundaries', href: '/intelligence/' },
+  '/intelligence/': { title: 'Keep warmth authored', body: 'Explore how a consistent voice can remain distinct from a claim of feeling.', label: 'Read the developer boundary', href: '/developer/' },
+  '/developer/': { title: 'Wait for the contract', body: 'No SDK exists today; this notebook records what a future interface must make explicit.', label: 'Read the research shelf', href: '/research/' },
+  '/research/': { title: 'Check the source trail', body: 'Public references are context for questions, never transferred proof of Lajvard behavior.', label: 'Read the archive policy', href: '/gallery/' },
+  '/gallery/': { title: 'Keep provenance attached', body: 'Future media will be labelled by artifact state before it is shown.', label: 'Read the specification ledger', href: '/specs/' },
+  '/specs/': { title: 'Leave blanks honest', body: 'Unknown values stay unknown until a measured revision and source can support them.', label: 'Read availability', href: '/availability/' },
+  '/support/': { title: 'Support follows an object', body: 'There is no released robot to support; questions and source corrections remain welcome.', label: 'Write to the notebook', href: '/contact/' },
+};
+const fallbackCta = { title: 'Keep the notebook open', body: 'Follow future field notes as the direction becomes more concrete.', label: 'Follow field notes', href: '/availability/' };
+const page = (path, title, description, eyebrow, headline, lede, visual, sections, cta) => ({ path, title, description, eyebrow, headline, lede, visual, sections, layout: layoutFor(path), cta: cta || routeCtas[path] || fallbackCta });
 const contact = { title: 'Keep the notebook open', body: 'Follow future field notes as the direction becomes more concrete.', label: 'Follow field notes', href: '/availability/' };
 
 const lajvard = {
