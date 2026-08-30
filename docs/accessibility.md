@@ -46,10 +46,10 @@ Test all three locales at 320, 375, 390, 540, 768, 900, 1440, and 1920 CSS pixel
 
 - Raw IPs are sensitive and remain only in the restricted Nginx log and aggregator process memory.
 - SQLite stores aggregate counts only—no raw IP, IP hash, URL, user agent, event, or individual trajectory.
-- Public visitor geography is country/day only and suppresses groups smaller than five.
+- Public visitor geography is country/day only and includes every country total, including groups of one.
 - Private insights may show daily region/city aggregates but must be protected by authentication and `no-store` headers.
 - Demo JSON must remain visibly labeled `DEMO DATA`; never report it as live visitors.
-- GeoLite2 is approximate. Never use it to identify a person, household, or street address. Keep required attribution and current EULA/update obligations.
+- GeoLite2 is approximate. Never use it to identify a person, household, or street address. Keep required attribution in project notices and honor current EULA/update obligations.
 
 ## Logo and assets
 

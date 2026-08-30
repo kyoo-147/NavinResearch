@@ -4,7 +4,6 @@ const dateNode = document.querySelector("#date");
 const countriesNode = document.querySelector("#countries");
 const statusNode = document.querySelector("#status");
 const demoBadge = document.querySelector("#demo-badge");
-const attribution = document.querySelector("#attribution");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let centroids = {};
@@ -141,7 +140,7 @@ function validateData(data) {
     !providers.has(data.geolocationProvider) ||
     (data.demo !== (data.geolocationProvider === "demo")) ||
     !Number.isInteger(data.minimumGroupSize) ||
-    data.minimumGroupSize < 5 ||
+    data.minimumGroupSize < 1 ||
     !Number.isInteger(data.withheldVisitors) ||
     data.withheldVisitors < 0 ||
     !data.privacy ||
@@ -210,25 +209,8 @@ function renderData(data) {
   });
 
   demoBadge.hidden = !data.demo;
-  const provider = String(data.geolocationProvider || "");
-  attribution.hidden = !["MaxMind GeoLite2 City", "DB-IP City Lite"].includes(provider);
-  if (!attribution.hidden) {
-    const link = document.createElement("a");
-    link.rel = "noreferrer";
-    if (provider === "DB-IP City Lite") {
-      attribution.replaceChildren("IP Geolocation by ", link, ". DB-IP Lite data is approximate.");
-      link.href = "https://db-ip.com";
-      link.textContent = "DB-IP";
-    } else {
-      attribution.replaceChildren("This product includes GeoLite2 Data created by MaxMind, available from ", link, ".");
-      link.href = "https://www.maxmind.com";
-      link.textContent = "maxmind.com";
-    }
-  }
-  const withheld = data.withheldVisitors;
-  statusNode.textContent = rows.length
-    ? `${withheld} visitors withheld below the minimum group size. Updated periodically; not a live individual feed.`
-    : "No publishable aggregate data is available yet.";
+  statusNode.hidden = rows.length > 0;
+  statusNode.textContent = rows.length ? "" : "No visitor data is available yet.";
 }
 
 async function load() {
@@ -244,7 +226,8 @@ async function load() {
     renderData(data);
     draw();
   } catch {
-    statusNode.textContent = "Aggregate data is temporarily unavailable.";
+    statusNode.hidden = false;
+    statusNode.textContent = "Visitor data is temporarily unavailable.";
     draw();
   }
 }

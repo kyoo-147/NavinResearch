@@ -172,14 +172,14 @@ def validate_rows(rows):
 def export(
     database,
     destination,
-    minimum=5,
+    minimum=1,
     detailed=False,
     provider="none",
     batch_id=None,
     generated_at=None,
 ):
-    if minimum < 5:
-        raise ValueError("minimum public group size must be at least 5")
+    if minimum < 1:
+        raise ValueError("minimum public group size must be at least 1")
     rows = database.execute(
         "SELECT day,country_code,country,region,city,visitors FROM daily_locations ORDER BY day,country"
     ).fetchall()
@@ -216,17 +216,17 @@ def export(
         visible = [
             {"day": day, "countryCode": code, "country": country, "visitors": visitors_count}
             for (day, code, country), visitors_count in sorted(by_country.items())
-            if visitors_count >= minimum and code != "ZZ"
+            if visitors_count >= minimum
         ]
         withheld = sum(
             visitors_count
             for (_day, code, _country), visitors_count in by_country.items()
-            if visitors_count < minimum or code == "ZZ"
+            if visitors_count < minimum
         )
         payload = {
             **base,
             "minimumGroupSize": minimum,
-            "privacy": {**privacy, "contains": ["daily country aggregates meeting the minimum group size"]},
+            "privacy": {**privacy, "contains": ["daily country aggregates"]},
             "withheldVisitors": withheld,
             "rows": visible,
         }
@@ -267,11 +267,11 @@ def main(argv=None):
         help="truthful provider label for the supplied MMDB (defaults to MaxMind for compatibility)",
     )
     parser.add_argument("--retention-days", type=int, default=90)
-    parser.add_argument("--minimum", type=int, default=5)
+    parser.add_argument("--minimum", type=int, default=1)
     args = parser.parse_args(argv)
 
-    if args.minimum < 5:
-        parser.error("--minimum must be at least 5")
+    if args.minimum < 1:
+        parser.error("--minimum must be at least 1")
     if args.retention_days < 1:
         parser.error("--retention-days must be at least 1")
 

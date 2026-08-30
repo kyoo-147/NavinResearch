@@ -72,10 +72,10 @@ fetch("/visitor-insights/data.json", { cache: "no-store" })
         item.append(location, visitors);
         locationsNode.append(item);
       });
-    statusNode.textContent = data.demo
-      ? "Demo data · aggregated daily; not a live feed."
-      : "Aggregated daily; not a live individual feed.";
+    statusNode.hidden = true;
+    statusNode.textContent = "";
   })
   .catch(() => {
+    statusNode.hidden = false;
     statusNode.textContent = "Private aggregate data is unavailable.";
   });

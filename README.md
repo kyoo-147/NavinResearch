@@ -12,7 +12,7 @@ Source for [navinresearch.com](https://navinresearch.com): a multilingual static
 - `styles.css` / `script.js` — homepage design and ambient motion.
 - `content-routes/` — shared editorial route styles, search, and validation.
 - `analytics/` — offline Nginx-log aggregator; no always-on tracking application.
-- `visitor-map/` — public country-level aggregate globe; demo data is clearly labeled.
+- `visitor-map/` — public country-level aggregate globe; production publishes every country total.
 - `visitor-insights/` — private aggregate operator UI; production requires authentication.
 - `docs/` — design system, reusable component contracts, accessibility, SEO, and privacy rules.
 - `deployment-example/` — Nginx boundaries for public/private analytics data.
@@ -55,9 +55,9 @@ Products, Blog, Research, Releases, Docs, and Search routes are real and indexab
 
 ## Analytics boundary
 
-The analytics prototype stores daily aggregate counts only. Raw IPs remain in restricted Nginx logs and process memory during one-day deduplication; SQLite stores no raw IP, IP hash, URL, user agent, or trajectory. Public country groups require at least five unique visitors. See `analytics/README.md` before enabling live data.
+The analytics pipeline stores daily aggregate counts only. Raw IPs remain in restricted Nginx logs and process memory during one-day deduplication; SQLite stores no raw IP, IP hash, URL, user agent, or trajectory. The public map publishes every country-level daily total, including single-visitor countries. See `analytics/README.md` before enabling live data.
 
-GeoLite2 is not included. Operators must obtain and update it directly under MaxMind's current terms and preserve visible attribution.
+GeoLite2 is not included. Operators must obtain and update it directly under MaxMind's current terms and preserve required attribution in the project notices.
 
 ## License and notices
 

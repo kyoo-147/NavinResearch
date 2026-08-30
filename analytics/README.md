@@ -7,7 +7,7 @@ This is a **real, privacy-preserving production pipeline**, not a demo feed or a
 - IP addresses exist only in process memory while the input log is parsed.
 - A visitor is deduplicated by exact IP within a single log day; no IP or hash is written to SQLite.
 - The database stores only daily location counts.
-- Public JSON contains country totals only when the country/day group has at least `k=5` visitors.
+- Public JSON contains every country/day total, including countries with one visitor.
 - Private JSON contains daily country/region/city aggregates, never individual records, and must remain behind authentication.
 - Nginx raw logs remain the most sensitive artifact. Restrict them to root/analytics operators and rotate/delete them quickly.
 
@@ -47,11 +47,11 @@ Official references:
 - https://www.maxmind.com/en/geolite/eula
 - https://support.maxmind.com/knowledge-base/articles/sell-or-display-data-from-geolite-databases-and-web-services
 
-When GeoLite2 powers the public map, keep the visible attribution:
+When GeoLite2 powers the public map, preserve this attribution in the project notices:
 
 > This product includes GeoLite2 Data created by MaxMind, available from https://www.maxmind.com.
 
-When DB-IP City Lite powers the map, keep the visible link:
+When DB-IP City Lite powers the map, preserve this attribution in the project notices:
 
 > IP Geolocation by DB-IP — https://db-ip.com
 

@@ -57,7 +57,7 @@ class AggregateTests(unittest.TestCase):
             self.assertEqual(payload["rows"][0]["countryCode"], "VN")
             database.close()
 
-    def test_public_threshold_hides_small_groups(self):
+    def test_public_export_includes_single_visitor_country_groups(self):
         with tempfile.TemporaryDirectory() as temporary:
             database = open_db(Path(temporary) / "visitors.sqlite3")
             database.execute(
@@ -66,16 +66,16 @@ class AggregateTests(unittest.TestCase):
             )
             database.commit()
             output = Path(temporary) / "public.json"
-            export(database, output, minimum=5)
+            export(database, output, minimum=1)
             payload = json.loads(output.read_text(encoding="utf-8"))
-            self.assertEqual(payload["rows"], [])
-            self.assertEqual(payload["withheldVisitors"], 4)
+            self.assertEqual(payload["rows"][0]["visitors"], 4)
+            self.assertEqual(payload["withheldVisitors"], 0)
             self.assertEqual(payload["metric"], "unique visitors per log day")
             self.assertEqual(payload["schemaVersion"], 1)
             self.assertRegex(payload["batchId"], r"^[0-9a-f]{32}$")
             self.assertTrue(payload["generatedAt"].endswith("Z"))
             with self.assertRaises(ValueError):
-                export(database, output, minimum=4)
+                export(database, output, minimum=0)
             database.close()
 
     def test_out_of_order_input_rolls_back_the_whole_ingest(self):

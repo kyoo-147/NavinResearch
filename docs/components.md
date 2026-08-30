@@ -70,7 +70,7 @@ The public search is a small client-side directory over real route metadata only
 
 ## Visitor map
 
-`/visitor-map/` uses an original Canvas 2D globe, static country centroids, and periodically refreshed aggregate JSON. The globe is ambient; the ranked country list is the authoritative accessible data. Public groups below `k=5` are withheld. There is no WebSocket or individual event stream.
+`/visitor-map/` uses an original Canvas 2D globe, static country centroids, and periodically refreshed aggregate JSON. The globe is ambient; the ranked country list is the authoritative accessible data. Every country/day aggregate is published, including single-visitor countries. There is no WebSocket or individual event stream.
 
 ## Private visitor insights
 
