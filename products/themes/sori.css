@@ -289,3 +289,29 @@
 @media (max-width: 800px) {
   .product-sori .product-page-section { grid-template-columns: 2rem 1fr; }
 }
+
+/* Native-workbench cues: the studio reads like a local utility, not a SaaS dashboard. */
+.product-sori[data-route="/models/"] .product-visual__stage,
+.product-sori[data-route="/profiles/"] .product-visual__stage,
+.product-sori[data-route="/history/"] .product-visual__stage,
+.product-sori[data-route="/permissions/"] .product-visual__stage,
+.product-sori[data-route="/apps/"] .product-visual__stage {
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px rgba(232,228,216,.08), 0 .7rem 0 rgba(0,0,0,.18);
+}
+
+.product-sori[data-route="/models/"] .product-visual__items span::before { content: "ROUTE / "; color: var(--sori-signal); }
+.product-sori[data-route="/profiles/"] .product-visual__items span::before { content: "PROFILE / "; color: var(--sori-signal); }
+.product-sori[data-route="/history/"] .product-visual__items span::before { content: "LOCAL / "; color: var(--sori-signal); }
+.product-sori[data-route="/permissions/"] .product-visual__items span::before { content: "CAPABILITY / "; color: var(--sori-signal); }
+.product-sori[data-route="/apps/"] .product-visual__items span::before { content: "TARGET / "; color: var(--sori-signal); }
+
+.product-sori[data-route="/permissions/"] .product-page-section[data-kind="boundary"] { border-left: 2px solid var(--sori-signal); padding-left: 1.25rem; }
+.product-sori[data-route="/history/"] .product-page-section[data-kind="evidence"] { border-top-style: dashed; }
+.product-sori[data-route="/apps/"] .product-page-section[data-kind="workflow"] { background: linear-gradient(90deg, rgba(212,179,106,.08), transparent); }
+.product-sori[data-route="/docs/"] .product-page-section[data-kind="documentation"] { border-left: 2px solid var(--sori-signal); padding-left: 1.25rem; }
+
+@media (max-width: 800px) {
+  .product-sori[data-route="/permissions/"] .product-page-section[data-kind="boundary"],
+  .product-sori[data-route="/docs/"] .product-page-section[data-kind="documentation"] { padding-left: .75rem; }
+}
