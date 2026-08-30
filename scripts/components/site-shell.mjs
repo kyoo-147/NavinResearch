@@ -49,12 +49,13 @@ export function siteDrawer(localeKey) {
 export function siteHeader(localeKey, suffix = "") {
   const locale = locales[localeKey];
   const ui = experience[localeKey];
+  const status = suffix ? locale.common.status : locale.home.status;
   return `<header class="masthead site-header">
         <div class="masthead__brand-group">
           <button class="menu-toggle" type="button" data-menu-open aria-expanded="false" aria-controls="site-menu" aria-label="${escapeHtml(ui.menu.open)}"><span></span><span></span><span></span></button>
           <a class="brand brand--wordmark" href="${localePath(localeKey)}" aria-label="${escapeHtml(ui.aria.home)}"><span class="brand__name">NAVIN<br>RESEARCH</span></a>
         </div>
-        <div class="masthead__meta"><span class="signal">${escapeHtml(locale.home.status)}</span><nav class="language" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, suffix)}</nav></div>
+        <div class="masthead__meta"><span class="signal">${escapeHtml(status)}</span><nav class="language" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, suffix)}</nav></div>
       </header>`;
 }
 
