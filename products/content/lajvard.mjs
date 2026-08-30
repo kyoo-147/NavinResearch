@@ -22,6 +22,7 @@ const routeCtas = {
   '/research/': { title: 'Check the source trail', body: 'Public references are context for questions, never transferred proof of Lajvard behavior.', label: 'Read the archive policy', href: '/gallery/' },
   '/gallery/': { title: 'Keep provenance attached', body: 'Future media will be labelled by artifact state before it is shown.', label: 'Read the specification ledger', href: '/specs/' },
   '/specs/': { title: 'Leave blanks honest', body: 'Unknown values stay unknown until a measured revision and source can support them.', label: 'Read availability', href: '/availability/' },
+  '/404.html': { title: 'Return to the field notebook', body: 'This route is unknown; continue from the documented concept home.', label: 'Return home', href: '/' },
   '/support/': { title: 'Support follows an object', body: 'There is no released robot to support; questions and source corrections remain welcome.', label: 'Write to the notebook', href: '/contact/' },
 };
 const fallbackCta = { title: 'Keep the notebook open', body: 'Follow future field notes as the direction becomes more concrete.', label: 'Follow field notes', href: '/availability/' };

@@ -75,7 +75,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/approvals/",
-    "layout": "ledger",
+    "layout": "workflow",
     "output": "sandora/approvals/index.html",
     "url": "https://sandora.navinresearch.com/approvals/",
     "title": "Approvals"
@@ -111,7 +111,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/pricing/",
-    "layout": "ledger",
+    "layout": "availability",
     "output": "sandora/pricing/index.html",
     "url": "https://sandora.navinresearch.com/pricing/",
     "title": "Pricing"
@@ -120,7 +120,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/enterprise/",
-    "layout": "ledger",
+    "layout": "comparison",
     "output": "sandora/enterprise/index.html",
     "url": "https://sandora.navinresearch.com/enterprise/",
     "title": "Enterprise"

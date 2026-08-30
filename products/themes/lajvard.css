@@ -117,4 +117,6 @@
 @media (max-width: 800px) {
   .product-lajvard[data-route='/intelligence/'] .product-visual__stage { min-height: 16rem; }
   .product-lajvard[data-route='/software/'] .product-visual__stage { min-height: 18rem; }
+  .product-lajvard[data-route='/movement/'] .product-visual__stage,
+  .product-lajvard[data-route='/life-with-lajvard/'] .product-visual__stage { border-radius: 2rem; }
 }
