@@ -1,181 +1,25 @@
 .product-sandora .product-field { display: none; }
-.product-sandora {
-  --sandora-ink: #e7e2d5;
-  --sandora-muted: #a9aa9c;
-  --sandora-line: #4b5149;
-  --sandora-accent: #e1a457;
-  --sandora-dark: #111613;
-  min-height: 100svh;
-  background: var(--sandora-dark);
-  color: var(--sandora-ink);
-  font-family: 'Atkinson', sans-serif;
-  letter-spacing: .01em;
-}
-
-.product-sandora * {
-  box-sizing: border-box;
-}
-
-.product-sandora a {
-  color: var(--sandora-accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: .25em;
-}
-
-.product-sandora .product-sandora__masthead {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  max-width: 88rem;
-  margin: 0 auto;
-  padding: 2rem clamp(1.25rem, 5vw, 5rem);
-  border-bottom: 1px solid var(--sandora-line);
-}
-
-.product-sandora .product-sandora__wordmark {
-  color: var(--sandora-ink);
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-}
-
-.product-sandora .product-sandora__edition {
-  color: var(--sandora-muted);
-  font-family: monospace;
-  font-size: .7rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.product-sandora .product-sandora__main {
-  max-width: 88rem;
-  margin: 0 auto;
-  padding: clamp(4rem, 11vw, 10rem) clamp(1.25rem, 5vw, 5rem);
-}
-
-.product-sandora .product-sandora__hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(14rem, .8fr);
-  gap: clamp(2rem, 9vw, 10rem);
-  align-items: end;
-  padding-bottom: clamp(4rem, 10vw, 9rem);
-}
-
-.product-sandora .product-sandora__eyebrow,
-.product-sandora .product-sandora__kicker {
-  margin: 0 0 1rem;
-  color: var(--sandora-accent);
-  font-family: monospace;
-  font-size: .72rem;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-
-.product-sandora .product-sandora__hero h1 {
-  max-width: 8ch;
-  margin: 0;
-  font-family: 'Pixelated Elegance', monospace;
-  font-size: clamp(4rem, 13vw, 12rem);
-  font-weight: 400;
-  line-height: .8;
-  text-transform: uppercase;
-}
-
-.product-sandora .product-sandora__hero-note {
-  margin: 0;
-  border-left: 2px solid var(--sandora-accent);
-  padding-left: 1.25rem;
-  color: var(--sandora-muted);
-  font-size: 1.05rem;
-  line-height: 1.5;
-}
-
-.product-sandora .product-sandora__diagram {
-  display: block;
-  width: 100%;
-  border-top: 1px solid var(--sandora-line);
-  border-bottom: 1px solid var(--sandora-line);
-}
-
-.product-sandora .product-sandora__sections {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  margin-top: clamp(4rem, 9vw, 8rem);
-  background: var(--sandora-line);
-}
-
-.product-sandora .product-sandora__section {
-  min-height: 20rem;
-  padding: 1.5rem;
-  background: var(--sandora-dark);
-}
-
-.product-sandora .product-sandora__section h2 {
-  margin: 0 0 1.25rem;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 400;
-  letter-spacing: -.04em;
-  line-height: 1;
-}
-
-.product-sandora .product-sandora__section p {
-  color: var(--sandora-muted);
-  line-height: 1.55;
-}
-
-.product-sandora .product-sandora__section ul {
-  margin: 2rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.product-sandora .product-sandora__section li {
-  border-top: 1px solid var(--sandora-line);
-  padding: .8rem 0;
-  color: var(--sandora-ink);
-  font-size: .9rem;
-}
-
-.product-sandora .product-sandora__section li::before {
-  content: '— ';
-  color: var(--sandora-accent);
-}
-
-.product-sandora .product-sandora__footer {
-  max-width: 88rem;
-  margin: 0 auto;
-  padding: 2rem clamp(1.25rem, 5vw, 5rem) 4rem;
-  color: var(--sandora-muted);
-  font-family: monospace;
-  font-size: .72rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 720px) {
-  .product-sandora .product-sandora__masthead {
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
-  }
-
-  .product-sandora .product-sandora__edition {
-    font-size: .58rem;
-  }
-
-  .product-sandora .product-sandora__hero {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .product-sandora .product-sandora__hero h1 {
-    font-size: clamp(4rem, 24vw, 8rem);
-  }
-
-  .product-sandora .product-sandora__sections {
-    grid-template-columns: 1fr;
-  }
-}
-
-.product-sandora .product-hero{grid-template-columns:minmax(0,1.3fr) minmax(20rem,.7fr)}.product-sandora .product-hero h1{max-width:7ch;font-size:clamp(4rem,7vw,7rem)}@media(max-width:760px){.product-sandora .product-hero{grid-template-columns:1fr}.product-sandora .product-hero h1{font-size:clamp(4rem,19vw,7rem)}}
+.product-sandora { --sandora-ink:#e7e2d5; --sandora-muted:#a9aa9c; --sandora-line:#4b5149; --sandora-accent:#e1a457; --sandora-dark:#111613; min-height:100svh; background:var(--sandora-dark); color:var(--sandora-ink); font-family:'Atkinson',sans-serif; letter-spacing:.01em; }
+.product-sandora * { box-sizing:border-box; }
+.product-sandora a { color:var(--sandora-accent); text-decoration-thickness:1px; text-underline-offset:.25em; }
+.product-sandora .product-sandora__masthead { display:flex; align-items:baseline; justify-content:space-between; max-width:88rem; margin:0 auto; padding:2rem clamp(1.25rem,5vw,5rem); border-bottom:1px solid var(--sandora-line); }
+.product-sandora .product-sandora__wordmark { color:var(--sandora-ink); font-size:.8rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; }
+.product-sandora .product-sandora__edition { color:var(--sandora-muted); font-family:monospace; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; }
+.product-sandora .product-sandora__main { max-width:88rem; margin:0 auto; padding:clamp(4rem,11vw,10rem) clamp(1.25rem,5vw,5rem); }
+.product-sandora .product-sandora__hero { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(14rem,.8fr); gap:clamp(2rem,9vw,10rem); align-items:end; padding-bottom:clamp(4rem,10vw,9rem); }
+.product-sandora .product-sandora__eyebrow,.product-sandora .product-sandora__kicker { margin:0 0 1rem; color:var(--sandora-accent); font-family:monospace; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; }
+.product-sandora .product-sandora__hero h1 { max-width:8ch; margin:0; font-family:'Pixelated Elegance',monospace; font-size:clamp(4rem,13vw,12rem); font-weight:400; line-height:.8; text-transform:uppercase; }
+.product-sandora .product-sandora__hero-note { margin:0; border-left:2px solid var(--sandora-accent); padding-left:1.25rem; color:var(--sandora-muted); font-size:1.05rem; line-height:1.5; }
+.product-sandora .product-sandora__diagram { display:block; width:100%; border-top:1px solid var(--sandora-line); border-bottom:1px solid var(--sandora-line); }
+.product-sandora .product-sandora__sections { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin-top:clamp(4rem,9vw,8rem); background:var(--sandora-line); }
+.product-sandora .product-sandora__section { min-height:20rem; padding:1.5rem; background:var(--sandora-dark); }
+.product-sandora .product-sandora__section h2 { margin:0 0 1.25rem; font-size:clamp(1.5rem,3vw,2.5rem); font-weight:400; letter-spacing:-.04em; line-height:1; }
+.product-sandora .product-sandora__section p { color:var(--sandora-muted); line-height:1.55; }
+.product-sandora .product-sandora__section ul { margin:2rem 0 0; padding:0; list-style:none; }
+.product-sandora .product-sandora__section li { border-top:1px solid var(--sandora-line); padding:.8rem 0; color:var(--sandora-ink); font-size:.9rem; }
+.product-sandora .product-sandora__section li::before { content:'— '; color:var(--sandora-accent); }
+.product-sandora .product-sandora__footer { max-width:88rem; margin:0 auto; padding:2rem clamp(1.25rem,5vw,5rem) 4rem; color:var(--sandora-muted); font-family:monospace; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; }
+.product-sandora .product-hero { grid-template-columns:minmax(0,1.3fr) minmax(20rem,.7fr); }
+.product-sandora .product-hero h1 { max-width:7ch; font-size:clamp(4rem,7vw,7rem); }
+@media (max-width:760px) { .product-sandora .product-sandora__masthead { padding-top:1.25rem; padding-bottom:1.25rem; } .product-sandora .product-sandora__hero,.product-sandora .product-hero { grid-template-columns:1fr; gap:3rem; } .product-sandora .product-sandora__hero h1,.product-sandora .product-hero h1 { font-size:clamp(4rem,19vw,7rem); } .product-sandora .product-sandora__sections { grid-template-columns:1fr; } }
+@media (prefers-reduced-motion: reduce) { .product-sandora *, .product-sandora *::before, .product-sandora *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; transition-duration:.01ms !important; } }

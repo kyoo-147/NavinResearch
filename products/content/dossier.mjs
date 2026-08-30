@@ -1,52 +1,50 @@
+const pageSpecs = [
+  ["/", "Document intelligence for accountable work", "A review workstation for turning difficult documents into evidence-linked records.", "See the page. Defend the record.", "Dossier keeps source pages, extracted fields, confidence, and reviewer decisions in one inspectable path.", "document-canvas", ["Illustrative page view", "Evidence-linked fields", "Human review boundary"], "A document is more than its output", "Extraction is proposed structure, not a final truth. The planned workstation keeps the original page close to every decision."],
+  ["/product/", "The Dossier workstation", "A concept-stage product direction for document processing with a visible chain of evidence.", "A desk for the uncertain middle.", "Dossier is designed around the point where machine output needs context, validation, and a person who can approve it.", "workflow", ["Ingest", "Extract", "Validate", "Review", "Handoff"], "One surface, several accountable steps", "The interface is intended to make state changes legible rather than burying them behind a chat transcript."],
+  ["/document-processing/", "Document processing", "Prepare pages for inspection without losing their source context.", "Start with the page in view.", "Document processing is the planned foundation for pages, batches, and structured observations.", "document-canvas", ["Page and batch context", "Layout-aware preparation", "Source retained"], "Processing should leave a trail", "Each later field should be able to point back to the page region and processing state that produced it."],
+  ["/extraction/", "Extraction", "Turn page regions into candidate fields, tables, and line items.", "Propose structure. Keep the evidence.", "Dossier treats extracted values as reviewable proposals with confidence and provenance attached.", "bounding-boxes", ["Fields", "Tables", "Line items"], "A value without context is incomplete", "The planned extraction view pairs a candidate value with its source region, status, and the next action it needs."],
+  ["/validation/", "Validation", "Check extracted records against schemas, rules, and source evidence.", "Make uncertainty a visible state.", "Validation is a separate step so malformed or unsupported values do not silently become downstream facts.", "validation", ["Schema checks", "Rule outcomes", "Retry or escalate"], "A failed check is useful information", "Dossier is designed to distinguish a clean pass, a recoverable retry, and a question for a human reviewer."],
+  ["/reconciliation/", "Reconciliation", "Compare related documents and surface discrepancies for resolution.", "Put the mismatch on the table.", "Planned reconciliation views help teams compare records such as invoices and purchase orders without hiding the disagreement.", "discrepancy", ["Side-by-side evidence", "Discrepancy states", "Resolution notes"], "Agreement is an outcome, not an assumption", "A discrepancy remains open until a rule or a person provides a defensible resolution."],
+  ["/review/", "Human review", "Give reviewers the context and controls to approve, correct, or return a proposed record.", "Review is part of the system.", "The planned review queue makes confidence, evidence, and decision status visible before any handoff.", "review-queue", ["Approve", "Correct", "Return for retry"], "The reviewer has the final say", "Dossier does not present illustrative confidence or status as production performance. They are interface states for an accountable workflow."],
+  ["/workflows/", "Workflows", "Shape repeatable document paths around explicit states and ownership.", "From intake to approved handoff.", "Build a workflow that names what happens next, who can decide, and what evidence travels with the record.", "workflow", ["State transitions", "Human gates", "Export boundary"], "A workflow is a contract", "The intended model keeps each transition inspectable so teams can adapt the process without losing responsibility."],
+  ["/integrations/", "Integrations", "Connect approved records to the systems that receive them.", "Export what the desk can defend.", "Integration work is planned around explicit contracts, not inferred fields or unreviewed automation.", "integration", ["Structured output", "Webhook-ready boundary", "Contract-first mapping"], "Downstream systems need a clear promise", "The destination should know which fields were approved, which remain unresolved, and where their evidence lives."],
+  ["/use-cases/", "Use cases", "Explore document workflows by the decisions they need to support.", "Different documents. Same discipline.", "Dossier is intended for teams that need to inspect, reconcile, and approve operational documents.", "workflow", ["Invoices", "Purchase orders", "Custom document sets"], "Start from the decision", "The right workflow depends on the document, the rule, and the person accountable for the outcome."],
+  ["/use-cases/invoices/", "Invoice review", "A source-linked path for extracting and reviewing invoice fields.", "Keep every amount near its source.", "The planned invoice flow separates extraction from validation and leaves exceptions visible for review.", "bounding-boxes", ["Supplier and dates", "Totals and line items", "Exception queue"], "Illustrative invoice workspace", "This page describes interface intent only; it does not claim accuracy, processing volume, or customer results."],
+  ["/use-cases/purchase-orders/", "Purchase-order review", "Compare purchase-order structure with the evidence on the page.", "Make commitments inspectable.", "A purchase-order workflow can preserve line-item context while preparing a record for downstream reconciliation.", "reconciliation", ["Order identifiers", "Line-item context", "Approval status"], "A record with its original page", "The useful unit is not a detached field. It is a field, its evidence, and the decision that accepted it."],
+  ["/security/", "Security and boundaries", "A transparent starting point for discussing document handling and control surfaces.", "Trust starts with clear limits.", "Dossier is a concept-stage direction. Deployment, retention, access controls, and security attestations are not represented as shipped capabilities here.", "security", ["Explicit evidence states", "Human approval boundary", "No certification claim"], "What is known, and what is not", "Security posture must be documented against a real deployment. This page intentionally avoids unsupported compliance or availability claims."],
+  ["/developers/", "Developers", "Design integration boundaries around explicit, reviewable records.", "Build on a visible contract.", "Developer-facing surfaces are intended to expose schemas, evidence references, and unresolved states clearly.", "integration", ["Schema-shaped records", "Evidence references", "Failure states"], "An API should not erase the review trail", "The planned developer experience makes it possible to handle approved, rejected, and incomplete records deliberately."],
+  ["/docs/", "Documentation", "A concise map of the planned Dossier concepts and vocabulary.", "Understand the states before the tools.", "Documentation will describe the processing, extraction, validation, reconciliation, and review boundaries without overstating maturity.", "docs", ["Concepts", "Workflow states", "Integration notes"], "Documentation follows the evidence", "As the product develops, examples should remain clearly marked as illustrative or live."],
+  ["/pricing/", "Pricing", "A transparent placeholder for a product that has not published commercial terms.", "No price has been published.", "Dossier is not presented as a generally available service, so no price, plan, quota, or billing commitment is claimed.", "status", ["Commercial terms: unpublished", "Availability: concept stage", "Contact for context"], "Ask; do not assume", "Any future pricing page should be sourced from an approved commercial decision rather than a placeholder number."],
+  ["/enterprise/", "Enterprise", "Discuss governance and workflow requirements without promising unsupported readiness.", "Start with the operating reality.", "Enterprise conversations should begin with documents, decisions, ownership, and deployment constraints—not a fictional customer list.", "enterprise", ["Workflow discovery", "Governance questions", "Deployment scope"], "A conversation, not a claim", "Dossier has no published enterprise customer, SLA, procurement, or certification claim on this site."],
+  ["/contact/", "Contact Dossier", "Share the documents, decisions, and constraints that matter to your workflow.", "Tell us what needs defending.", "Contact is the appropriate next step for early-access interest, workflow context, or questions about the concept.", "contact", ["Workflow context", "Document types", "Review requirements"], "A useful first conversation", "No outcome, response time, or availability is promised by this contact path."],
+  ["/privacy/", "Privacy", "How this concept-stage page treats information and makes no hidden data promises.", "Privacy requires a real policy.", "This product page is a concept description. It does not claim a production data-processing arrangement or substitute for a reviewed privacy notice.", "legal", ["No fabricated retention terms", "No fabricated subprocessors", "Policy review required"], "Read the actual notice", "Use the site's canonical privacy policy for current site practices; product-specific processing terms require separate documentation."],
+  ["/terms/", "Terms", "The canonical terms boundary for this product page.", "Terms should match the service.", "Dossier is described as a concept-stage direction, not a completed service contract or warranty of capability.", "legal", ["No service promise", "No performance warranty", "Scope remains explicit"], "Do not infer a contract from a concept", "Any future offering should publish reviewed terms that match the actual product and deployment."],
+  ["/404.html", "Page not found", "The requested Dossier page could not be found.", "This page is not in the dossier.", "Return to the product desk or choose a documented workflow.", "status", ["Check the URL", "Return to Dossier"], "A quiet dead end", "Only documented routes are part of this concept-stage map."]
+];
+
+const pages = pageSpecs.map(([path, title, description, headline, lede, kind, items, sectionTitle, body]) => ({
+  path, title, description, eyebrow: "DOSSIER / DOCUMENT INTELLIGENCE", headline, lede,
+  visual: { kind, title: "Illustrative interface state", items, caption: "Illustrative only — not a live processing result." },
+  sections: [{ kind: "editorial", title: sectionTitle, body, points: items, status: "CONCEPT / SOURCE-BOUND" }],
+  cta: { title: "Continue with context", body: "Bring the workflow and its evidence requirements into the next conversation.", label: "Contact Dossier", href: "/products/dossier/contact/" }
+}));
+
 const dossier = {
-  slug: "dossier",
-  name: "Dossier",
-  eyebrow: "Agentic Document Intelligence",
-  status: "Early-access interest",
+  slug: "dossier", name: "Dossier", eyebrow: "Agentic Document Intelligence", status: "Early-access interest",
   thesis: "A local-first document desk for turning difficult pages into reviewable, approved, integration-ready structured data.",
   intro: "Dossier is a concept-stage direction for document work where extraction is only the beginning. Each proposed record stays connected to the page, the decision, and the person who approved it.",
   proofNote: "Concept stage: the workflow and capability areas are planned, not a claim of shipped OCR accuracy, automation coverage, or production readiness.",
-  sections: [
-    {
-      id: "desk",
-      kicker: "01 / Forensic document desk",
-      title: "Read the page before it becomes a row.",
-      body: "A document is treated as an inspectable artefact. The planned desk keeps page context visible while an agent proposes observations, fields, and questions for human review.",
-      points: ["Page-aware inspection", "Evidence attached to proposals", "Human approval before handoff"]
-    },
-    {
-      id: "signal",
-      kicker: "02 / Structured signal",
-      title: "Make uncertainty legible.",
-      body: "Planned OCR, handwriting, layout, table, form, and extraction passes would turn heterogeneous pages into candidate structure without hiding what still needs attention.",
-      points: ["Layout and reading-order hypotheses", "Tables and forms as named structures", "QA prompts for ambiguous fields"]
-    },
-    {
-      id: "handoff",
-      kicker: "03 / Approved handoff",
-      title: "Export only what the desk can defend.",
-      body: "Validation and evidence views are intended to make an approved record portable to downstream systems. The destination contract remains explicit rather than inferred from a chat transcript.",
-      points: ["Schema-shaped outputs", "Validation before export", "A traceable approval boundary"]
-    }
-  ],
+  sections: [{ id: "desk", kicker: "01 / Forensic document desk", title: "Read the page before it becomes a row.", body: "A document is treated as an inspectable artefact. The planned desk keeps page context visible while an agent proposes observations, fields, and questions for human review.", points: ["Page-aware inspection", "Evidence attached to proposals", "Human approval before handoff"] }],
   capabilities: ["OCR", "Handwriting", "Layout and tables", "Forms and extraction", "QA and evidence"],
-  evidence: [
-    { label: "Product posture", value: "Local-first concept", state: "PLANNED" },
-    { label: "Review boundary", value: "Human approval required", state: "INTENT" },
-    { label: "Output posture", value: "Integration-ready structure", state: "TARGET" },
-    { label: "Current access", value: "Early-access interest", state: "OPEN" }
-  ],
-  availability: {
-    label: "Availability",
-    title: "A desk being drawn in public.",
-    body: "Dossier is not presented as a launched product. Share an early-access signal to help shape the review workflow and the documents it should respect.",
-    cta: "Register interest"
-  },
-  sourceLinks: [
-    { label: "W3C Web Annotation Data Model", url: "https://www.w3.org/TR/annotation-model/" },
-    { label: "JSON Schema specification", url: "https://json-schema.org/specification" },
-    { label: "NIST AI Risk Management Framework", url: "https://www.nist.gov/itl/ai-risk-management-framework" }
-  ]
+  evidence: [{ label: "Product posture", value: "Local-first concept", state: "PLANNED" }, { label: "Review boundary", value: "Human approval required", state: "INTENT" }, { label: "Output posture", value: "Integration-ready structure", state: "TARGET" }, { label: "Current access", value: "Early-access interest", state: "OPEN" }],
+  availability: { label: "Availability", title: "A desk being drawn in public.", body: "Dossier is not presented as a launched product. Share an early-access signal to help shape the review workflow and the documents it should respect.", cta: "Register interest" },
+  sourceLinks: [{ label: "W3C Web Annotation Data Model", url: "https://www.w3.org/TR/annotation-model/" }, { label: "JSON Schema specification", url: "https://json-schema.org/specification" }, { label: "NIST AI Risk Management Framework", url: "https://www.nist.gov/itl/ai-risk-management-framework" }],
+  site: {
+    primaryCta: { label: "Contact Dossier", href: "/products/dossier/contact/" },
+    navigation: [{ label: "Product", href: "/products/dossier/product/" }, { label: "Workflows", href: "/products/dossier/workflows/" }, { label: "Developers", href: "/products/dossier/developers/" }, { label: "Contact", href: "/products/dossier/contact/" }],
+    footerGroups: [{ title: "Explore", links: [{ label: "Document processing", href: "/products/dossier/document-processing/" }, { label: "Use cases", href: "/products/dossier/use-cases/" }, { label: "Security", href: "/products/dossier/security/" }] }, { title: "Reference", links: [{ label: "Docs", href: "/products/dossier/docs/" }, { label: "Pricing", href: "/products/dossier/pricing/" }, { label: "Contact", href: "/products/dossier/contact/" }] }],
+    pages
+  }
 };
 
 export default dossier;

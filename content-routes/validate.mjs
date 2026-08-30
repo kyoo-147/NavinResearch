@@ -109,6 +109,8 @@ for (const file of [
   "content-routes/release-search.js",
   "content-routes/release-search.js",
   "products/product-foundation.css",
+  "products/product-site.js",
+  "products/site-manifest.json",
   "scripts/product-data.mjs",
   "scripts/generate-products.mjs",
   "scripts/components/page-head.mjs",
@@ -130,18 +132,33 @@ for (const file of [
 }
 
 for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {
-  for (const file of [`products/content/${slug}.mjs`, `products/themes/${slug}.css`, `products/media/${slug}-system.svg`, `${slug}/index.html`]) {
+  for (const file of [`products/content/${slug}.mjs`, `products/themes/${slug}.css`, `products/media/${slug}-system.svg`, `${slug}/index.html`, `${slug}/404.html`, `${slug}/robots.txt`, `${slug}/sitemap.xml`]) {
     try { await access(file); } catch { errors.push(`${file}: required product asset missing`); }
   }
   const productHtml = await readFile(`${slug}/index.html`, "utf8");
-  for (const marker of [`https://${slug}.navinresearch.com/`, `product-${slug}`, `/products/themes/${slug}.css`, `/products/media/${slug}-system.svg`, 'name="robots"', 'property="og:title"', 'class="skip-link"', 'id="main-content"', 'id="evidence"', 'id="availability"', 'class="product-switcher"']) {
+  for (const marker of [`https://${slug}.navinresearch.com/`, `product-${slug}`, `/products/themes/${slug}.css`, '/products/product-site.js', 'name="robots"', 'property="og:title"', 'class="skip-link"', 'id="main-content"', 'class="product-nav"', 'class="product-footer"']) {
     if (!productHtml.includes(marker)) errors.push(`${slug}/index.html: product marker missing: ${marker}`);
   }
   if (productHtml.includes("Details to be announced") || productHtml.includes("product-pricing")) errors.push(`${slug}/index.html: obsolete generic pricing scaffold remains`);
+  if (!productHtml.includes('data-product-menu') || !productHtml.includes('aria-controls="product-menu"')) errors.push(`${slug}/index.html: responsive product navigation missing`);
+  const productSitemap = await readFile(`${slug}/sitemap.xml`, "utf8");
+  if (!productSitemap.includes(`https://${slug}.navinresearch.com/`)) errors.push(`${slug}/sitemap.xml: product origin missing`);
+  const productRobots = await readFile(`${slug}/robots.txt`, "utf8");
+  if (!productRobots.includes(`Sitemap: https://${slug}.navinresearch.com/sitemap.xml`)) errors.push(`${slug}/robots.txt: sitemap missing`);
 }
 
 if (!deploymentNginx.includes("location ~ \\.md$") || !deploymentNginx.includes("default_type text/markdown;") || !deploymentNginx.includes("charset_types text/markdown;")) {
   errors.push("deployment nginx: public Markdown content type mapping missing");
+}
+
+const productManifest = JSON.parse(await readFile("products/site-manifest.json", "utf8"));
+if (!Array.isArray(productManifest) || !productManifest.length) errors.push("product site manifest: no generated routes");
+for (const entry of productManifest) {
+  try { await access(entry.output); } catch { errors.push(`product site manifest: missing ${entry.output}`); }
+  const routeHtml = await readFile(entry.output, "utf8");
+  for (const marker of ['class="product-header"', 'class="product-main"', 'class="product-footer"', '<meta name="description"']) {
+    if (!routeHtml.includes(marker)) errors.push(`${entry.output}: route marker missing: ${marker}`);
+  }
 }
 
 const robots = await readFile("robots.txt", "utf8");

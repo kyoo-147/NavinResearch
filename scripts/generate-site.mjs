@@ -66,7 +66,7 @@ ${head(localeKey, locale.meta.title, locale.meta.description, "", `/styles.css?v
 
 function routeNav(localeKey, current) {
   const locale = locales[localeKey];
-  const navSections = ["products", "research", "releases", "blog", "docs", "search"];
+  const navSections = ["research", "models", "products", "publications", "notes", "releases", "about", "careers", "contact", "docs", "search"];
   return navSections.map((section) => `<a href="${localePath(localeKey, section)}"${section === current ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`).join("\n          ");
 }
 
@@ -76,10 +76,11 @@ function routeTemplate(localeKey, section) {
   const ui = experience[localeKey];
   const routeNumber = String(sections.indexOf(section) + 1).padStart(2, "0");
   const search = section === "search" ? `<section class="route-search" aria-labelledby="search-label"><label id="search-label" for="route-search">${escapeHtml(locale.common.searchLabel)}</label><input id="route-search" type="search" data-route-search placeholder="${escapeHtml(locale.common.searchPlaceholder)}" autocomplete="off"><div class="route-search__results" data-search-results data-empty-label="${escapeHtml(locale.common.noResults)}" aria-live="polite"></div></section>` : "";
+  const contact = section === "contact" ? `<p class="route-contact"><a href="mailto:${site.email}">${site.email}</a></p>` : "";
   return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
 ${head(localeKey, `${route.title} — ${site.name}`, route.description, section, "/content-routes/route-foundation.css", section === "search" ? "/content-routes/route-search.js" : "")}  </head><body class="route-page content-page content-${section}"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
     ${contentHeader(localeKey, section)}
-    <main class="route-page__main content-main"><div class="content-copy"><p class="route-page__eyebrow">SECTION ${routeNumber} / ${escapeHtml(route.title)}</p><h1>${escapeHtml(route.title)}</h1><p class="route-page__lede">${escapeHtml(route.lede)}</p><div class="route-page__notice"><strong>${escapeHtml(locale.common.preparation)}</strong><span>${escapeHtml(route.description)}</span></div>${search}</div><aside class="content-index" aria-label="${escapeHtml(ui.menu.explore)}"><p>${escapeHtml(ui.menu.explore)}</p><nav aria-label="${escapeHtml(ui.menu.explore)}">${routeNav(localeKey, section)}</nav></aside></main>
+    <main class="route-page__main content-main"><div class="content-copy"><p class="route-page__eyebrow">SECTION ${routeNumber} / ${escapeHtml(route.title)}</p><h1>${escapeHtml(route.title)}</h1><p class="route-page__lede">${escapeHtml(route.lede)}</p><div class="route-page__notice"><strong>${escapeHtml(locale.common.preparation)}</strong><span>${escapeHtml(route.description)}</span></div>${contact}${search}</div><aside class="content-index" aria-label="${escapeHtml(ui.menu.explore)}"><p>${escapeHtml(ui.menu.explore)}</p><nav aria-label="${escapeHtml(ui.menu.explore)}">${routeNav(localeKey, section)}</nav></aside></main>
     ${routeFooter(localeKey)}
   </div></body></html>
 `;
@@ -171,6 +172,12 @@ for (const [localeKey] of localeEntries) {
   for (const chapter of chapters) await emit(localeKey, chapter.slug, chapterTemplate(localeKey, chapter));
   for (const legalPage of legalPages) await emit(localeKey, legalPage, legalTemplate(localeKey, legalPage));
 }
+
+const notFoundTemplate = (localeKey = "en") => {
+  const locale = locales[localeKey];
+  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>${head(localeKey, `Page not found — ${site.name}`, "The requested Navin Research page was not found.", "404", "/content-routes/route-foundation.css")}</head><body class="route-page content-page content-404"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">${contentHeader(localeKey, "")}<main class="route-page__main content-main"><div class="content-copy"><p class="route-page__eyebrow">NAVIN RESEARCH / 404</p><h1>Page not found.</h1><p class="route-page__lede">This route is not part of the public site.</p><p><a class="route-contact" href="/">Return home <span aria-hidden="true">→</span></a></p></div></main>${routeFooter(localeKey)}</div></body></html>`;
+};
+await writeFile("404.html", notFoundTemplate(), "utf8");
 
 const markdownPosts = [];
 for (const post of blogPosts) {

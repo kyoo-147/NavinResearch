@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://navinresearch.com/</loc></url>
-  <url><loc>https://navinresearch.com/products/</loc></url>
   <url><loc>https://navinresearch.com/research/</loc></url>
+  <url><loc>https://navinresearch.com/models/</loc></url>
+  <url><loc>https://navinresearch.com/products/</loc></url>
+  <url><loc>https://navinresearch.com/publications/</loc></url>
+  <url><loc>https://navinresearch.com/notes/</loc></url>
+  <url><loc>https://navinresearch.com/about/</loc></url>
+  <url><loc>https://navinresearch.com/careers/</loc></url>
+  <url><loc>https://navinresearch.com/contact/</loc></url>
   <url><loc>https://navinresearch.com/blog/</loc></url>
   <url><loc>https://navinresearch.com/docs/</loc></url>
   <url><loc>https://navinresearch.com/search/</loc></url>
@@ -15,8 +21,14 @@
   <url><loc>https://navinresearch.com/privacy-policy/</loc></url>
   <url><loc>https://navinresearch.com/terms-of-use/</loc></url>
   <url><loc>https://navinresearch.com/vi/</loc></url>
-  <url><loc>https://navinresearch.com/vi/products/</loc></url>
   <url><loc>https://navinresearch.com/vi/research/</loc></url>
+  <url><loc>https://navinresearch.com/vi/models/</loc></url>
+  <url><loc>https://navinresearch.com/vi/products/</loc></url>
+  <url><loc>https://navinresearch.com/vi/publications/</loc></url>
+  <url><loc>https://navinresearch.com/vi/notes/</loc></url>
+  <url><loc>https://navinresearch.com/vi/about/</loc></url>
+  <url><loc>https://navinresearch.com/vi/careers/</loc></url>
+  <url><loc>https://navinresearch.com/vi/contact/</loc></url>
   <url><loc>https://navinresearch.com/vi/blog/</loc></url>
   <url><loc>https://navinresearch.com/vi/docs/</loc></url>
   <url><loc>https://navinresearch.com/vi/search/</loc></url>
@@ -29,8 +41,14 @@
   <url><loc>https://navinresearch.com/vi/privacy-policy/</loc></url>
   <url><loc>https://navinresearch.com/vi/terms-of-use/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/</loc></url>
-  <url><loc>https://navinresearch.com/zh-cn/products/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/research/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/models/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/products/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/publications/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/notes/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/about/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/careers/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/contact/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/blog/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/docs/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/search/</loc></url>

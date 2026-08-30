@@ -60,7 +60,7 @@ export function siteHeader(localeKey, suffix = "") {
 
 export function contentHeader(localeKey, currentSection) {
   const locale = locales[localeKey];
-  const navSections = ["products", "research", "releases", "blog", "docs", "search"];
+  const navSections = ["research", "models", "products", "publications", "notes", "releases", "about", "careers", "contact", "docs", "search"];
   const routes = navSections.map((section) => `<a href="${localePath(localeKey, section)}"${section === currentSection ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`).join("\n          ");
   return `<header class="route-page__header content-header"><a class="route-page__brand content-wordmark" href="${localePath(localeKey)}"><span>NAVIN<br>RESEARCH</span></a><nav class="route-page__nav" aria-label="${escapeHtml(locale.common.navAria)}">${routes}</nav><nav class="route-page__languages" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, currentSection)}</nav></header>`;
 }

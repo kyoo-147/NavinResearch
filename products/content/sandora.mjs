@@ -1,51 +1,68 @@
+const sourceLinks = [
+  { label: 'Sandora concept page', url: 'https://sandora.navinresearch.com/' },
+  { label: 'Hermes Agent', url: 'https://hermes-agent.nousresearch.com/' },
+  { label: 'Sintra AI', url: 'https://sintra.ai/' },
+  { label: 'Factory', url: 'https://factory.ai/' },
+  { label: 'Letta agent memory', url: 'https://letta.com/agent' },
+  { label: 'Browserbase', url: 'https://browserbase.com/' },
+  { label: 'Navin Research', url: 'https://navinresearch.com/' }
+];
+
+const pageSpecs = [
+  ['/', 'Sandora — AI Department OS', 'An early concept for visible, human-governed AI departments.', 'FIELD NOTE', 'An operating system for an AI department.', 'Sandora maps roles, delegates work, and keeps the runtime legible. It is a concept-stage direction, not a released service.', 'terminal · organization graph · worker states', 'Start with the map', 'See the product shape', 'product'],
+  ['/product/', 'Product', 'The Sandora product model: departments, workers, workflows, and review.', 'PRODUCT MAP', 'Make delegation inspectable.', 'The product direction joins an organization graph to a terminal-like workspace. Every proposed action has a place in the record.', 'graph → delegate → review', 'Product architecture', 'Read the system', 'product'],
+  ['/departments/', 'Departments', 'Compose a department from explicit responsibilities and boundaries.', '01 / ORGANIZATION', 'A department is a map of responsibility.', 'Departments are modeled as connected roles rather than a single opaque assistant. The concept preserves ownership and handoff context.', 'roles · scopes · reporting lines', 'Define a department', 'Explore the graph', 'atlas'],
+  ['/agents/', 'Agents', 'Worker agents occupy named roles with visible state and bounded tasks.', '02 / WORKERS', 'Workers should show their state.', 'A Sandora worker is a role in a department. Its proposed work, current state, and handoff context remain visible for inspection.', 'queued · running · waiting · stopped', 'Inspect worker states', 'View runtime', 'runtime'],
+  ['/workflows/', 'Workflows', 'Route repeatable work through explicit steps and handoffs.', '03 / ORCHESTRATION', 'Route work without hiding judgment.', 'Workflow steps connect workers and approvals. Sandora is designed to pause when context is missing or a consequential decision needs a person.', 'trigger · handoff · checkpoint', 'Draft a workflow', 'Read approvals', 'workflow'],
+  ['/runtime/', 'Runtime', 'A terminal-first surface for observing work as it moves.', '04 / RUNTIME', 'The terminal is the instrument panel.', 'The runtime concept favors readable events, worker states, and command-oriented inspection over a decorative dashboard.', 'events · commands · live state', 'Open the runtime map', 'See auditability', 'runtime'],
+  ['/memory/', 'Memory', 'Keep task context attached to the work that uses it.', '05 / CONTEXT', 'Context should travel with the task.', 'Sandora treats memory as scoped working context: discoverable, reviewable, and attached to a department or workflow boundary. Storage and retention details are not announced.', 'scope · provenance · retention', 'Trace context', 'Read the limits', 'workflow'],
+  ['/approvals/', 'Approvals', 'Put human decisions at explicit gates.', '06 / GOVERNANCE', 'Automate the route, not the judgment.', 'Approval gates mark where a proposal stops and a person decides. Sandora does not claim autonomous authority or production enforcement at concept stage.', 'proposed · pending · approved · rejected', 'Model an approval gate', 'Review the record', 'governance'],
+  ['/integrations/', 'Integrations', 'Connect tools deliberately, with capability boundaries in view.', '07 / CONNECTIONS', 'A connector is a boundary, not a promise.', 'Sandora can be designed to route work toward tools and browser environments, but supported integrations, credentials, and availability are not announced.', 'tool call · credential · result', 'Map a connector', 'Read security', 'integration'],
+  ['/developers/', 'Developers', 'A future-facing surface for composing roles and workflow steps.', '08 / BUILD', 'Build the department you can inspect.', 'Developer-facing contracts are part of the direction. No public SDK, API availability, compatibility promise, or production endpoint is asserted here.', 'schema · event · adapter', 'Read the contract direction', 'Open documentation', 'developer'],
+  ['/docs/', 'Docs', 'A concise index of the Sandora operating model.', 'DOCUMENTATION', 'Start with nouns, then commands.', 'The documentation direction begins with departments, workers, workflows, memory, approvals, and audit events. It is explanatory product material, not a live API reference.', 'concepts · recipes · limits', 'Read the concepts', 'See releases', 'developer'],
+  ['/pricing/', 'Pricing', 'No Sandora pricing has been announced.', 'TRANSPARENCY', 'No price is being invented.', 'Sandora is an early concept. There is no public plan, price, usage allowance, or billing commitment to report.', 'pricing: not announced', 'Ask about future access', 'View contact', 'governance'],
+  ['/enterprise/', 'Enterprise', 'A future conversation about control surfaces, not a sales claim.', 'OPERATING MODEL', 'Start with governance requirements.', 'Enterprise deployment, procurement, support, residency, and service levels are not announced. The useful starting point is to document responsibility and approval needs.', 'ownership · review · evidence', 'Share requirements', 'Read security', 'governance'],
+  ['/security/', 'Security', 'Security boundaries belong in the product shape from the start.', 'BOUNDARIES', 'Make the unknowns visible.', 'Sandora design intent includes scoped roles, explicit approvals, and an audit record. Detailed controls, certifications, penetration tests, and deployment guarantees are not claimed.', 'least scope · approval · audit', 'Discuss a boundary', 'Read privacy', 'governance'],
+  ['/releases/', 'Releases', 'There are no public Sandora releases to report.', 'CHANGELOG', 'A quiet registry beats invented milestones.', 'This page records the current concept-stage status. No shipped version, uptime, benchmark, or availability claim is implied.', 'status: concept-stage', 'Follow the project', 'Open source trail', 'developer'],
+  ['/research/', 'Research', 'Sandora is a research direction for legible delegation.', 'LAB NOTE', 'Study the department, not the magic.', 'The research question is how role structure, context routing, and approval points affect inspectability. This page does not report completed experiments or performance results.', 'question · protocol · unknown', 'Read the thesis', 'View source trail', 'research'],
+  ['/github/', 'GitHub', 'Follow the public source trail without confusing it for a product release.', 'SOURCE TRAIL', 'Artifacts before assurances.', 'Public repository status, implementation scope, and licensing should be checked at the linked source. Sandora makes no claim that a production repository or SDK is available.', 'source · history · license', 'Open Navin Research', 'Review releases', 'developer'],
+  ['/contact/', 'Contact', 'A human conversation about the shape of an AI department.', 'CONTACT', 'Bring a boundary, not a brief.', 'Use email to discuss research context, workflow requirements, or early interest. A message does not create access, pricing, or a deployment commitment.', 'human review · early signal', 'Email Navin Research', 'Return to product', 'contact'],
+  ['/privacy/', 'Privacy', 'Privacy terms for this concept page are maintained at Navin Research.', 'LEGAL', 'Read the governing notice.', 'For the current privacy notice and any applicable data practices, use the Navin Research privacy page. Sandora does not publish separate product processing commitments here.', 'notice · scope · update', 'Read privacy notice', 'Return to Sandora', 'legal'],
+  ['/terms/', 'Terms', 'Terms for this concept page are maintained at Navin Research.', 'LEGAL', 'Read the governing terms.', 'For the current terms governing Navin Research web properties, use the Navin Research terms page. No Sandora service agreement is offered by this concept page.', 'terms · scope · status', 'Read terms', 'Return to Sandora', 'legal'],
+  ['/404.html', 'Not found', 'The requested Sandora route is not in the current map.', '404 / ROUTE UNKNOWN', 'No route, no assumption.', 'Check the path or return to the department map. Unknown routes are reported plainly.', 'route: unknown', 'Return to Sandora', 'View product map', 'error']
+];
+
+const bodyByKind = {
+  product: ['A readable department needs a shared map, a visible runtime, and a deliberate stopping point. Sandora connects those primitives without claiming a shipped implementation.', ['Organization graph', 'Terminal-first runtime', 'Delegation with context', 'Human approval gates']],
+  atlas: ['The graph is the working surface: responsibilities, relationships, and boundaries can be named before automation is trusted with a route.', ['Name the owner', 'Define the boundary', 'Keep the handoff legible']],
+  runtime: ['Runtime state should be inspectable in the moment and explainable afterward. The concept uses events and states as the vocabulary for that inspection.', ['Read worker state', 'Follow an event trail', 'Stop or resume deliberately']],
+  workflow: ['A workflow is a route through roles and checkpoints. It should make missing context and pending judgment visible instead of silently pushing ahead.', ['Attach context', 'Record each handoff', 'Pause at uncertainty']],
+  governance: ['Governance is part of the operating model, not a footer. The concept marks proposals, decisions, and unknowns separately.', ['Separate proposal from decision', 'Keep approval status explicit', 'Do not overstate controls']],
+  integration: ['Integrations should expose what a tool can do, what it received, and what came back. Availability and connector support remain unannounced.', ['Declare capability', 'Scope credentials', 'Record the result']],
+  developer: ['The developer surface is intentionally provisional. Contracts should make roles, events, and adapters composable without implying a public API exists.', ['Start from a schema', 'Design for inspectability', 'Version changes visibly']],
+  research: ['The research direction asks whether organizational structure can make delegated work easier to inspect. No experiment or result is asserted on this page.', ['State the question', 'Separate observation from inference', 'Publish limits with findings']],
+  contact: ['A concise note about your workflow or governance boundary is more useful than a promise of capability. Replies are human and availability is not guaranteed.', ['Context', 'Constraint', 'Desired next step']],
+  legal: ['This route points to the current Navin Research notice rather than inventing product-specific legal terms.', ['Use the canonical notice', 'Check the current version', 'Ask before relying on a future product']],
+  error: ['This route is outside the current published map. Sandora reports that plainly rather than guessing what you meant.', ['Check the URL', 'Return to the map']]
+};
+
+const pages = pageSpecs.map(([path, title, description, eyebrow, headline, lede, visualTitle, ctaTitle, ctaLabel, kind]) => {
+  const [body, points] = bodyByKind[kind];
+  const href = path === '/contact/' ? 'mailto:michaelbui.contact@gmail.com?subject=Sandora%20interest' : path === '/privacy/' ? 'https://navinresearch.com/privacy-policy/' : path === '/terms/' ? 'https://navinresearch.com/terms-of-use/' : path === '/github/' ? 'https://github.com/kyoo-147' : path === '/404.html' ? '/' : path;
+  return { path, title, description, eyebrow, headline, lede, visual: { kind: 'system-map', title: visualTitle, items: points, caption: 'Concept direction / not a production claim' }, sections: [{ kind, title: ctaTitle, body, points, status: 'CONCEPT-STAGE', cta: { label: ctaLabel, href } }], cta: { title: 'Keep the boundary visible.', body: 'Sandora is an early concept. Contact is an expression of interest, not a promise of access.', label: 'Express interest', href: 'mailto:michaelbui.contact@gmail.com?subject=Sandora%20interest' } };
+});
+
 const sandora = {
-  slug: 'sandora',
-  name: 'Sandora',
-  eyebrow: 'AI DEPARTMENT OS',
-  status: 'CONCEPT / EARLY ACCESS',
+  slug: 'sandora', name: 'Sandora', eyebrow: 'AI DEPARTMENT OS', status: 'CONCEPT / EARLY ACCESS',
   thesis: 'An organizational atlas for virtual AI teams, where automated work remains visible, reviewable, and human-governed.',
   intro: 'Sandora is an early product direction for coordinating virtual AI teams. It treats roles, context, handoffs, approvals, and audit as the connective tissue of automated workflows—not as hidden implementation detail.',
-  proofNote: 'Concept-stage description only. No production deployment, performance claim, pricing, or customer result is being asserted.',
-  sections: [
-    {
-      id: 'atlas',
-      kicker: '01 / ORIENTATION',
-      title: 'Map the department before it moves.',
-      body: 'A shared organizational atlas can make an AI team legible: who is responsible, what context travels, and where a person must decide.',
-      points: ['Define roles and boundaries', 'Keep working context attached to the task', 'Make ownership visible at each handoff']
-    },
-    {
-      id: 'workflow',
-      kicker: '02 / MOTION',
-      title: 'Automate the route, not the judgment.',
-      body: 'Sandora is conceived around repeatable workflows that pass work between virtual roles while reserving consequential choices for explicit approval.',
-      points: ['Sequence role-to-role handoffs', 'Record pending approvals', 'Pause safely when instructions or context are incomplete']
-    },
-    {
-      id: 'record',
-      kicker: '03 / ACCOUNTABILITY',
-      title: 'Leave a readable record.',
-      body: 'An audit view should show how work moved through the department, what was proposed, and which human decisions governed the outcome.',
-      points: ['Trace actions to a workflow step', 'Separate proposals from approvals', 'Review the history before extending automation']
-    }
-  ],
-  capabilities: ['Role atlas', 'Context routing', 'Workflow handoffs', 'Approval gates', 'Audit record'],
-  evidence: [
-    { label: 'Product state', value: 'Early concept', state: 'CONCEPT-STAGE' },
-    { label: 'Operating model', value: 'Human-governed automation', state: 'DESIGN INTENT' },
-    { label: 'Deployment', value: 'Not announced', state: 'UNVERIFIED' },
-    { label: 'Pricing', value: 'No prices', state: 'NOT ANNOUNCED' }
-  ],
-  availability: {
-    label: 'EARLY ACCESS',
-    title: 'Register interest, not a promise.',
-    body: 'Sandora is not available as a released product. Early-access interest is non-binding and helps shape what a human-governed AI department could become.',
-    cta: 'Express interest'
-  },
-  sourceLinks: [
-    { label: 'Sandora concept page', url: 'https://sandora.navinresearch.com/' },
-    { label: 'Navin Research', url: 'https://navinresearch.com/' }
-  ]
+  proofNote: 'Concept-stage description only. No production deployment, performance claim, pricing, customer result, certification, or physical proof is being asserted.',
+  sections: [{ id: 'atlas', kicker: '01 / ORIENTATION', title: 'Map the department before it moves.', body: 'A shared organizational atlas can make an AI team legible: who is responsible, what context travels, and where a person must decide.', points: ['Define roles and boundaries', 'Keep working context attached to the task', 'Make ownership visible at each handoff'] }, { id: 'workflow', kicker: '02 / MOTION', title: 'Automate the route, not the judgment.', body: 'Sandora is conceived around repeatable workflows that pass work between virtual roles while reserving consequential choices for explicit approval.', points: ['Sequence role-to-role handoffs', 'Record pending approvals', 'Pause safely when instructions or context are incomplete'] }, { id: 'record', kicker: '03 / ACCOUNTABILITY', title: 'Leave a readable record.', body: 'An audit view should show how work moved through the department, what was proposed, and which human decisions governed the outcome.', points: ['Trace actions to a workflow step', 'Separate proposals from approvals', 'Review the history before extending automation'] }],
+  capabilities: ['Terminal-first runtime', 'Organization graph', 'Worker states', 'Delegation and handoffs', 'Approval gates', 'Audit record'],
+  evidence: [{ label: 'Product state', value: 'Early concept', state: 'CONCEPT-STAGE' }, { label: 'Operating model', value: 'Human-governed automation', state: 'DESIGN INTENT' }, { label: 'Deployment', value: 'Not announced', state: 'UNVERIFIED' }, { label: 'Pricing', value: 'No prices', state: 'NOT ANNOUNCED' }],
+  availability: { label: 'EARLY ACCESS', title: 'Register interest, not a promise.', body: 'Sandora is not available as a released product. Early-access interest is non-binding and helps shape what a human-governed AI department could become.', cta: 'Express interest' },
+  sourceLinks,
+  site: { primaryCta: { label: 'Express interest', href: 'mailto:michaelbui.contact@gmail.com?subject=Sandora%20interest' }, navigation: [{ label: 'Product', href: '/product/' }, { label: 'Departments', href: '/departments/' }, { label: 'Runtime', href: '/runtime/' }, { label: 'Docs', href: '/docs/' }, { label: 'Contact', href: '/contact/' }], footerGroups: [{ title: 'System', links: [{ label: 'Agents', href: '/agents/' }, { label: 'Workflows', href: '/workflows/' }, { label: 'Approvals', href: '/approvals/' }] }, { title: 'Trust', links: [{ label: 'Security', href: '/security/' }, { label: 'Privacy', href: '/privacy/' }, { label: 'Terms', href: '/terms/' }] }], pages }
 };
 
 export default sandora;

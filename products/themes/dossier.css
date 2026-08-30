@@ -207,3 +207,35 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Product-owned primitives for the document review surfaces. */
+.product-dossier .dossier-canvas,
+.product-dossier .dossier-review-state {
+  border: 1px solid var(--dossier-ink);
+  background: #f5efdf;
+}
+.product-dossier .dossier-canvas { position: relative; min-height: 18rem; padding: 1rem; }
+.product-dossier .dossier-canvas::before,
+.product-dossier .dossier-canvas::after { content: ""; display: block; width: 70%; height: .55rem; margin: 1rem 0; background: var(--dossier-line); box-shadow: 0 1.8rem 0 var(--dossier-line), 0 3.6rem 0 var(--dossier-line); }
+.product-dossier .dossier-canvas::after { position: absolute; top: 4.5rem; left: 35%; width: 28%; height: 3.5rem; border: 2px solid var(--dossier-signal); background: transparent; box-shadow: none; }
+.product-dossier .dossier-status { display: inline-block; padding: .25rem .4rem; border: 1px solid currentColor; color: var(--dossier-signal); font: 700 .68rem/1.2 Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; }
+.product-dossier a:focus-visible { outline: 3px solid var(--dossier-signal); outline-offset: 4px; }
+@media (min-width: 1100px) {
+  .product-dossier .product-dossier__intro { min-height: 32rem; }
+}
+@media (max-width: 390px) {
+  .product-dossier .product-dossier__masthead { padding-inline: 1rem; }
+  .product-dossier .product-dossier__intro,
+  .product-dossier .product-dossier__availability { padding-inline: 1rem; }
+  .product-dossier .product-dossier__intro h1 { font-size: clamp(2.7rem, 18vw, 4rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-dossier *, .product-dossier *::before, .product-dossier *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* The paper theme meets a dark navigation and visual review canvas. */
+.product-dossier .product-header { color: #f4f0e6; }
+.product-dossier .product-header .product-wordmark,
+.product-dossier .product-header .product-nav > a,
+.product-dossier .product-header .product-nav summary { color: #f4f0e6; }
+.product-dossier .product-header .product-nav a[aria-current="page"] { color: var(--accent); }

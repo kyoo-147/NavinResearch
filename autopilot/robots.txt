@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://autopilot.navinresearch.com/sitemap.xml

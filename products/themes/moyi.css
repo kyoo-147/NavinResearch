@@ -137,3 +137,76 @@
     border-right: 0;
   }
 }
+.product-moyi ::selection {
+  background: var(--moyi-signal);
+  color: var(--moyi-field);
+}
+
+.product-moyi .product-status {
+  border-color: var(--moyi-signal);
+}
+
+.product-moyi .product-cta:focus-visible,
+.product-moyi .product-header a:focus-visible,
+.product-moyi .product-switcher a:focus-visible {
+  outline: 2px solid var(--moyi-signal);
+  outline-offset: 5px;
+}
+
+@media (min-width: 1440px) {
+  .product-moyi .product-hero {
+    min-height: 78vh;
+  }
+  .product-moyi .product-section {
+    grid-template-columns: minmax(12rem, 0.4fr) 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-moyi .product-hero {
+    padding-block: clamp(3.5rem, 12vw, 6rem);
+  }
+  .product-moyi .product-section {
+    padding-block: clamp(3rem, 10vw, 5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-moyi .product-hero::before,
+  .product-moyi .product-hero::after {
+    transform: none;
+  }
+}
+
+/* Multi-page shell utility headings stay compact and wrap safely. */
+.product-moyi .product-footer__groups h2 {
+  color: var(--moyi-muted);
+  font-family: "IBM Plex Mono", "Courier New", monospace;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+.product-moyi .product-footer__groups { min-width: 0; }
+
+[D:/work/michael/navin_research/products/themes/lajvard.css]
+@APPEND
+
+/* The paper theme meets a dark navigation and visual instrument. */
+.product-lajvard .product-header { color: #f4f0e6; }
+.product-lajvard .product-header .product-wordmark,
+.product-lajvard .product-header .product-nav > a,
+.product-lajvard .product-header .product-nav summary { color: #f4f0e6; }
+.product-lajvard .product-header .product-nav a[aria-current="page"] { color: var(--accent); }
+
+[D:/work/michael/navin_research/products/themes/dossier.css]
+@APPEND
+
+/* The paper theme meets a dark navigation and visual review canvas. */
+.product-dossier .product-header { color: #f4f0e6; }
+.product-dossier .product-header .product-wordmark,
+.product-dossier .product-header .product-nav > a,
+.product-dossier .product-header .product-nav summary { color: #f4f0e6; }
+.product-dossier .product-header .product-nav a[aria-current="page"] { color: var(--accent); }

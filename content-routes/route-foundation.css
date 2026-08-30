@@ -501,6 +501,12 @@
 .content-docs .content-field { background-image: url("/assets/field-4.webp"); }
 .content-search .content-field { background-image: url("/assets/field-5.webp"); }
 
+ .content-models .content-field { background-image: url("/assets/field-3.webp"); }
+ .content-publications .content-field { background-image: url("/assets/field-4.webp"); }
+ .content-notes .content-field { background-image: url("/assets/field-1.webp"); }
+ .content-about .content-field { background-image: url("/assets/field-2.webp"); }
+ .content-careers .content-field { background-image: url("/assets/field-5.webp"); }
+ .content-contact .content-field { background-image: url("/assets/field-3.webp"); }
 .content-page .route-page__shell {
   width: calc(100% - (var(--edge) + var(--edge)));
 }

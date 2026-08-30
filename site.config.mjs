@@ -6,7 +6,7 @@ export const site = {
   github: "https://github.com/kyoo-147",
 };
 
-export const sections = ["products", "research", "blog", "docs", "search"];
+export const sections = ["research", "models", "products", "publications", "notes", "about", "careers", "contact", "blog", "docs", "search"];
 
 export const chapters = [
   { slug: "physis", key: "PHYSIS", number: "01", asset: "field-1.webp", domains: { en: "Embodied & Natural Intelligence", vi: "Trí tuệ hiện thân & tự nhiên", "zh-cn": "具身与自然智能" } },
@@ -52,6 +52,12 @@ export const locales = {
       noResults: "No matching public page was found.",
     },
     routes: {
+      models: { title: "Models", description: "Model programs documented by Navin Research.", lede: "A public index for models when their release state, scope, and evidence can be described accurately." },
+      publications: { title: "Publications", description: "Publications and technical reports from Navin Research.", lede: "A record for work that has been reviewed, documented, and made public." },
+      notes: { title: "Notes", description: "Short field notes from Navin Research.", lede: "Working notes on methods, systems, and questions. No note is presented as a finding without its source." },
+      about: { title: "About", description: "About Navin Research.", lede: "An independent research institution studying intelligence across language, perception, action, and nature." },
+      careers: { title: "Careers", description: "Careers at Navin Research.", lede: "We are not publishing open roles yet. This page will describe roles only when a real opening is available." },
+      contact: { title: "Contact", description: "Contact Navin Research.", lede: "For research, collaboration, and media enquiries, use the verified contact channel below." },
       products: { title: "Products", description: "Research systems and products developed by Navin Research.", lede: "Seven distinct systems spanning organizational intelligence, speech, desktop voice, research, documents, autonomous vehicles, and personal robotics." },
       blog: { title: "Journal", description: "Notes and updates from Navin Research.", lede: "Carefully edited field notes, project updates, and research reflections." },
       research: { title: "Research", description: "Research directions and methods from Navin Research.", lede: "A future index for real work across language, speech, vision, multimodal systems, and end-to-end AI products." },
@@ -92,6 +98,12 @@ export const locales = {
       noResults: "Không tìm thấy trang công khai phù hợp.",
     },
     routes: {
+      models: { title: "Mô hình", description: "Các chương trình mô hình được Navin Research ghi chép.", lede: "Chỉ mục công khai cho các mô hình khi trạng thái phát hành, phạm vi và bằng chứng có thể được mô tả chính xác." },
+      publications: { title: "Công bố", description: "Các công bố và báo cáo kỹ thuật của Navin Research.", lede: "Nơi ghi nhận những công trình đã được xem xét, ghi chép và công khai." },
+      notes: { title: "Ghi chú", description: "Ghi chú thực địa ngắn từ Navin Research.", lede: "Ghi chú về phương pháp, hệ thống và câu hỏi. Không ghi chú nào được trình bày như phát hiện nếu thiếu nguồn." },
+      about: { title: "Giới thiệu", description: "Về Navin Research.", lede: "Một tổ chức nghiên cứu độc lập về trí tuệ qua ngôn ngữ, tri giác, hành động và tự nhiên." },
+      careers: { title: "Tuyển dụng", description: "Cơ hội tại Navin Research.", lede: "Chúng tôi chưa công bố vị trí tuyển dụng. Trang này sẽ chỉ mô tả vị trí khi có cơ hội thực tế." },
+      contact: { title: "Liên hệ", description: "Liên hệ Navin Research.", lede: "Đối với nghiên cứu, hợp tác và báo chí, hãy dùng kênh liên hệ đã xác minh bên dưới." },
       products: { title: "Sản phẩm", description: "Các hệ thống nghiên cứu và sản phẩm do Navin Research phát triển.", lede: "Bảy hệ thống riêng biệt trải rộng từ trí tuệ tổ chức, giọng nói, nghiên cứu và tài liệu đến xe tự hành và robot cá nhân." },
       blog: { title: "Nhật ký", description: "Ghi chú và cập nhật từ Navin Research.", lede: "Các ghi chép thực địa, cập nhật dự án và suy ngẫm nghiên cứu được biên tập cẩn thận." },
       research: { title: "Nghiên cứu", description: "Định hướng và phương pháp nghiên cứu tại Navin Research.", lede: "Chỉ mục tương lai cho những công trình thực tế về ngôn ngữ, giọng nói, thị giác, hệ thống đa phương thức và sản phẩm AI đầu cuối." },
@@ -132,6 +144,12 @@ export const locales = {
       noResults: "未找到匹配的公开页面。",
     },
     routes: {
+     models: { title: "模型", description: "Navin Research 记录的模型计划。", lede: "当发布状态、范围与证据能够被准确描述时，这里将提供公开索引。" },
+      publications: { title: "出版物", description: "Navin Research 的出版物与技术报告。", lede: "记录已审阅、记录并公开的工作。" },
+      notes: { title: "笔记", description: "Navin Research 的简短现场笔记。", lede: "关于方法、系统与问题的工作笔记。没有来源的笔记不会被表述为研究发现。" },
+      about: { title: "关于", description: "关于 Navin Research。", lede: "一个研究语言、感知、行动与自然中的智能的独立研究机构。" },
+      careers: { title: "招聘", description: "Navin Research 的工作机会。", lede: "我们目前尚未发布职位。只有在真实职位开放时，本页面才会描述岗位。" },
+      contact: { title: "联系", description: "联系 Navin Research。", lede: "如有研究、合作或媒体咨询，请使用下方已验证的联系渠道。" },
       products: { title: "产品", description: "Navin Research 开发的研究系统与产品。", lede: "七个独立系统，涵盖组织智能、语音、研究、文档、自动驾驶与个人机器人。" },
       blog: { title: "日志", description: "Navin Research 的笔记与更新。", lede: "经过认真编辑的现场笔记、项目更新与研究思考。" },
       research: { title: "研究", description: "Navin Research 的研究方向与方法。", lede: "未来用于索引语言、语音、视觉、多模态系统与端到端 AI 产品方面的真实工作。" },
@@ -194,4 +212,5 @@ export function localePath(localeKey, section = "") {
   const prefix = locales[localeKey].prefix;
   const parts = [prefix, section].filter(Boolean);
   return `/${parts.join("/")}${parts.length ? "/" : ""}`;
+
 }

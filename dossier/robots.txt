@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dossier.navinresearch.com/sitemap.xml

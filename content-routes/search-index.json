@@ -8,6 +8,20 @@
   },
   {
     "language": "EN",
+    "url": "/research/",
+    "title": "Research",
+    "description": "Research directions and methods from Navin Research.",
+    "text": "A future index for real work across language, speech, vision, multimodal systems, and end-to-end AI products."
+  },
+  {
+    "language": "EN",
+    "url": "/models/",
+    "title": "Models",
+    "description": "Model programs documented by Navin Research.",
+    "text": "A public index for models when their release state, scope, and evidence can be described accurately."
+  },
+  {
+    "language": "EN",
     "url": "/products/",
     "title": "Products",
     "description": "Research systems and products developed by Navin Research.",
@@ -15,10 +29,38 @@
   },
   {
     "language": "EN",
-    "url": "/research/",
-    "title": "Research",
-    "description": "Research directions and methods from Navin Research.",
-    "text": "A future index for real work across language, speech, vision, multimodal systems, and end-to-end AI products."
+    "url": "/publications/",
+    "title": "Publications",
+    "description": "Publications and technical reports from Navin Research.",
+    "text": "A record for work that has been reviewed, documented, and made public."
+  },
+  {
+    "language": "EN",
+    "url": "/notes/",
+    "title": "Notes",
+    "description": "Short field notes from Navin Research.",
+    "text": "Working notes on methods, systems, and questions. No note is presented as a finding without its source."
+  },
+  {
+    "language": "EN",
+    "url": "/about/",
+    "title": "About",
+    "description": "About Navin Research.",
+    "text": "An independent research institution studying intelligence across language, perception, action, and nature."
+  },
+  {
+    "language": "EN",
+    "url": "/careers/",
+    "title": "Careers",
+    "description": "Careers at Navin Research.",
+    "text": "We are not publishing open roles yet. This page will describe roles only when a real opening is available."
+  },
+  {
+    "language": "EN",
+    "url": "/contact/",
+    "title": "Contact",
+    "description": "Contact Navin Research.",
+    "text": "For research, collaboration, and media enquiries, use the verified contact channel below."
   },
   {
     "language": "EN",
@@ -106,6 +148,20 @@
   },
   {
     "language": "VI",
+    "url": "/vi/research/",
+    "title": "Nghiên cứu",
+    "description": "Định hướng và phương pháp nghiên cứu tại Navin Research.",
+    "text": "Chỉ mục tương lai cho những công trình thực tế về ngôn ngữ, giọng nói, thị giác, hệ thống đa phương thức và sản phẩm AI đầu cuối."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/models/",
+    "title": "Mô hình",
+    "description": "Các chương trình mô hình được Navin Research ghi chép.",
+    "text": "Chỉ mục công khai cho các mô hình khi trạng thái phát hành, phạm vi và bằng chứng có thể được mô tả chính xác."
+  },
+  {
+    "language": "VI",
     "url": "/vi/products/",
     "title": "Sản phẩm",
     "description": "Các hệ thống nghiên cứu và sản phẩm do Navin Research phát triển.",
@@ -113,10 +169,38 @@
   },
   {
     "language": "VI",
-    "url": "/vi/research/",
-    "title": "Nghiên cứu",
-    "description": "Định hướng và phương pháp nghiên cứu tại Navin Research.",
-    "text": "Chỉ mục tương lai cho những công trình thực tế về ngôn ngữ, giọng nói, thị giác, hệ thống đa phương thức và sản phẩm AI đầu cuối."
+    "url": "/vi/publications/",
+    "title": "Công bố",
+    "description": "Các công bố và báo cáo kỹ thuật của Navin Research.",
+    "text": "Nơi ghi nhận những công trình đã được xem xét, ghi chép và công khai."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/notes/",
+    "title": "Ghi chú",
+    "description": "Ghi chú thực địa ngắn từ Navin Research.",
+    "text": "Ghi chú về phương pháp, hệ thống và câu hỏi. Không ghi chú nào được trình bày như phát hiện nếu thiếu nguồn."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/about/",
+    "title": "Giới thiệu",
+    "description": "Về Navin Research.",
+    "text": "Một tổ chức nghiên cứu độc lập về trí tuệ qua ngôn ngữ, tri giác, hành động và tự nhiên."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/careers/",
+    "title": "Tuyển dụng",
+    "description": "Cơ hội tại Navin Research.",
+    "text": "Chúng tôi chưa công bố vị trí tuyển dụng. Trang này sẽ chỉ mô tả vị trí khi có cơ hội thực tế."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/contact/",
+    "title": "Liên hệ",
+    "description": "Liên hệ Navin Research.",
+    "text": "Đối với nghiên cứu, hợp tác và báo chí, hãy dùng kênh liên hệ đã xác minh bên dưới."
   },
   {
     "language": "VI",
@@ -204,6 +288,20 @@
   },
   {
     "language": "CN",
+    "url": "/zh-cn/research/",
+    "title": "研究",
+    "description": "Navin Research 的研究方向与方法。",
+    "text": "未来用于索引语言、语音、视觉、多模态系统与端到端 AI 产品方面的真实工作。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/models/",
+    "title": "模型",
+    "description": "Navin Research 记录的模型计划。",
+    "text": "当发布状态、范围与证据能够被准确描述时，这里将提供公开索引。"
+  },
+  {
+    "language": "CN",
     "url": "/zh-cn/products/",
     "title": "产品",
     "description": "Navin Research 开发的研究系统与产品。",
@@ -211,10 +309,38 @@
   },
   {
     "language": "CN",
-    "url": "/zh-cn/research/",
-    "title": "研究",
-    "description": "Navin Research 的研究方向与方法。",
-    "text": "未来用于索引语言、语音、视觉、多模态系统与端到端 AI 产品方面的真实工作。"
+    "url": "/zh-cn/publications/",
+    "title": "出版物",
+    "description": "Navin Research 的出版物与技术报告。",
+    "text": "记录已审阅、记录并公开的工作。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/notes/",
+    "title": "笔记",
+    "description": "Navin Research 的简短现场笔记。",
+    "text": "关于方法、系统与问题的工作笔记。没有来源的笔记不会被表述为研究发现。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/about/",
+    "title": "关于",
+    "description": "关于 Navin Research。",
+    "text": "一个研究语言、感知、行动与自然中的智能的独立研究机构。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/careers/",
+    "title": "招聘",
+    "description": "Navin Research 的工作机会。",
+    "text": "我们目前尚未发布职位。只有在真实职位开放时，本页面才会描述岗位。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/contact/",
+    "title": "联系",
+    "description": "联系 Navin Research。",
+    "text": "如有研究、合作或媒体咨询，请使用下方已验证的联系渠道。"
   },
   {
     "language": "CN",
@@ -298,7 +424,7 @@
     "url": "https://sandora.navinresearch.com/",
     "title": "Sandora — Navin Research",
     "description": "An organizational atlas for virtual AI teams, where automated work remains visible, reviewable, and human-governed.",
-    "text": "AI DEPARTMENT OS Sandora is an early product direction for coordinating virtual AI teams. It treats roles, context, handoffs, approvals, and audit as the connective tissue of automated workflows—not as hidden implementation detail. Role atlas Context routing Workflow handoffs Approval gates Audit record CONCEPT / EARLY ACCESS"
+    "text": "AI DEPARTMENT OS Sandora is an early product direction for coordinating virtual AI teams. It treats roles, context, handoffs, approvals, and audit as the connective tissue of automated workflows—not as hidden implementation detail. Terminal-first runtime Organization graph Worker states Delegation and handoffs Approval gates Audit record CONCEPT / EARLY ACCESS"
   },
   {
     "language": "EN",
@@ -340,7 +466,7 @@
     "url": "https://lajvard.navinresearch.com/",
     "title": "Lajvard — Navin Research",
     "description": "A cute, compact humanoid companion imagined for the small rituals of a room: noticing where it is, remembering what matters, and answering with a personality that feels present without pretending to be human.",
-    "text": "Warm companion field notes / blueprint 01 Lajvard is a product direction, not a shipping promise. This notebook describes the questions we are testing around a portable robot with spatial awareness, a private journal, and a gentle social presence. Compact humanoid form LiDAR mapping direction Spatial memory direction Owner voice recognition direction Local-first journal direction Concept stage · updates, not preorder"
+    "text": "WARM COMPANION FIELD NOTES / BLUEPRINT 01 Lajvard is a product direction, not a shipping promise. This notebook describes the questions we are testing around a portable robot with spatial awareness, a private journal, and a gentle social presence. Compact humanoid form LiDAR mapping direction Spatial memory direction Owner voice recognition direction Local-first journal direction CONCEPT STAGE · UPDATES, NOT PREORDER"
   },
   {
     "language": "EN",
