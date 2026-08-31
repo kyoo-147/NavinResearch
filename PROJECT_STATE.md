@@ -340,7 +340,7 @@ For deployment, use a reviewed ephemeral operator procedure rather than checking
 ## Git State
 
 - Current branch: `main`.
-- Local HEAD and `origin/main`: `6c7e72cdbf0c4032ce0a6b847bb5db780a3bb9fa` (`fix(sites): close independent reconstruction QA`).
+- Reviewed website implementation head: `6c7e72cdbf0c4032ce0a6b847bb5db780a3bb9fa` (`fix(sites): close independent reconstruction QA`). Subsequent commits may update internal handoff documentation only; verify exact local/remote equality with Git before deployment.
 - Independent renderer architecture begins at `1b556c7`; product reconstruction and integration complete through `6c7e72c`.
 - Release hardening is included. Verify `git status`, local HEAD, and `origin/main` directly before deployment; the tree must be clean after each focused commit.
 - Several historical local branches and temporary Pi worktrees still exist. They are not pending integration into `main`; do not merge them merely because they exist. Do not delete ambiguous worktrees as part of ordinary feature work.
