@@ -9,6 +9,8 @@ The production Nginx vhost must:
 5. preserve the ACME challenge route and current security headers;
 6. stage a complete release, validate it, and atomically switch both the `current` and `ecosystem-current` symlinks to the same release.
 
+The strict public security-header block in `nginx.conf` must be present at server scope in the parent HTTPS vhost and each of the seven product HTTPS vhosts. Product subdomains do not inherit headers from the parent vhost. Keep the analytics locations in the parent vhost only.
+
 `nginx.conf` is an include-style example, not a full replacement for the production server block.
 
 ## Public release artifact
