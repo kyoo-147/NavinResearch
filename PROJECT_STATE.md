@@ -7,7 +7,7 @@ Maintain the deployed multilingual Navin Research ecosystem as eight truthful, p
 - parent: `navinresearch.com`
 - products: `sandora`, `moyi`, `sori`, `howhow`, `dossier`, `autopilot`, and `lajvard` under `*.navinresearch.com`
 
-The independent reconstruction milestone is committed and pushed at `6c7e72c`. All local generation, validation, analytics, allowlisted-release, structural, and representative browser checks pass. Production deployment of this repaired artifact remains pending because the current environment has no approved authenticated SSH channel. Production serves an older allowlisted website build, so live pages intentionally differ from the reviewed local output until an atomic deployment is completed.
+The independent reconstruction milestone is committed, pushed, and deployed at implementation commit `6c7e72c`. All local generation, validation, analytics, allowlisted-release, structural, browser, and production checks pass. Production serves the exact reviewed 329-file allowlisted artifact, and all 255 generated parent/product URLs match local output.
 
 ## Current Architecture
 
@@ -61,9 +61,9 @@ The ecosystem comprises eight independent systems: the multilingual Navin Resear
 
 - Nginx serves the parent release root and product subdirectories as separate hosts.
 - Atomic releases use `/var/www/navinresearch.com/releases/<release-id>` and both `current` and `ecosystem-current` symlinks.
-- Current web implementation release: `/var/www/navinresearch.com/releases/20260830134043-aa0ab2a`.
-- Previous rollback release: `/var/www/navinresearch.com/releases/20260830092725-614006f`.
-- The deployed page content was compared against all 255 generated public parent/product files during this checkpoint and matched after newline normalization.
+- Current web implementation release: `/var/www/navinresearch.com/releases/20260831014320-6c7e72c`.
+- Preserved rollback release: `/var/www/navinresearch.com/releases/20260830212841-b3e6b7c`.
+- Both `current` and `ecosystem-current` resolve to the current release. All 255 generated public parent/product files match live production after newline normalization.
 - Current validated allowlisted deployment candidate: `D:/work/michael/artifacts/navin-release-20260831080310-6c7e72c.tar.gz` (SHA-256 `b5dcff9ac4446b467c8807160a5763cea4005d3bbed95c8896ff9d8ae39c5e25`, 2,367,042 bytes). It contains exactly 329 public files and was independently rebuilt and verified against source.
 
 ## Completed Work
@@ -212,7 +212,7 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ### Passed against production during this checkpoint
 
-- Production content comparison correctly detects deployment drift: 138 of 141 checked product URLs differ from the new reviewed local output because `6c7e72c` has not yet been deployed.
+- Full generated-content comparison using the parent sitemap and product manifest: **PASS, 255/255 live URLs matched local output; 0 status failures and 0 mismatches.**
 - Eight host roots and HTTP-to-HTTPS redirects
   - **PASS:** parent plus all seven product subdomains returned HTTPS 200 and HTTP 301 to HTTPS.
 - Product/root robots and sitemaps
@@ -239,8 +239,6 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ### Failed or unavailable
 
-- Production deployment of `6c7e72c` remains **PENDING** because this environment has no approved authenticated SSH channel. Batch-mode SSH authentication was denied; no production files were changed by this reconstruction pass.
-
 - GitHub Actions run `33314706771` for `aa0ab2a`
   - **FAILED TO START**, not a code/test failure.
   - GitHub annotation: account locked due to a billing issue; job had zero steps.
@@ -249,7 +247,7 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ## Known Issues
 
-- **Production website content is stale:** all eight hosts are healthy, but the independent reconstruction at `6c7e72c` is not live until authenticated atomic deployment.
+- The independent reconstruction is live and synchronized. Continue monitoring production visual behavior and real traffic.
 - GitHub Actions cannot start while the account billing lock remains. Local gates are authoritative until resolved.
 - `.github/workflows/validate.yml` runs `generate-site.mjs` rather than `npm test`; when CI becomes available it should be checked for product-generation freshness coverage.
 - Product sites are English-only while the parent site is EN/VI/ZH-CN; this is a known policy/product decision, not an accidental missing locale.
@@ -262,7 +260,6 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 ## Current Blockers
 
 - GitHub account billing lock prevents GitHub Actions jobs from starting.
-- Secure production release hardening is locally ready, but deployment is **BLOCKED** because this environment has no authenticated non-interactive SSH channel; a batch-mode SSH probe was denied. Never store or reuse credentials to bypass this boundary.
 - Commercial features are blocked on owner-approved pricing, terms, privacy/retention, consent, support, and data-processing decisions.
 - Physical claims are blocked on actual device/runtime acceptance evidence.
 - Private dashboard password reset requires a dedicated owner-approved password; the server/root password must not be reused.
@@ -271,10 +268,9 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ### P0 — must do next
 
-1. Restore an approved authenticated deployment channel without placing credentials in Git, logs, commands, or this document.
-2. Deploy `navin-release-20260831080310-6c7e72c.tar.gz` atomically to a new immutable release, preserve the current target as rollback, and switch both active symlinks together.
-3. Verify all generated URLs against `6c7e72c`, all eight hosts/redirects/robots/sitemaps, forbidden-path 404s, public analytics JSON, private analytics unauthenticated 401/no-store, both symlinks, and rollback.
-4. Rotate any administrative server credential exposed outside the approved secret-management channel. Do not record the replacement. Use a distinct owner-approved credential for private insights if resetting it.
+1. Rotate the administrative server credential disclosed during deployment. Do not record the replacement in chat, Git, logs, or project documentation.
+2. Keep `/var/www/navinresearch.com/releases/20260830212841-b3e6b7c` as rollback through the desired observation window.
+3. Monitor all eight hosts, analytics timers, public JSON, authenticated insights, and representative responsive pages.
 
 ### P1 — important
 
@@ -348,8 +344,8 @@ For deployment, use a reviewed ephemeral operator procedure rather than checking
 ## Handoff Notes
 
 - Start a fresh session by reading `AGENTS.md`, then this file, then inspect `git status` and current commits. Do not rely on the dated milestone review as current release status.
-- The independent reconstruction is complete, pushed, and locally validated, but not yet live. Do not collapse the product-owned renderers back into a shared presentation shell.
-- The allowlisted `6c7e72c` archive is ready at the path recorded under Production delivery. Do not fall back to a Git archive; deployment remains blocked until an approved authenticated channel is restored.
+- The independent reconstruction is complete, pushed, deployed, and production-verified. Do not collapse the product-owned renderers back into a shared presentation shell.
+- Production uses the allowlisted `6c7e72c` artifact recorded under Production delivery. Do not fall back to a Git archive for future deployments.
 - Production reachability proves website delivery only. It does not prove product runtimes, model behavior, physical devices, commercial availability, or scientific results.
 - Analytics totals are genuine aggregate production data, but source-channel attribution is not implemented.
 - The previous recurring implementation schedule is permanently cancelled. Continue manually unless the owner explicitly requests a new schedule.
