@@ -515,6 +515,20 @@
   min-height: 5.2rem;
 }
 
+/* The parent route bar keeps the main research spine visible and tucks utilities into one keyboardable disclosure. */
+.content-header__more { position: relative; }
+.content-header__more summary { cursor: pointer; list-style: none; }
+.content-header__more summary::-webkit-details-marker { display: none; }
+.content-header__more summary::after { content: " +"; color: var(--acid); }
+.content-header__more[open] summary::after { content: " −"; }
+.content-header__more > div { position: absolute; z-index: 2; top: 1.8rem; right: 0; display: grid; min-width: 10rem; padding: .55rem; border: 1px solid var(--line); background: rgba(3,18,13,.98); box-shadow: 0 1rem 2rem rgba(0,0,0,.22); }
+.content-header__more > div a { padding: .65rem .55rem; }
+.content-header__more > div a:hover,
+.content-header__more > div a:focus-visible { color: var(--acid); background: rgba(217,255,87,.06); }
+@media (max-width: 720px) {
+  .content-header__more > div { position: static; border: 0; box-shadow: none; }
+}
+
 .content-wordmark {
   line-height: 1.25;
 }

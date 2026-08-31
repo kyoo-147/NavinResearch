@@ -61,9 +61,12 @@ export function siteHeader(localeKey, suffix = "") {
 
 export function contentHeader(localeKey, currentSection) {
   const locale = locales[localeKey];
-  const navSections = ["research", "models", "products", "publications", "notes", "releases", "about", "careers", "contact", "docs", "search"];
-  const routes = navSections.map((section) => `<a href="${localePath(localeKey, section)}"${section === currentSection ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`).join("\n          ");
-  return `<header class="route-page__header content-header"><a class="route-page__brand content-wordmark" href="${localePath(localeKey)}"><span>NAVIN<br>RESEARCH</span></a><nav class="route-page__nav" aria-label="${escapeHtml(locale.common.navAria)}">${routes}</nav><nav class="route-page__languages" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, currentSection)}</nav></header>`;
+  const primary = ["research", "products", "models", "notes", "releases"];
+  const secondary = ["publications", "about", "careers", "contact", "docs", "search"];
+  const link = (section) => `<a href="${localePath(localeKey, section)}"${section === currentSection ? ' aria-current="page"' : ""}>${escapeHtml(locale.routes[section].title)}</a>`;
+  const routes = primary.map(link).join("\n          ");
+  const explore = secondary.map(link).join("");
+  return `<header class="route-page__header content-header"><a class="route-page__brand content-wordmark" href="${localePath(localeKey)}" aria-label="${escapeHtml(experience[localeKey].aria.home)}"><span>NAVIN<br>RESEARCH</span></a><nav class="route-page__nav" aria-label="${escapeHtml(locale.common.navAria)}">${routes}<details class="content-header__more"><summary>More</summary><div>${explore}</div></details></nav><nav class="route-page__languages" aria-label="${escapeHtml(locale.common.languageAria)}">${languageLinks(localeKey, currentSection)}</nav></header>`;
 }
 
 export function routeFooter(localeKey) {

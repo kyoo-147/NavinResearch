@@ -1,40 +1,27 @@
-/* Product runtime: sori. */
-const menuButton = document.querySelector("[data-product-menu]");
+/* Sori runtime: one accessible, deliberately quiet navigation state. */
+const button = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
-const details = [...document.querySelectorAll(".product-nav__group")];
-
-function setMenu(open) {
+const mobile = matchMedia("(max-width: 800px)");
+let returnFocus = null;
+function setMenu(open, restore = true) {
   document.documentElement.classList.toggle("product-menu-open", open);
-  menuButton?.setAttribute("aria-expanded", String(open));
-  if (menu) menu.inert = !open && matchMedia("(max-width: 800px)").matches;
-  if (!open) details.forEach((item) => item.removeAttribute("open"));
+  button?.setAttribute("aria-expanded", String(open));
+  if (menu) menu.inert = mobile.matches && !open;
+  if (open) { returnFocus = document.activeElement; menu?.querySelector("a")?.focus(); }
+  else if (restore) returnFocus?.focus?.();
 }
-
-menuButton?.addEventListener("click", () => setMenu(menuButton.getAttribute("aria-expanded") !== "true"));
+button?.addEventListener("click", () => setMenu(button.getAttribute("aria-expanded") !== "true"));
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    setMenu(false);
-    menuButton?.focus();
-  }
+  if (event.key !== "Escape" || button?.getAttribute("aria-expanded") !== "true") return;
+  event.preventDefault(); setMenu(false);
 });
-
-details.forEach((item) => item.addEventListener("toggle", () => {
-  if (!item.open) return;
-  details.filter((candidate) => candidate !== item).forEach((candidate) => candidate.removeAttribute("open"));
-}));
-
-const media = matchMedia("(max-width: 800px)");
-function syncMenuMode() {
-  if (media.matches) setMenu(false);
-  else {
-    document.documentElement.classList.remove("product-menu-open");
-    if (menu) menu.inert = false;
-    menuButton?.setAttribute("aria-expanded", "false");
-  }
-}
-media.addEventListener?.("change", syncMenuMode);
-syncMenuMode();
-
-document.querySelectorAll("[data-current-year]").forEach((node) => {
-  node.textContent = String(new Date().getFullYear());
+menu?.addEventListener("keydown", (event) => {
+  if (event.key !== "Tab") return;
+  const items = [...menu.querySelectorAll("a[href],button:not([disabled])")].filter((node) => !node.closest("[inert]"));
+  if (!items.length) return;
+  if (event.shiftKey && document.activeElement === items[0]) { event.preventDefault(); items.at(-1).focus(); }
+  else if (!event.shiftKey && document.activeElement === items.at(-1)) { event.preventDefault(); items[0].focus(); }
 });
+function sync() { if (!mobile.matches) setMenu(false, false); else if (button) { button.setAttribute("aria-expanded", "false"); if (menu) menu.inert = true; } }
+mobile.addEventListener?.("change", sync); sync();
+document.querySelectorAll("[data-current-year]").forEach((node) => { node.textContent = String(new Date().getFullYear()); });
