@@ -9,7 +9,7 @@ Maintain the deployed multilingual Navin Research ecosystem as eight truthful, p
 
 The independent reconstruction milestone is committed, pushed, and deployed at implementation commit `6c7e72c`. All local generation, validation, analytics, allowlisted-release, structural, browser, and production checks pass. Production serves the exact reviewed 329-file allowlisted artifact, and all 255 generated parent/product URLs match local output.
 
-Analytics dashboard revision `42b7c64` is committed and pushed but is **not yet deployed** because non-interactive VPS authentication was unavailable. It changes both analytics dashboards to a lifetime-first overview with optional daily views, compact scrollable summaries, accessible detail dialogs, and a complete-history aggregate-retention default. The verified candidate archive is `D:/work/michael/artifacts/navin-release-20260831-42b7c64.tar.gz` (SHA-256 `a7cfbc0e4fe0515bbd8ec70db1afb52ecc7950e4d6ff71aef25019eafb247be3`, 2,374,304 bytes). Production continues to serve release `20260831014320-6c7e72c` until authorized access is restored and an atomic switch is verified.
+Analytics dashboard revision `42b7c64` is committed, pushed, and deployed. Both dashboards now default to a lifetime overview with optional daily views, compact scrollable summaries, accessible detail dialogs, and a complete-history aggregate-retention default. Production serves the verified archive `D:/work/michael/artifacts/navin-release-20260831-42b7c64.tar.gz` (SHA-256 `a7cfbc0e4fe0515bbd8ec70db1afb52ecc7950e4d6ff71aef25019eafb247be3`, 2,374,304 bytes) from release `20260831022719-42b7c64`. Public and authenticated private production verification passed; the existing aggregate database retained eight available days beginning `2026-08-24`.
 
 ## Current Architecture
 
@@ -63,8 +63,8 @@ The ecosystem comprises eight independent systems: the multilingual Navin Resear
 
 - Nginx serves the parent release root and product subdirectories as separate hosts.
 - Atomic releases use `/var/www/navinresearch.com/releases/<release-id>` and both `current` and `ecosystem-current` symlinks.
-- Current web implementation release: `/var/www/navinresearch.com/releases/20260831014320-6c7e72c`.
-- Preserved rollback release: `/var/www/navinresearch.com/releases/20260830212841-b3e6b7c`.
+- Current web implementation release: `/var/www/navinresearch.com/releases/20260831022719-42b7c64`.
+- Preserved rollback release: `/var/www/navinresearch.com/releases/20260831014320-6c7e72c`.
 - Both `current` and `ecosystem-current` resolve to the current release. All 255 generated public parent/product files match live production after newline normalization.
 - Current validated allowlisted deployment candidate: `D:/work/michael/artifacts/navin-release-20260831080310-6c7e72c.tar.gz` (SHA-256 `b5dcff9ac4446b467c8807160a5763cea4005d3bbed95c8896ff9d8ae39c5e25`, 2,367,042 bytes). It contains exactly 329 public files and was independently rebuilt and verified against source.
 
