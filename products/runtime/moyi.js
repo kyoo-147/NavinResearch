@@ -1,4 +1,5 @@
 /* Product runtime: moyi listening-room state. */
+document.documentElement.classList.remove("no-js");
 document.documentElement.dataset.moyiRuntime = "signal";
 const signalBus = document.querySelector(".moyi-signal-bus");
 if (signalBus) {

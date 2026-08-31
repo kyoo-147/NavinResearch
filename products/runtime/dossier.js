@@ -1,4 +1,5 @@
 /* Product runtime: dossier. */
+document.documentElement.classList.remove("no-js");
 const menuButton = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
 const details = [...document.querySelectorAll(".ds-nav-group")];

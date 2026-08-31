@@ -40,7 +40,7 @@ export function headMarkup({ product, page, path, layout, isHome }) {
   <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
   <link rel="stylesheet" href="/products/product-primitives.css?v=${version}">
   <link rel="stylesheet" href="/products/themes/${product.slug}.css?v=${version}">
-  <script>document.documentElement.classList.remove('no-js')</script>
+  <!-- no-JS state is cleared by the external product runtime; this keeps the strict CSP script-src self-only. -->
   <script src="/products/runtime/${product.slug}.js?v=${version}" defer></script>
   <title>${escapeHtml(page.title)}${isHome ? "" : ` | ${escapeHtml(product.name)}`}</title>`;
 }

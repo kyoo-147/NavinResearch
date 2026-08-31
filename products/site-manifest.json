@@ -12,7 +12,7 @@
     "product": "autopilot",
     "name": "Autopilot",
     "path": "/404.html",
-    "layout": "editorial",
+    "layout": "error",
     "output": "autopilot/404.html",
     "url": "https://autopilot.navinresearch.com/404.html",
     "title": "Page not found"
@@ -61,6 +61,24 @@
     "output": "autopilot/docs/index.html",
     "url": "https://autopilot.navinresearch.com/docs/",
     "title": "Documentation"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/enterprise/",
+    "layout": "editorial",
+    "output": "autopilot/enterprise/index.html",
+    "url": "https://autopilot.navinresearch.com/enterprise/",
+    "title": "Enterprise"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/fleet/",
+    "layout": "editorial",
+    "output": "autopilot/fleet/index.html",
+    "url": "https://autopilot.navinresearch.com/fleet/",
+    "title": "Fleet"
   },
   {
     "product": "autopilot",
@@ -120,7 +138,7 @@
     "product": "autopilot",
     "name": "Autopilot",
     "path": "/privacy/",
-    "layout": "editorial",
+    "layout": "ledger",
     "output": "autopilot/privacy/index.html",
     "url": "https://autopilot.navinresearch.com/privacy/",
     "title": "Privacy"
@@ -165,10 +183,19 @@
     "product": "autopilot",
     "name": "Autopilot",
     "path": "/terms/",
-    "layout": "editorial",
+    "layout": "ledger",
     "output": "autopilot/terms/index.html",
     "url": "https://autopilot.navinresearch.com/terms/",
     "title": "Terms"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/use-cases/",
+    "layout": "editorial",
+    "output": "autopilot/use-cases/index.html",
+    "url": "https://autopilot.navinresearch.com/use-cases/",
+    "title": "Use cases"
   },
   {
     "product": "autopilot",
@@ -192,7 +219,7 @@
     "product": "dossier",
     "name": "Dossier",
     "path": "/404.html",
-    "layout": "editorial",
+    "layout": "error",
     "output": "dossier/404.html",
     "url": "https://dossier.navinresearch.com/404.html",
     "title": "Page not found"
@@ -237,7 +264,7 @@
     "product": "dossier",
     "name": "Dossier",
     "path": "/enterprise/",
-    "layout": "editorial",
+    "layout": "enterprise",
     "output": "dossier/enterprise/index.html",
     "url": "https://dossier.navinresearch.com/enterprise/",
     "title": "Enterprise"
@@ -381,7 +408,7 @@
     "product": "howhow",
     "name": "HowHow",
     "path": "/404.html",
-    "layout": "editorial",
+    "layout": "error",
     "output": "howhow/404.html",
     "url": "https://howhow.navinresearch.com/404.html",
     "title": "Not found"
@@ -462,7 +489,7 @@
     "product": "howhow",
     "name": "HowHow",
     "path": "/privacy/",
-    "layout": "editorial",
+    "layout": "ledger",
     "output": "howhow/privacy/index.html",
     "url": "https://howhow.navinresearch.com/privacy/",
     "title": "Privacy"
@@ -516,7 +543,7 @@
     "product": "howhow",
     "name": "HowHow",
     "path": "/terms/",
-    "layout": "editorial",
+    "layout": "ledger",
     "output": "howhow/terms/index.html",
     "url": "https://howhow.navinresearch.com/terms/",
     "title": "Terms"
@@ -534,7 +561,7 @@
     "product": "lajvard",
     "name": "Lajvard",
     "path": "/404.html",
-    "layout": "index",
+    "layout": "error",
     "output": "lajvard/404.html",
     "url": "https://lajvard.navinresearch.com/404.html",
     "title": "Page not found"
@@ -705,7 +732,7 @@
     "product": "moyi",
     "name": "Moyi",
     "path": "/404.html",
-    "layout": "editorial",
+    "layout": "error",
     "output": "moyi/404.html",
     "url": "https://moyi.navinresearch.com/404.html",
     "title": "Moyi — page not found"
@@ -822,7 +849,7 @@
     "product": "moyi",
     "name": "Moyi",
     "path": "/privacy/",
-    "layout": "editorial",
+    "layout": "ledger",
     "output": "moyi/privacy/index.html",
     "url": "https://moyi.navinresearch.com/privacy/",
     "title": "Moyi privacy"
@@ -876,7 +903,7 @@
     "product": "moyi",
     "name": "Moyi",
     "path": "/terms/",
-    "layout": "editorial",
+    "layout": "ledger",
     "output": "moyi/terms/index.html",
     "url": "https://moyi.navinresearch.com/terms/",
     "title": "Moyi terms"
@@ -903,7 +930,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/404.html",
-    "layout": "index",
+    "layout": "error",
     "output": "sandora/404.html",
     "url": "https://sandora.navinresearch.com/404.html",
     "title": "Not found"
@@ -1029,7 +1056,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/product/",
-    "layout": "editorial",
+    "layout": "product",
     "output": "sandora/product/index.html",
     "url": "https://sandora.navinresearch.com/product/",
     "title": "Product"
@@ -1038,7 +1065,7 @@
     "product": "sandora",
     "name": "Sandora",
     "path": "/releases/",
-    "layout": "docs",
+    "layout": "timeline",
     "output": "sandora/releases/index.html",
     "url": "https://sandora.navinresearch.com/releases/",
     "title": "Releases"
@@ -1101,7 +1128,7 @@
     "product": "sori",
     "name": "Sori",
     "path": "/404.html",
-    "layout": "editorial",
+    "layout": "error",
     "output": "sori/404.html",
     "url": "https://sori.navinresearch.com/404.html",
     "title": "Sori — page not found"
@@ -1209,7 +1236,7 @@
     "product": "sori",
     "name": "Sori",
     "path": "/product/",
-    "layout": "editorial",
+    "layout": "product",
     "output": "sori/product/index.html",
     "url": "https://sori.navinresearch.com/product/",
     "title": "The Sori product"

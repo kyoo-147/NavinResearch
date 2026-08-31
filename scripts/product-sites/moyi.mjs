@@ -2,7 +2,7 @@ import { escapeHtml, headMarkup } from "../product-renderer-helpers.mjs";
 const e = escapeHtml;
 const normalizePath = (value = "/") => value === "/404.html" ? value : (`/${String(value).replace(/^\/+|\/+$/g, "")}/`).replace("//", "/");
 const external = (href = "") => /^https?:|^mailto:/.test(href) ? ' target="_blank" rel="noopener noreferrer"' : "";
-const layoutFor = (page) => /docs|api|developers/.test(page.path) ? "docs" : /models|benchmarks|evaluation|edge|devices/.test(page.path) ? "specs" : /research/.test(page.path) ? "timeline" : /pricing|contact/.test(page.path) ? "availability" : /solutions|speech|translation|streaming/.test(page.path) ? "workflow" : "editorial";
+const layoutFor = (page) => page.path === "/404.html" ? "error" : /docs|api|developers/.test(page.path) ? "docs" : /product/.test(page.path) ? "product" : /models|benchmarks|evaluation|edge|devices/.test(page.path) ? "specs" : /research/.test(page.path) ? "timeline" : /privacy|terms/.test(page.path) ? "ledger" : /pricing|contact/.test(page.path) ? "availability" : /solutions|speech|translation|streaming/.test(page.path) ? "workflow" : "editorial";
 
 function navigation(site, path) {
   return site.navigation.map((item) => {
@@ -15,7 +15,7 @@ function navigation(site, path) {
 
 function waveform(page) {
   const items = (page.visual?.items || ["Speaker", "Meaning", "Context", "Output"]).slice(0, 6);
-  const bars = Array.from({ length: 48 }, (_, index) => `<i style="--h:${18 + ((index * 37) % 78)}%"></i>`).join("");
+  const bars = Array.from({ length: 48 }, (_, index) => `<i class="my-wave__bar my-wave__bar--${index % 8}" aria-hidden="true"></i>`).join("");
   return `<figure class="my-wave"><div class="my-wave__top"><span>LIVE SIGNAL / ILLUSTRATIVE</span><span>00:${String(items.length * 7).padStart(2, "0")}</span></div><div class="my-wave__bars" aria-hidden="true">${bars}</div><ol>${items.map((item, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span>${e(item)}</li>`).join("")}</ol><figcaption>${e(page.visual?.caption || "A conceptual signal path. No benchmark or live latency is implied.")}</figcaption></figure>`;
 }
 
@@ -33,7 +33,7 @@ function specs(page) {
 }
 
 function flow(page) {
-  return `<section class="my-flow"><div class="my-flow__line" aria-hidden="true"></div>${(page.sections || []).map((section, index) => `<article style="--step:${index}"><span>STEP ${String(index + 1).padStart(2, "0")}</span><h2>${e(section.title)}</h2><p>${e(section.body)}</p>${section.points?.length ? `<ol>${section.points.map((point) => `<li>${e(point)}</li>`).join("")}</ol>` : ""}</article>`).join("")}</section>`;
+  return `<section class="my-flow"><div class="my-flow__line" aria-hidden="true"></div>${(page.sections || []).map((section, index) => `<article class="my-flow__step my-flow__step--${index % 6}"><span>STEP ${String(index + 1).padStart(2, "0")}</span><h2>${e(section.title)}</h2><p>${e(section.body)}</p>${section.points?.length ? `<ol>${section.points.map((point) => `<li>${e(point)}</li>`).join("")}</ol>` : ""}</article>`).join("")}</section>`;
 }
 
 function availability(page) {
@@ -41,7 +41,10 @@ function availability(page) {
   return `<section class="my-offer"><header><span>PUBLIC AVAILABILITY</span><strong>${e(sections[0]?.status || "NOT ANNOUNCED")}</strong></header><div class="my-offer__statement"><p>01 / STATE</p><h2>${e(page.headline || page.title)}</h2><p>No number, tier, or date is inferred where the project has not published one.</p></div><dl>${sections.map((section, index) => `<div><dt>${String(index + 2).padStart(2, "0")} / ${e(section.title)}</dt><dd>${e(section.body)}${section.status ? `<b>${e(section.status)}</b>` : ""}</dd></div>`).join("")}</dl></section>`;
 }
 
-function pageBody(page, mode) { if (mode === "availability") return availability(page); if (mode === "docs") return docs(page); if (mode === "specs" || mode === "timeline") return specs(page); if (mode === "workflow") return flow(page); return cards(page); }
+function errorPage(page){return `<section class="my-error"><span>404 / SIGNAL NOT FOUND</span><h2>${e(page.headline||page.title||"This signal is not in the catalog.")}</h2><p>${e(page.lede||page.description||"Return to the Moyi index.")}</p><a href="/">Return to Moyi ↗</a></section>`;}
+function productFamily(page){return `<section class="my-product-family"><header><span>MODEL FAMILY / PRODUCT</span><p>Speech, context, and deployment boundaries across the Moyi layer.</p></header><div>`+(page.sections||[]).map((x,i)=>`<article><span>${String(i+1).padStart(2,"0")}</span><h2>${e(x.title)}</h2><p>${e(x.body)}</p></article>`).join("")+`</div></section>`;}
+function legalLedger(page){return `<section class="my-legal-ledger"><header><span>POLICY REGISTER</span><p>Product-specific terms remain pending a released service.</p></header>`+(page.sections||[]).map((x,i)=>`<article><span>${String(i+1).padStart(2,"0")}</span><h2>${e(x.title)}</h2><p>${e(x.body)}</p></article>`).join("")+`</section>`;}
+function pageBody(page, mode) { if (mode === "error") return errorPage(page); if (mode === "product") return productFamily(page); if (mode === "ledger") return legalLedger(page); if (mode === "availability") return availability(page); if (mode === "docs") return docs(page); if (mode === "specs" || mode === "timeline") return specs(page); if (mode === "workflow") return flow(page); return cards(page); }
 
 function footer(product, site) {
   const groups = site.footerGroups;

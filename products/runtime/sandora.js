@@ -1,4 +1,5 @@
 /* Product runtime: sandora terminal and department controls. */
+document.documentElement.classList.remove("no-js");
 document.documentElement.dataset.sandoraRuntime = "terminal";
 const menuButton = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");

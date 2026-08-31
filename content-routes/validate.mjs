@@ -133,13 +133,13 @@ for (const file of [
 }
 
 const productContracts = {
-  sandora: { prefix: "sd", frames: { editorial: "sd-modules", index: "sd-modules", workflow: "sd-runbook", docs: "sd-manual", specs: "sd-modules", media: "sd-observation", ledger: "sd-ledger", timeline: "sd-chronicle", comparison: "sd-matrix", availability: "sd-availability-board" } },
-  moyi: { prefix: "my", frames: { editorial: "my-cards", workflow: "my-flow", docs: "my-docs", specs: "my-lab", timeline: "my-lab", availability: "my-offer" } },
-  sori: { prefix: "so", frames: { editorial: "so-stories", workflow: "so-use", docs: "so-guide", ledger: "so-boundaries", timeline: "so-stories", availability: "so-offer" } },
-  howhow: { prefix: "hh", frames: { editorial: "hh-shelf", workflow: "hh-recipe", docs: "hh-manual", ledger: "hh-ledger", availability: "hh-review-pass" } },
-  dossier: { prefix: "ds", frames: { editorial: "ds-workstation", workflow: "ds-pipeline", docs: "ds-docs", ledger: "ds-review", availability: "ds-register" } },
-  autopilot: { prefix: "ap", frames: { editorial: "ap-overview", workflow: "ap-loop", docs: "ap-docs", specs: "ap-overview", timeline: "ap-log", availability: "ap-boundary" } },
-  lajvard: { prefix: "lj", frames: { editorial: "lj-essays", index: "lj-essays", workflow: "lj-movement", docs: "lj-docs", specs: "lj-specs", media: "lj-essays", ledger: "lj-notebook", timeline: "lj-notebook", comparison: "lj-essays", availability: "lj-availability-sheet" } },
+  sandora: { prefix: "sd", frames: { editorial: "sd-modules", index: "sd-modules", workflow: "sd-runbook", docs: "sd-manual", specs: "sd-modules", media: "sd-observation", ledger: "sd-ledger", timeline: "sd-chronicle", comparison: "sd-matrix", availability: "sd-availability-board", product: "sd-product-map", error: "sd-error" } },
+  moyi: { prefix: "my", frames: { editorial: "my-cards", workflow: "my-flow", docs: "my-docs", specs: "my-lab", timeline: "my-lab", availability: "my-offer", product: "my-product-family", ledger: "my-legal-ledger", error: "my-error" } },
+  sori: { prefix: "so", frames: { editorial: "so-stories", workflow: "so-use", docs: "so-guide", ledger: "so-boundaries", timeline: "so-stories", availability: "so-offer", product: "so-product-studio", error: "so-error" } },
+  howhow: { prefix: "hh", frames: { editorial: "hh-shelf", workflow: "hh-recipe", docs: "hh-manual", ledger: "hh-ledger", availability: "hh-review-pass", error: "hh-error" } },
+  dossier: { prefix: "ds", frames: { editorial: "ds-workstation", workflow: "ds-pipeline", docs: "ds-docs", ledger: "ds-review", availability: "ds-register", enterprise: "ds-enterprise", error: "ds-error" } },
+  autopilot: { prefix: "ap", frames: { editorial: "ap-overview", workflow: "ap-loop", docs: "ap-docs", specs: "ap-overview", timeline: "ap-log", availability: "ap-boundary", ledger: "ap-log", error: "ap-error" } },
+  lajvard: { prefix: "lj", frames: { editorial: "lj-essays", index: "lj-essays", workflow: "lj-movement", docs: "lj-docs", specs: "lj-specs", media: "lj-essays", ledger: "lj-notebook", timeline: "lj-notebook", comparison: "lj-essays", availability: "lj-availability-sheet", error: "lj-error" } },
 };
 
 for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {

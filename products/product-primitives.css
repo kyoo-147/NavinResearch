@@ -9,3 +9,7 @@ img{display:block;max-width:100%;height:auto}
 .skip-link{position:fixed;z-index:1000;top:.75rem;left:.75rem;padding:.7rem 1rem;border:2px solid currentColor;color:var(--accent-ink,#111);background:var(--accent,#fff);font-size:.75rem;font-weight:700;transform:translateY(-200%)}
 .skip-link:focus{transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Shared navigation accessibility: reliable touch target and usable fallback if runtime fails. */
+.product-menu-button{min-width:2.75rem;min-height:2.75rem}
+@media(max-width:1000px){html.no-js .product-menu-button{display:none!important}html.no-js .product-menu{position:static!important;display:grid!important;grid-column:1/-1;padding-block:1rem!important}}

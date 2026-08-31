@@ -1,4 +1,5 @@
 /* Autopilot runtime: a quiet instrument panel, never a live vehicle dashboard. */
+document.documentElement.classList.remove("no-js");
 const trackState = document.querySelector("[data-instrument]");
 if (trackState) trackState.setAttribute("data-runtime", "static-reference");
 const menuButton = document.querySelector("[data-product-menu]");

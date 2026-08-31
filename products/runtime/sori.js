@@ -1,4 +1,5 @@
 /* Sori runtime: one accessible, deliberately quiet navigation state. */
+document.documentElement.classList.remove("no-js");
 const button = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
 const mobile = matchMedia("(max-width: 900px)");

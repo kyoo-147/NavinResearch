@@ -3,7 +3,7 @@ import { escapeHtml, headMarkup } from "../product-renderer-helpers.mjs";
 const e = escapeHtml;
 const pathOf = (value = "/") => value === "/404.html" ? value : (`/${String(value).replace(/^\/+|\/+$/g, "")}/`).replace("//", "/");
 const ext = (href = "") => /^https?:|^mailto:/.test(href) ? ' target="_blank" rel="noopener noreferrer"' : "";
-const layoutFor = (page) => page.layout || (/docs|developers|github/.test(page.path) ? "docs" : /pricing|contact/.test(page.path) ? "availability" : /research|releases/.test(page.path) ? "timeline" : /security|privacy|terms|observability/.test(page.path) ? "ledger" : /agents|workflows|runtime|memory|approvals/.test(page.path) ? "workflow" : "editorial");
+const layoutFor = (page) => page.path === "/404.html" ? "error" : /releases/.test(page.path) ? "timeline" : /product/.test(page.path) ? "product" : page.layout || (/docs|developers|github/.test(page.path) ? "docs" : /pricing|contact/.test(page.path) ? "availability" : /research|releases/.test(page.path) ? "timeline" : /security|privacy|terms|observability/.test(page.path) ? "ledger" : /agents|workflows|runtime|memory|approvals/.test(page.path) ? "workflow" : "editorial");
 
 function nav(site, path) {
   return site.navigation.map((item) => {
@@ -16,7 +16,7 @@ function nav(site, path) {
 
 function signal(page) {
   const items = page.visual?.items || ["Intent", "Context", "Approval", "Action"];
-  return `<div class="sd-signal" aria-label="Illustrative Sandora department graph"><div class="sd-signal__scope"><span>CONTROL PLANE</span><b>${e(page.visual?.title || "Department orchestration")}</b></div><ol>${items.slice(0, 6).map((item, index) => `<li style="--i:${index}"><i aria-hidden="true"></i><span>${e(item)}</span><small>${index === items.length - 1 ? "HUMAN CHECK" : "OBSERVED"}</small></li>`).join("")}</ol><p>${e(page.visual?.caption || "Illustrative system view — not a live product session.")}</p></div>`;
+  return `<div class="sd-signal" aria-label="Illustrative Sandora department graph"><div class="sd-signal__scope"><span>CONTROL PLANE</span><b>${e(page.visual?.title || "Department orchestration")}</b></div><ol>${items.slice(0, 6).map((item, index) => `<li class="sd-signal__item--${index % 6}"><i aria-hidden="true"></i><span>${e(item)}</span><small>${index === items.length - 1 ? "HUMAN CHECK" : "OBSERVED"}</small></li>`).join("")}</ol><p>${e(page.visual?.caption || "Illustrative system view — not a live product session.")}</p></div>`;
 }
 
 function section(section, index, mode) {
@@ -32,9 +32,14 @@ function availability(page) {
   return `<section class="sd-availability-board"><header><span>AVAILABILITY REGISTER</span><strong>NO IMPLIED OFFER</strong></header><div class="sd-availability-board__state"><span>PUBLIC STATE</span><b>${e(sections[0]?.status || "NOT ANNOUNCED")}</b><p>Commercial terms, dates, and access remain unpublished unless explicitly stated.</p></div><dl>${sections.map((item, index) => `<div><dt>${String(index + 1).padStart(2, "0")} ${e(item.title)}</dt><dd>${e(item.body)}${item.status ? `<strong>${e(item.status)}</strong>` : ""}</dd></div>`).join("")}</dl></section>`;
 }
 
+function pricingRegister(page){const tiers=[['OBSERVER','Read the operating model','Departments, roles, and approval vocabulary'],['BUILDER','Shape a workflow','Context, handoffs, and review boundaries'],['STEWARD','Discuss governance','Enterprise requirements and evidence boundaries']];return `<section class="sd-availability-board"><div class="sd-pricing-register"><header><span>PRICING REGISTER / NOT ANNOUNCED</span><h2>Status before price.</h2><p>Sandora is concept-stage. No price, usage allowance, deployment, customer, benchmark, certification, or service level is announced.</p></header><div class="sd-pricing-register__tiers">${tiers.map(([name,title,body])=>`<article><span>${e(name)}</span><h3>${e(title)}</h3><p>${e(body)}</p><strong>COMING SOON</strong><ul><li>Scoped access</li><li>Human review</li><li>No implied availability</li></ul></article>`).join('')}</div><div class="sd-pricing-register__comparison"><h3>Semantic comparison boundary</h3><table><thead><tr><th>Tier</th><th>Includes</th><th>Status</th></tr></thead><tbody>${tiers.map(([name,title,body])=>`<tr><th scope="row">${e(name)}</th><td>${e(title)} · ${e(body)}</td><td>NOT ANNOUNCED</td></tr>`).join('')}</tbody></table></div><div class="sd-pricing-register__faq"><h3>FAQ</h3><details><summary>Is Sandora available?</summary><p>No. This page records a concept-stage direction and does not create access.</p></details><details><summary>Can an enterprise team talk through requirements?</summary><p>Yes, via the enterprise and contact path; no deployment or service commitment is implied.</p></details></div></div></section>`}
+function errorPage(page) { return `<section class="sd-error"><span>404 / ROUTE NOT FOUND</span><h2>${e(page.headline || page.title || "This route is not in the index.")}</h2><p>${e(page.lede || page.description || "Return to the Sandora index to continue.")}</p><a href="/">Return to Sandora ↗</a></section>`; }
 function content(page, mode) {
+  if (mode === "error") return errorPage(page);
+  if (mode === "product") return `<section class="sd-product-map"><header><span>SYSTEM MAP / PRODUCT</span><p>Departments, controls, and handoffs in one operating view.</p></header><div>` + (page.sections || []).map((item, index) => `<article><span>NODE ${String(index + 1).padStart(2, "0")}</span><h2>${e(item.title)}</h2><p>${e(item.body)}</p></article>`).join("") + `</div></section>`;
+
   const sections = page.sections || [];
-  if (mode === "availability") return availability(page);
+  if (mode === "availability") return page.path === "/pricing/" ? pricingRegister(page) : availability(page);
   if (mode === "workflow") return `<section class="sd-runbook"><header><span>RUNBOOK</span><p>Sequential operations with explicit checkpoints.</p></header><ol>${sections.map((item, index) => section(item, index, mode)).join("")}</ol></section>`;
   if (mode === "docs") return `<article class="sd-manual"><header><span>FIELD MANUAL</span><p>Concepts, boundaries, and source trails.</p></header>${sections.map((item, index) => section(item, index, mode)).join("")}</article>`;
   if (mode === "ledger") return `<section class="sd-ledger"><div class="sd-ledger__head"><span>EVIDENCE LEDGER</span><span>OWNER / HUMAN</span></div><div class="sd-table-wrap" tabindex="0" role="region" aria-label="Sandora evidence ledger"><table><thead><tr><th>Register</th><th>Boundary</th><th>State</th></tr></thead><tbody>${sections.map((item, index) => section(item, index, mode)).join("")}</tbody></table></div></section>`;

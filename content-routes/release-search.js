@@ -1,9 +1,5 @@
 (() => {
-  document.querySelectorAll("[data-release-placeholder]").forEach((link) => {
-    link.addEventListener("click", (event) => event.preventDefault());
-  });
-
-  const input = document.querySelector("[data-release-search]");
+    const input = document.querySelector("[data-release-search]");
   const rows = [...document.querySelectorAll("[data-release-row]")];
   if (input && rows.length) {
     input.addEventListener("input", () => {

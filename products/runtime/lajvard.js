@@ -1,4 +1,5 @@
 /* Lajvard runtime: notebook navigation only; no robot service or telemetry is contacted. */
+document.documentElement.classList.remove("no-js");
 const notebook = document.querySelector("[data-notebook-state]");
 if (notebook) notebook.setAttribute("data-runtime", "static-concept");
 const menuButton = document.querySelector("[data-product-menu]");

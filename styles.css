@@ -574,3 +574,5 @@ main, .masthead, .hero, .wealth, .hero__content { min-width: 0; max-width: 100%;
 @media (max-width: 680px) { .home-products { padding-bottom: 7rem; } .product-entry a { grid-template-columns: 1.8rem 1fr 1.2rem; gap: .8rem; min-height: 7rem; } .product-entry__statement, .product-entry__state { grid-column: 2 / 3; } .product-entry__arrow { grid-column: 3; grid-row: 1 / span 3; } }
 
 @media (max-width:720px){.home-page .footer{position:static;margin-top:2rem;padding-bottom:1.25rem}.home-page .shell{padding-bottom:0}}
+
+@media (max-width: 540px) { .footer p, .footer nav { white-space: normal; overflow-wrap: anywhere; } .footer { font-size: .62rem; } .footer nav { flex-wrap: wrap; gap: .5rem; } }
