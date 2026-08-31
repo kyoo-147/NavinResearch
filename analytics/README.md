@@ -27,9 +27,11 @@ uv run --with 'geoip2>=4.8,<5' analytics/aggregate.py \
   --provider "DB-IP City Lite" \
   --public-json /var/lib/navin-analytics/public.json \
   --private-json /var/lib/navin-analytics/private.json \
-  --retention-days 90 \
-  --minimum 5
+  --retention-days 0 \
+  --minimum 1
 ```
+
+`--retention-days 0` preserves the complete aggregate history and is the production default. A positive value remains available for an explicit operator retention policy. The dashboards default to all-time totals by summing daily unique counts; this is intentionally described as recorded visitors rather than cross-day unique people because no stable identifier is retained.
 
 The exporter writes each JSON file through a same-directory temporary file and atomic `os.replace`. Public and private payloads share `schemaVersion`, `batchId`, and `generatedAt` metadata from one database snapshot. Their final renames are necessarily sequential; the two audiences do not depend on cross-file consistency, and operators should alert on a batch-ID mismatch if they compare them. Production Nginx serves these stable operator-owned files through exact `alias` locations, so analytics refreshes never mutate an immutable site release.
 

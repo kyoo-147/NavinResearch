@@ -18,7 +18,7 @@ cat "${logs[@]}" | "$python" "$aggregate" - \
   --provider "DB-IP City Lite" \
   --public-json "$state_dir/public.json" \
   --private-json "$state_dir/private.json" \
-  --retention-days 90 \
+  --retention-days 0 \
   --minimum 1
 
 chown root:www-data "$state_dir/public.json" "$state_dir/private.json"

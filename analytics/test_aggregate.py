@@ -107,6 +107,35 @@ class AggregateTests(unittest.TestCase):
                 export(database, Path(temporary) / "public.json")
             database.close()
 
+    def test_cli_default_retains_complete_history(self):
+        from analytics.aggregate import main
+
+        with tempfile.TemporaryDirectory() as temporary:
+            database_path = Path(temporary) / "visitors.sqlite3"
+            public_path = Path(temporary) / "public.json"
+            private_path = Path(temporary) / "private.json"
+            database = open_db(database_path)
+            database.execute(
+                "INSERT INTO daily_locations VALUES ('2025-01-01','VN','Vietnam','Unknown','Unknown',3)"
+            )
+            database.commit()
+            database.close()
+            log_path = Path(temporary) / "access.log"
+            log_path.write_text(self.log_line(), encoding="utf-8")
+            with patch("analytics.aggregate.lookup", return_value=("VN", "Vietnam", "Unknown", "Unknown")):
+                main([
+                    str(log_path),
+                    "--db", str(database_path),
+                    "--public-json", str(public_path),
+                    "--private-json", str(private_path),
+                ])
+            database = open_db(database_path)
+            self.assertEqual(
+                database.execute("SELECT day FROM daily_locations ORDER BY day").fetchall(),
+                [("2025-01-01",), ("2026-02-14",)],
+            )
+            database.close()
+
     def test_retention_purges_old_buckets(self):
         with tempfile.TemporaryDirectory() as temporary:
             database = open_db(Path(temporary) / "visitors.sqlite3")

@@ -1,19 +1,27 @@
 {
   "schemaVersion": 1,
-  "batchId": "demo-20260214",
-  "generatedAt": "2026-02-14T23:59:59Z",
+  "batchId": "demo-lifetime-dashboard",
+  "generatedAt": "2026-08-31T06:30:00Z",
   "demo": true,
   "metric": "unique visitors per log day",
   "geolocationProvider": "demo",
-  "minimumGroupSize": 5,
+  "minimumGroupSize": 1,
   "privacy": {
     "contains": ["daily country aggregates"],
     "excludes": ["raw IP", "IP hash", "city", "region", "URL", "user agent", "individual trajectory"]
   },
-  "withheldVisitors": 7,
+  "withheldVisitors": 0,
   "rows": [
-    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "visitors": 42},
-    {"day": "2026-02-14", "countryCode": "DE", "country": "Germany", "visitors": 18},
-    {"day": "2026-02-14", "countryCode": "US", "country": "United States", "visitors": 11}
+    {"day": "2026-08-27", "countryCode": "VN", "country": "Vietnam", "visitors": 18},
+    {"day": "2026-08-27", "countryCode": "US", "country": "United States", "visitors": 5},
+    {"day": "2026-08-28", "countryCode": "VN", "country": "Vietnam", "visitors": 24},
+    {"day": "2026-08-28", "countryCode": "DE", "country": "Germany", "visitors": 4},
+    {"day": "2026-08-29", "countryCode": "VN", "country": "Vietnam", "visitors": 31},
+    {"day": "2026-08-29", "countryCode": "SG", "country": "Singapore", "visitors": 7},
+    {"day": "2026-08-30", "countryCode": "VN", "country": "Vietnam", "visitors": 29},
+    {"day": "2026-08-30", "countryCode": "US", "country": "United States", "visitors": 9},
+    {"day": "2026-08-31", "countryCode": "VN", "country": "Vietnam", "visitors": 22},
+    {"day": "2026-08-31", "countryCode": "DE", "country": "Germany", "visitors": 6},
+    {"day": "2026-08-31", "countryCode": "SG", "country": "Singapore", "visitors": 5}
   ]
 }

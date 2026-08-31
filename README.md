@@ -12,8 +12,8 @@ Source for [navinresearch.com](https://navinresearch.com): a multilingual static
 - `styles.css` / `script.js` — homepage design and ambient motion.
 - `content-routes/` — shared editorial route styles, search, and validation.
 - `analytics/` — offline Nginx-log aggregator; no always-on tracking application.
-- `visitor-map/` — public country-level aggregate globe; production publishes every country total.
-- `visitor-insights/` — private aggregate operator UI; production requires authentication.
+- `visitor-map/` — public country-level aggregate dashboard; defaults to complete-history totals and offers an on-demand daily view.
+- `visitor-insights/` — authenticated aggregate operator dashboard with complete-history totals, compact location views, daily trends, and drill-down details.
 - `docs/` — design system, reusable component contracts, accessibility, SEO, and privacy rules.
 - `deployment-example/` — Nginx boundaries for public/private analytics data.
 

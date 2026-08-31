@@ -1,17 +1,30 @@
 {
   "schemaVersion": 1,
-  "batchId": "demo-20260214",
-  "generatedAt": "2026-02-14T23:59:59Z",
+  "batchId": "demo-lifetime-dashboard",
+  "generatedAt": "2026-08-31T06:30:00Z",
   "demo": true,
   "metric": "unique visitors per log day",
   "geolocationProvider": "demo",
   "privacy": {
-    "contains": ["daily region and city aggregates"],
+    "contains": ["daily country, region, and city aggregates"],
     "excludes": ["raw IP", "IP hash", "URL", "user agent", "individual trajectory"]
   },
   "rows": [
-    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "region": "Ho Chi Minh City", "city": "Ho Chi Minh City", "visitors": 21},
-    {"day": "2026-02-14", "countryCode": "VN", "country": "Vietnam", "region": "Hanoi", "city": "Hanoi", "visitors": 14},
-    {"day": "2026-02-14", "countryCode": "DE", "country": "Germany", "region": "Berlin", "city": "Berlin", "visitors": 9}
+    {"day":"2026-08-27","countryCode":"VN","country":"Vietnam","region":"Ho Chi Minh City","city":"Ho Chi Minh City","visitors":11},
+    {"day":"2026-08-27","countryCode":"VN","country":"Vietnam","region":"Hanoi","city":"Hanoi","visitors":7},
+    {"day":"2026-08-27","countryCode":"US","country":"United States","region":"California","city":"San Francisco","visitors":5},
+    {"day":"2026-08-28","countryCode":"VN","country":"Vietnam","region":"Ho Chi Minh City","city":"Ho Chi Minh City","visitors":15},
+    {"day":"2026-08-28","countryCode":"VN","country":"Vietnam","region":"Hanoi","city":"Hanoi","visitors":9},
+    {"day":"2026-08-28","countryCode":"DE","country":"Germany","region":"Berlin","city":"Berlin","visitors":4},
+    {"day":"2026-08-29","countryCode":"VN","country":"Vietnam","region":"Ho Chi Minh City","city":"Ho Chi Minh City","visitors":19},
+    {"day":"2026-08-29","countryCode":"VN","country":"Vietnam","region":"Hanoi","city":"Hanoi","visitors":12},
+    {"day":"2026-08-29","countryCode":"SG","country":"Singapore","region":"Singapore","city":"Singapore","visitors":7},
+    {"day":"2026-08-30","countryCode":"VN","country":"Vietnam","region":"Ho Chi Minh City","city":"Ho Chi Minh City","visitors":17},
+    {"day":"2026-08-30","countryCode":"VN","country":"Vietnam","region":"Hanoi","city":"Hanoi","visitors":12},
+    {"day":"2026-08-30","countryCode":"US","country":"United States","region":"New York","city":"New York","visitors":9},
+    {"day":"2026-08-31","countryCode":"VN","country":"Vietnam","region":"Ho Chi Minh City","city":"Ho Chi Minh City","visitors":14},
+    {"day":"2026-08-31","countryCode":"VN","country":"Vietnam","region":"Hanoi","city":"Hanoi","visitors":8},
+    {"day":"2026-08-31","countryCode":"DE","country":"Germany","region":"Berlin","city":"Berlin","visitors":6},
+    {"day":"2026-08-31","countryCode":"SG","country":"Singapore","region":"Singapore","city":"Singapore","visitors":5}
   ]
 }

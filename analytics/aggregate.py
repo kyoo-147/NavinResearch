@@ -266,14 +266,19 @@ def main(argv=None):
         choices=("MaxMind GeoLite2 City", "DB-IP City Lite"),
         help="truthful provider label for the supplied MMDB (defaults to MaxMind for compatibility)",
     )
-    parser.add_argument("--retention-days", type=int, default=90)
+    parser.add_argument(
+        "--retention-days",
+        type=int,
+        default=0,
+        help="days of aggregates to retain; 0 keeps the complete available history",
+    )
     parser.add_argument("--minimum", type=int, default=1)
     args = parser.parse_args(argv)
 
     if args.minimum < 1:
         parser.error("--minimum must be at least 1")
-    if args.retention_days < 1:
-        parser.error("--retention-days must be at least 1")
+    if args.retention_days < 0:
+        parser.error("--retention-days must be at least 0")
 
     reader = None
     provider = "none"
@@ -297,7 +302,8 @@ def main(argv=None):
         if reader:
             reader.close()
 
-    purge(database, args.retention_days)
+    if args.retention_days:
+        purge(database, args.retention_days)
     batch_id = uuid.uuid4().hex
     generated_at = dt.datetime.now(dt.timezone.utc).isoformat().replace("+00:00", "Z")
     export(

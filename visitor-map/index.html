@@ -5,33 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Coarse, privacy-preserving visitor geography for Navin Research.">
     <meta name="robots" content="noindex, follow">
-    <meta name="theme-color" content="#03120d">
+    <meta name="theme-color" content="#edf0ea">
     <title>Visitor map · Navin Research</title>
     <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
-    <link rel="stylesheet" href="/visitor-map/style.css?v=20260830-insights-shell">
-    <script src="/visitor-map/script.js?v=20260830-insights-shell" defer></script>
+    <link rel="stylesheet" href="/visitor-map/style.css?v=20260831-lifetime-dashboard">
+    <script src="/visitor-map/script.js?v=20260831-lifetime-dashboard" defer></script>
   </head>
   <body>
-    <main class="wrap">
-      <header>
-        <a class="map-brand" href="/"><img src="/assets/brand/logo.webp" alt="" width="56" height="56"><span>NAVIN RESEARCH</span></a>
-        <span>PUBLIC / AGGREGATE</span>
+    <a class="skip-link" href="#main-content">Skip to analytics</a>
+    <main class="telemetry" id="main-content">
+      <header class="telemetry-header">
+        <a class="brand" href="/">
+          <img src="/assets/brand/logo_icon_tab.png" alt="" width="40" height="40">
+          <span><strong>Navin Research</strong><small>Visitor field map</small></span>
+        </a>
+        <p class="publish-state"><i aria-hidden="true"></i><span>Updated</span> <strong id="date">—</strong></p>
+        <a class="header-link" href="/">Research site <span aria-hidden="true">↗</span></a>
       </header>
-      <section class="dashboard">
-        <div class="globe">
-          <canvas id="visitor-globe" role="img" aria-label="Rotating globe showing coarse aggregate visitor countries"></canvas>
+
+      <section class="control-bar" aria-label="Analytics range">
+        <div>
+          <p class="eyebrow">Public · privacy-preserving aggregate</p>
+          <h1>Visitor overview</h1>
         </div>
-        <div class="panel">
-          <div class="panel-title"><span>Last published</span><strong id="date">—</strong></div>
-          <div class="public-total"><span>Total visitors</span><strong id="total-visitors">—</strong></div>
-          <p class="demo-badge" id="demo-badge" hidden>DEMO DATA</p>
-          <ol id="countries" aria-live="polite"></ol>
-          <p class="note" id="status" hidden></p>
+        <div class="range-controls">
+          <div class="segmented" aria-label="Time range">
+            <button class="is-active" type="button" data-range="all" aria-pressed="true">All time</button>
+            <button type="button" data-range="day" aria-pressed="false">By day</button>
+          </div>
+          <label class="date-control" hidden>Choose day <input id="day-picker" type="date"></label>
         </div>
       </section>
-      <footer>
-        <a href="/">About Navin Research ↗</a>
+
+      <section class="dashboard-grid" aria-label="Visitor analytics dashboard">
+        <aside class="summary-column">
+          <div class="stat-grid">
+            <article class="stat-card">
+              <span id="total-label">Total recorded visitors</span>
+              <strong id="total-visitors">—</strong>
+              <small id="period-label">Across all available days</small>
+            </article>
+            <article class="stat-card">
+              <span>Countries reached</span>
+              <strong id="total-countries">—</strong>
+              <small>Coarse country-level view</small>
+            </article>
+          </div>
+
+          <section class="location-card" aria-labelledby="countries-title">
+            <div class="card-heading">
+              <div><p class="eyebrow">Distribution</p><h2 id="countries-title">Top countries</h2></div>
+              <span id="country-count">—</span>
+            </div>
+            <ol id="countries" class="rank-list" aria-live="polite"></ol>
+            <p class="empty-state" id="status" hidden></p>
+          </section>
+        </aside>
+
+        <section class="globe-card" aria-labelledby="map-title">
+          <div class="globe-heading">
+            <div><p class="eyebrow">Global field</p><h2 id="map-title">Where visitors arrive from</h2></div>
+            <p><span class="legend-dot" aria-hidden="true"></span><span id="globe-period">All-time totals</span></p>
+          </div>
+          <div class="globe-stage">
+            <canvas id="visitor-globe" role="img" aria-label="Rotating globe showing coarse aggregate visitor countries"></canvas>
+          </div>
+          <p class="globe-note">Country markers show aggregate counts only. Select a country to inspect its daily history.</p>
+        </section>
+      </section>
+
+      <footer class="telemetry-footer">
+        <p>Counts are unique within each log day. All-time totals sum those daily aggregates and may include the same visitor on different days.</p>
+        <span>Raw IPs, URLs and trajectories are never published.</span>
       </footer>
     </main>
+
+    <dialog id="country-dialog" class="detail-dialog" aria-labelledby="dialog-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close details">×</button></form>
+      <p class="eyebrow">Country detail</p>
+      <h2 id="dialog-title">Country</h2>
+      <p class="dialog-total"><span>All-time recorded visitors</span><strong id="dialog-total">—</strong></p>
+      <div class="dialog-list" id="dialog-history"></div>
+    </dialog>
+    <p class="demo-badge" id="demo-badge" hidden>DEMO DATA</p>
   </body>
 </html>

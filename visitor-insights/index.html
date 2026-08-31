@@ -5,60 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow, noarchive">
     <meta name="referrer" content="no-referrer">
-    <meta name="theme-color" content="#03120d">
+    <meta name="theme-color" content="#edf0ea">
     <meta name="description" content="Authenticated aggregate visitor analytics for Navin Research.">
     <title>Private visitor insights · Navin Research</title>
     <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
-    <link rel="stylesheet" href="/visitor-map/style.css?v=20260830-insights-shell">
-    <script src="/visitor-insights/script.js?v=20260830-insights-shell" defer></script>
+    <link rel="stylesheet" href="/visitor-map/style.css?v=20260831-lifetime-dashboard">
+    <script src="/visitor-insights/script.js?v=20260831-lifetime-dashboard" defer></script>
   </head>
-  <body class="insights-page">
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="wrap">
-      <header class="site-header">
-        <a class="map-brand" href="/"><img src="/assets/brand/logo.webp" alt="" width="56" height="56"><span>NAVIN RESEARCH</span></a>
-        <nav class="site-nav" aria-label="Analytics navigation">
+  <body>
+    <a class="skip-link" href="#main-content">Skip to analytics</a>
+    <main class="telemetry telemetry--private" id="main-content">
+      <header class="telemetry-header">
+        <a class="brand" href="/">
+          <img src="/assets/brand/logo_icon_tab.png" alt="" width="40" height="40">
+          <span><strong>Navin Research</strong><small>Private visitor insights</small></span>
+        </a>
+        <p class="publish-state"><i aria-hidden="true"></i><span>Updated</span> <strong id="date">—</strong></p>
+        <nav class="header-nav" aria-label="Analytics navigation">
           <a href="/visitor-map/">Public map</a>
-          <a href="/">Research site</a>
+          <a href="/">Research site <span aria-hidden="true">↗</span></a>
         </nav>
-        <span class="access-state"><i aria-hidden="true"></i>Authenticated</span>
       </header>
 
-      <main class="insights-main" id="main-content">
-        <section class="insights-hero" aria-labelledby="insights-title">
-          <div>
-            <p class="insights-eyebrow">Private analytics</p>
-            <h1 id="insights-title">Visitor insights</h1>
+      <section class="control-bar" aria-label="Analytics range">
+        <div>
+          <p class="eyebrow">Authenticated · aggregate only</p>
+          <h1>Visitor insights</h1>
+        </div>
+        <div class="range-controls">
+          <div class="segmented" aria-label="Time range">
+            <button class="is-active" type="button" data-range="all" aria-pressed="true">All time</button>
+            <button type="button" data-range="day" aria-pressed="false">By day</button>
           </div>
-          <p class="snapshot"><span>Latest snapshot</span><strong id="date">—</strong></p>
-        </section>
+          <label class="date-control" hidden>Choose day <input id="day-picker" type="date"></label>
+        </div>
+      </section>
 
-        <section class="insights-stats" aria-label="Latest visitor summary">
-          <article><span>Total visitors</span><strong id="total-visitors">—</strong></article>
-          <article><span>Locations</span><strong id="total-locations">—</strong></article>
-          <article><span>Countries</span><strong id="total-countries">—</strong></article>
-        </section>
+      <section class="private-stats" aria-label="Visitor summary">
+        <article class="stat-card"><span id="total-label">Total recorded visitors</span><strong id="total-visitors">—</strong><small id="period-label">Across all available days</small></article>
+        <article class="stat-card"><span>Locations</span><strong id="total-locations">—</strong><small>Distinct aggregate locations</small></article>
+        <article class="stat-card"><span>Countries</span><strong id="total-countries">—</strong><small>Countries represented</small></article>
+      </section>
 
-        <section class="insights-panel" aria-labelledby="locations-title">
-          <div class="insights-panel__heading">
-            <h2 id="locations-title">Locations</h2>
-            <span id="row-count">—</span>
+      <section class="private-grid">
+        <section class="location-card private-locations" aria-labelledby="locations-title">
+          <div class="card-heading">
+            <div><p class="eyebrow">Geography</p><h2 id="locations-title">Top locations</h2></div>
+            <button class="text-button" id="open-all" type="button">View all <span aria-hidden="true">↗</span></button>
           </div>
-          <p class="demo-badge" id="demo-badge" hidden>DEMO DATA</p>
-          <div class="insights-table-wrap">
+          <div class="compact-table" role="region" aria-label="Top aggregate locations" tabindex="0">
             <table>
-              <thead><tr><th scope="col">City</th><th scope="col">Region</th><th scope="col">Country</th><th scope="col">Visitors</th></tr></thead>
+              <thead><tr><th scope="col">Location</th><th scope="col">Country</th><th scope="col">Visitors</th></tr></thead>
               <tbody id="locations"></tbody>
             </table>
           </div>
-          <p class="note" id="status" hidden></p>
+          <p class="empty-state" id="status" hidden></p>
         </section>
-      </main>
 
-      <footer class="insights-footer">
-        <span>Navin Research</span>
-        <a href="/visitor-map/">Open public map ↗</a>
+        <section class="daily-card" aria-labelledby="daily-title">
+          <div class="card-heading">
+            <div><p class="eyebrow">Timeline</p><h2 id="daily-title">Daily volume</h2></div>
+            <span id="day-count">—</span>
+          </div>
+          <div class="daily-chart" id="daily-chart" aria-label="Daily visitor volume"></div>
+          <p class="chart-note">Daily unique counts. Select a bar to switch to that day.</p>
+        </section>
+      </section>
+
+      <footer class="telemetry-footer">
+        <p>All-time totals sum daily unique counts; they are not cross-day identity tracking.</p>
+        <span>Private · no-store · aggregate geography only</span>
       </footer>
-    </div>
+    </main>
+
+    <dialog id="locations-dialog" class="detail-dialog detail-dialog--wide" aria-labelledby="dialog-title">
+      <form method="dialog"><button class="dialog-close" aria-label="Close location details">×</button></form>
+      <p class="eyebrow">Location directory</p>
+      <h2 id="dialog-title">All locations</h2>
+      <label class="search-control">Search locations <input id="location-search" type="search" placeholder="City, region or country"></label>
+      <div class="dialog-table" role="region" aria-label="All aggregate locations" tabindex="0">
+        <table><thead><tr><th scope="col">City</th><th scope="col">Region</th><th scope="col">Country</th><th scope="col">Visitors</th></tr></thead><tbody id="all-locations"></tbody></table>
+      </div>
+    </dialog>
+    <p class="demo-badge" id="demo-badge" hidden>DEMO DATA</p>
   </body>
 </html>
