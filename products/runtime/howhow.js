@@ -2,6 +2,7 @@
 const menuButton = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
 const details = [...document.querySelectorAll(".product-nav__group")];
+const firstMenuLink = menu?.querySelector("a");
 
 function setMenu(open) {
   document.documentElement.classList.toggle("product-menu-open", open);
@@ -10,9 +11,13 @@ function setMenu(open) {
   if (!open) details.forEach((item) => item.removeAttribute("open"));
 }
 
-menuButton?.addEventListener("click", () => setMenu(menuButton.getAttribute("aria-expanded") !== "true"));
+menuButton?.addEventListener("click", () => {
+  const open = menuButton.getAttribute("aria-expanded") !== "true";
+  setMenu(open);
+  if (open && matchMedia("(max-width: 800px)").matches) requestAnimationFrame(() => firstMenuLink?.focus());
+});
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+  if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
     setMenu(false);
     menuButton?.focus();
   }

@@ -16,7 +16,9 @@
   background-image: repeating-linear-gradient(0deg, transparent 0 5rem, rgba(213,255,85,.025) 5rem 5.05rem), radial-gradient(circle at 80% 15%, rgba(213,255,85,.08), transparent 28rem);
 }
 .product-howhow .product-field::after { display: none; }
-.product-howhow .product-header { border-color: var(--howhow-line); background: rgba(16,23,20,.94); }
+.product-howhow .product-header,
+.product-howhow [data-site-header="howhow"] { border-color: var(--howhow-line); background: rgba(16,23,20,.94); }
+.product-howhow [data-site-header="howhow"]::after { content: "RESEARCH PACKET / HUMAN REVIEW"; margin-left: auto; color: var(--howhow-tomato); font: 700 .58rem/1 Arial, sans-serif; letter-spacing: .14em; }
 .product-howhow .product-wordmark { font-family: Arial, sans-serif; font-weight: 700; letter-spacing: .24em; }
 .product-howhow .product-nav { font-family: Arial, sans-serif; }
 .product-howhow .product-nav>a:hover,
@@ -51,13 +53,20 @@
 .product-howhow .product-page-section[data-kind="ledger"] { background: linear-gradient(90deg, rgba(213,255,85,.045), transparent 55%); }
 .product-howhow .product-page-cta { border-color: var(--howhow-line); }
 .product-howhow .product-page-cta h2 { letter-spacing: -.075em; }
-.product-howhow .product-footer { border-color: var(--howhow-line); font-family: Arial,sans-serif; }
+.product-howhow .product-footer,
+.product-howhow [data-site-footer="howhow"] { border-color: var(--howhow-line); font-family: Arial,sans-serif; }
+.product-howhow [data-site-footer="howhow"] .product-footer__brand { border-left: 4px solid var(--howhow-signal); padding-left: 1rem; }
+.product-howhow [data-site-frame="howhow-recipe"] { counter-reset: recipe; }
+.product-howhow [data-site-frame="howhow-recipe"] .product-page-section { counter-increment: recipe; }
+.product-howhow [data-site-frame="howhow-recipe"] .product-page-section__index::after { content: " / PACKET"; color: var(--howhow-tomato); }
+.product-howhow [data-site-frame="howhow-claim-ledger"] { border-top: 3px solid var(--howhow-signal); }
 .product-howhow .product-footer__brand>span { color: var(--howhow-signal); }
 .product-howhow .product-text-link { color: var(--howhow-signal); }
 .product-howhow .product-button { color: #132000 !important; background: var(--howhow-signal); border-color: var(--howhow-signal); }
 .product-howhow .product-button:hover { background: #efffa8; }
 .product-howhow .product-page-hero[data-route="/"] { min-height: calc(100svh - var(--nav-height)); }
 @media (max-width: 800px) {
+  .product-howhow [data-site-header="howhow"]::after { display: none; }
   .product-howhow .product-page-hero { grid-template-columns: 1fr; }
   .product-howhow .product-page-hero__copy h1 { font-size: clamp(3.6rem,18vw,7rem); }
   .product-howhow .product-visual__stage { min-height: 23rem; }

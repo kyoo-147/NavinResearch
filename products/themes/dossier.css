@@ -236,7 +236,9 @@
 }
 
 /* The paper theme meets a dark navigation and visual review canvas. */
-.product-dossier .product-header { color: #f4f0e6; }
+.product-dossier .product-header,
+.product-dossier [data-site-header="dossier"] { color: #f4f0e6; }
+.product-dossier [data-site-header="dossier"]::after { content: "DOCUMENT DESK / SOURCE RETAINED"; margin-left: auto; color: var(--dossier-signal); font: 700 .58rem/1 Arial, sans-serif; letter-spacing: .14em; }
 .product-dossier .product-header .product-wordmark,
 .product-dossier .product-header .product-nav > a,
 .product-dossier .product-header .product-nav summary { color: #f4f0e6; }
@@ -267,8 +269,18 @@
 .product-dossier .product-page-section[data-kind="editorial"] { background: #f5efdf; }
 .product-dossier .product-page-section[data-kind="evidence"] li { background: #f5efdf; }
 .product-dossier .product-page-section__status { font-family: Arial, sans-serif; }
-.product-dossier .product-footer { border-top: 1px solid var(--dossier-line); }
-@media (max-width: 800px) { .product-dossier .product-page-hero { grid-template-columns: 1fr; } .product-dossier .product-visual__stage { min-height: 23rem; } }
+.product-dossier .product-footer,
+.product-dossier [data-site-footer="dossier"] { border-top: 1px solid var(--dossier-line); }
+.product-dossier [data-site-footer="dossier"] .product-footer__brand { border-left: 3px solid var(--dossier-signal); padding-left: 1rem; }
+.product-dossier [data-site-frame="dossier-state-rail"] { counter-reset: document-state; }
+.product-dossier [data-site-frame="dossier-state-rail"] .product-page-section { counter-increment: document-state; }
+.product-dossier [data-site-frame="dossier-boundary-register"] { border-top: 2px dashed var(--dossier-signal); }
+.product-dossier [data-site-frame="dossier-documentation"] .product-docs-frame__label { color: var(--dossier-signal); }
+@media (max-width: 800px) {
+  .product-dossier [data-site-header="dossier"]::after { display: none; }
+  .product-dossier .product-page-hero { grid-template-columns: 1fr; }
+  .product-dossier .product-visual__stage { min-height: 23rem; }
+}
 
 /* Forensic stage primitives: the same paper desk, different document states. */
 .product-dossier .product-visual__stage { isolation: isolate; }
