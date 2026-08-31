@@ -5,6 +5,14 @@ document.querySelectorAll("[data-current-year]").forEach((node) => {
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 if (!reduceMotion.matches) {
   window.setTimeout(() => document.documentElement.classList.add("motion-ready"), 3000);
+  let pointerAnimation = null;
+  window.addEventListener("pointermove", (event) => {
+    pointerAnimation?.cancel();
+    pointerAnimation = document.documentElement.animate(
+      [{ "--pointer-x": `${(event.clientX / innerWidth) * 100}%`, "--pointer-y": `${(event.clientY / innerHeight) * 100}%` }],
+      { duration: 420, fill: "forwards", easing: "ease-out" },
+    );
+  }, { passive: true });
 }
 
 const openButton = document.querySelector("[data-menu-open]");

@@ -104,6 +104,18 @@ button {
   animation-delay: 28s;
 }
 
+@property --pointer-x {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 72%;
+}
+
+@property --pointer-y {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 18%;
+}
+
 .field__wash {
   background:
     radial-gradient(circle at var(--pointer-x, 72%) var(--pointer-y, 18%), transparent 0 8%, rgba(2, 24, 16, 0.06) 32%, rgba(1, 12, 9, 0.36) 72%),
