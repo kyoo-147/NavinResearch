@@ -1,768 +1,183 @@
 [
   {
-    "product": "sandora",
-    "name": "Sandora",
+    "product": "autopilot",
+    "name": "Autopilot",
     "path": "/",
     "layout": "editorial",
-    "output": "sandora/index.html",
-    "url": "https://sandora.navinresearch.com/",
-    "title": "Sandora — AI Department OS"
+    "output": "autopilot/index.html",
+    "url": "https://autopilot.navinresearch.com/",
+    "title": "Autopilot — autonomous-driving research"
   },
   {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/product/",
-    "layout": "editorial",
-    "output": "sandora/product/index.html",
-    "url": "https://sandora.navinresearch.com/product/",
-    "title": "Product"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/departments/",
-    "layout": "index",
-    "output": "sandora/departments/index.html",
-    "url": "https://sandora.navinresearch.com/departments/",
-    "title": "Departments"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/agents/",
-    "layout": "workflow",
-    "output": "sandora/agents/index.html",
-    "url": "https://sandora.navinresearch.com/agents/",
-    "title": "Agents"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/workflows/",
-    "layout": "workflow",
-    "output": "sandora/workflows/index.html",
-    "url": "https://sandora.navinresearch.com/workflows/",
-    "title": "Workflows"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/runtime/",
-    "layout": "workflow",
-    "output": "sandora/runtime/index.html",
-    "url": "https://sandora.navinresearch.com/runtime/",
-    "title": "Runtime"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/observability/",
-    "layout": "ledger",
-    "output": "sandora/observability/index.html",
-    "url": "https://sandora.navinresearch.com/observability/",
-    "title": "Observability"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/memory/",
-    "layout": "workflow",
-    "output": "sandora/memory/index.html",
-    "url": "https://sandora.navinresearch.com/memory/",
-    "title": "Memory"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/approvals/",
-    "layout": "workflow",
-    "output": "sandora/approvals/index.html",
-    "url": "https://sandora.navinresearch.com/approvals/",
-    "title": "Approvals"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/integrations/",
-    "layout": "media",
-    "output": "sandora/integrations/index.html",
-    "url": "https://sandora.navinresearch.com/integrations/",
-    "title": "Integrations"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/developers/",
-    "layout": "docs",
-    "output": "sandora/developers/index.html",
-    "url": "https://sandora.navinresearch.com/developers/",
-    "title": "Developers"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/docs/",
-    "layout": "docs",
-    "output": "sandora/docs/index.html",
-    "url": "https://sandora.navinresearch.com/docs/",
-    "title": "Docs"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/pricing/",
-    "layout": "availability",
-    "output": "sandora/pricing/index.html",
-    "url": "https://sandora.navinresearch.com/pricing/",
-    "title": "Pricing"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/enterprise/",
-    "layout": "comparison",
-    "output": "sandora/enterprise/index.html",
-    "url": "https://sandora.navinresearch.com/enterprise/",
-    "title": "Enterprise"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/security/",
-    "layout": "ledger",
-    "output": "sandora/security/index.html",
-    "url": "https://sandora.navinresearch.com/security/",
-    "title": "Security"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/releases/",
-    "layout": "docs",
-    "output": "sandora/releases/index.html",
-    "url": "https://sandora.navinresearch.com/releases/",
-    "title": "Releases"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/research/",
-    "layout": "timeline",
-    "output": "sandora/research/index.html",
-    "url": "https://sandora.navinresearch.com/research/",
-    "title": "Research"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/github/",
-    "layout": "docs",
-    "output": "sandora/github/index.html",
-    "url": "https://sandora.navinresearch.com/github/",
-    "title": "GitHub"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/contact/",
-    "layout": "availability",
-    "output": "sandora/contact/index.html",
-    "url": "https://sandora.navinresearch.com/contact/",
-    "title": "Contact"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/privacy/",
-    "layout": "ledger",
-    "output": "sandora/privacy/index.html",
-    "url": "https://sandora.navinresearch.com/privacy/",
-    "title": "Privacy"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
-    "path": "/terms/",
-    "layout": "ledger",
-    "output": "sandora/terms/index.html",
-    "url": "https://sandora.navinresearch.com/terms/",
-    "title": "Terms"
-  },
-  {
-    "product": "sandora",
-    "name": "Sandora",
+    "product": "autopilot",
+    "name": "Autopilot",
     "path": "/404.html",
     "layout": "index",
-    "output": "sandora/404.html",
-    "url": "https://sandora.navinresearch.com/404.html",
-    "title": "Not found"
+    "output": "autopilot/404.html",
+    "url": "https://autopilot.navinresearch.com/404.html",
+    "title": "Page not found"
   },
   {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/",
-    "layout": "editorial",
-    "output": "moyi/index.html",
-    "url": "https://moyi.navinresearch.com/",
-    "title": "Moyi — Speech in context"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/models/",
-    "layout": "specs",
-    "output": "moyi/models/index.html",
-    "url": "https://moyi.navinresearch.com/models/",
-    "title": "Moyi models"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/models/family/",
-    "layout": "specs",
-    "output": "moyi/models/family/index.html",
-    "url": "https://moyi.navinresearch.com/models/family/",
-    "title": "Moyi model family"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/speech/",
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/about/",
     "layout": "index",
-    "output": "moyi/speech/index.html",
-    "url": "https://moyi.navinresearch.com/speech/",
-    "title": "Moyi speech"
+    "output": "autopilot/about/index.html",
+    "url": "https://autopilot.navinresearch.com/about/",
+    "title": "About Autopilot"
   },
   {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/translation/",
-    "layout": "index",
-    "output": "moyi/translation/index.html",
-    "url": "https://moyi.navinresearch.com/translation/",
-    "title": "Moyi translation"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/streaming/",
-    "layout": "index",
-    "output": "moyi/streaming/index.html",
-    "url": "https://moyi.navinresearch.com/streaming/",
-    "title": "Moyi streaming"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/edge/",
-    "layout": "index",
-    "output": "moyi/edge/index.html",
-    "url": "https://moyi.navinresearch.com/edge/",
-    "title": "Moyi edge runtime"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/devices/",
-    "layout": "media",
-    "output": "moyi/devices/index.html",
-    "url": "https://moyi.navinresearch.com/devices/",
-    "title": "Moyi devices"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/api/",
-    "layout": "specs",
-    "output": "moyi/api/index.html",
-    "url": "https://moyi.navinresearch.com/api/",
-    "title": "Moyi API"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/developers/",
-    "layout": "docs",
-    "output": "moyi/developers/index.html",
-    "url": "https://moyi.navinresearch.com/developers/",
-    "title": "Moyi developers"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/docs/",
-    "layout": "docs",
-    "output": "moyi/docs/index.html",
-    "url": "https://moyi.navinresearch.com/docs/",
-    "title": "Moyi documentation"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/solutions/",
-    "layout": "workflow",
-    "output": "moyi/solutions/index.html",
-    "url": "https://moyi.navinresearch.com/solutions/",
-    "title": "Moyi solutions"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/solutions/realtime/",
-    "layout": "workflow",
-    "output": "moyi/solutions/realtime/index.html",
-    "url": "https://moyi.navinresearch.com/solutions/realtime/",
-    "title": "Moyi realtime solutions"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/evaluation/",
-    "layout": "index",
-    "output": "moyi/evaluation/index.html",
-    "url": "https://moyi.navinresearch.com/evaluation/",
-    "title": "Moyi language and context evaluation"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/benchmarks/",
-    "layout": "specs",
-    "output": "moyi/benchmarks/index.html",
-    "url": "https://moyi.navinresearch.com/benchmarks/",
-    "title": "Moyi benchmarks"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/research/",
-    "layout": "timeline",
-    "output": "moyi/research/index.html",
-    "url": "https://moyi.navinresearch.com/research/",
-    "title": "Moyi research"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/pricing/",
-    "layout": "availability",
-    "output": "moyi/pricing/index.html",
-    "url": "https://moyi.navinresearch.com/pricing/",
-    "title": "Moyi pricing"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/company/",
-    "layout": "index",
-    "output": "moyi/company/index.html",
-    "url": "https://moyi.navinresearch.com/company/",
-    "title": "Moyi company"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/contact/",
-    "layout": "availability",
-    "output": "moyi/contact/index.html",
-    "url": "https://moyi.navinresearch.com/contact/",
-    "title": "Contact Moyi"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/privacy/",
-    "layout": "ledger",
-    "output": "moyi/privacy/index.html",
-    "url": "https://moyi.navinresearch.com/privacy/",
-    "title": "Moyi privacy"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/terms/",
-    "layout": "ledger",
-    "output": "moyi/terms/index.html",
-    "url": "https://moyi.navinresearch.com/terms/",
-    "title": "Moyi terms"
-  },
-  {
-    "product": "moyi",
-    "name": "Moyi",
-    "path": "/404.html",
-    "layout": "index",
-    "output": "moyi/404.html",
-    "url": "https://moyi.navinresearch.com/404.html",
-    "title": "Moyi — page not found"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/",
-    "layout": "editorial",
-    "output": "sori/index.html",
-    "url": "https://sori.navinresearch.com/",
-    "title": "Sori — voice, with the boundary visible"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/product/",
-    "layout": "index",
-    "output": "sori/product/index.html",
-    "url": "https://sori.navinresearch.com/product/",
-    "title": "The Sori product"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/studio/",
-    "layout": "index",
-    "output": "sori/studio/index.html",
-    "url": "https://sori.navinresearch.com/studio/",
-    "title": "Sori Studio"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/models/",
-    "layout": "specs",
-    "output": "sori/models/index.html",
-    "url": "https://sori.navinresearch.com/models/",
-    "title": "Sori models"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/profiles/",
-    "layout": "index",
-    "output": "sori/profiles/index.html",
-    "url": "https://sori.navinresearch.com/profiles/",
-    "title": "Sori profiles"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/history/",
-    "layout": "index",
-    "output": "sori/history/index.html",
-    "url": "https://sori.navinresearch.com/history/",
-    "title": "Sori history"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/permissions/",
-    "layout": "index",
-    "output": "sori/permissions/index.html",
-    "url": "https://sori.navinresearch.com/permissions/",
-    "title": "Sori permissions"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/features/",
-    "layout": "index",
-    "output": "sori/features/index.html",
-    "url": "https://sori.navinresearch.com/features/",
-    "title": "Sori features"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/voice-dictation/",
-    "layout": "index",
-    "output": "sori/voice-dictation/index.html",
-    "url": "https://sori.navinresearch.com/voice-dictation/",
-    "title": "Voice dictation | Sori"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/voice-actions/",
-    "layout": "index",
-    "output": "sori/voice-actions/index.html",
-    "url": "https://sori.navinresearch.com/voice-actions/",
-    "title": "Voice actions | Sori"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/apps/",
-    "layout": "index",
-    "output": "sori/apps/index.html",
-    "url": "https://sori.navinresearch.com/apps/",
-    "title": "Apps | Sori"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/use-cases/",
-    "layout": "workflow",
-    "output": "sori/use-cases/index.html",
-    "url": "https://sori.navinresearch.com/use-cases/",
-    "title": "Use cases | Sori"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/use-cases/writing/",
-    "layout": "workflow",
-    "output": "sori/use-cases/writing/index.html",
-    "url": "https://sori.navinresearch.com/use-cases/writing/",
-    "title": "Voice for writing | Sori"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/use-cases/developers/",
-    "layout": "docs",
-    "output": "sori/use-cases/developers/index.html",
-    "url": "https://sori.navinresearch.com/use-cases/developers/",
-    "title": "Voice for developers | Sori"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/use-cases/communication/",
-    "layout": "workflow",
-    "output": "sori/use-cases/communication/index.html",
-    "url": "https://sori.navinresearch.com/use-cases/communication/",
-    "title": "Voice for communication | Sori"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/download/",
-    "layout": "index",
-    "output": "sori/download/index.html",
-    "url": "https://sori.navinresearch.com/download/",
-    "title": "Download Sori"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/pricing/",
-    "layout": "availability",
-    "output": "sori/pricing/index.html",
-    "url": "https://sori.navinresearch.com/pricing/",
-    "title": "Sori pricing"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/security/",
-    "layout": "ledger",
-    "output": "sori/security/index.html",
-    "url": "https://sori.navinresearch.com/security/",
-    "title": "Sori security"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/privacy/",
-    "layout": "ledger",
-    "output": "sori/privacy/index.html",
-    "url": "https://sori.navinresearch.com/privacy/",
-    "title": "Sori privacy"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/changelog/",
-    "layout": "timeline",
-    "output": "sori/changelog/index.html",
-    "url": "https://sori.navinresearch.com/changelog/",
-    "title": "Sori changelog"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/docs/",
-    "layout": "docs",
-    "output": "sori/docs/index.html",
-    "url": "https://sori.navinresearch.com/docs/",
-    "title": "Sori docs"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/contact/",
-    "layout": "availability",
-    "output": "sori/contact/index.html",
-    "url": "https://sori.navinresearch.com/contact/",
-    "title": "Contact Sori"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/terms/",
-    "layout": "ledger",
-    "output": "sori/terms/index.html",
-    "url": "https://sori.navinresearch.com/terms/",
-    "title": "Sori terms"
-  },
-  {
-    "product": "sori",
-    "name": "Sori",
-    "path": "/404.html",
-    "layout": "index",
-    "output": "sori/404.html",
-    "url": "https://sori.navinresearch.com/404.html",
-    "title": "Sori — page not found"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/sources/",
-    "layout": "index",
-    "output": "howhow/sources/index.html",
-    "url": "https://howhow.navinresearch.com/sources/",
-    "title": "Sources"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/",
-    "layout": "editorial",
-    "output": "howhow/index.html",
-    "url": "https://howhow.navinresearch.com/",
-    "title": "HowHow"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/product/",
-    "layout": "index",
-    "output": "howhow/product/index.html",
-    "url": "https://howhow.navinresearch.com/product/",
-    "title": "Product"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/how-it-works/",
-    "layout": "index",
-    "output": "howhow/how-it-works/index.html",
-    "url": "https://howhow.navinresearch.com/how-it-works/",
-    "title": "How it works"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/research-workflow/",
-    "layout": "timeline",
-    "output": "howhow/research-workflow/index.html",
-    "url": "https://howhow.navinresearch.com/research-workflow/",
-    "title": "Research workflow"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/evidence/",
-    "layout": "index",
-    "output": "howhow/evidence/index.html",
-    "url": "https://howhow.navinresearch.com/evidence/",
-    "title": "Evidence"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/experiments/",
-    "layout": "index",
-    "output": "howhow/experiments/index.html",
-    "url": "https://howhow.navinresearch.com/experiments/",
-    "title": "Experiments"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/projects/",
-    "layout": "index",
-    "output": "howhow/projects/index.html",
-    "url": "https://howhow.navinresearch.com/projects/",
-    "title": "Projects"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/docs/",
-    "layout": "docs",
-    "output": "howhow/docs/index.html",
-    "url": "https://howhow.navinresearch.com/docs/",
-    "title": "Docs"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/github/",
-    "layout": "docs",
-    "output": "howhow/github/index.html",
-    "url": "https://howhow.navinresearch.com/github/",
-    "title": "GitHub"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/releases/",
-    "layout": "timeline",
-    "output": "howhow/releases/index.html",
-    "url": "https://howhow.navinresearch.com/releases/",
-    "title": "Releases"
-  },
-  {
-    "product": "howhow",
-    "name": "HowHow",
+    "product": "autopilot",
+    "name": "Autopilot",
     "path": "/access/",
     "layout": "index",
-    "output": "howhow/access/index.html",
-    "url": "https://howhow.navinresearch.com/access/",
+    "output": "autopilot/access/index.html",
+    "url": "https://autopilot.navinresearch.com/access/",
     "title": "Access"
   },
   {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/about/",
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/benchmarks/",
+    "layout": "specs",
+    "output": "autopilot/benchmarks/index.html",
+    "url": "https://autopilot.navinresearch.com/benchmarks/",
+    "title": "Benchmarks"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/control/",
+    "layout": "workflow",
+    "output": "autopilot/control/index.html",
+    "url": "https://autopilot.navinresearch.com/control/",
+    "title": "Control"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/docs/",
+    "layout": "docs",
+    "output": "autopilot/docs/index.html",
+    "url": "https://autopilot.navinresearch.com/docs/",
+    "title": "Documentation"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/github/",
+    "layout": "docs",
+    "output": "autopilot/github/index.html",
+    "url": "https://autopilot.navinresearch.com/github/",
+    "title": "GitHub"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/hardware/",
+    "layout": "specs",
+    "output": "autopilot/hardware/index.html",
+    "url": "https://autopilot.navinresearch.com/hardware/",
+    "title": "Hardware"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/localization/",
     "layout": "index",
-    "output": "howhow/about/index.html",
-    "url": "https://howhow.navinresearch.com/about/",
-    "title": "About"
+    "output": "autopilot/localization/index.html",
+    "url": "https://autopilot.navinresearch.com/localization/",
+    "title": "Localization"
   },
   {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/contact/",
-    "layout": "availability",
-    "output": "howhow/contact/index.html",
-    "url": "https://howhow.navinresearch.com/contact/",
-    "title": "Contact"
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/perception/",
+    "layout": "index",
+    "output": "autopilot/perception/index.html",
+    "url": "https://autopilot.navinresearch.com/perception/",
+    "title": "Perception"
   },
   {
-    "product": "howhow",
-    "name": "HowHow",
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/planning/",
+    "layout": "workflow",
+    "output": "autopilot/planning/index.html",
+    "url": "https://autopilot.navinresearch.com/planning/",
+    "title": "Planning"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/platform/",
+    "layout": "index",
+    "output": "autopilot/platform/index.html",
+    "url": "https://autopilot.navinresearch.com/platform/",
+    "title": "Platform"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
     "path": "/privacy/",
     "layout": "ledger",
-    "output": "howhow/privacy/index.html",
-    "url": "https://howhow.navinresearch.com/privacy/",
+    "output": "autopilot/privacy/index.html",
+    "url": "https://autopilot.navinresearch.com/privacy/",
     "title": "Privacy"
   },
   {
-    "product": "howhow",
-    "name": "HowHow",
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/releases/",
+    "layout": "timeline",
+    "output": "autopilot/releases/index.html",
+    "url": "https://autopilot.navinresearch.com/releases/",
+    "title": "Releases"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/research/",
+    "layout": "timeline",
+    "output": "autopilot/research/index.html",
+    "url": "https://autopilot.navinresearch.com/research/",
+    "title": "Research"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/simulation/",
+    "layout": "index",
+    "output": "autopilot/simulation/index.html",
+    "url": "https://autopilot.navinresearch.com/simulation/",
+    "title": "Simulation"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/software/",
+    "layout": "index",
+    "output": "autopilot/software/index.html",
+    "url": "https://autopilot.navinresearch.com/software/",
+    "title": "Software"
+  },
+  {
+    "product": "autopilot",
+    "name": "Autopilot",
     "path": "/terms/",
     "layout": "ledger",
-    "output": "howhow/terms/index.html",
-    "url": "https://howhow.navinresearch.com/terms/",
+    "output": "autopilot/terms/index.html",
+    "url": "https://autopilot.navinresearch.com/terms/",
     "title": "Terms"
   },
   {
-    "product": "howhow",
-    "name": "HowHow",
-    "path": "/404.html",
+    "product": "autopilot",
+    "name": "Autopilot",
+    "path": "/vehicle/",
     "layout": "index",
-    "output": "howhow/404.html",
-    "url": "https://howhow.navinresearch.com/404.html",
-    "title": "Not found"
+    "output": "autopilot/vehicle/index.html",
+    "url": "https://autopilot.navinresearch.com/vehicle/",
+    "title": "Vehicle"
   },
   {
     "product": "dossier",
@@ -776,11 +191,38 @@
   {
     "product": "dossier",
     "name": "Dossier",
-    "path": "/product/",
+    "path": "/404.html",
     "layout": "index",
-    "output": "dossier/product/index.html",
-    "url": "https://dossier.navinresearch.com/product/",
-    "title": "The Dossier workstation"
+    "output": "dossier/404.html",
+    "url": "https://dossier.navinresearch.com/404.html",
+    "title": "Page not found"
+  },
+  {
+    "product": "dossier",
+    "name": "Dossier",
+    "path": "/contact/",
+    "layout": "availability",
+    "output": "dossier/contact/index.html",
+    "url": "https://dossier.navinresearch.com/contact/",
+    "title": "Contact Dossier"
+  },
+  {
+    "product": "dossier",
+    "name": "Dossier",
+    "path": "/developers/",
+    "layout": "docs",
+    "output": "dossier/developers/index.html",
+    "url": "https://dossier.navinresearch.com/developers/",
+    "title": "Developers"
+  },
+  {
+    "product": "dossier",
+    "name": "Dossier",
+    "path": "/docs/",
+    "layout": "docs",
+    "output": "dossier/docs/index.html",
+    "url": "https://dossier.navinresearch.com/docs/",
+    "title": "Documentation"
   },
   {
     "product": "dossier",
@@ -794,6 +236,15 @@
   {
     "product": "dossier",
     "name": "Dossier",
+    "path": "/enterprise/",
+    "layout": "index",
+    "output": "dossier/enterprise/index.html",
+    "url": "https://dossier.navinresearch.com/enterprise/",
+    "title": "Enterprise"
+  },
+  {
+    "product": "dossier",
+    "name": "Dossier",
     "path": "/extraction/",
     "layout": "index",
     "output": "dossier/extraction/index.html",
@@ -803,11 +254,38 @@
   {
     "product": "dossier",
     "name": "Dossier",
-    "path": "/validation/",
+    "path": "/integrations/",
+    "layout": "media",
+    "output": "dossier/integrations/index.html",
+    "url": "https://dossier.navinresearch.com/integrations/",
+    "title": "Integrations"
+  },
+  {
+    "product": "dossier",
+    "name": "Dossier",
+    "path": "/pricing/",
+    "layout": "availability",
+    "output": "dossier/pricing/index.html",
+    "url": "https://dossier.navinresearch.com/pricing/",
+    "title": "Pricing"
+  },
+  {
+    "product": "dossier",
+    "name": "Dossier",
+    "path": "/privacy/",
+    "layout": "ledger",
+    "output": "dossier/privacy/index.html",
+    "url": "https://dossier.navinresearch.com/privacy/",
+    "title": "Privacy"
+  },
+  {
+    "product": "dossier",
+    "name": "Dossier",
+    "path": "/product/",
     "layout": "index",
-    "output": "dossier/validation/index.html",
-    "url": "https://dossier.navinresearch.com/validation/",
-    "title": "Validation"
+    "output": "dossier/product/index.html",
+    "url": "https://dossier.navinresearch.com/product/",
+    "title": "The Dossier workstation"
   },
   {
     "product": "dossier",
@@ -830,20 +308,20 @@
   {
     "product": "dossier",
     "name": "Dossier",
-    "path": "/workflows/",
-    "layout": "workflow",
-    "output": "dossier/workflows/index.html",
-    "url": "https://dossier.navinresearch.com/workflows/",
-    "title": "Workflows"
+    "path": "/security/",
+    "layout": "ledger",
+    "output": "dossier/security/index.html",
+    "url": "https://dossier.navinresearch.com/security/",
+    "title": "Security and boundaries"
   },
   {
     "product": "dossier",
     "name": "Dossier",
-    "path": "/integrations/",
-    "layout": "media",
-    "output": "dossier/integrations/index.html",
-    "url": "https://dossier.navinresearch.com/integrations/",
-    "title": "Integrations"
+    "path": "/terms/",
+    "layout": "ledger",
+    "output": "dossier/terms/index.html",
+    "url": "https://dossier.navinresearch.com/terms/",
+    "title": "Terms"
   },
   {
     "product": "dossier",
@@ -875,263 +353,173 @@
   {
     "product": "dossier",
     "name": "Dossier",
-    "path": "/security/",
-    "layout": "ledger",
-    "output": "dossier/security/index.html",
-    "url": "https://dossier.navinresearch.com/security/",
-    "title": "Security and boundaries"
-  },
-  {
-    "product": "dossier",
-    "name": "Dossier",
-    "path": "/developers/",
-    "layout": "docs",
-    "output": "dossier/developers/index.html",
-    "url": "https://dossier.navinresearch.com/developers/",
-    "title": "Developers"
-  },
-  {
-    "product": "dossier",
-    "name": "Dossier",
-    "path": "/docs/",
-    "layout": "docs",
-    "output": "dossier/docs/index.html",
-    "url": "https://dossier.navinresearch.com/docs/",
-    "title": "Documentation"
-  },
-  {
-    "product": "dossier",
-    "name": "Dossier",
-    "path": "/pricing/",
-    "layout": "availability",
-    "output": "dossier/pricing/index.html",
-    "url": "https://dossier.navinresearch.com/pricing/",
-    "title": "Pricing"
-  },
-  {
-    "product": "dossier",
-    "name": "Dossier",
-    "path": "/enterprise/",
+    "path": "/validation/",
     "layout": "index",
-    "output": "dossier/enterprise/index.html",
-    "url": "https://dossier.navinresearch.com/enterprise/",
-    "title": "Enterprise"
+    "output": "dossier/validation/index.html",
+    "url": "https://dossier.navinresearch.com/validation/",
+    "title": "Validation"
   },
   {
     "product": "dossier",
     "name": "Dossier",
-    "path": "/contact/",
-    "layout": "availability",
-    "output": "dossier/contact/index.html",
-    "url": "https://dossier.navinresearch.com/contact/",
-    "title": "Contact Dossier"
+    "path": "/workflows/",
+    "layout": "workflow",
+    "output": "dossier/workflows/index.html",
+    "url": "https://dossier.navinresearch.com/workflows/",
+    "title": "Workflows"
   },
   {
-    "product": "dossier",
-    "name": "Dossier",
-    "path": "/privacy/",
-    "layout": "ledger",
-    "output": "dossier/privacy/index.html",
-    "url": "https://dossier.navinresearch.com/privacy/",
-    "title": "Privacy"
-  },
-  {
-    "product": "dossier",
-    "name": "Dossier",
-    "path": "/terms/",
-    "layout": "ledger",
-    "output": "dossier/terms/index.html",
-    "url": "https://dossier.navinresearch.com/terms/",
-    "title": "Terms"
-  },
-  {
-    "product": "dossier",
-    "name": "Dossier",
-    "path": "/404.html",
-    "layout": "index",
-    "output": "dossier/404.html",
-    "url": "https://dossier.navinresearch.com/404.html",
-    "title": "Page not found"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
+    "product": "howhow",
+    "name": "HowHow",
     "path": "/",
     "layout": "editorial",
-    "output": "autopilot/index.html",
-    "url": "https://autopilot.navinresearch.com/",
-    "title": "Autopilot — autonomous-driving research"
+    "output": "howhow/index.html",
+    "url": "https://howhow.navinresearch.com/",
+    "title": "HowHow"
   },
   {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/platform/",
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/404.html",
     "layout": "index",
-    "output": "autopilot/platform/index.html",
-    "url": "https://autopilot.navinresearch.com/platform/",
-    "title": "Platform"
+    "output": "howhow/404.html",
+    "url": "https://howhow.navinresearch.com/404.html",
+    "title": "Not found"
   },
   {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/vehicle/",
-    "layout": "index",
-    "output": "autopilot/vehicle/index.html",
-    "url": "https://autopilot.navinresearch.com/vehicle/",
-    "title": "Vehicle"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/perception/",
-    "layout": "index",
-    "output": "autopilot/perception/index.html",
-    "url": "https://autopilot.navinresearch.com/perception/",
-    "title": "Perception"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/localization/",
-    "layout": "index",
-    "output": "autopilot/localization/index.html",
-    "url": "https://autopilot.navinresearch.com/localization/",
-    "title": "Localization"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/planning/",
-    "layout": "workflow",
-    "output": "autopilot/planning/index.html",
-    "url": "https://autopilot.navinresearch.com/planning/",
-    "title": "Planning"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/control/",
-    "layout": "workflow",
-    "output": "autopilot/control/index.html",
-    "url": "https://autopilot.navinresearch.com/control/",
-    "title": "Control"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/simulation/",
-    "layout": "index",
-    "output": "autopilot/simulation/index.html",
-    "url": "https://autopilot.navinresearch.com/simulation/",
-    "title": "Simulation"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/hardware/",
-    "layout": "specs",
-    "output": "autopilot/hardware/index.html",
-    "url": "https://autopilot.navinresearch.com/hardware/",
-    "title": "Hardware"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/software/",
-    "layout": "index",
-    "output": "autopilot/software/index.html",
-    "url": "https://autopilot.navinresearch.com/software/",
-    "title": "Software"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/research/",
-    "layout": "timeline",
-    "output": "autopilot/research/index.html",
-    "url": "https://autopilot.navinresearch.com/research/",
-    "title": "Research"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/benchmarks/",
-    "layout": "specs",
-    "output": "autopilot/benchmarks/index.html",
-    "url": "https://autopilot.navinresearch.com/benchmarks/",
-    "title": "Benchmarks"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/docs/",
-    "layout": "docs",
-    "output": "autopilot/docs/index.html",
-    "url": "https://autopilot.navinresearch.com/docs/",
-    "title": "Documentation"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/github/",
-    "layout": "docs",
-    "output": "autopilot/github/index.html",
-    "url": "https://autopilot.navinresearch.com/github/",
-    "title": "GitHub"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/releases/",
-    "layout": "timeline",
-    "output": "autopilot/releases/index.html",
-    "url": "https://autopilot.navinresearch.com/releases/",
-    "title": "Releases"
-  },
-  {
-    "product": "autopilot",
-    "name": "Autopilot",
+    "product": "howhow",
+    "name": "HowHow",
     "path": "/about/",
     "layout": "index",
-    "output": "autopilot/about/index.html",
-    "url": "https://autopilot.navinresearch.com/about/",
-    "title": "About Autopilot"
+    "output": "howhow/about/index.html",
+    "url": "https://howhow.navinresearch.com/about/",
+    "title": "About"
   },
   {
-    "product": "autopilot",
-    "name": "Autopilot",
+    "product": "howhow",
+    "name": "HowHow",
     "path": "/access/",
     "layout": "index",
-    "output": "autopilot/access/index.html",
-    "url": "https://autopilot.navinresearch.com/access/",
+    "output": "howhow/access/index.html",
+    "url": "https://howhow.navinresearch.com/access/",
     "title": "Access"
   },
   {
-    "product": "autopilot",
-    "name": "Autopilot",
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/contact/",
+    "layout": "availability",
+    "output": "howhow/contact/index.html",
+    "url": "https://howhow.navinresearch.com/contact/",
+    "title": "Contact"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/docs/",
+    "layout": "docs",
+    "output": "howhow/docs/index.html",
+    "url": "https://howhow.navinresearch.com/docs/",
+    "title": "Docs"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/evidence/",
+    "layout": "index",
+    "output": "howhow/evidence/index.html",
+    "url": "https://howhow.navinresearch.com/evidence/",
+    "title": "Evidence"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/experiments/",
+    "layout": "index",
+    "output": "howhow/experiments/index.html",
+    "url": "https://howhow.navinresearch.com/experiments/",
+    "title": "Experiments"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/github/",
+    "layout": "docs",
+    "output": "howhow/github/index.html",
+    "url": "https://howhow.navinresearch.com/github/",
+    "title": "GitHub"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/how-it-works/",
+    "layout": "index",
+    "output": "howhow/how-it-works/index.html",
+    "url": "https://howhow.navinresearch.com/how-it-works/",
+    "title": "How it works"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
     "path": "/privacy/",
     "layout": "ledger",
-    "output": "autopilot/privacy/index.html",
-    "url": "https://autopilot.navinresearch.com/privacy/",
+    "output": "howhow/privacy/index.html",
+    "url": "https://howhow.navinresearch.com/privacy/",
     "title": "Privacy"
   },
   {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/terms/",
-    "layout": "ledger",
-    "output": "autopilot/terms/index.html",
-    "url": "https://autopilot.navinresearch.com/terms/",
-    "title": "Terms"
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/product/",
+    "layout": "index",
+    "output": "howhow/product/index.html",
+    "url": "https://howhow.navinresearch.com/product/",
+    "title": "Product"
   },
   {
-    "product": "autopilot",
-    "name": "Autopilot",
-    "path": "/404.html",
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/projects/",
     "layout": "index",
-    "output": "autopilot/404.html",
-    "url": "https://autopilot.navinresearch.com/404.html",
-    "title": "Page not found"
+    "output": "howhow/projects/index.html",
+    "url": "https://howhow.navinresearch.com/projects/",
+    "title": "Projects"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/releases/",
+    "layout": "timeline",
+    "output": "howhow/releases/index.html",
+    "url": "https://howhow.navinresearch.com/releases/",
+    "title": "Releases"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/research-workflow/",
+    "layout": "timeline",
+    "output": "howhow/research-workflow/index.html",
+    "url": "https://howhow.navinresearch.com/research-workflow/",
+    "title": "Research workflow"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/sources/",
+    "layout": "index",
+    "output": "howhow/sources/index.html",
+    "url": "https://howhow.navinresearch.com/sources/",
+    "title": "Sources"
+  },
+  {
+    "product": "howhow",
+    "name": "HowHow",
+    "path": "/terms/",
+    "layout": "ledger",
+    "output": "howhow/terms/index.html",
+    "url": "https://howhow.navinresearch.com/terms/",
+    "title": "Terms"
   },
   {
     "product": "lajvard",
@@ -1145,119 +533,11 @@
   {
     "product": "lajvard",
     "name": "Lajvard",
-    "path": "/robot/",
-    "layout": "editorial",
-    "output": "lajvard/robot/index.html",
-    "url": "https://lajvard.navinresearch.com/robot/",
-    "title": "The robot"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/movement/",
-    "layout": "workflow",
-    "output": "lajvard/movement/index.html",
-    "url": "https://lajvard.navinresearch.com/movement/",
-    "title": "Movement"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/spatial-memory/",
-    "layout": "workflow",
-    "output": "lajvard/spatial-memory/index.html",
-    "url": "https://lajvard.navinresearch.com/spatial-memory/",
-    "title": "Spatial memory"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/hardware/",
-    "layout": "specs",
-    "output": "lajvard/hardware/index.html",
-    "url": "https://lajvard.navinresearch.com/hardware/",
-    "title": "Hardware"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/software/",
-    "layout": "ledger",
-    "output": "lajvard/software/index.html",
-    "url": "https://lajvard.navinresearch.com/software/",
-    "title": "Software"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/intelligence/",
-    "layout": "comparison",
-    "output": "lajvard/intelligence/index.html",
-    "url": "https://lajvard.navinresearch.com/intelligence/",
-    "title": "Intelligence"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/developer/",
-    "layout": "docs",
-    "output": "lajvard/developer/index.html",
-    "url": "https://lajvard.navinresearch.com/developer/",
-    "title": "Developer"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/research/",
-    "layout": "timeline",
-    "output": "lajvard/research/index.html",
-    "url": "https://lajvard.navinresearch.com/research/",
-    "title": "Research"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/life-with-lajvard/",
-    "layout": "editorial",
-    "output": "lajvard/life-with-lajvard/index.html",
-    "url": "https://lajvard.navinresearch.com/life-with-lajvard/",
-    "title": "Life with Lajvard"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/gallery/",
-    "layout": "media",
-    "output": "lajvard/gallery/index.html",
-    "url": "https://lajvard.navinresearch.com/gallery/",
-    "title": "Gallery"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/specs/",
-    "layout": "specs",
-    "output": "lajvard/specs/index.html",
-    "url": "https://lajvard.navinresearch.com/specs/",
-    "title": "Specs"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/availability/",
-    "layout": "availability",
-    "output": "lajvard/availability/index.html",
-    "url": "https://lajvard.navinresearch.com/availability/",
-    "title": "Availability"
-  },
-  {
-    "product": "lajvard",
-    "name": "Lajvard",
-    "path": "/support/",
-    "layout": "docs",
-    "output": "lajvard/support/index.html",
-    "url": "https://lajvard.navinresearch.com/support/",
-    "title": "Support"
+    "path": "/404.html",
+    "layout": "index",
+    "output": "lajvard/404.html",
+    "url": "https://lajvard.navinresearch.com/404.html",
+    "title": "Page not found"
   },
   {
     "product": "lajvard",
@@ -1271,11 +551,74 @@
   {
     "product": "lajvard",
     "name": "Lajvard",
+    "path": "/availability/",
+    "layout": "availability",
+    "output": "lajvard/availability/index.html",
+    "url": "https://lajvard.navinresearch.com/availability/",
+    "title": "Availability"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
     "path": "/contact/",
     "layout": "docs",
     "output": "lajvard/contact/index.html",
     "url": "https://lajvard.navinresearch.com/contact/",
     "title": "Contact Lajvard"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/developer/",
+    "layout": "docs",
+    "output": "lajvard/developer/index.html",
+    "url": "https://lajvard.navinresearch.com/developer/",
+    "title": "Developer"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/gallery/",
+    "layout": "media",
+    "output": "lajvard/gallery/index.html",
+    "url": "https://lajvard.navinresearch.com/gallery/",
+    "title": "Gallery"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/hardware/",
+    "layout": "specs",
+    "output": "lajvard/hardware/index.html",
+    "url": "https://lajvard.navinresearch.com/hardware/",
+    "title": "Hardware"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/intelligence/",
+    "layout": "comparison",
+    "output": "lajvard/intelligence/index.html",
+    "url": "https://lajvard.navinresearch.com/intelligence/",
+    "title": "Intelligence"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/life-with-lajvard/",
+    "layout": "editorial",
+    "output": "lajvard/life-with-lajvard/index.html",
+    "url": "https://lajvard.navinresearch.com/life-with-lajvard/",
+    "title": "Life with Lajvard"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/movement/",
+    "layout": "workflow",
+    "output": "lajvard/movement/index.html",
+    "url": "https://lajvard.navinresearch.com/movement/",
+    "title": "Movement"
   },
   {
     "product": "lajvard",
@@ -1289,6 +632,60 @@
   {
     "product": "lajvard",
     "name": "Lajvard",
+    "path": "/research/",
+    "layout": "timeline",
+    "output": "lajvard/research/index.html",
+    "url": "https://lajvard.navinresearch.com/research/",
+    "title": "Research"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/robot/",
+    "layout": "editorial",
+    "output": "lajvard/robot/index.html",
+    "url": "https://lajvard.navinresearch.com/robot/",
+    "title": "The robot"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/software/",
+    "layout": "ledger",
+    "output": "lajvard/software/index.html",
+    "url": "https://lajvard.navinresearch.com/software/",
+    "title": "Software"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/spatial-memory/",
+    "layout": "workflow",
+    "output": "lajvard/spatial-memory/index.html",
+    "url": "https://lajvard.navinresearch.com/spatial-memory/",
+    "title": "Spatial memory"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/specs/",
+    "layout": "specs",
+    "output": "lajvard/specs/index.html",
+    "url": "https://lajvard.navinresearch.com/specs/",
+    "title": "Specs"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
+    "path": "/support/",
+    "layout": "docs",
+    "output": "lajvard/support/index.html",
+    "url": "https://lajvard.navinresearch.com/support/",
+    "title": "Support"
+  },
+  {
+    "product": "lajvard",
+    "name": "Lajvard",
     "path": "/terms/",
     "layout": "ledger",
     "output": "lajvard/terms/index.html",
@@ -1296,12 +693,615 @@
     "title": "Terms"
   },
   {
-    "product": "lajvard",
-    "name": "Lajvard",
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/",
+    "layout": "editorial",
+    "output": "moyi/index.html",
+    "url": "https://moyi.navinresearch.com/",
+    "title": "Moyi — Speech in context"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
     "path": "/404.html",
     "layout": "index",
-    "output": "lajvard/404.html",
-    "url": "https://lajvard.navinresearch.com/404.html",
-    "title": "Page not found"
+    "output": "moyi/404.html",
+    "url": "https://moyi.navinresearch.com/404.html",
+    "title": "Moyi — page not found"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/api/",
+    "layout": "specs",
+    "output": "moyi/api/index.html",
+    "url": "https://moyi.navinresearch.com/api/",
+    "title": "Moyi API"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/benchmarks/",
+    "layout": "specs",
+    "output": "moyi/benchmarks/index.html",
+    "url": "https://moyi.navinresearch.com/benchmarks/",
+    "title": "Moyi benchmarks"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/company/",
+    "layout": "index",
+    "output": "moyi/company/index.html",
+    "url": "https://moyi.navinresearch.com/company/",
+    "title": "Moyi company"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/contact/",
+    "layout": "availability",
+    "output": "moyi/contact/index.html",
+    "url": "https://moyi.navinresearch.com/contact/",
+    "title": "Contact Moyi"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/developers/",
+    "layout": "docs",
+    "output": "moyi/developers/index.html",
+    "url": "https://moyi.navinresearch.com/developers/",
+    "title": "Moyi developers"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/devices/",
+    "layout": "media",
+    "output": "moyi/devices/index.html",
+    "url": "https://moyi.navinresearch.com/devices/",
+    "title": "Moyi devices"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/docs/",
+    "layout": "docs",
+    "output": "moyi/docs/index.html",
+    "url": "https://moyi.navinresearch.com/docs/",
+    "title": "Moyi documentation"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/edge/",
+    "layout": "index",
+    "output": "moyi/edge/index.html",
+    "url": "https://moyi.navinresearch.com/edge/",
+    "title": "Moyi edge runtime"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/evaluation/",
+    "layout": "index",
+    "output": "moyi/evaluation/index.html",
+    "url": "https://moyi.navinresearch.com/evaluation/",
+    "title": "Moyi language and context evaluation"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/models/",
+    "layout": "specs",
+    "output": "moyi/models/index.html",
+    "url": "https://moyi.navinresearch.com/models/",
+    "title": "Moyi models"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/models/family/",
+    "layout": "specs",
+    "output": "moyi/models/family/index.html",
+    "url": "https://moyi.navinresearch.com/models/family/",
+    "title": "Moyi model family"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/pricing/",
+    "layout": "availability",
+    "output": "moyi/pricing/index.html",
+    "url": "https://moyi.navinresearch.com/pricing/",
+    "title": "Moyi pricing"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/privacy/",
+    "layout": "ledger",
+    "output": "moyi/privacy/index.html",
+    "url": "https://moyi.navinresearch.com/privacy/",
+    "title": "Moyi privacy"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/research/",
+    "layout": "timeline",
+    "output": "moyi/research/index.html",
+    "url": "https://moyi.navinresearch.com/research/",
+    "title": "Moyi research"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/solutions/",
+    "layout": "workflow",
+    "output": "moyi/solutions/index.html",
+    "url": "https://moyi.navinresearch.com/solutions/",
+    "title": "Moyi solutions"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/solutions/realtime/",
+    "layout": "workflow",
+    "output": "moyi/solutions/realtime/index.html",
+    "url": "https://moyi.navinresearch.com/solutions/realtime/",
+    "title": "Moyi realtime solutions"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/speech/",
+    "layout": "index",
+    "output": "moyi/speech/index.html",
+    "url": "https://moyi.navinresearch.com/speech/",
+    "title": "Moyi speech"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/streaming/",
+    "layout": "index",
+    "output": "moyi/streaming/index.html",
+    "url": "https://moyi.navinresearch.com/streaming/",
+    "title": "Moyi streaming"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/terms/",
+    "layout": "ledger",
+    "output": "moyi/terms/index.html",
+    "url": "https://moyi.navinresearch.com/terms/",
+    "title": "Moyi terms"
+  },
+  {
+    "product": "moyi",
+    "name": "Moyi",
+    "path": "/translation/",
+    "layout": "index",
+    "output": "moyi/translation/index.html",
+    "url": "https://moyi.navinresearch.com/translation/",
+    "title": "Moyi translation"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/",
+    "layout": "editorial",
+    "output": "sandora/index.html",
+    "url": "https://sandora.navinresearch.com/",
+    "title": "Sandora — AI Department OS"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/404.html",
+    "layout": "index",
+    "output": "sandora/404.html",
+    "url": "https://sandora.navinresearch.com/404.html",
+    "title": "Not found"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/agents/",
+    "layout": "workflow",
+    "output": "sandora/agents/index.html",
+    "url": "https://sandora.navinresearch.com/agents/",
+    "title": "Agents"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/approvals/",
+    "layout": "workflow",
+    "output": "sandora/approvals/index.html",
+    "url": "https://sandora.navinresearch.com/approvals/",
+    "title": "Approvals"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/contact/",
+    "layout": "availability",
+    "output": "sandora/contact/index.html",
+    "url": "https://sandora.navinresearch.com/contact/",
+    "title": "Contact"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/departments/",
+    "layout": "index",
+    "output": "sandora/departments/index.html",
+    "url": "https://sandora.navinresearch.com/departments/",
+    "title": "Departments"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/developers/",
+    "layout": "docs",
+    "output": "sandora/developers/index.html",
+    "url": "https://sandora.navinresearch.com/developers/",
+    "title": "Developers"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/docs/",
+    "layout": "docs",
+    "output": "sandora/docs/index.html",
+    "url": "https://sandora.navinresearch.com/docs/",
+    "title": "Docs"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/enterprise/",
+    "layout": "comparison",
+    "output": "sandora/enterprise/index.html",
+    "url": "https://sandora.navinresearch.com/enterprise/",
+    "title": "Enterprise"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/github/",
+    "layout": "docs",
+    "output": "sandora/github/index.html",
+    "url": "https://sandora.navinresearch.com/github/",
+    "title": "GitHub"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/integrations/",
+    "layout": "media",
+    "output": "sandora/integrations/index.html",
+    "url": "https://sandora.navinresearch.com/integrations/",
+    "title": "Integrations"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/memory/",
+    "layout": "workflow",
+    "output": "sandora/memory/index.html",
+    "url": "https://sandora.navinresearch.com/memory/",
+    "title": "Memory"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/observability/",
+    "layout": "ledger",
+    "output": "sandora/observability/index.html",
+    "url": "https://sandora.navinresearch.com/observability/",
+    "title": "Observability"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/pricing/",
+    "layout": "availability",
+    "output": "sandora/pricing/index.html",
+    "url": "https://sandora.navinresearch.com/pricing/",
+    "title": "Pricing"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/privacy/",
+    "layout": "ledger",
+    "output": "sandora/privacy/index.html",
+    "url": "https://sandora.navinresearch.com/privacy/",
+    "title": "Privacy"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/product/",
+    "layout": "editorial",
+    "output": "sandora/product/index.html",
+    "url": "https://sandora.navinresearch.com/product/",
+    "title": "Product"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/releases/",
+    "layout": "docs",
+    "output": "sandora/releases/index.html",
+    "url": "https://sandora.navinresearch.com/releases/",
+    "title": "Releases"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/research/",
+    "layout": "timeline",
+    "output": "sandora/research/index.html",
+    "url": "https://sandora.navinresearch.com/research/",
+    "title": "Research"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/runtime/",
+    "layout": "workflow",
+    "output": "sandora/runtime/index.html",
+    "url": "https://sandora.navinresearch.com/runtime/",
+    "title": "Runtime"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/security/",
+    "layout": "ledger",
+    "output": "sandora/security/index.html",
+    "url": "https://sandora.navinresearch.com/security/",
+    "title": "Security"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/terms/",
+    "layout": "ledger",
+    "output": "sandora/terms/index.html",
+    "url": "https://sandora.navinresearch.com/terms/",
+    "title": "Terms"
+  },
+  {
+    "product": "sandora",
+    "name": "Sandora",
+    "path": "/workflows/",
+    "layout": "workflow",
+    "output": "sandora/workflows/index.html",
+    "url": "https://sandora.navinresearch.com/workflows/",
+    "title": "Workflows"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/",
+    "layout": "editorial",
+    "output": "sori/index.html",
+    "url": "https://sori.navinresearch.com/",
+    "title": "Sori — voice, with the boundary visible"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/404.html",
+    "layout": "index",
+    "output": "sori/404.html",
+    "url": "https://sori.navinresearch.com/404.html",
+    "title": "Sori — page not found"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/apps/",
+    "layout": "index",
+    "output": "sori/apps/index.html",
+    "url": "https://sori.navinresearch.com/apps/",
+    "title": "Apps | Sori"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/changelog/",
+    "layout": "timeline",
+    "output": "sori/changelog/index.html",
+    "url": "https://sori.navinresearch.com/changelog/",
+    "title": "Sori changelog"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/contact/",
+    "layout": "availability",
+    "output": "sori/contact/index.html",
+    "url": "https://sori.navinresearch.com/contact/",
+    "title": "Contact Sori"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/docs/",
+    "layout": "docs",
+    "output": "sori/docs/index.html",
+    "url": "https://sori.navinresearch.com/docs/",
+    "title": "Sori docs"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/download/",
+    "layout": "index",
+    "output": "sori/download/index.html",
+    "url": "https://sori.navinresearch.com/download/",
+    "title": "Download Sori"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/features/",
+    "layout": "index",
+    "output": "sori/features/index.html",
+    "url": "https://sori.navinresearch.com/features/",
+    "title": "Sori features"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/history/",
+    "layout": "index",
+    "output": "sori/history/index.html",
+    "url": "https://sori.navinresearch.com/history/",
+    "title": "Sori history"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/models/",
+    "layout": "specs",
+    "output": "sori/models/index.html",
+    "url": "https://sori.navinresearch.com/models/",
+    "title": "Sori models"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/permissions/",
+    "layout": "index",
+    "output": "sori/permissions/index.html",
+    "url": "https://sori.navinresearch.com/permissions/",
+    "title": "Sori permissions"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/pricing/",
+    "layout": "availability",
+    "output": "sori/pricing/index.html",
+    "url": "https://sori.navinresearch.com/pricing/",
+    "title": "Sori pricing"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/privacy/",
+    "layout": "ledger",
+    "output": "sori/privacy/index.html",
+    "url": "https://sori.navinresearch.com/privacy/",
+    "title": "Sori privacy"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/product/",
+    "layout": "index",
+    "output": "sori/product/index.html",
+    "url": "https://sori.navinresearch.com/product/",
+    "title": "The Sori product"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/profiles/",
+    "layout": "index",
+    "output": "sori/profiles/index.html",
+    "url": "https://sori.navinresearch.com/profiles/",
+    "title": "Sori profiles"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/security/",
+    "layout": "ledger",
+    "output": "sori/security/index.html",
+    "url": "https://sori.navinresearch.com/security/",
+    "title": "Sori security"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/studio/",
+    "layout": "index",
+    "output": "sori/studio/index.html",
+    "url": "https://sori.navinresearch.com/studio/",
+    "title": "Sori Studio"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/terms/",
+    "layout": "ledger",
+    "output": "sori/terms/index.html",
+    "url": "https://sori.navinresearch.com/terms/",
+    "title": "Sori terms"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/use-cases/",
+    "layout": "workflow",
+    "output": "sori/use-cases/index.html",
+    "url": "https://sori.navinresearch.com/use-cases/",
+    "title": "Use cases | Sori"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/use-cases/communication/",
+    "layout": "workflow",
+    "output": "sori/use-cases/communication/index.html",
+    "url": "https://sori.navinresearch.com/use-cases/communication/",
+    "title": "Voice for communication | Sori"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/use-cases/developers/",
+    "layout": "docs",
+    "output": "sori/use-cases/developers/index.html",
+    "url": "https://sori.navinresearch.com/use-cases/developers/",
+    "title": "Voice for developers | Sori"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/use-cases/writing/",
+    "layout": "workflow",
+    "output": "sori/use-cases/writing/index.html",
+    "url": "https://sori.navinresearch.com/use-cases/writing/",
+    "title": "Voice for writing | Sori"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/voice-actions/",
+    "layout": "index",
+    "output": "sori/voice-actions/index.html",
+    "url": "https://sori.navinresearch.com/voice-actions/",
+    "title": "Voice actions | Sori"
+  },
+  {
+    "product": "sori",
+    "name": "Sori",
+    "path": "/voice-dictation/",
+    "layout": "index",
+    "output": "sori/voice-dictation/index.html",
+    "url": "https://sori.navinresearch.com/voice-dictation/",
+    "title": "Voice dictation | Sori"
   }
 ]

@@ -19,8 +19,7 @@ const exactPublicFiles = [
   "content-routes/route-foundation.css",
   "content-routes/route-search.js",
   "content-routes/search-index.json",
-  "products/product-foundation.css",
-  "products/product-site.js",
+  "products/product-primitives.css",
   "products/site-manifest.json",
   "visitor-map/country-centroids.json",
   "visitor-map/index.html",
@@ -34,6 +33,7 @@ const publicTrees = [
   { prefix: "assets/", extensions: new Set([".png", ".svg", ".webp", ".woff", ".woff2", ".ttf"]) },
   { prefix: "products/media/", extensions: new Set([".avif", ".jpeg", ".jpg", ".png", ".svg", ".webp"]) },
   { prefix: "products/themes/", extensions: new Set([".css"]) },
+  { prefix: "products/runtime/", extensions: new Set([".js"]) },
 ];
 
 const forbiddenPatterns = [

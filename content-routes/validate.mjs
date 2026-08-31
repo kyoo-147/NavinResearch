@@ -108,6 +108,7 @@ for (const file of [
   "content-routes/route-search.js",
   "content-routes/release-search.js",
   "content-routes/release-search.js",
+  "products/product-primitives.css",
   "products/product-foundation.css",
   "products/product-site.js",
   "products/site-manifest.json",
@@ -132,14 +133,15 @@ for (const file of [
 }
 
 for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {
-  for (const file of [`products/content/${slug}.mjs`, `products/themes/${slug}.css`, `products/media/${slug}-system.svg`, `${slug}/index.html`, `${slug}/404.html`, `${slug}/robots.txt`, `${slug}/sitemap.xml`]) {
+  for (const file of [`products/content/${slug}.mjs`, `products/themes/${slug}.css`, `products/media/${slug}-system.svg`, `scripts/product-sites/${slug}.mjs`, `products/runtime/${slug}.js`, `${slug}/index.html`, `${slug}/404.html`, `${slug}/robots.txt`, `${slug}/sitemap.xml`]) {
     try { await access(file); } catch { errors.push(`${file}: required product asset missing`); }
   }
   const productHtml = await readFile(`${slug}/index.html`, "utf8");
-  for (const marker of [`https://${slug}.navinresearch.com/`, `product-${slug}`, `/products/themes/${slug}.css`, '/products/product-site.js', 'name="robots"', 'property="og:title"', 'class="skip-link"', 'id="main-content"', 'class="product-nav"', 'class="product-footer"']) {
+  for (const marker of [`https://${slug}.navinresearch.com/`, `product-${slug}`, `/products/themes/${slug}.css`, `/products/runtime/${slug}.js`, '/products/product-primitives.css', 'name="robots"', 'property="og:title"', 'class="skip-link"', 'id="main-content"', 'class="product-nav"', 'class="product-footer"']) {
     if (!productHtml.includes(marker)) errors.push(`${slug}/index.html: product marker missing: ${marker}`);
   }
   if (productHtml.includes("Details to be announced") || productHtml.includes("product-pricing")) errors.push(`${slug}/index.html: obsolete generic pricing scaffold remains`);
+  if (productHtml.includes("product-foundation.css") || productHtml.includes("product-site.js")) errors.push(`${slug}/index.html: legacy shared product shell remains`);
   if (!productHtml.includes('data-product-menu') || !productHtml.includes('aria-controls="product-menu"')) errors.push(`${slug}/index.html: responsive product navigation missing`);
   const productSitemap = await readFile(`${slug}/sitemap.xml`, "utf8");
   if (!productSitemap.includes(`https://${slug}.navinresearch.com/`)) errors.push(`${slug}/sitemap.xml: product origin missing`);
@@ -156,9 +158,10 @@ if (!Array.isArray(productManifest) || !productManifest.length) errors.push("pro
 for (const entry of productManifest) {
   try { await access(entry.output); } catch { errors.push(`product site manifest: missing ${entry.output}`); }
   const routeHtml = await readFile(entry.output, "utf8");
-  for (const marker of ['class="product-header"', 'class="product-main"', 'class="product-footer"', '<meta name="description"', 'data-layout="', 'product-page-hero--']) {
+  for (const marker of ['class="product-header"', 'class="product-main"', 'class="product-footer"', `<body class="product-${entry.product} product-renderer-${entry.product}`, '<meta name="description"', 'data-layout="', 'product-page-hero--', `/products/themes/${entry.product}.css`, `/products/runtime/${entry.product}.js`, '/products/product-primitives.css']) {
     if (!routeHtml.includes(marker)) errors.push(`${entry.output}: route marker missing: ${marker}`);
   }
+  if (routeHtml.includes('product-foundation.css') || routeHtml.includes('product-site.js')) errors.push(`${entry.output}: legacy shared product shell remains`);
   if (!entry.layout) errors.push(`${entry.output}: manifest layout missing`);
   if (entry.layout && !routeHtml.includes(`data-layout="${entry.layout}"`)) errors.push(`${entry.output}: manifest/layout mismatch`);
   if (entry.path !== "/404.html") {
