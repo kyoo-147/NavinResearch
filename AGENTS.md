@@ -1,5 +1,9 @@
 # Agent Instructions
 
+## Independent reconstruction systems
+
+This repository maintains eight independent systems: the multilingual Navin Research parent site plus Sandora, Moyi, Sori, HowHow, Dossier, Autopilot, and Lajvard. Preserve each system's renderer, theme, runtime, header, homepage, route-family composition, and footer identity; share only technical and accessibility primitives. The source research bundles live outside the repository at `D:/work/michael/artifacts/navin-reconstruction/{navin,sandora,moyi,sori,howhow,dossier,autopilot,lajvard}/`, with `DESIGN-DNA.json`, `ROUTES.md`, `SOURCE-MAP.md`, and `SYNTHESIS.md` where provided.
+
 Read `PROJECT_STATE.md` and `README.md` before making changes. Then read the documentation relevant to the area being changed, especially `docs/products.md`, `docs/design-system.md`, `docs/accessibility.md`, `analytics/README.md`, and `deployment-example/README.md`.
 
 ## Source and generation rules
@@ -12,7 +16,7 @@ Read `PROJECT_STATE.md` and `README.md` before making changes. Then read the doc
 
 ## Product and evidence rules
 
-- Navin Research and each of the seven product sites must remain structurally distinct. Share technical/accessibility primitives, not interchangeable page templates.
+- Navin Research and each of the seven product sites form eight structurally distinct systems. Share technical/accessibility primitives, not interchangeable page templates.
 - Preserve explicit evidence states such as `VERIFIED`, `SOURCE-BACKED`, `UNVERIFIED`, `NOT_CALLED`, `CONCEPT-STAGE`, `DESIGN INTENT`, and `NOT ANNOUNCED`.
 - Never invent prices, customers, testimonials, benchmarks, dates, certifications, model capabilities, language coverage, latency, compatibility, availability, physical proof, production maturity, or sentience.
 - Lajvard is the sole catalog item marked as research. Sandora, Moyi, Sori, HowHow, Dossier, and Autopilot remain products, while their individual evidence/access limitations stay explicit.

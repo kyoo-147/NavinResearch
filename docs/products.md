@@ -1,6 +1,6 @@
 # Product-site architecture
 
-Navin Research publishes seven product programs from one generated source tree:
+Navin Research publishes eight independent systems from one generated source tree: the parent Navin Research site plus seven product programs:
 
 - `sandora.navinresearch.com`
 - `moyi.navinresearch.com`
@@ -9,6 +9,12 @@ Navin Research publishes seven product programs from one generated source tree:
 - `dossier.navinresearch.com`
 - `autopilot.navinresearch.com`
 - `lajvard.navinresearch.com`
+
+## Independent system registry and research artifacts
+
+The eight systems are intentionally distinct: Navin Research (parent), Sandora, Moyi, Sori, HowHow, Dossier, Autopilot, and Lajvard. Each product owns its renderer, theme, runtime, route-family composition, header, homepage, and footer while using only shared technical/accessibility primitives.
+
+The reconstruction research artifacts are maintained outside the repository at `D:/work/michael/artifacts/navin-reconstruction/`, with one evidence bundle per system: `navin/`, `sandora/`, `moyi/`, `sori/`, `howhow/`, `dossier/`, `autopilot/`, and `lajvard/`. Each bundle contains the applicable `DESIGN-DNA.json`, `ROUTES.md`, `SOURCE-MAP.md`, and `SYNTHESIS.md`; implementation workflow reports are stored alongside these bundles.
 
 ## Source of truth
 
@@ -57,7 +63,7 @@ Do not add deposits, checkout, pricing numbers, delivery estimates, or an email-
 
 ## Layout contract
 
-The generator separates shared technical primitives from page composition. Every route resolves an explicit `data-layout` value (or a future `page.layout` override) from this vocabulary:
+The generator separates shared technical primitives from page composition. The parent Navin Research site and all seven product systems are independently authored at the renderer/theme/runtime layer; generated HTML is output, never the sole source of a change. Every route resolves an explicit `data-layout` value (or a future `page.layout` override) from this vocabulary:
 
 - `editorial` — thesis-led product landing page;
 - `index` — route directory or orientation;

@@ -11,6 +11,10 @@ The current reconstruction implementation milestone is committed, pushed, and de
 
 ## Current Architecture
 
+### Independent reconstruction systems
+
+The ecosystem comprises eight independent systems: the multilingual Navin Research parent plus Sandora, Moyi, Sori, HowHow, Dossier, Autopilot, and Lajvard. Their reconstruction evidence is external to the repository under `D:/work/michael/artifacts/navin-reconstruction/`, partitioned into `navin/`, `sandora/`, `moyi/`, `sori/`, `howhow/`, `dossier/`, `autopilot/`, and `lajvard/` bundles. Each product retains its own renderer, theme, runtime, header, homepage, route-family composition, and footer; shared code is limited to technical/accessibility primitives.
+
 ### Parent static site
 
 - `site.config.mjs` is the canonical EN/VI/ZH-CN content, metadata, route, chapter, legal, and locale-path contract.
@@ -156,6 +160,9 @@ The current reconstruction implementation milestone is committed, pushed, and de
 - `.github/workflows/validate.yml` — GitHub validation workflow; currently unable to start due account billing lock.
 
 ## Recent Changes
+
+- Integration checkpoint — cherry-pick the four isolated reconstruction commits and update the eight-system documentation with external research artifact paths (final integration commit recorded in Git history).
+- `f4543be`, `17fe673`, `483e0f3` — cherry-picked Navin/Sori, Sandora/Moyi, and HowHow/Dossier reconstruction systems.
 
 - `fc1e237` — add the public release allowlist builder and package-script gate; the current follow-up hardens sitemap output collisions and ancestor-symlink tests.
 - `f00554b` — add the durable agent rules and continuation checkpoint.
