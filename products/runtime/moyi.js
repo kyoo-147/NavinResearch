@@ -1,4 +1,11 @@
-/* Product runtime: moyi. */
+/* Product runtime: moyi listening-room state. */
+document.documentElement.dataset.moyiRuntime = "signal";
+const signalBus = document.querySelector(".moyi-signal-bus");
+if (signalBus) {
+  document.addEventListener("visibilitychange", () => {
+    signalBus.dataset.paused = document.hidden ? "true" : "false";
+  });
+}
 const menuButton = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
 const details = [...document.querySelectorAll(".product-nav__group")];

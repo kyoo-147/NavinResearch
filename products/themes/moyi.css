@@ -1,4 +1,13 @@
 .product-moyi .product-field { display: none; }
+.product-moyi header[data-shell="moyi-listening-room"] { border-bottom-color:var(--moyi-cyan); }
+.product-moyi .moyi-listening-header__status { display:flex; align-items:center; gap:.55rem; margin-left:auto; color:var(--moyi-muted); font-size:.65rem; letter-spacing:.12em; }
+.product-moyi .moyi-listening-header__status i { width:.45rem; height:.45rem; border:1px solid var(--moyi-signal); border-radius:50%; }
+.product-moyi main[data-shell="moyi-listening-room"] { position:relative; }
+.product-moyi .moyi-signal-bus { display:flex; align-items:center; justify-content:center; gap:1rem; min-height:3rem; border-bottom:1px solid var(--moyi-line); color:var(--moyi-cyan); font-size:.62rem; letter-spacing:.16em; }
+.product-moyi .moyi-signal-bus b { color:var(--moyi-signal); font-size:1rem; font-weight:400; }
+.product-moyi .moyi-waveform-frame { min-width:0; }
+.product-moyi .moyi-waveform-frame .product-visual { height:100%; }
+@media (max-width:700px) { .product-moyi .moyi-listening-header__status { display:none; } .product-moyi .moyi-signal-bus { justify-content:flex-start; gap:.55rem; font-size:.55rem; } }
 .product-moyi {
   --moyi-ink: #e8e2d5;
   --moyi-muted: #9c9b91;
