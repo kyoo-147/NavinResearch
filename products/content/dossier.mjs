@@ -56,7 +56,7 @@ const pages = pageSpecs.map(([path, title, description, headline, lede, kind, it
 }));
 
 const dossier = {
-  slug: "dossier", name: "Dossier", eyebrow: "Agentic Document Intelligence", status: "Early-access interest", catalogStatus: "product",
+  slug: "dossier", themeColor: '#f3f0e9', name: "Dossier", eyebrow: "Agentic Document Intelligence", status: "Early-access interest", catalogStatus: "product",
   thesis: "A local-first document desk for turning difficult pages into reviewable, approved, integration-ready structured data.",
   intro: "Dossier is a concept-stage direction for document work where extraction is only the beginning. Each proposed record stays connected to the page, the decision, and the person who approved it.",
   proofNote: "Concept stage: the workflow and capability areas are planned, not a claim of shipped OCR accuracy, automation coverage, or production readiness.",

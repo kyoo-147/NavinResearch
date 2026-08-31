@@ -1,97 +1,15 @@
-import { escapeHtml, headMarkup, canonicalUrl } from "../product-renderer-helpers.mjs";
+import { escapeHtml, headMarkup } from "../product-renderer-helpers.mjs";
+const e=escapeHtml;const normalizePath=(v="/")=>v==="/404.html"?v:(`/${String(v).replace(/^\/+|\/+$/g,"")}/`).replace("//","/");const ext=(h="")=>/^https?:|^mailto:/.test(h)?' target="_blank" rel="noopener noreferrer"':"";
+const layoutFor=(p)=>/docs|developers/.test(p.path)?"docs":/review|validation|reconciliation|security|privacy|terms/.test(p.path)?"ledger":/document-processing|extraction|workflows|use-cases/.test(p.path)?"workflow":/pricing|contact/.test(p.path)?"availability":"editorial";
+function nav(site,path){return site.navigation.map(item=>{const href=item.href||item.children?.[0]?.href||"/",active=normalizePath(href)===path||item.children?.some(c=>normalizePath(c.href)===path);if(item.children?.length)return `<details class="ds-nav-group"${active?" data-current":""}><summary>${e(item.label)}</summary><div>${item.children.map(c=>`<a href="${e(c.href)}"${normalizePath(c.href)===path?' aria-current="page"':""}${ext(c.href)}>${e(c.label)}</a>`).join("")}</div></details>`;return `<a href="${e(href)}"${active?' aria-current="page"':""}${ext(href)}>${e(item.label)}</a>`}).join("")}
+function documentView(page){const items=(page.visual?.items||["Source page","Field","Rule","Reviewer"]).slice(0,5);return `<figure class="ds-document"><div class="ds-document__sheet"><header><span>DOSSIER / INPUT</span><span>PAGE 01</span></header><h2>${e(page.visual?.title||"Document under review")}</h2><p class="ds-document__redacted">████ ████████ ███ █████</p><div class="ds-document__region"><span>SOURCE REGION</span><p>${e(page.visual?.caption||"Illustrative document canvas. No real customer document is shown.")}</p></div><ol>${items.map((item,index)=>`<li style="--x:${8+(index*11)%42}%;--w:${32+(index*13)%38}%"><span>${String(index+1).padStart(2,"0")}</span>${e(item)}</li>`).join("")}</ol><b class="ds-document__stamp">REVIEW</b></div><figcaption>Original abstract diagram · project-owned · no OCR claim.</figcaption></figure>`}
+function workstation(page){return `<section class="ds-workstation">${(page.sections||[]).map((s,i)=>`<article class="ds-case"><div class="ds-case__meta"><span>CASE ${String(i+1).padStart(3,"0")}</span><b>${e(s.status||"OPEN")}</b></div><div><h2>${e(s.title)}</h2><p>${e(s.body)}</p></div>${s.points?.length?`<dl>${s.points.map((p,j)=>`<div><dt>F${String(j+1).padStart(2,"0")}</dt><dd>${e(p)}</dd></div>`).join("")}</dl>`:""}</article>`).join("")}</section>`}
+function workflow(page){return `<section class="ds-pipeline"><header><span>DOCUMENT PIPELINE</span><p>Each transition keeps the source and exception visible.</p></header><ol>${(page.sections||[]).map((s,i)=>`<li><div class="ds-pipeline__step"><span>${String(i+1).padStart(2,"0")}</span><i aria-hidden="true"></i></div><div><h2>${e(s.title)}</h2><p>${e(s.body)}</p>${s.status?`<mark>${e(s.status)}</mark>`:""}</div>${s.points?.length?`<ul>${s.points.map(p=>`<li>${e(p)}</li>`).join("")}</ul>`:""}</li>`).join("")}</ol></section>`}
+function ledger(page){return `<section class="ds-review"><aside><span>REVIEW QUEUE</span><h2>Exceptions first.</h2><p>Automated suggestions remain separate from reviewer decisions.</p></aside><div>${(page.sections||[]).map((s,i)=>`<article><header><span>ITEM ${String(i+1).padStart(3,"0")}</span><strong>${e(s.status||"REVIEW REQUIRED")}</strong></header><h2>${e(s.title)}</h2><p>${e(s.body)}</p>${s.points?.length?`<ul>${s.points.map(p=>`<li><i></i>${e(p)}</li>`).join("")}</ul>`:""}</article>`).join("")}</div></section>`}
+function docs(page){return `<section class="ds-docs"><nav aria-label="Documentation contents"><span>CONTENTS</span>${(page.sections||[]).map((s,i)=>`<a href="#d${i+1}">${String(i+1).padStart(2,"0")} ${e(s.title)}</a>`).join("")}</nav><article>${(page.sections||[]).map((s,i)=>`<section id="d${i+1}"><span>${String(i+1).padStart(2,"0")}</span><div><h2>${e(s.title)}</h2><p>${e(s.body)}</p>${s.status?`<mark>${e(s.status)}</mark>`:""}</div>${s.points?.length?`<pre><code>${s.points.map(p=>`field: ${e(p)}`).join("\n")}</code></pre>`:""}</section>`).join("")}</article></section>`}
+function availability(page){const sections=page.sections||[];return `<section class="ds-register"><header><span>COMMERCIAL REGISTER</span><strong>${e(sections[0]?.status||"NOT PUBLISHED")}</strong></header><div class="ds-register__notice"><span>NOTICE</span><h2>${e(page.headline||page.title)}</h2><p>Dossier is not presented as generally available. No amount, tier, or purchasing route is inferred.</p></div><table><tbody>${sections.map((section,index)=>`<tr><th>${String(index+1).padStart(2,"0")} ${e(section.title)}</th><td>${e(section.body)}</td><td>${e(section.status||"UNPUBLISHED")}</td></tr>`).join("")}</tbody></table></section>`}
 
-const esc = escapeHtml;
-const normalizePath = (value = "/") => {
-  if (value === "/404.html") return value;
-  const path = `/${String(value).replace(/^\/+|\/+$/g, "")}/`;
-  return path === "//" ? "/" : path;
-};
-const layouts = new Set(["editorial", "index", "workflow", "docs", "specs", "media", "ledger", "timeline", "comparison", "availability"]);
-const layoutFor = (page) => {
-  if (page.layout && layouts.has(page.layout)) return page.layout;
-  const path = normalizePath(page.path);
-  if (path === "/") return "editorial";
-  if (/pricing|contact|availability/.test(path)) return "availability";
-  if (/docs|developers|github/.test(path)) return "docs";
-  if (/research|releases|changelog/.test(path)) return "timeline";
-  if (/benchmarks|specs|hardware|models|api/.test(path)) return "specs";
-  if (/use-cases|solutions|workflows|planning|control|movement/.test(path)) return "workflow";
-  if (/integrations|devices|gallery|media/.test(path)) return "media";
-  if (/security|privacy|terms/.test(path)) return "ledger";
-  return page.visual?.kind === "comparison" ? "comparison" : "index";
-};
-
-function linkAttrs(href) {
-  return /^https?:|^mailto:/.test(href) ? ' target="_blank" rel="noopener noreferrer"' : "";
-}
-
-function navItem(item, activePath) {
-  const href = item.href || item.children?.[0]?.href || "/";
-  const active = normalizePath(href) === activePath || item.children?.some((child) => normalizePath(child.href) === activePath);
-  if (item.children?.length) {
-    return `<details class="product-nav__group"${active ? " data-active" : ""}><summary>${esc(item.label)}</summary><div class="product-nav__menu">${item.children.map((child) => `<a href="${esc(child.href)}"${normalizePath(child.href) === activePath ? ' aria-current="page"' : ""}${linkAttrs(child.href)}>${esc(child.label)}</a>`).join("")}</div></details>`;
-  }
-  return `<a href="${esc(href)}"${active ? ' aria-current="page"' : ""}${linkAttrs(href)}>${esc(item.label)}</a>`;
-}
-
-function visualMarkup(product, visual = {}) {
-  const items = visual.items || [];
-  if (visual.kind === "system" || !visual.kind) {
-    return `<figure class="product-visual product-visual--system"><img src="/products/media/${product.slug}-system.svg" width="1200" height="620" alt="${esc(visual.title || `${product.name} system architecture`)}"><figcaption>${esc(visual.caption || "System view")}</figcaption></figure>`;
-  }
-  if (visual.src) {
-    return `<figure class="product-visual product-visual--media"><img src="${esc(visual.src)}" alt="${esc(visual.alt || visual.title)}" width="1400" height="900"><figcaption>${esc(visual.caption || "Project-owned source material")}</figcaption></figure>`;
-  }
-  return `<figure class="product-visual product-visual--${esc(visual.kind)}" data-visual="${esc(visual.kind)}"><div class="product-visual__stage"><span class="product-visual__title">${esc(visual.title || product.name)}</span><div class="product-visual__items">${items.map((item, index) => `<span style="--item:${index}">${esc(item)}</span>`).join("")}</div></div>${visual.caption ? `<figcaption>${esc(visual.caption)}</figcaption>` : ""}</figure>`;
-}
-
-function renderSectionPoints(section, layout) {
-  if (!section.points?.length) return "";
-  const items = section.points.map((point) => `<li>${esc(point)}</li>`).join("");
-  if (["workflow", "timeline"].includes(layout)) return `<ol class="product-section-points product-section-points--ordered">${items}</ol>`;
-  if (["specs", "ledger"].includes(layout)) return `<dl class="product-section-points product-section-points--ledger">${section.points.map((point, index) => `<div><dt>${String(index + 1).padStart(2, "0")}</dt><dd>${esc(point)}</dd></div>`).join("")}</dl>`;
-  return `<ul class="product-section-points">${items}</ul>`;
-}
-
-function sectionsMarkup(page) {
-  const layout = layoutFor(page);
-  return layoutSectionMarkup(page, layout);
-}
-
-function footerMarkup(product, site) {
-  const hasLegal = site.footerGroups.some((group) => group.title.toLowerCase() === "legal");
-  const legal = hasLegal ? "" : `<section><h2>Legal</h2><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a>${product.slug === "sori" || product.slug === "sandora" || product.slug === "dossier" ? '<a href="/security/">Security</a>' : ""}</section>`;
-  return `<footer class="product-footer" data-site-footer="dossier" aria-label="Dossier footer"><div class="product-footer__brand"><a href="/" class="product-wordmark">${esc(product.name)}</a><p>${esc(product.thesis)}</p><span>A Navin Research project</span></div><div class="product-footer__groups">${site.footerGroups.map((group) => `<section><h2>${esc(group.title)}</h2>${group.links.map((link) => `<a href="${esc(link.href)}"${linkAttrs(link.href)}>${esc(link.label)}</a>`).join("")}</section>`).join("")}${legal}</div><div class="product-footer__base"><span>© <span data-current-year></span> ${esc(product.name)}</span><a href="https://navinresearch.com/products/">Navin Research products</a></div></footer>`;
-}
-
-function pageTemplate(product, site, page) {
-  const path = normalizePath(page.path);
-  const layout = layoutFor(page);
-  const isHome = path === "/";
-  const cta = page.cta || site.primaryCta;
-  const productRoute = site.pages.some((candidate) => normalizePath(candidate.path) === "/product/") ? "/product/" : site.navigation[0]?.href || "/";
-  return `<!doctype html>
-<html lang="en" class="no-js">
-<head>
-  ${headMarkup({ product, page, path, layout, isHome })}
-</head>
-<body class="product-${product.slug} product-renderer-${product.slug} product-layout-${layout}" data-product="${product.slug}" data-route="${esc(path)}" data-layout="${layout}">
-  <a class="skip-link" href="#main-content">Skip to content</a><div class="product-field" aria-hidden="true"></div>
-  <header class="product-header" data-site-header="dossier"><a class="product-wordmark" href="/" aria-label="${esc(product.name)} home">${esc(product.name)}</a><button class="product-menu-button" type="button" aria-controls="product-menu" aria-expanded="false" data-product-menu>Menu</button><div class="product-menu" id="product-menu"><nav class="product-nav" aria-label="Primary navigation">${site.navigation.map((item) => navItem(item, path)).join("")}</nav><a class="product-header__cta" href="${esc(site.primaryCta.href)}"${linkAttrs(site.primaryCta.href)}>${esc(site.primaryCta.label)}</a></div></header>
-  <main id="main-content" class="product-main" data-site-main="dossier"><section class="product-page-hero product-page-hero--${layout}${isHome ? " product-page-hero--home dossier-home" : ""}"><div class="product-page-hero__copy">${page.eyebrow ? `<p class="product-eyebrow">${esc(page.eyebrow)}</p>` : ""}<h1>${esc(page.headline || page.title)}</h1><p>${esc(page.lede || page.description)}</p>${isHome ? `<div class="product-page-hero__actions"><a class="product-button" href="${esc(site.primaryCta.href)}"${linkAttrs(site.primaryCta.href)}>${esc(site.primaryCta.label)}</a><a class="product-text-link" href="${esc(productRoute)}">Explore the product <span aria-hidden="true">→</span></a></div>` : ""}</div>${visualMarkup(product, page.visual)}</section><div class="product-page-sections product-page-sections--${layout}">${sectionsMarkup(page)}</div>${cta ? `<section class="product-page-cta"><div><h2>${esc(cta.title || "Continue")}</h2><p>${esc(cta.body || product.availability.body)}</p></div><a class="product-button" href="${esc(cta.href)}"${linkAttrs(cta.href)}>${esc(cta.label)}</a></section>` : ""}${isHome ? `<section class="product-evidence-block"><div><h2>Evidence and limitations</h2><p>${esc(product.proofNote)}</p></div><ul>${product.evidence.map((item) => `<li><span>${esc(item.label)}</span><strong>${esc(item.value)}</strong><small>${esc(item.state)}</small></li>`).join("")}</ul></section>` : ""}</main>${footerMarkup(product, site)}</body>
-</html>`;
-}
-export default function renderProductPage(product, site, page) { return pageTemplate(product, site, page).replace(/[ 	]+$/gm, ""); }
-export { layoutFor, normalizePath };
-
-function layoutSectionMarkup(page, layout) {
-  const sections = page.sections || [];
-  const item = (section, index, pointsMarkup, tag = "section") => `<${tag} class="product-page-section product-section--${layout}" data-kind="${esc(section.kind || "narrative")}" data-renderer="${layout}"><div class="product-page-section__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div><div class="product-page-section__copy"><h2>${esc(section.title)}</h2><p>${esc(section.body)}</p>${section.status ? `<strong class="product-page-section__status">${esc(section.status)}</strong>` : ""}</div>${pointsMarkup}${section.cta ? `<a class="product-text-link" href="${esc(section.cta.href)}"${linkAttrs(section.cta.href)}>${esc(section.cta.label)} <span aria-hidden="true">→</span></a>` : ""}</${tag}>`;
-  if (layout === "workflow") return `<ol class="product-workflow" data-site-frame="dossier-state-rail" aria-label="Dossier document workflow">${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout), "li")).join("")}</ol>`;
-  if (layout === "ledger") return `<aside class="product-ledger" data-site-frame="dossier-boundary-register" aria-label="Dossier control register">${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</aside>`;
-  if (layout === "docs") return `<article class="product-docs-frame" data-site-frame="dossier-documentation"><header><p class="product-docs-frame__label">Dossier field manual</p><p>Read the document states, review boundaries, and integration contracts in sequence.</p></header><div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</div></article>`;
-  if (layout === "specs") return `<dl class="product-specs-frame">${sections.map((section, index) => `<div><dt><span>${String(index + 1).padStart(2, "0")}</span>${esc(section.title)}</dt><dd>${esc(section.body)}${renderSectionPoints(section, layout)}</dd></div>`).join("")}</dl>`;
-  if (layout === "media") return `<section class="product-media-frame" aria-label="Source material"><div class="product-media-frame__intro"><p>Source material</p><p>Images and visual references stay close to their provenance.</p></div><div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</div></section>`;
-  if (layout === "availability") return `<section class="product-availability-frame" aria-label="Availability status"><div class="product-availability-frame__status">STATUS / ${esc(sections.length ? sections[0].status || "NOT ANNOUNCED" : "NOT ANNOUNCED")}</div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</section>`;
-  return sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("");
-}
+function content(page,mode){if(mode==="availability")return availability(page);if(mode==="workflow")return workflow(page);if(mode==="ledger")return ledger(page);if(mode==="docs")return docs(page);return workstation(page)}
+function footer(product,site){return `<footer class="ds-footer"><div class="ds-footer__folio"><span>DOSSIER</span><strong>Document intelligence with the source still attached.</strong><p>${e(product.thesis)}</p></div><div class="ds-footer__index">${site.footerGroups.map((g,i)=>`<section><span>0${i+1}</span><h3>${e(g.title)}</h3>${g.links.map(l=>`<a href="${e(l.href)}"${ext(l.href)}>${e(l.label)}</a>`).join("")}</section>`).join("")}</div><div class="ds-footer__base"><span>© <span data-current-year></span> Dossier</span><a href="https://navinresearch.com/products/">Navin Research / Products ↗</a></div></footer>`}
+function render(product,site,page){const path=normalizePath(page.path),mode=layoutFor(page),home=path==="/",cta=page.cta||site.primaryCta;return `<!doctype html><html lang="en" class="no-js"><head>${headMarkup({product,page,path,layout:mode,isHome:home})}</head><body class="ds-body ds-${mode}" data-product="dossier" data-route="${e(path)}"><a class="skip-link" href="#main-content">Skip to content</a><header class="ds-header"><a class="ds-logo" href="/" aria-label="Dossier home"><span>D</span>DOSSIER</a><div class="ds-file"><span>FILE</span><b>${e(path==="/"?"000 / INTAKE":path.replaceAll("/"," ").trim().toUpperCase())}</b></div><button class="product-menu-button ds-menu-button" type="button" aria-controls="product-menu" aria-expanded="false" data-product-menu>INDEX</button><div class="product-menu ds-menu" id="product-menu"><nav aria-label="Primary navigation">${nav(site,path)}</nav><a class="ds-contact" href="/contact/">Open a case ↗</a></div></header><main id="main-content"><section class="ds-hero"><div class="ds-hero__copy"><p>${e(page.eyebrow||"DOCUMENT INTELLIGENCE / ACCOUNTABLE HANDOFF")}</p><h1>${e(page.headline||page.title)}</h1><p>${e(page.lede||page.description)}</p>${home?`<div class="ds-actions"><a href="/product/">ENTER THE WORKSTATION</a><a href="/review/">SEE THE REVIEW QUEUE →</a></div>`:""}</div>${documentView(page)}</section>${content(page,mode)}${cta?`<section class="ds-handoff"><span>EXPORT / HANDOFF</span><div><h2>${e(cta.title||"Keep the source attached")}</h2><p>${e(cta.body||product.availability.body)}</p></div><a href="${e(cta.href)}"${ext(cta.href)}>${e(cta.label)} →</a></section>`:""}${home?`<section class="ds-proof"><div><span>AUDIT NOTES</span><h2>Proof belongs beside the proposition.</h2><p>${e(product.proofNote)}</p></div><table><tbody>${product.evidence.map((item,i)=>`<tr><th>${String(i+1).padStart(2,"0")} ${e(item.label)}</th><td>${e(item.value)}</td><td>${e(item.state)}</td></tr>`).join("")}</tbody></table></section>`:""}</main>${footer(product,site)}</body></html>`}
+export default function renderDossier(product,site,page){return render(product,site,page).replace(/[ \t]+$/gm,"")};export{layoutFor,normalizePath};

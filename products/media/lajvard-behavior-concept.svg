@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Lajvard behavior notebook concept</title><desc id="desc">A project-owned concept plate showing a small robot moving between room zones. Illustrative research notation, not a completed behavior.</desc>
+<rect width="1200" height="760" fill="#141714"/><g stroke="#4f574d" stroke-width="2" fill="none"><path d="M120 150h960v480H120z"/><path d="M120 390h300V150M780 390h300M780 390v240"/><path d="M420 390h360" stroke-dasharray="8 12"/></g>
+<path d="M235 500C330 420 390 455 480 380s175-70 245-10 120 10 210-115" fill="none" stroke="#ff5c24" stroke-width="5" stroke-dasharray="12 10"/>
+<g transform="translate(245 495)"><ellipse cy="38" rx="62" ry="18" fill="#0a0c0a"/><path d="M-43-25q0-50 43-50t43 50v45q0 34-43 34T-43 20z" fill="#cad4c3"/><circle cx="-16" cy="-22" r="5" fill="#181916"/><circle cx="16" cy="-22" r="5" fill="#181916"/></g>
+<g font-family="Arial,sans-serif" fill="#f1efe7"><text x="70" y="78" font-size="18">LAJVARD / BEHAVIOR NOTEBOOK 03</text><text x="155" y="190" font-size="16">REST ZONE</text><text x="805" y="190" font-size="16">HUMAN ACTIVITY ZONE</text><text x="805" y="430" font-size="16">RETURN PATH</text><text x="70" y="705" font-size="17">ILLUSTRATIVE PATH / NO LIVE RUN / NO AUTONOMOUS CAPABILITY CLAIM</text><text x="945" y="705" font-size="17" fill="#ff5c24">IN RESEARCH</text></g>
+<g fill="#ff5c24"><circle cx="480" cy="380" r="8"/><circle cx="725" cy="370" r="8"/><circle cx="935" cy="255" r="8"/></g>
+</svg>

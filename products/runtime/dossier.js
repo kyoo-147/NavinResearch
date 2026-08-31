@@ -1,20 +1,20 @@
 /* Product runtime: dossier. */
 const menuButton = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
-const details = [...document.querySelectorAll(".product-nav__group")];
+const details = [...document.querySelectorAll(".ds-nav-group")];
 const firstMenuLink = menu?.querySelector("a");
 
 function setMenu(open) {
   document.documentElement.classList.toggle("product-menu-open", open);
   menuButton?.setAttribute("aria-expanded", String(open));
-  if (menu) menu.inert = !open && matchMedia("(max-width: 800px)").matches;
+  if (menu) menu.inert = !open && matchMedia("(max-width: 1000px)").matches;
   if (!open) details.forEach((item) => item.removeAttribute("open"));
 }
 
 menuButton?.addEventListener("click", () => {
   const open = menuButton.getAttribute("aria-expanded") !== "true";
   setMenu(open);
-  if (open && matchMedia("(max-width: 800px)").matches) requestAnimationFrame(() => firstMenuLink?.focus());
+  if (open && matchMedia("(max-width: 1000px)").matches) requestAnimationFrame(() => firstMenuLink?.focus());
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
@@ -28,7 +28,7 @@ details.forEach((item) => item.addEventListener("toggle", () => {
   details.filter((candidate) => candidate !== item).forEach((candidate) => candidate.removeAttribute("open"));
 }));
 
-const media = matchMedia("(max-width: 800px)");
+const media = matchMedia("(max-width: 1000px)");
 function syncMenuMode() {
   if (media.matches) setMenu(false);
   else {

@@ -1,7 +1,7 @@
 /* Sori runtime: one accessible, deliberately quiet navigation state. */
 const button = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
-const mobile = matchMedia("(max-width: 800px)");
+const mobile = matchMedia("(max-width: 900px)");
 let returnFocus = null;
 function setMenu(open, restore = true) {
   document.documentElement.classList.toggle("product-menu-open", open);

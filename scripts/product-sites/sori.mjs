@@ -1,64 +1,41 @@
-import { escapeHtml, headMarkup, canonicalUrl } from "../product-renderer-helpers.mjs";
+import { escapeHtml, headMarkup } from "../product-renderer-helpers.mjs";
+const e = escapeHtml;
+const normalizePath = (value = "/") => value === "/404.html" ? value : (`/${String(value).replace(/^\/+|\/+$/g, "")}/`).replace("//", "/");
+const external = (href = "") => /^https?:|^mailto:/.test(href) ? ' target="_blank" rel="noopener noreferrer"' : "";
+const layoutFor = (page) => /docs/.test(page.path) ? "docs" : /download|pricing|contact/.test(page.path) ? "availability" : /privacy|security|terms|permissions/.test(page.path) ? "ledger" : /use-cases|voice-|apps|features/.test(page.path) ? "workflow" : /changelog|history/.test(page.path) ? "timeline" : "editorial";
 
-const esc = escapeHtml;
-const layouts = new Set(["editorial", "index", "workflow", "docs", "specs", "media", "ledger", "timeline", "comparison", "availability"]);
-const normalizePath = (value = "/") => value === "/404.html" ? value : `/${String(value).replace(/^\/+|\/+$/g, "")}/`.replace("//", "/");
-const layoutFor = (page) => {
-  if (page.layout && layouts.has(page.layout)) return page.layout;
-  const path = normalizePath(page.path);
-  if (path === "/") return "editorial";
-  if (/pricing|contact|availability/.test(path)) return "availability";
-  if (/docs|developers|github/.test(path)) return "docs";
-  if (/research|releases|changelog/.test(path)) return "timeline";
-  if (/benchmarks|specs|hardware|models|api/.test(path)) return "specs";
-  if (/use-cases|solutions|workflows|planning|control|movement/.test(path)) return "workflow";
-  if (/integrations|devices|gallery|media/.test(path)) return "media";
-  if (/security|privacy|terms/.test(path)) return "ledger";
-  return "index";
-};
-const external = (href) => /^https?:|^mailto:/.test(href) ? ' target="_blank" rel="noopener noreferrer"' : "";
-
-function navMarkup(site, path) {
-  const links = [
-    ["Product", "/product/"], ["Studio", "/studio/"], ["Download", "/download/"],
-    ["Docs", "/docs/"], ["Pricing", "/pricing/"]
-  ];
-  return links.map(([label, href]) => `<a href="${href}"${path === href ? ' aria-current="page"' : ""}>${label}</a>`).join("") +
-    `<a class="sori-nav__cta" href="${esc(site.primaryCta.href)}"${external(site.primaryCta.href)}>${esc(site.primaryCta.label)}</a>`;
+function navigation(site, path) {
+  const preferred = ["Product", "Use cases", "Download", "Pricing"];
+  const entries = preferred.map((label) => site.navigation.find((item) => item.label === label)).filter(Boolean);
+  return entries.map((item) => {
+    const href = item.href || item.children?.[0]?.href || "/";
+    const active = normalizePath(href) === path || item.children?.some((child) => normalizePath(child.href) === path);
+    if (item.children?.length) return `<details class="so-nav-group"${active ? " data-current" : ""}><summary>${e(item.label)} <span>⌄</span></summary><div>${item.children.map((child) => `<a href="${e(child.href)}"${normalizePath(child.href) === path ? ' aria-current="page"' : ""}>${e(child.label)}</a>`).join("")}</div></details>`;
+    return `<a href="${e(href)}"${active ? ' aria-current="page"' : ""}>${e(item.label)}</a>`;
+  }).join("");
 }
 
-function visualMarkup(product, visual = {}) {
-  if (visual.src) return `<figure class="sori-visual sori-visual--diagram"><img src="${esc(visual.src)}" width="1400" height="900" alt="${esc(visual.alt || visual.title || product.name)}"><figcaption>${esc(visual.caption || "Project-owned source material")}</figcaption></figure>`;
-  const items = (visual.items || []).map((item, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span>${esc(item)}</li>`).join("");
-  return `<figure class="sori-visual sori-visual--instrument"><div class="sori-instrument"><p>${esc(visual.title || "SORI / LOCAL VOICE")}</p><ol>${items}</ol><b aria-hidden="true">⌁</b></div>${visual.caption ? `<figcaption>${esc(visual.caption)}</figcaption>` : ""}</figure>`;
+function voiceCanvas(page) {
+  const snippets = (page.visual?.items || ["Speak", "Review", "Approve", "Send"]).slice(0, 5);
+  return `<div class="so-canvas" aria-label="Illustrative Sori editing canvas"><div class="so-canvas__window"><div class="so-canvas__chrome"><i></i><i></i><i></i><span>Desktop insertion canvas / illustrative</span></div><div class="so-canvas__note"><span>TRANSCRIPT UNDER REVIEW</span><p>${e(page.visual?.title || "Your voice stays attached to the action.")}</p><div class="so-editline" aria-hidden="true"><span>Insertion target</span><b></b><kbd>Ctrl ↵ approve</kbd></div></div><ol>${snippets.map((item,index)=>`<li><b>${String(index+1).padStart(2,"0")}</b><span>${e(item)}</span><i>${index===snippets.length-1?"Review":"Ready"}</i></li>`).join("")}</ol></div><p>${e(page.visual?.caption || "Concept UI only. No live model or device behavior is represented.")}</p></div>`;
 }
 
-function points(section, ordered = false) {
-  if (!section.points?.length) return "";
-  const tag = ordered ? "ol" : "ul";
-  return `<${tag} class="sori-points">${section.points.map((point) => `<li>${esc(point)}</li>`).join("")}</${tag}>`;
+function editorial(page) {
+  return `<section class="so-stories">${(page.sections || []).map((section,index)=>`<article class="so-story so-story--${(index%3)+1}"><div class="so-story__number">${String(index+1).padStart(2,"0")}</div><div><p>${e(section.kind || "VOICE PRACTICE")}</p><h2>${e(section.title)}</h2><p>${e(section.body)}</p>${section.status?`<strong>${e(section.status)}</strong>`:""}</div>${section.points?.length?`<ul>${section.points.map(point=>`<li>${e(point)}</li>`).join("")}</ul>`:""}</article>`).join("")}</section>`;
 }
-function sectionMarkup(section, index, layout) {
-  return `<section class="product-page-section sori-section sori-section--${esc(section.kind || "narrative")}" data-kind="${esc(section.kind || "narrative")}" data-renderer="${layout}"><div class="sori-section__count">${String(index + 1).padStart(2, "0")}</div><div class="sori-section__copy"><h2>${esc(section.title)}</h2><p>${esc(section.body)}</p>${section.status ? `<strong class="sori-status">${esc(section.status)}</strong>` : ""}</div>${points(section, layout === "workflow")}${section.cta ? `<a class="sori-inline" href="${esc(section.cta.href)}"${external(section.cta.href)}>${esc(section.cta.label)} <span aria-hidden="true">↗</span></a>` : ""}</section>`;
+function useCases(page) {
+  return `<section class="so-use"><header><span>YOUR VOICE, IN CONTEXT</span><p>Each action remains reviewable before it leaves the canvas.</p></header><div>${(page.sections || []).map((section,index)=>`<article><span>${String(index+1).padStart(2,"0")}</span><h2>${e(section.title)}</h2><p>${e(section.body)}</p>${section.points?.length?`<ul>${section.points.map(point=>`<li>${e(point)}</li>`).join("")}</ul>`:""}</article>`).join("")}</div></section>`;
 }
-function contentFrame(page, layout) {
-  const sections = page.sections || [];
-  const body = sections.map((section, index) => sectionMarkup(section, index, layout)).join("");
-  if (layout === "workflow") return `<ol class="product-workflow" aria-label="Sori workflow">${body}</ol>`;
-  if (layout === "ledger") return `<aside class="product-ledger" aria-label="Sori boundary register">${body}</aside>`;
-  if (layout === "docs") return `<article class="product-docs-frame"><header><strong>READ THE BOUNDARY FIRST</strong><p>Source description, local test, and physical voice session are separate receipts.</p></header>${body}</article>`;
-  if (layout === "specs") return `<dl class="product-specs-frame">${sections.map((section, index) => `<div class="sori-spec"><dt><span>${String(index + 1).padStart(2, "0")}</span>${esc(section.title)}</dt><dd>${esc(section.body)}${points(section)}</dd></div>`).join("")}</dl>`;
-  if (layout === "availability") return `<section class="product-availability-frame"><p class="sori-availability">ACCESS / NOT ANNOUNCED</p>${body}</section>`;
-  return `<div class="sori-frame">${body}</div>`;
+function boundaries(page) {
+  return `<section class="so-boundaries"><div class="so-boundaries__intro"><span>BOUNDARY CENTER</span><h2>Know what leaves the canvas.</h2></div>${(page.sections || []).map((section,index)=>`<details${index===0?" open":""}><summary><span>${String(index+1).padStart(2,"0")}</span>${e(section.title)}<b>+</b></summary><div><p>${e(section.body)}</p>${section.status?`<strong>${e(section.status)}</strong>`:""}${section.points?.length?`<ul>${section.points.map(point=>`<li>${e(point)}</li>`).join("")}</ul>`:""}</div></details>`).join("")}</section>`;
 }
-function footer(product, site) {
-  return `<footer class="product-footer"><div><a class="sori-footer__mark" href="/">${esc(product.name)}</a><p>${esc(product.thesis)}</p><small>A Navin Research project · evidence stays visible</small></div><nav aria-label="Footer navigation"><a href="/product/">Product</a><a href="/studio/">Studio</a><a href="/docs/">Docs</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav><div class="product-footer__base"><span>© <span data-current-year></span> ${esc(product.name)}</span><a href="https://navinresearch.com/products/"${external("https://navinresearch.com/products/")}>Navin Research products</a></div></footer>`;
+function docs(page) {
+  return `<section class="so-guide"><header><span>SORI GUIDE</span><h2>Start with the boundary.</h2></header>${(page.sections || []).map((section,index)=>`<article><span>${String(index+1).padStart(2,"0")}</span><div><h2>${e(section.title)}</h2><p>${e(section.body)}</p></div>${section.points?.length?`<ol>${section.points.map(point=>`<li>${e(point)}</li>`).join("")}</ol>`:""}</article>`).join("")}</section>`;
 }
-function render(product, site, page) {
-  const path = normalizePath(page.path); const layout = layoutFor(page); const home = path === "/";
-  const productRoute = "/product/";
-  const cta = page.cta || site.primaryCta;
-  return `<!doctype html><html lang="en" class="no-js"><head>${headMarkup({ product, page, path, layout, isHome: home })}</head><body class="product-${product.slug} product-renderer-${product.slug} product-layout-${layout}" data-product="${product.slug}" data-route="${esc(path)}" data-layout="${layout}"><a class="skip-link" href="#main-content">Skip to content</a><div class="product-field" aria-hidden="true"></div><header class="product-header"><a class="product-wordmark" href="/" aria-label="Sori home">sori<span>·</span></a><button class="product-menu-button" type="button" aria-controls="product-menu" aria-expanded="false" data-product-menu>Menu</button><div class="product-menu" id="product-menu"><nav class="product-nav" aria-label="Primary navigation">${navMarkup(site, path)}</nav></div></header><main id="main-content" class="product-main"><section class="product-page-hero product-page-hero--${layout}${home ? " product-page-hero--home" : ""}"><div class="sori-hero__copy">${page.eyebrow ? `<p class="product-eyebrow">${esc(page.eyebrow)}</p>` : ""}<h1>${esc(page.headline || page.title)}</h1><p>${esc(page.lede || page.description)}</p>${home ? `<div class="product-page-hero__actions"><a class="product-button" href="${esc(site.primaryCta.href)}">${esc(site.primaryCta.label)}</a><a class="sori-inline" href="${productRoute}">See the product <span aria-hidden="true">↘</span></a></div>` : ""}</div>${visualMarkup(product, page.visual)}</section>${contentFrame(page, layout)}${cta ? `<section class="product-page-cta sori-cta"><div><p class="product-eyebrow">NEXT SIGNAL</p><h2>${esc(cta.title || "Continue with care.")}</h2><p>${esc(cta.body || product.availability.body)}</p></div><a class="product-button" href="${esc(cta.href)}"${external(cta.href)}>${esc(cta.label)}</a></section>` : ""}${home ? `<section class="product-evidence-block sori-evidence"><div><p class="product-eyebrow">THE RECEIPT</p><h2>Direction is not proof.</h2><p>${esc(product.proofNote)}</p></div><ul>${product.evidence.map((item) => `<li><span>${esc(item.label)}</span><strong>${esc(item.value)}</strong><small>${esc(item.state)}</small></li>`).join("")}</ul></section>` : ""}</main>${footer(product, site)}</body></html>`;
-}
-export default function renderProductPage(product, site, page) { return render(product, site, page).replace(/[ \t]+$/gm, ""); }
-export { layoutFor, normalizePath };
+function availability(page){const sections=page.sections||[];return `<section class="so-offer"><div class="so-offer__state"><span>PUBLIC STATUS</span><b>${e(sections[0]?.status||"NOT ANNOUNCED")}</b><p>Sori has not published a price, purchase path, or release date on this site.</p></div><div class="so-offer__details">${sections.map((section,index)=>`<article><span>${String(index+1).padStart(2,"0")}</span><h2>${e(section.title)}</h2><p>${e(section.body)}</p>${section.status?`<strong>${e(section.status)}</strong>`:""}</article>`).join("")}</div></section>`}
+
+function content(page, mode){ if(mode==="availability") return availability(page); if(mode==="workflow") return useCases(page); if(mode==="ledger") return boundaries(page); if(mode==="docs") return docs(page); return editorial(page); }
+function footer(product,site){return `<footer class="so-footer"><div class="so-footer__close"><p>FROM THE FIRST WORD</p><h2>Keep your voice close.</h2><span>${e(product.thesis)}</span></div><div class="so-footer__links">${site.footerGroups.map(group=>`<section><h3>${e(group.title)}</h3>${group.links.map(link=>`<a href="${e(link.href)}"${external(link.href)}>${e(link.label)}</a>`).join("")}</section>`).join("")}</div><div class="so-footer__base"><a href="/">SORI ●</a><span>© <span data-current-year></span> · A Navin Research project</span></div></footer>`}
+function render(product,site,page){const path=normalizePath(page.path),mode=layoutFor(page),home=path==="/",cta=page.cta||site.primaryCta;return `<!doctype html><html lang="en" class="no-js"><head>${headMarkup({product,page,path,layout:mode,isHome:home})}</head><body class="so-body so-${mode}" data-product="sori" data-route="${e(path)}"><a class="skip-link" href="#main-content">Skip to content</a><header class="so-header"><a class="so-logo" href="/" aria-label="Sori home"><span>SORI</span><i aria-hidden="true"></i></a><button class="product-menu-button so-menu-button" type="button" aria-expanded="false" aria-controls="product-menu" data-product-menu>Menu</button><div class="product-menu so-menu" id="product-menu"><nav aria-label="Primary navigation">${navigation(site,path)}</nav><a class="so-download" href="/download/">Download <span>↘</span></a></div></header><main id="main-content"><section class="so-hero"><div class="so-hero__copy"><p>${e(page.eyebrow||"VOICE WITH A VISIBLE BOUNDARY")}</p><h1>${e(page.headline||page.title)}</h1><p>${e(page.lede||page.description)}</p>${home?`<div class="so-actions"><a href="/download/">Try the concept</a><a href="/product/">See how Sori works →</a></div>`:""}</div>${voiceCanvas(page)}</section>${content(page,mode)}${cta?`<section class="so-next"><div><span>ONE MORE THING</span><h2>${e(cta.title||"Your voice stays yours")}</h2><p>${e(cta.body||product.availability.body)}</p></div><a href="${e(cta.href)}"${external(cta.href)}>${e(cta.label)} →</a></section>`:""}${home?`<section class="so-proof"><p>TRUST, WITHOUT SMALL PRINT</p><h2>Visible states. Reversible actions.</h2><div><p>${e(product.proofNote)}</p><ul>${product.evidence.map(item=>`<li><span>${e(item.label)}</span><b>${e(item.value)}</b><small>${e(item.state)}</small></li>`).join("")}</ul></div></section>`:""}</main>${footer(product,site)}</body></html>`}
+export default function renderSori(product,site,page){return render(product,site,page).replace(/[ \t]+$/gm,"")}
+export{layoutFor,normalizePath};

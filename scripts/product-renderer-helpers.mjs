@@ -1,6 +1,6 @@
 import { mkdir, rm, writeFile } from "node:fs/promises";
 
-const version = "20260830-4";
+const version = "20260831-v5";
 
 export function escapeHtml(value = "") {
   return String(value)
@@ -35,7 +35,7 @@ export function headMarkup({ product, page, path, layout, isHome }) {
   <meta property="og:description" content="${escapeHtml(metaDescription)}">
   <meta property="og:url" content="${canonical}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#03120d">
+  <meta name="theme-color" content="${escapeHtml(product.themeColor || "#03120d")}">
   <link rel="canonical" href="${canonical}">
   <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
   <link rel="stylesheet" href="/products/product-primitives.css?v=${version}">

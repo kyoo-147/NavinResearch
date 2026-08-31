@@ -8,12 +8,12 @@ if (signalBus) {
 }
 const menuButton = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
-const details = [...document.querySelectorAll(".product-nav__group")];
+const details = [...document.querySelectorAll(".my-nav-group")];
 
 function setMenu(open) {
   document.documentElement.classList.toggle("product-menu-open", open);
   menuButton?.setAttribute("aria-expanded", String(open));
-  if (menu) menu.inert = !open && matchMedia("(max-width: 800px)").matches;
+  if (menu) menu.inert = !open && matchMedia("(max-width: 1000px)").matches;
   if (!open) details.forEach((item) => item.removeAttribute("open"));
 }
 
@@ -30,7 +30,7 @@ details.forEach((item) => item.addEventListener("toggle", () => {
   details.filter((candidate) => candidate !== item).forEach((candidate) => candidate.removeAttribute("open"));
 }));
 
-const media = matchMedia("(max-width: 800px)");
+const media = matchMedia("(max-width: 1000px)");
 function syncMenuMode() {
   if (media.matches) setMenu(false);
   else {

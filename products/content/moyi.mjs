@@ -32,7 +32,7 @@ const pages = [
 ];
 
 const moyi = {
-  slug: "moyi", name: "Moyi", eyebrow: "EDGE SPEECH INTELLIGENCE", status: "RESEARCH PREVIEW", catalogStatus: "product",
+  slug: "moyi", themeColor: '#f4f0e8', name: "Moyi", eyebrow: "EDGE SPEECH INTELLIGENCE", status: "RESEARCH PREVIEW", catalogStatus: "product",
   thesis: "Translation that keeps the operational signal in the room.",
   intro: "Moyi is an on-device AI translation runtime for multilingual operations where context, terminology, and safety messages matter. This is a research preview: the acoustic field is a design concept, not a claim of finished performance.",
   proofNote: "Concept-stage direction grounded in Navin Research's public Moyi description and release inventory; no benchmark, language-count, or latency claim is made here.",

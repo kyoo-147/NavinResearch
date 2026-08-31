@@ -30,7 +30,7 @@ const page = (path, title, description, eyebrow, headline, lede, visual, section
 const contact = { title: 'Keep the notebook open', body: 'Follow future field notes as the direction becomes more concrete.', label: 'Follow field notes', href: '/availability/' };
 
 const lajvard = {
-  slug: 'lajvard', name: 'Lajvard', eyebrow: 'WARM COMPANION FIELD NOTES / BLUEPRINT 01', status: 'CONCEPT STAGE · UPDATES, NOT PREORDER', catalogStatus: 'research',
+  slug: 'lajvard', themeColor: '#f1efe7', name: 'Lajvard', eyebrow: 'WARM COMPANION FIELD NOTES / BLUEPRINT 01', status: 'CONCEPT STAGE · UPDATES, NOT PREORDER', catalogStatus: 'research',
   thesis: 'A compact robot companion imagined for the small rituals of a room: noticing where it is, remembering what matters, and answering with warmth without pretending to be human.',
   intro: 'Lajvard is a product direction, not a shipping promise. This notebook describes questions around a portable robot with spatial awareness, a private journal, and a gentle social presence.',
   proofNote: 'The capabilities below are intentions and design hypotheses. No Lajvard hardware, firmware, availability, performance, or offline/online behavior is being claimed.',

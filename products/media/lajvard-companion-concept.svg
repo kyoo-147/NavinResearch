@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Lajvard small companion robot concept</title><desc id="desc">A non-photoreal line study of a small rounded mobile companion in a room. Concept only, not physical proof.</desc>
+<rect width="1200" height="760" fill="#141714"/><path d="M90 610H1110M170 610V250H470M1020 610V330H850" fill="none" stroke="#626b60" stroke-width="2"/>
+<path d="M170 250h300l55 65H225zM850 330h170l-30-95H880z" fill="#1c211c" stroke="#cad4c3" stroke-width="2"/>
+<ellipse cx="620" cy="632" rx="210" ry="30" fill="#0b0d0b"/>
+<g transform="translate(620 395)"><path d="M-150 45c0-120 65-205 150-205S150-75 150 45v120c0 70-58 116-150 116s-150-46-150-116z" fill="#cad4c3" stroke="#f1efe7" stroke-width="5"/><path d="M-105 15c18-55 61-85 105-85s87 30 105 85" fill="none" stroke="#181916" stroke-width="5"/><circle cx="-53" cy="25" r="12" fill="#181916"/><circle cx="53" cy="25" r="12" fill="#181916"/><path d="M-35 77q35 22 70 0" fill="none" stroke="#9a2d08" stroke-width="5"/><path d="M-150 123l-58 58M150 123l58 58" stroke="#f1efe7" stroke-width="10" stroke-linecap="round"/><circle cy="-162" r="18" fill="#ff5c24"/><path d="M0-180v-42" stroke="#ff5c24" stroke-width="5"/></g>
+<g font-family="Arial,sans-serif" font-size="18" fill="#f1efe7"><text x="75" y="80">LAJVARD / EMBODIED SCALE STUDY 01</text><text x="75" y="705">SMALL-BODY / ROOM-SCALE / NON-PHOTOREAL CONCEPT</text><text x="845" y="705" fill="#ff5c24">NOT PHYSICAL PROOF</text></g>
+<path d="M825 160h245M825 190h175M825 220h210" stroke="#ff5c24" stroke-width="2"/>
+</svg>

@@ -6,13 +6,13 @@ import howhow from "../products/content/howhow.mjs";
 import dossier from "../products/content/dossier.mjs";
 import autopilot from "../products/content/autopilot.mjs";
 import lajvard from "../products/content/lajvard.mjs";
-import renderSandora from "./product-sites/sandora.mjs";
-import renderMoyi from "./product-sites/moyi.mjs";
-import renderSori from "./product-sites/sori.mjs";
-import renderHowhow from "./product-sites/howhow.mjs";
-import renderDossier from "./product-sites/dossier.mjs";
-import renderAutopilot from "./product-sites/autopilot.mjs";
-import renderLajvard from "./product-sites/lajvard.mjs";
+import renderSandora, { layoutFor as sandoraLayout } from "./product-sites/sandora.mjs";
+import renderMoyi, { layoutFor as moyiLayout } from "./product-sites/moyi.mjs";
+import renderSori, { layoutFor as soriLayout } from "./product-sites/sori.mjs";
+import renderHowhow, { layoutFor as howhowLayout } from "./product-sites/howhow.mjs";
+import renderDossier, { layoutFor as dossierLayout } from "./product-sites/dossier.mjs";
+import renderAutopilot, { layoutFor as autopilotLayout } from "./product-sites/autopilot.mjs";
+import renderLajvard, { layoutFor as lajvardLayout } from "./product-sites/lajvard.mjs";
 import {
   canonicalUrl,
   ensureOutputDirectory,
@@ -25,27 +25,18 @@ import {
 
 const products = [sandora, moyi, sori, howhow, dossier, autopilot, lajvard];
 const renderers = new Map([
-  ["sandora", renderSandora], ["moyi", renderMoyi], ["sori", renderSori],
-  ["howhow", renderHowhow], ["dossier", renderDossier], ["autopilot", renderAutopilot], ["lajvard", renderLajvard],
+  ["sandora", { render: renderSandora, layoutFor: sandoraLayout }],
+  ["moyi", { render: renderMoyi, layoutFor: moyiLayout }],
+  ["sori", { render: renderSori, layoutFor: soriLayout }],
+  ["howhow", { render: renderHowhow, layoutFor: howhowLayout }],
+  ["dossier", { render: renderDossier, layoutFor: dossierLayout }],
+  ["autopilot", { render: renderAutopilot, layoutFor: autopilotLayout }],
+  ["lajvard", { render: renderLajvard, layoutFor: lajvardLayout }],
 ]);
-const layouts = new Set(["editorial", "index", "workflow", "docs", "specs", "media", "ledger", "timeline", "comparison", "availability"]);
 const normalizePath = (value = "/") => {
   if (value === "/404.html") return value;
   const path = `/${String(value).replace(/^\/+|\/+$/g, "")}/`;
   return path === "//" ? "/" : path;
-};
-const layoutFor = (page) => {
-  if (page.layout && layouts.has(page.layout)) return page.layout;
-  const path = normalizePath(page.path);
-  if (path === "/") return "editorial";
-  if (/pricing|contact|availability/.test(path)) return "availability";
-  if (/docs|developers|github/.test(path)) return "docs";
-  if (/research|releases|changelog/.test(path)) return "timeline";
-  if (/benchmarks|specs|hardware|models|api/.test(path)) return "specs";
-  if (/use-cases|solutions|workflows|planning|control|movement/.test(path)) return "workflow";
-  if (/integrations|devices|gallery|media/.test(path)) return "media";
-  if (/security|privacy|terms/.test(path)) return "ledger";
-  return page.visual?.kind === "comparison" ? "comparison" : "index";
 };
 
 const productFlag = process.argv.indexOf("--product");
@@ -74,8 +65,10 @@ for (const product of targets) {
     routeSet.add(route);
     const output = outputPath(product.slug, route);
     await ensureOutputDirectory(output);
-    await writeFile(output, renderers.get(product.slug)(product, site, { ...page, path: route }), "utf8");
-    manifest.push({ product: product.slug, name: product.name, path: route, layout: layoutFor({ ...page, path: route }), output, url: canonicalUrl(product, route), title: page.title });
+    const renderer = renderers.get(product.slug);
+    const normalizedPage = { ...page, path: route };
+    await writeFile(output, renderer.render(product, site, normalizedPage), "utf8");
+    manifest.push({ product: product.slug, name: product.name, path: route, layout: renderer.layoutFor(normalizedPage), output, url: canonicalUrl(product, route), title: page.title });
   }
   const publicRoutes = pages.map((page) => normalizePath(page.path)).filter((route) => route !== "/404.html");
   await writeFile(`${product.slug}/sitemap.xml`, productSitemap(product, publicRoutes), "utf8");

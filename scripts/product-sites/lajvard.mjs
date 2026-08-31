@@ -1,97 +1,16 @@
-import { escapeHtml, headMarkup, canonicalUrl } from "../product-renderer-helpers.mjs";
+import { escapeHtml, headMarkup } from "../product-renderer-helpers.mjs";
+const e=escapeHtml;const normalizePath=(v="/")=>v==="/404.html"?v:(`/${String(v).replace(/^\/+|\/+$/g,"")}/`).replace("//","/");const ext=(h="")=>/^https?:|^mailto:/.test(h)?' target="_blank" rel="noopener noreferrer"':"";
+const layoutFor=(p)=>p.layout||(/developer|support/.test(p.path)?"docs":/movement|spatial-memory/.test(p.path)?"workflow":/hardware|specs/.test(p.path)?"specs":/software|privacy|terms/.test(p.path)?"ledger":/research/.test(p.path)?"timeline":/availability|contact/.test(p.path)?"availability":"editorial");
+function nav(site,path){return site.navigation.map(item=>{const href=item.href||item.children?.[0]?.href||"/",active=normalizePath(href)===path||item.children?.some(c=>normalizePath(c.href)===path);if(item.children?.length)return `<details class="lj-nav-group"${active?" data-current":""}><summary>${e(item.label)}<span>+</span></summary><div>${item.children.map(c=>`<a href="${e(c.href)}"${normalizePath(c.href)===path?' aria-current="page"':""}${ext(c.href)}>${e(c.label)}</a>`).join("")}</div></details>`;return `<a href="${e(href)}"${active?' aria-current="page"':""}${ext(href)}>${e(item.label)}</a>`}).join("")}
+function portrait(page,path,mode){const items=(page.visual?.items||["Observe","Remember","Move","Rest"]).slice(0,5);const embodied=path==="/"||path==="/robot/";const technical=mode==="docs"||mode==="specs";const behavioral=mode==="workflow"||mode==="timeline"||path==="/research/";const asset=embodied?"lajvard-companion-concept.svg":technical?"lajvard-exploded-concept.svg":behavioral?"lajvard-behavior-concept.svg":"lajvard-system.svg";const alt=embodied?"Non-photoreal room-scale Lajvard companion concept":technical?"Exploded Lajvard sensing and motion concept plate":behavioral?"Lajvard room-path behavior notebook concept":page.visual?.title||"Lajvard concept system diagram";return `<figure class="lj-portrait lj-portrait--${embodied?"embodied":technical?"technical":behavioral?"behavioral":"system"}"><div class="lj-portrait__field"><div class="lj-orbit" aria-hidden="true"><i></i><i></i><i></i></div><img src="/products/media/${asset}" width="1200" height="760" alt="${e(alt)}"><span>PROJECT-OWNED CONCEPT / NOT PHYSICAL PROOF</span></div><ol>${items.map((item,index)=>`<li><span>${String(index+1).padStart(2,"0")}</span>${e(item)}</li>`).join("")}</ol><figcaption>${e(page.visual?.caption||"Project-owned concept diagram. Hardware, capability, and availability are not implied.")}</figcaption></figure>`}
+function essays(page){return `<section class="lj-essays">${(page.sections||[]).map((s,i)=>`<article class="lj-essay"><div class="lj-essay__meta"><span>NOTE ${String(i+1).padStart(2,"0")}</span><b>${e(s.status||"IN RESEARCH")}</b></div><div><h2>${e(s.title)}</h2><p>${e(s.body)}</p></div>${s.points?.length?`<ul>${s.points.map(p=>`<li>${e(p)}</li>`).join("")}</ul>`:""}</article>`).join("")}</section>`}
+function movement(page){return `<section class="lj-movement"><header><span>BEHAVIOR STUDY</span><h2>A sequence, not a promise.</h2></header><ol>${(page.sections||[]).map((s,i)=>`<li><div class="lj-movement__trace"><span>${String(i+1).padStart(2,"0")}</span><i></i></div><div><h2>${e(s.title)}</h2><p>${e(s.body)}</p>${s.status?`<strong>${e(s.status)}</strong>`:""}</div>${s.points?.length?`<ul>${s.points.map(p=>`<li>${e(p)}</li>`).join("")}</ul>`:""}</li>`).join("")}</ol></section>`}
+function notebook(page){return `<section class="lj-notebook"><aside><span>RESEARCH NOTEBOOK</span><p>Questions, boundaries, and observations stay separate.</p></aside><div>${(page.sections||[]).map((s,i)=>`<article><header><span>${String(i+1).padStart(2,"0")}</span><strong>${e(s.status||"OPEN")}</strong></header><h2>${e(s.title)}</h2><p>${e(s.body)}</p>${s.points?.length?`<dl>${s.points.map((p,j)=>`<div><dt>${String(j+1).padStart(2,"0")}</dt><dd>${e(p)}</dd></div>`).join("")}</dl>`:""}</article>`).join("")}</section>`}
+function specs(page){return `<section class="lj-specs"><header><span>SYSTEM OUTLINE</span><p>Values remain unannounced unless project evidence states otherwise.</p></header>${(page.sections||[]).map((s,i)=>`<article><span>${String(i+1).padStart(2,"0")}</span><div><h2>${e(s.title)}</h2><p>${e(s.body)}</p></div><div><strong>${e(s.status||"NOT ANNOUNCED")}</strong>${s.points?.length?`<ul>${s.points.map(p=>`<li>${e(p)}</li>`).join("")}</ul>`:""}</div></article>`).join("")}</section>`}
+function docs(page){return `<section class="lj-docs"><nav aria-label="Developer contents"><span>FIELD INDEX</span>${(page.sections||[]).map((s,i)=>`<a href="#l${i+1}">${String(i+1).padStart(2,"0")} ${e(s.title)}</a>`).join("")}</nav><article>${(page.sections||[]).map((s,i)=>`<section id="l${i+1}"><span>${String(i+1).padStart(2,"0")}</span><div><h2>${e(s.title)}</h2><p>${e(s.body)}</p>${s.status?`<mark>${e(s.status)}</mark>`:""}</div>${s.points?.length?`<pre><code>${s.points.map(p=>`concept :: ${e(p)}`).join("\n")}</code></pre>`:""}</section>`).join("")}</article></section>`}
+function availability(page){const sections=page.sections||[];return `<section class="lj-availability-sheet"><div class="lj-availability-sheet__statement"><span>AVAILABILITY / PUBLIC RECORD</span><h2>No preorder.<br>No delivery date.</h2><p>Lajvard is a research direction, not a product offer. No purchase, test, or shipping claim is made.</p></div><dl>${sections.map((section,index)=>`<div><dt>${String(index+1).padStart(2,"0")} ${e(section.title)}</dt><dd>${e(section.body)}${section.status?`<strong>${e(section.status)}</strong>`:""}</dd></div>`).join("")}</dl></section>`}
 
-const esc = escapeHtml;
-const normalizePath = (value = "/") => {
-  if (value === "/404.html") return value;
-  const path = `/${String(value).replace(/^\/+|\/+$/g, "")}/`;
-  return path === "//" ? "/" : path;
-};
-const layouts = new Set(["editorial", "index", "workflow", "docs", "specs", "media", "ledger", "timeline", "comparison", "availability"]);
-const layoutFor = (page) => {
-  if (page.layout && layouts.has(page.layout)) return page.layout;
-  const path = normalizePath(page.path);
-  if (path === "/") return "editorial";
-  if (/pricing|contact|availability/.test(path)) return "availability";
-  if (/docs|developers|github/.test(path)) return "docs";
-  if (/research|releases|changelog/.test(path)) return "timeline";
-  if (/benchmarks|specs|hardware|models|api/.test(path)) return "specs";
-  if (/use-cases|solutions|workflows|planning|control|movement/.test(path)) return "workflow";
-  if (/integrations|devices|gallery|media/.test(path)) return "media";
-  if (/security|privacy|terms/.test(path)) return "ledger";
-  return page.visual?.kind === "comparison" ? "comparison" : "index";
-};
-
-function linkAttrs(href) {
-  return /^https?:|^mailto:/.test(href) ? ' target="_blank" rel="noopener noreferrer"' : "";
-}
-
-function navItem(item, activePath) {
-  const href = item.href || item.children?.[0]?.href || "/";
-  const active = normalizePath(href) === activePath || item.children?.some((child) => normalizePath(child.href) === activePath);
-  if (item.children?.length) {
-    return `<details class="product-nav__group"${active ? " data-active" : ""}><summary>${esc(item.label)}</summary><div class="product-nav__menu">${item.children.map((child) => `<a href="${esc(child.href)}"${normalizePath(child.href) === activePath ? ' aria-current="page"' : ""}${linkAttrs(child.href)}>${esc(child.label)}</a>`).join("")}</div></details>`;
-  }
-  return `<a href="${esc(href)}"${active ? ' aria-current="page"' : ""}${linkAttrs(href)}>${esc(item.label)}</a>`;
-}
-
-function visualMarkup(product, visual = {}) {
-  const items = visual.items || [];
-  if (visual.kind === "system" || !visual.kind) {
-    return `<figure class="product-visual product-visual--system"><img src="/products/media/${product.slug}-system.svg" width="1200" height="620" alt="${esc(visual.title || `${product.name} system architecture`)}"><figcaption>${esc(visual.caption || "System view")}</figcaption></figure>`;
-  }
-  if (visual.src) {
-    return `<figure class="product-visual product-visual--media"><img src="${esc(visual.src)}" alt="${esc(visual.alt || visual.title)}" width="1400" height="900"><figcaption>${esc(visual.caption || "Project-owned source material")}</figcaption></figure>`;
-  }
-  return `<figure class="product-visual product-visual--${esc(visual.kind)}" data-visual="${esc(visual.kind)}"><div class="product-visual__stage"><span class="product-visual__title">${esc(visual.title || product.name)}</span><div class="product-visual__items">${items.map((item, index) => `<span style="--item:${index}">${esc(item)}</span>`).join("")}</div></div>${visual.caption ? `<figcaption>${esc(visual.caption)}</figcaption>` : ""}</figure>`;
-}
-
-function renderSectionPoints(section, layout) {
-  if (!section.points?.length) return "";
-  const items = section.points.map((point) => `<li>${esc(point)}</li>`).join("");
-  if (["workflow", "timeline"].includes(layout)) return `<ol class="product-section-points product-section-points--ordered">${items}</ol>`;
-  if (["specs", "ledger"].includes(layout)) return `<dl class="product-section-points product-section-points--ledger">${section.points.map((point, index) => `<div><dt>${String(index + 1).padStart(2, "0")}</dt><dd>${esc(point)}</dd></div>`).join("")}</dl>`;
-  return `<ul class="product-section-points">${items}</ul>`;
-}
-
-function sectionsMarkup(page) {
-  const layout = layoutFor(page);
-  return layoutSectionMarkup(page, layout);
-}
-
-function footerMarkup(product, site) {
-  const hasLegal = site.footerGroups.some((group) => group.title.toLowerCase() === "legal");
-  const legal = hasLegal ? "" : `<section><h2>Legal</h2><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a>${product.slug === "sori" || product.slug === "sandora" || product.slug === "dossier" ? '<a href="/security/">Security</a>' : ""}</section>`;
-  return `<footer class="product-footer" data-footer="lajvard-notebook"><div class="product-footer__brand"><a href="/" class="product-wordmark">${esc(product.name)}</a><p>${esc(product.thesis)}</p><span>A Navin Research project</span></div><div class="product-footer__groups">${site.footerGroups.map((group) => `<section><h2>${esc(group.title)}</h2>${group.links.map((link) => `<a href="${esc(link.href)}"${linkAttrs(link.href)}>${esc(link.label)}</a>`).join("")}</section>`).join("")}${legal}</div><div class="product-footer__base"><span>© <span data-current-year></span> ${esc(product.name)}</span><a href="https://navinresearch.com/products/">Navin Research products</a></div></footer>`;
-}
-
-function pageTemplate(product, site, page) {
-  const path = normalizePath(page.path);
-  const layout = layoutFor(page);
-  const isHome = path === "/";
-  const cta = page.cta || site.primaryCta;
-  const productRoute = site.pages.some((candidate) => normalizePath(candidate.path) === "/product/") ? "/product/" : site.navigation[0]?.href || "/";
-  return `<!doctype html>
-<html lang="en" class="no-js">
-<head>
-  ${headMarkup({ product, page, path, layout, isHome })}
-</head>
-<body class="product-${product.slug} product-renderer-${product.slug} product-layout-${layout}" data-product="${product.slug}" data-route="${esc(path)}" data-layout="${layout}">
-  <a class="skip-link" href="#main-content">Skip to content</a><div class="product-field" aria-hidden="true"></div>
-  <header class="product-header" data-shell="lajvard-notebook"><span class="lajvard-margin-note" aria-hidden="true">FIELD NOTE / 01</span><a class="product-wordmark" href="/" aria-label="${esc(product.name)} home">${esc(product.name)}</a><button class="product-menu-button" type="button" aria-controls="product-menu" aria-expanded="false" data-product-menu>Menu</button><div class="product-menu" id="product-menu"><nav class="product-nav" aria-label="Primary navigation">${site.navigation.map((item) => navItem(item, path)).join("")}</nav><a class="product-header__cta" href="${esc(site.primaryCta.href)}"${linkAttrs(site.primaryCta.href)}>${esc(site.primaryCta.label)}</a></div></header>
-  <main id="main-content" class="product-main" data-notebook-state="IN RESEARCH" data-field="lajvard-paper"><section class="product-page-hero product-page-hero--${layout}${isHome ? " product-page-hero--home" : ""}"><div class="product-page-hero__copy">${page.eyebrow ? `<p class="product-eyebrow">${esc(page.eyebrow)}</p>` : ""}<h1>${esc(page.headline || page.title)}</h1><p>${esc(page.lede || page.description)}</p>${isHome ? `<div class="product-page-hero__actions"><a class="product-button" href="${esc(site.primaryCta.href)}"${linkAttrs(site.primaryCta.href)}>${esc(site.primaryCta.label)}</a><a class="product-text-link" href="${esc(productRoute)}">Explore the product <span aria-hidden="true">→</span></a></div>` : ""}</div>${visualMarkup(product, page.visual)}</section><div class="product-page-sections product-page-sections--${layout}">${sectionsMarkup(page)}</div>${cta ? `<section class="product-page-cta"><div><h2>${esc(cta.title || "Continue")}</h2><p>${esc(cta.body || product.availability.body)}</p></div><a class="product-button" href="${esc(cta.href)}"${linkAttrs(cta.href)}>${esc(cta.label)}</a></section>` : ""}${isHome ? `<section class="product-evidence-block"><div><h2>Evidence and limitations</h2><p>${esc(product.proofNote)}</p></div><ul>${product.evidence.map((item) => `<li><span>${esc(item.label)}</span><strong>${esc(item.value)}</strong><small>${esc(item.state)}</small></li>`).join("")}</ul></section>` : ""}</main>${footerMarkup(product, site)}</body>
-</html>`;
-}
-export default function renderProductPage(product, site, page) { return pageTemplate(product, site, page).replace(/[ 	]+$/gm, ""); }
-export { layoutFor, normalizePath };
-
-function layoutSectionMarkup(page, layout) {
-  const sections = page.sections || [];
-  const item = (section, index, pointsMarkup, tag = "section") => `<${tag} class="product-page-section product-section--${layout} lajvard-entry--${esc(section.kind || "narrative")}" data-kind="${esc(section.kind || "narrative")}" data-renderer="${layout}" data-notebook-state="${esc(section.status || "CONCEPT STAGE")}"><div class="product-page-section__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div><div class="product-page-section__copy"><h2>${esc(section.title)}</h2><p>${esc(section.body)}</p>${section.status ? `<strong class="product-page-section__status">${esc(section.status)}</strong>` : ""}</div>${pointsMarkup}${section.cta ? `<a class="product-text-link" href="${esc(section.cta.href)}"${linkAttrs(section.cta.href)}>${esc(section.cta.label)} <span aria-hidden="true">→</span></a>` : ""}</${tag}>`;
-  if (layout === "workflow") return `<ol class="product-workflow" aria-label="Workflow sequence">${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout), "li")).join("")}</ol>`;
-  if (layout === "ledger") return `<aside class="product-ledger" aria-label="Evidence register">${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</aside>`;
-  if (layout === "docs") return `<article class="product-docs-frame"><header><p class="product-docs-frame__label">Documentation index</p><p>Read the concepts, boundaries, and source trail in sequence.</p></header><div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</div></article>`;
-  if (layout === "specs") return `<dl class="product-specs-frame">${sections.map((section, index) => `<div><dt><span>${String(index + 1).padStart(2, "0")}</span>${esc(section.title)}</dt><dd>${esc(section.body)}${renderSectionPoints(section, layout)}</dd></div>`).join("")}</dl>`;
-  if (layout === "media") return `<section class="product-media-frame" aria-label="Source material"><div class="product-media-frame__intro"><p>Source material</p><p>Images and visual references stay close to their provenance.</p></div><div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</div></section>`;
-  if (layout === "availability") return `<section class="product-availability-frame" aria-label="Availability status"><div class="product-availability-frame__status">STATUS / ${esc(sections.length ? sections[0].status || "NOT ANNOUNCED" : "NOT ANNOUNCED")}</div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</section>`;
-  return sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("");
-}
+function content(page,mode){if(mode==="availability")return availability(page);if(mode==="workflow")return movement(page);if(mode==="timeline"||mode==="ledger")return notebook(page);if(mode==="specs")return specs(page);if(mode==="docs")return docs(page);return essays(page)}
+function footer(product,site){return `<footer class="lj-footer"><section class="lj-footer__statement"><span>LAJVARD / IN RESEARCH</span><h2>A companion should earn its place quietly.</h2><p>${e(product.proofNote)}</p></section><nav class="lj-footer__links" aria-label="Field index"><ol>${site.footerGroups.map(g=>`<li><h3>${e(g.title)}</h3><ul>${g.links.map(l=>`<li><a href="${e(l.href)}"${ext(l.href)}>${e(l.label)}</a></li>`).join("")}</ul></li>`).join("")}</ol></nav><div class="lj-footer__base"><span>© <span data-current-year></span> Lajvard</span><a href="https://navinresearch.com/products/">A Navin Research study ↗</a></div></footer>`}
+function render(product,site,page){const path=normalizePath(page.path),mode=layoutFor(page),home=path==="/",cta=page.cta||site.primaryCta;return `<!doctype html><html lang="en" class="no-js"><head>${headMarkup({product,page,path,layout:mode,isHome:home})}</head><body class="lj-body lj-${mode}" data-product="lajvard" data-route="${e(path)}"><a class="skip-link" href="#main-content">Skip to content</a><header class="lj-header"><a class="lj-logo" href="/" aria-label="Lajvard home">LAJVARD<span>○</span></a><div class="lj-state"><i></i>IN RESEARCH</div><button class="product-menu-button lj-menu-button" type="button" aria-controls="product-menu" aria-expanded="false" data-product-menu>INDEX</button><div class="product-menu lj-menu" id="product-menu"><nav aria-label="Primary navigation">${nav(site,path)}</nav><a class="lj-contact" href="/contact/">CONTACT ↗</a></div></header><main id="main-content"><section class="lj-hero"><div class="lj-hero__copy"><p>${e(page.eyebrow||"DAILY ROBOT COMPANION / CONCEPT STUDY")}</p><h1>${e(page.headline||page.title)}</h1><p>${e(page.lede||page.description)}</p>${home?`<div class="lj-actions"><a href="/robot/">MEET THE CONCEPT</a><a href="/research/">OPEN THE NOTEBOOK →</a></div>`:""}</div>${portrait(page,path,mode)}</section>${content(page,mode)}${cta?`<section class="lj-next"><span>STUDY CONTINUES</span><div><h2>${e(cta.title||"No preorder. No invented date.")}</h2><p>${e(cta.body||product.availability.body)}</p></div><a href="${e(cta.href)}"${ext(cta.href)}>${e(cta.label)} →</a></section>`:""}${home?`<section class="lj-proof"><div><span>RESEARCH BOUNDARY</span><h2>Character without pretending there is a finished robot.</h2><p>${e(product.proofNote)}</p></div><ul>${product.evidence.map(item=>`<li><span>${e(item.label)}</span><b>${e(item.value)}</b><small>${e(item.state)}</small></li>`).join("")}</ul></section>`:""}</main>${footer(product,site)}</body></html>`}
+export default function renderLajvard(product,site,page){return render(product,site,page).replace(/[ \t]+$/gm,"")};export{layoutFor,normalizePath};

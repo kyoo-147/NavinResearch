@@ -132,12 +132,23 @@ for (const file of [
   }
 }
 
+const productContracts = {
+  sandora: { prefix: "sd", frames: { editorial: "sd-modules", index: "sd-modules", workflow: "sd-runbook", docs: "sd-manual", specs: "sd-modules", media: "sd-observation", ledger: "sd-ledger", timeline: "sd-chronicle", comparison: "sd-matrix", availability: "sd-availability-board" } },
+  moyi: { prefix: "my", frames: { editorial: "my-cards", workflow: "my-flow", docs: "my-docs", specs: "my-lab", timeline: "my-lab", availability: "my-offer" } },
+  sori: { prefix: "so", frames: { editorial: "so-stories", workflow: "so-use", docs: "so-guide", ledger: "so-boundaries", timeline: "so-stories", availability: "so-offer" } },
+  howhow: { prefix: "hh", frames: { editorial: "hh-shelf", workflow: "hh-recipe", docs: "hh-manual", ledger: "hh-ledger", availability: "hh-review-pass" } },
+  dossier: { prefix: "ds", frames: { editorial: "ds-workstation", workflow: "ds-pipeline", docs: "ds-docs", ledger: "ds-review", availability: "ds-register" } },
+  autopilot: { prefix: "ap", frames: { editorial: "ap-overview", workflow: "ap-loop", docs: "ap-docs", specs: "ap-overview", timeline: "ap-log", availability: "ap-boundary" } },
+  lajvard: { prefix: "lj", frames: { editorial: "lj-essays", index: "lj-essays", workflow: "lj-movement", docs: "lj-docs", specs: "lj-specs", media: "lj-essays", ledger: "lj-notebook", timeline: "lj-notebook", comparison: "lj-essays", availability: "lj-availability-sheet" } },
+};
+
 for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {
+  const contract = productContracts[slug];
   for (const file of [`products/content/${slug}.mjs`, `products/themes/${slug}.css`, `products/media/${slug}-system.svg`, `scripts/product-sites/${slug}.mjs`, `products/runtime/${slug}.js`, `${slug}/index.html`, `${slug}/404.html`, `${slug}/robots.txt`, `${slug}/sitemap.xml`]) {
     try { await access(file); } catch { errors.push(`${file}: required product asset missing`); }
   }
   const productHtml = await readFile(`${slug}/index.html`, "utf8");
-  for (const marker of [`https://${slug}.navinresearch.com/`, `product-${slug}`, `/products/themes/${slug}.css`, `/products/runtime/${slug}.js`, '/products/product-primitives.css', 'name="robots"', 'property="og:title"', 'class="skip-link"', 'id="main-content"', 'class="product-nav"', 'class="product-footer"']) {
+  for (const marker of [`https://${slug}.navinresearch.com/`, `data-product="${slug}"`, `/products/themes/${slug}.css`, `/products/runtime/${slug}.js`, '/products/product-primitives.css', 'name="robots"', 'property="og:title"', 'class="skip-link"', 'id="main-content"', `class="${contract.prefix}-header"`, `class="${contract.prefix}-footer"`]) {
     if (!productHtml.includes(marker)) errors.push(`${slug}/index.html: product marker missing: ${marker}`);
   }
   if (productHtml.includes("Details to be announced") || productHtml.includes("product-pricing")) errors.push(`${slug}/index.html: obsolete generic pricing scaffold remains`);
@@ -158,19 +169,27 @@ if (!Array.isArray(productManifest) || !productManifest.length) errors.push("pro
 for (const entry of productManifest) {
   try { await access(entry.output); } catch { errors.push(`product site manifest: missing ${entry.output}`); }
   const routeHtml = await readFile(entry.output, "utf8");
-  for (const marker of ['class="product-header"', 'class="product-main"', 'class="product-footer"', `<body class="product-${entry.product} product-renderer-${entry.product}`, '<meta name="description"', 'data-layout="', 'product-page-hero--', `/products/themes/${entry.product}.css`, `/products/runtime/${entry.product}.js`, '/products/product-primitives.css']) {
+  const contract = productContracts[entry.product];
+  if (!contract) {
+    errors.push(`${entry.output}: unknown product contract ${entry.product}`);
+    continue;
+  }
+  for (const marker of [`class="${contract.prefix}-header"`, `class="${contract.prefix}-footer"`, `<body class="${contract.prefix}-body ${contract.prefix}-${entry.layout}"`, `data-product="${entry.product}"`, '<meta name="description"', `class="${contract.prefix}-hero"`, `/products/themes/${entry.product}.css`, `/products/runtime/${entry.product}.js`, '/products/product-primitives.css']) {
     if (!routeHtml.includes(marker)) errors.push(`${entry.output}: route marker missing: ${marker}`);
   }
   if (routeHtml.includes('product-foundation.css') || routeHtml.includes('product-site.js')) errors.push(`${entry.output}: legacy shared product shell remains`);
+  if ((routeHtml.match(/<main\b/g) || []).length !== 1 || (routeHtml.match(/<footer\b/g) || []).length !== 1) errors.push(`${entry.output}: expected exactly one main and one footer`);
+  if (!routeHtml.includes('data-product-menu') || !routeHtml.includes('aria-controls="product-menu"') || !routeHtml.includes('id="product-menu"')) errors.push(`${entry.output}: responsive menu linkage missing`);
   if (!entry.layout) errors.push(`${entry.output}: manifest layout missing`);
-  if (entry.layout && !routeHtml.includes(`data-layout="${entry.layout}"`)) errors.push(`${entry.output}: manifest/layout mismatch`);
+  const mainHtml = routeHtml.match(/<main\b[\s\S]*?<\/main>/)?.[0] || "";
   if (entry.path !== "/404.html") {
-    const sectionCount = (routeHtml.match(/class="product-page-section /g) || []).length;
-    if (!sectionCount && !routeHtml.includes('class="product-specs-frame"') && !routeHtml.includes('class="product-docs-frame"')) errors.push(`${entry.output}: route has no purpose/content section`);
-    if (!/<h1>[^<]+<\/h1>/.test(routeHtml) || !/<p>[^<]{24,}<\/p>/.test(routeHtml)) errors.push(`${entry.output}: route purpose requires a descriptive heading and paragraph`);
+    const sectionCount = (mainHtml.match(/<section\b/g) || []).length;
+    if (sectionCount < 2) errors.push(`${entry.output}: route has no purpose/content section`);
+    if (!/<h1>[^<]+<\/h1>/.test(mainHtml) || !/<p>[^<]{24,}<\/p>/.test(mainHtml)) errors.push(`${entry.output}: route purpose requires a descriptive heading and paragraph inside main`);
   }
-  const requiredFrame = { workflow: 'product-workflow', ledger: 'product-ledger', docs: 'product-docs-frame', specs: 'product-specs-frame', media: 'product-media-frame', availability: 'product-availability-frame' }[entry.layout];
-  if (requiredFrame && !routeHtml.includes(`class="${requiredFrame}"`)) errors.push(`${entry.output}: ${entry.layout} layout frame missing`);
+  const requiredFrame = contract.frames[entry.layout];
+  if (!requiredFrame) errors.push(`${entry.output}: unknown ${entry.product} layout contract ${entry.layout}`);
+  else if (!mainHtml.includes(`class="${requiredFrame}"`)) errors.push(`${entry.output}: ${entry.layout} layout frame missing inside main`);
 }
 
 for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {

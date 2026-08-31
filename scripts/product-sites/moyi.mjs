@@ -1,97 +1,56 @@
-import { escapeHtml, headMarkup, canonicalUrl } from "../product-renderer-helpers.mjs";
+import { escapeHtml, headMarkup } from "../product-renderer-helpers.mjs";
+const e = escapeHtml;
+const normalizePath = (value = "/") => value === "/404.html" ? value : (`/${String(value).replace(/^\/+|\/+$/g, "")}/`).replace("//", "/");
+const external = (href = "") => /^https?:|^mailto:/.test(href) ? ' target="_blank" rel="noopener noreferrer"' : "";
+const layoutFor = (page) => /docs|api|developers/.test(page.path) ? "docs" : /models|benchmarks|evaluation|edge|devices/.test(page.path) ? "specs" : /research/.test(page.path) ? "timeline" : /pricing|contact/.test(page.path) ? "availability" : /solutions|speech|translation|streaming/.test(page.path) ? "workflow" : "editorial";
 
-const esc = escapeHtml;
-const normalizePath = (value = "/") => {
-  if (value === "/404.html") return value;
-  const path = `/${String(value).replace(/^\/+|\/+$/g, "")}/`;
-  return path === "//" ? "/" : path;
-};
-const layouts = new Set(["editorial", "index", "workflow", "docs", "specs", "media", "ledger", "timeline", "comparison", "availability"]);
-const layoutFor = (page) => {
-  if (page.layout && layouts.has(page.layout)) return page.layout;
-  const path = normalizePath(page.path);
-  if (path === "/") return "editorial";
-  if (/pricing|contact|availability/.test(path)) return "availability";
-  if (/docs|developers|github/.test(path)) return "docs";
-  if (/research|releases|changelog/.test(path)) return "timeline";
-  if (/benchmarks|specs|hardware|models|api/.test(path)) return "specs";
-  if (/use-cases|solutions|workflows|planning|control|movement/.test(path)) return "workflow";
-  if (/integrations|devices|gallery|media/.test(path)) return "media";
-  if (/security|privacy|terms/.test(path)) return "ledger";
-  return page.visual?.kind === "comparison" ? "comparison" : "index";
-};
-
-function linkAttrs(href) {
-  return /^https?:|^mailto:/.test(href) ? ' target="_blank" rel="noopener noreferrer"' : "";
+function navigation(site, path) {
+  return site.navigation.map((item) => {
+    const href = item.href || item.children?.[0]?.href || "/";
+    const active = normalizePath(href) === path || item.children?.some((child) => normalizePath(child.href) === path);
+    if (item.children?.length) return `<details class="my-nav-group"${active ? " data-current" : ""}><summary>${e(item.label)}<span>+</span></summary><div>${item.children.map((child) => `<a href="${e(child.href)}"${normalizePath(child.href) === path ? ' aria-current="page"' : ""}${external(child.href)}>${e(child.label)}</a>`).join("")}</div></details>`;
+    return `<a href="${e(href)}"${active ? ' aria-current="page"' : ""}${external(href)}>${e(item.label)}</a>`;
+  }).join("");
 }
 
-function navItem(item, activePath) {
-  const href = item.href || item.children?.[0]?.href || "/";
-  const active = normalizePath(href) === activePath || item.children?.some((child) => normalizePath(child.href) === activePath);
-  if (item.children?.length) {
-    return `<details class="product-nav__group"${active ? " data-active" : ""}><summary>${esc(item.label)}</summary><div class="product-nav__menu">${item.children.map((child) => `<a href="${esc(child.href)}"${normalizePath(child.href) === activePath ? ' aria-current="page"' : ""}${linkAttrs(child.href)}>${esc(child.label)}</a>`).join("")}</div></details>`;
-  }
-  return `<a href="${esc(href)}"${active ? ' aria-current="page"' : ""}${linkAttrs(href)}>${esc(item.label)}</a>`;
+function waveform(page) {
+  const items = (page.visual?.items || ["Speaker", "Meaning", "Context", "Output"]).slice(0, 6);
+  const bars = Array.from({ length: 48 }, (_, index) => `<i style="--h:${18 + ((index * 37) % 78)}%"></i>`).join("");
+  return `<figure class="my-wave"><div class="my-wave__top"><span>LIVE SIGNAL / ILLUSTRATIVE</span><span>00:${String(items.length * 7).padStart(2, "0")}</span></div><div class="my-wave__bars" aria-hidden="true">${bars}</div><ol>${items.map((item, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span>${e(item)}</li>`).join("")}</ol><figcaption>${e(page.visual?.caption || "A conceptual signal path. No benchmark or live latency is implied.")}</figcaption></figure>`;
 }
 
-function visualMarkup(product, visual = {}) {
-  const items = visual.items || [];
-  if (visual.kind === "system" || !visual.kind) {
-    return `<figure class="product-visual product-visual--system"><img src="/products/media/${product.slug}-system.svg" width="1200" height="620" alt="${esc(visual.title || `${product.name} system architecture`)}"><figcaption>${esc(visual.caption || "System view")}</figcaption></figure>`;
-  }
-  if (visual.src) {
-    return `<figure class="product-visual product-visual--media"><img src="${esc(visual.src)}" alt="${esc(visual.alt || visual.title)}" width="1400" height="900"><figcaption>${esc(visual.caption || "Project-owned source material")}</figcaption></figure>`;
-  }
-  return `<figure class="product-visual product-visual--${esc(visual.kind)}" data-visual="${esc(visual.kind)}"><div class="product-visual__stage"><span class="product-visual__title">${esc(visual.title || product.name)}</span><div class="product-visual__items">${items.map((item, index) => `<span style="--item:${index}">${esc(item)}</span>`).join("")}</div></div>${visual.caption ? `<figcaption>${esc(visual.caption)}</figcaption>` : ""}</figure>`;
+function cards(page) {
+  return `<section class="my-cards">${(page.sections || []).map((section, index) => `<article class="my-card my-card--${(index % 4) + 1}"><span>${String(index + 1).padStart(2, "0")}</span><h2>${e(section.title)}</h2><p>${e(section.body)}</p>${section.status ? `<strong>${e(section.status)}</strong>` : ""}${section.points?.length ? `<ul>${section.points.map((point) => `<li>${e(point)}</li>`).join("")}</ul>` : ""}${section.cta ? `<a href="${e(section.cta.href)}"${external(section.cta.href)}>${e(section.cta.label)} ↗</a>` : ""}</article>`).join("")}</section>`;
 }
 
-function renderSectionPoints(section, layout) {
-  if (!section.points?.length) return "";
-  const items = section.points.map((point) => `<li>${esc(point)}</li>`).join("");
-  if (["workflow", "timeline"].includes(layout)) return `<ol class="product-section-points product-section-points--ordered">${items}</ol>`;
-  if (["specs", "ledger"].includes(layout)) return `<dl class="product-section-points product-section-points--ledger">${section.points.map((point, index) => `<div><dt>${String(index + 1).padStart(2, "0")}</dt><dd>${esc(point)}</dd></div>`).join("")}</dl>`;
-  return `<ul class="product-section-points">${items}</ul>`;
-}
-
-function sectionsMarkup(page) {
-  const layout = layoutFor(page);
-  return layoutSectionMarkup(page, layout);
-}
-
-function footerMarkup(product, site) {
-  const hasLegal = site.footerGroups.some((group) => group.title.toLowerCase() === "legal");
-  const legal = hasLegal ? "" : `<section><h2>Legal</h2><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a>${product.slug === "sori" || product.slug === "sandora" || product.slug === "dossier" ? '<a href="/security/">Security</a>' : ""}</section>`;
-  return `<footer class="product-footer"><div class="product-footer__brand"><a href="/" class="product-wordmark">${esc(product.name)}</a><p>${esc(product.thesis)}</p><span>A Navin Research project</span></div><div class="product-footer__groups">${site.footerGroups.map((group) => `<section><h2>${esc(group.title)}</h2>${group.links.map((link) => `<a href="${esc(link.href)}"${linkAttrs(link.href)}>${esc(link.label)}</a>`).join("")}</section>`).join("")}${legal}</div><div class="product-footer__base"><span>© <span data-current-year></span> ${esc(product.name)}</span><a href="https://navinresearch.com/products/">Navin Research products</a></div></footer>`;
-}
-
-function pageTemplate(product, site, page) {
-  const path = normalizePath(page.path);
-  const layout = layoutFor(page);
-  const isHome = path === "/";
-  const cta = page.cta || site.primaryCta;
-  const productRoute = site.pages.some((candidate) => normalizePath(candidate.path) === "/product/") ? "/product/" : site.navigation[0]?.href || "/";
-  return `<!doctype html>
-<html lang="en" class="no-js">
-<head>
-  ${headMarkup({ product, page, path, layout, isHome })}
-</head>
-<body class="product-${product.slug} product-renderer-${product.slug} product-layout-${layout}" data-product="${product.slug}" data-route="${esc(path)}" data-layout="${layout}">
-  <a class="skip-link" href="#main-content">Skip to content</a><div class="product-field" aria-hidden="true"></div>
-  <header class="product-header" data-shell="moyi-listening-room"><a class="product-wordmark" href="/" aria-label="${esc(product.name)} home">${esc(product.name)}</a><span class="moyi-listening-header__status"><i aria-hidden="true"></i> LISTENING ROOM / ${esc(path === "/" ? "OPEN" : "REVIEW")}</span><button class="product-menu-button" type="button" aria-controls="product-menu" aria-expanded="false" data-product-menu>Menu</button><div class="product-menu" id="product-menu"><nav class="product-nav" aria-label="Primary navigation">${site.navigation.map((item) => navItem(item, path)).join("")}</nav><a class="product-header__cta" href="${esc(site.primaryCta.href)}"${linkAttrs(site.primaryCta.href)}>${esc(site.primaryCta.label)}</a></div></header>
-  <main id="main-content" class="product-main" data-shell="moyi-listening-room"><div class="moyi-signal-bus" aria-label="Moyi signal path"><span>CAPTURE</span><b aria-hidden="true">→</b><span>CONTEXT</span><b aria-hidden="true">→</b><span>REVIEW</span></div><section class="product-page-hero product-page-hero--${layout}${isHome ? " product-page-hero--home" : ""}"><div class="product-page-hero__copy">${page.eyebrow ? `<p class="product-eyebrow">${esc(page.eyebrow)}</p>` : ""}<h1>${esc(page.headline || page.title)}</h1><p>${esc(page.lede || page.description)}</p>${isHome ? `<div class="product-page-hero__actions"><a class="product-button" href="${esc(site.primaryCta.href)}"${linkAttrs(site.primaryCta.href)}>${esc(site.primaryCta.label)}</a><a class="product-text-link" href="${esc(productRoute)}">Explore the product <span aria-hidden="true">→</span></a></div>` : ""}</div><div class="moyi-waveform-frame">${visualMarkup(product, page.visual)}</div></section><div class="product-page-sections product-page-sections--${layout}">${sectionsMarkup(page)}</div>${cta ? `<section class="product-page-cta"><div><h2>${esc(cta.title || "Continue")}</h2><p>${esc(cta.body || product.availability.body)}</p></div><a class="product-button" href="${esc(cta.href)}"${linkAttrs(cta.href)}>${esc(cta.label)}</a></section>` : ""}${isHome ? `<section class="product-evidence-block"><div><h2>Evidence and limitations</h2><p>${esc(product.proofNote)}</p></div><ul>${product.evidence.map((item) => `<li><span>${esc(item.label)}</span><strong>${esc(item.value)}</strong><small>${esc(item.state)}</small></li>`).join("")}</ul></section>` : ""}</main>${footerMarkup(product, site)}</body>
-</html>`;
-}
-export default function renderProductPage(product, site, page) { return pageTemplate(product, site, page).replace(/[ 	]+$/gm, ""); }
-export { layoutFor, normalizePath };
-
-function layoutSectionMarkup(page, layout) {
+function docs(page) {
   const sections = page.sections || [];
-  const item = (section, index, pointsMarkup, tag = "section") => `<${tag} class="product-page-section product-section--${layout}" data-kind="${esc(section.kind || "narrative")}" data-renderer="${layout}"><div class="product-page-section__index" aria-hidden="true">${String(index + 1).padStart(2, "0")}</div><div class="product-page-section__copy"><h2>${esc(section.title)}</h2><p>${esc(section.body)}</p>${section.status ? `<strong class="product-page-section__status">${esc(section.status)}</strong>` : ""}</div>${pointsMarkup}${section.cta ? `<a class="product-text-link" href="${esc(section.cta.href)}"${linkAttrs(section.cta.href)}>${esc(section.cta.label)} <span aria-hidden="true">→</span></a>` : ""}</${tag}>`;
-  if (layout === "workflow") return `<ol class="product-workflow" aria-label="Workflow sequence">${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout), "li")).join("")}</ol>`;
-  if (layout === "ledger") return `<aside class="product-ledger" aria-label="Evidence register">${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</aside>`;
-  if (layout === "docs") return `<article class="product-docs-frame"><header><p class="product-docs-frame__label">Documentation index</p><p>Read the concepts, boundaries, and source trail in sequence.</p></header><div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</div></article>`;
-  if (layout === "specs") return `<dl class="product-specs-frame">${sections.map((section, index) => `<div><dt><span>${String(index + 1).padStart(2, "0")}</span>${esc(section.title)}</dt><dd>${esc(section.body)}${renderSectionPoints(section, layout)}</dd></div>`).join("")}</dl>`;
-  if (layout === "media") return `<section class="product-media-frame" aria-label="Source material"><div class="product-media-frame__intro"><p>Source material</p><p>Images and visual references stay close to their provenance.</p></div><div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</div></section>`;
-  if (layout === "availability") return `<section class="product-availability-frame" aria-label="Availability status"><div class="product-availability-frame__status">STATUS / ${esc(sections.length ? sections[0].status || "NOT ANNOUNCED" : "NOT ANNOUNCED")}</div>${sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("")}</section>`;
-  return sections.map((section, index) => item(section, index, renderSectionPoints(section, layout))).join("");
+  return `<div class="my-docs"><aside><span>ON THIS PAGE</span>${sections.map((section, index) => `<a href="#topic-${index + 1}">${String(index + 1).padStart(2, "0")} ${e(section.title)}</a>`).join("")}</aside><article><header><span>MOYI DEVELOPER SURFACE</span><code>signal → context → output</code></header>${sections.map((section, index) => `<section id="topic-${index + 1}"><p class="my-docs__index">${String(index + 1).padStart(2, "0")}</p><div><h2>${e(section.title)}</h2><p>${e(section.body)}</p>${section.status ? `<mark>${e(section.status)}</mark>` : ""}</div>${section.points?.length ? `<pre><code>${section.points.map((point) => `• ${e(point)}`).join("\n")}</code></pre>` : ""}</section>`).join("")}</article></div>`;
 }
+
+function specs(page) {
+  return `<section class="my-lab"><header><span>LANGUAGE LAB</span><p>Claims remain bounded by published project evidence.</p></header>${(page.sections || []).map((section, index) => `<article><div class="my-lab__number">${String(index + 1).padStart(2, "0")}</div><div><h2>${e(section.title)}</h2><p>${e(section.body)}</p></div><div class="my-lab__reading"><span>${e(section.status || "OBSERVATION")}</span>${section.points?.length ? `<ul>${section.points.map((point) => `<li>${e(point)}</li>`).join("")}</ul>` : ""}</div></article>`).join("")}</section>`;
+}
+
+function flow(page) {
+  return `<section class="my-flow"><div class="my-flow__line" aria-hidden="true"></div>${(page.sections || []).map((section, index) => `<article style="--step:${index}"><span>STEP ${String(index + 1).padStart(2, "0")}</span><h2>${e(section.title)}</h2><p>${e(section.body)}</p>${section.points?.length ? `<ol>${section.points.map((point) => `<li>${e(point)}</li>`).join("")}</ol>` : ""}</article>`).join("")}</section>`;
+}
+
+function availability(page) {
+  const sections = page.sections || [];
+  return `<section class="my-offer"><header><span>PUBLIC AVAILABILITY</span><strong>${e(sections[0]?.status || "NOT ANNOUNCED")}</strong></header><div class="my-offer__statement"><p>01 / STATE</p><h2>${e(page.headline || page.title)}</h2><p>No number, tier, or date is inferred where the project has not published one.</p></div><dl>${sections.map((section, index) => `<div><dt>${String(index + 2).padStart(2, "0")} / ${e(section.title)}</dt><dd>${e(section.body)}${section.status ? `<b>${e(section.status)}</b>` : ""}</dd></div>`).join("")}</dl></section>`;
+}
+
+function pageBody(page, mode) { if (mode === "availability") return availability(page); if (mode === "docs") return docs(page); if (mode === "specs" || mode === "timeline") return specs(page); if (mode === "workflow") return flow(page); return cards(page); }
+
+function footer(product, site) {
+  const groups = site.footerGroups;
+  return `<footer class="my-footer"><div class="my-footer__voice"><span>MOYI</span><h2>Speech carries more than words.</h2><p>${e(product.thesis)}</p></div><div class="my-footer__links">${groups.map((group) => `<section><h3>${e(group.title)}</h3>${group.links.map((link) => `<a href="${e(link.href)}"${external(link.href)}>${e(link.label)}</a>`).join("")}</section>`).join("")}</div><div class="my-footer__ticker"><span>LANGUAGE</span><span>CONTEXT</span><span>VOICE</span><span>MEANING</span><span>© <span data-current-year></span></span></div></footer>`;
+}
+
+function render(product, site, page) {
+  const path = normalizePath(page.path); const mode = layoutFor(page); const home = path === "/"; const cta = page.cta || site.primaryCta;
+  return `<!doctype html><html lang="en" class="no-js"><head>${headMarkup({ product, page, path, layout: mode, isHome: home })}</head><body class="my-body my-${mode}" data-product="moyi" data-route="${e(path)}"><a class="skip-link" href="#main-content">Skip to content</a><header class="my-header"><a class="my-logo" href="/" aria-label="Moyi home">MOYI<i aria-hidden="true"></i></a><button class="product-menu-button my-menu-button" type="button" aria-controls="product-menu" aria-expanded="false" data-product-menu>Menu</button><div class="product-menu my-menu" id="product-menu"><nav aria-label="Primary navigation">${navigation(site, path)}</nav><a class="my-header__cta" href="${e(site.primaryCta.href)}"${external(site.primaryCta.href)}>${e(site.primaryCta.label)}</a></div></header><main id="main-content"><section class="my-hero"><div class="my-hero__copy"><p>${e(page.eyebrow || "VOICE AI / CONTEXT FIRST")}</p><h1>${e(page.headline || page.title)}</h1><div class="my-hero__lede"><span aria-hidden="true">↳</span><p>${e(page.lede || page.description)}</p></div>${home ? `<div class="my-actions"><a href="${e(site.primaryCta.href)}"${external(site.primaryCta.href)}>${e(site.primaryCta.label)}</a><a href="/models/">Explore the model family</a></div>` : ""}</div>${waveform(page)}</section>${pageBody(page, mode)}${cta ? `<section class="my-next"><p>WHERE THE SIGNAL GOES NEXT</p><div><h2>${e(cta.title || "Keep the boundary audible")}</h2><p>${e(cta.body || product.availability.body)}</p></div><a href="${e(cta.href)}"${external(cta.href)}>${e(cta.label)} <span>↗</span></a></section>` : ""}${home ? `<section class="my-evidence"><div><p>EVIDENCE / LIMITS</p><h2>Evaluation before exaggeration.</h2><p>${e(product.proofNote)}</p></div><ol>${product.evidence.map((item, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><b>${e(item.label)}</b><strong>${e(item.value)}</strong><small>${e(item.state)}</small></li>`).join("")}</ol></section>` : ""}</main>${footer(product, site)}</body></html>`;
+}
+export default function renderMoyi(product, site, page) { return render(product, site, page).replace(/[ \t]+$/gm, ""); }
+export { layoutFor, normalizePath };

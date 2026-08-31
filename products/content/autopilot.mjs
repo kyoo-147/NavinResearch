@@ -68,7 +68,7 @@ for (const pageEntry of pages) {
 }
 
 const autopilot = {
-  slug: 'autopilot', name: 'Autopilot', eyebrow: 'AUTONOMOUS SCALE-MODEL VEHICLES', status: 'OPEN RESEARCH REFERENCE', catalogStatus: 'product',
+  slug: 'autopilot', themeColor: '#081018', name: 'Autopilot', eyebrow: 'AUTONOMOUS SCALE-MODEL VEHICLES', status: 'OPEN RESEARCH REFERENCE', catalogStatus: 'product',
   thesis: 'A ROS and deep-learning stack for autonomous scale-model vehicles, documented as a test-track chronicle rather than a production promise.',
   intro: 'Autopilot follows the vehicle from sensor input to control output: camera, IMU, sonar, and localisation feed a ROS-based loop, while learned perception and classical control share the work.',
   proofNote: 'The public project README describes a BFMC-oriented scale-model vehicle, Raspberry Pi and Arduino/Nucleo hardware, ROS nodes, ONNX models, and an official-style test track. Reproduction hardware, model quality, and current runtime behaviour remain to be independently checked.',

@@ -118,7 +118,7 @@ const site = {
 };
 
 export default {
-  slug: "howhow",
+  slug: "howhow", themeColor: '#ffe500',
   name: "HowHow",
   eyebrow: "EVIDENCE-FIRST RESEARCH OS",
   status: "READY FOR HUMAN REVIEW",
