@@ -44,7 +44,7 @@
 .product-lajvard .lajvard-entry--evidence { border-top: 2px solid var(--product-lajvard-coral); }
 .product-lajvard .lajvard-entry--privacy, .product-lajvard .lajvard-entry--boundary { border-top-style:dashed; }
 .product-lajvard .product-footer[data-footer="lajvard-notebook"] { border-top: 2px solid var(--product-lajvard-blue); }
-@media (max-width:800px) { .product-lajvard .lajvard-margin-note { position:static; display:block; margin-bottom:.45rem; } .product-lajvard .product-main[data-field="lajvard-paper"] { border-inline:0; padding-inline:0; } }
+@media (max-width:800px) { .product-lajvard .lajvard-margin-note { position:absolute; left:var(--edge); top:.35rem; } .product-lajvard .product-main[data-field="lajvard-paper"] { border-inline:0; padding-inline:0; } }
 
 /* The paper theme meets a dark navigation and visual instrument. */
 .product-lajvard .product-header { color: #f4f0e6; background: rgba(32,37,34,.96); border-bottom-color: var(--product-lajvard-ink); }

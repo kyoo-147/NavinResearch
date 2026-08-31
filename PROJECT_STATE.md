@@ -7,7 +7,7 @@ Maintain the deployed multilingual Navin Research ecosystem as eight truthful, p
 - parent: `navinresearch.com`
 - products: `sandora`, `moyi`, `sori`, `howhow`, `dossier`, `autopilot`, and `lajvard` under `*.navinresearch.com`
 
-The current reconstruction implementation milestone is committed, pushed, and deployed at implementation commit `aa0ab2a`. The repository now includes a fail-closed public release allowlist builder, but production still serves the previous over-broad full-tree artifact until an authenticated atomic deployment is completed. The immediate milestone remains **checkpoint stability and production hardening**, not new feature work.
+The current reconstruction implementation milestone is committed and locally QA-repaired; production deployment of the repaired artifact remains pending because authenticated SSH access is unavailable. The repository now includes a fail-closed public release allowlist builder, but production still serves the previous over-broad full-tree artifact until an authenticated atomic deployment is completed. The immediate milestone remains **checkpoint stability and production hardening**, not new feature work.
 
 ## Current Architecture
 
@@ -170,6 +170,7 @@ The ecosystem comprises eight independent systems: the multilingual Navin Resear
 Most recent implementation commits, newest first:
 
 - `aa0ab2a` — finalize product route generation, Autopilot duplicate fix, Lajvard 404/mobile fix, regenerated output/manifest.
+- Pending repair — normalize Autopilot/Lajvard mobile header marginalia to remain out of grid flow and raise shared product controls to 44px minimum; generated output revalidated.
 - `4aa775e` — deepen Lajvard field-notebook route CTAs.
 - `8cedf9e` — deepen Autopilot test-track route grammar.
 - `bdf8371` — deepen Dossier forensic workflow surfaces.
@@ -187,7 +188,7 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 ### Passed locally during this checkpoint
 
 - `npm test`
-  - **PASS**
+  - **PASS** after mobile control/header repair
   - Generated 60 localized pages, 50 Markdown posts, and 145 product pages.
   - `content-routes/validate.mjs` passed route/content/asset/SEO/manifest contracts.
   - All JavaScript/module syntax checks in `package.json` passed.
@@ -237,6 +238,8 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
   - Internal/source/operator paths and repository demo analytics JSON returned 404 from the isolated artifact. Production analytics JSON is intentionally supplied by Nginx aliases outside the release.
 
 ### Failed or unavailable
+
+- Production deployment of the repaired artifact remains **PENDING** because this environment has no authenticated non-interactive SSH channel. The repaired local release is built and verified; no production files were changed.
 
 - GitHub Actions run `33314706771` for `aa0ab2a`
   - **FAILED TO START**, not a code/test failure.

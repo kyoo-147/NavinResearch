@@ -8,7 +8,7 @@
 .product-autopilot .autopilot-instrument--orientation { border-top: 2px solid var(--autopilot-signal); }
 .product-autopilot .autopilot-instrument--architecture { border-left: 2px solid var(--autopilot-track); padding-left: 1rem; }
 .product-autopilot .product-footer[data-footer="autopilot-track"] { border-top: 2px solid var(--autopilot-track); }
-@media (max-width:800px) { .product-autopilot .autopilot-trackline { position: static; display:block; margin-bottom:.45rem; } .product-autopilot .product-main[data-field="autopilot-research"] { border-inline:0; padding-inline:0; } }
+@media (max-width:800px) { .product-autopilot .autopilot-trackline { position:absolute; left:var(--edge); top:.35rem; } .product-autopilot .product-main[data-field="autopilot-research"] { border-inline:0; padding-inline:0; } }
 
 /* Map the shared route shell to Autopilot's field palette. */
 .product-autopilot{--ground:var(--autopilot-ground);--surface:var(--autopilot-panel);--surface-2:#202729;--ink:var(--autopilot-ink);--muted:var(--autopilot-muted);--line:var(--autopilot-line);--accent:var(--autopilot-signal);--accent-ink:var(--autopilot-ground)}
