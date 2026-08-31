@@ -1,4 +1,6 @@
-/* Product runtime: autopilot. */
+/* Autopilot runtime: a quiet instrument panel, never a live vehicle dashboard. */
+const trackState = document.querySelector("[data-instrument]");
+if (trackState) trackState.setAttribute("data-runtime", "static-reference");
 const menuButton = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
 const details = [...document.querySelectorAll(".product-nav__group")];

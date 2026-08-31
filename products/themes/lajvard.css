@@ -37,6 +37,15 @@
 @media (max-width: 720px) { .product-lajvard .product-lajvard__hero { grid-template-columns: 1fr; gap: 3rem; } .product-lajvard .product-lajvard__section-head { grid-template-columns: 1fr; gap: .7rem; } .product-lajvard .product-lajvard__body, .product-lajvard .product-lajvard__points { margin-left: 0; } .product-lajvard .product-lajvard__points { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .product-lajvard *, .product-lajvard *::before, .product-lajvard *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
 
+/* Lajvard's renderer keeps marginalia separate from the navigation hierarchy. */
+.product-lajvard .product-header[data-shell="lajvard-notebook"] { position: relative; }
+.product-lajvard .lajvard-margin-note { position:absolute; left:var(--edge); top:.35rem; color:var(--product-lajvard-coral); font:700 .58rem/1 Arial,sans-serif; letter-spacing:.14em; }
+.product-lajvard .product-main[data-field="lajvard-paper"] { border-inline: 1px solid rgba(50,109,120,.16); padding-inline: clamp(1rem,2vw,2rem); }
+.product-lajvard .lajvard-entry--evidence { border-top: 2px solid var(--product-lajvard-coral); }
+.product-lajvard .lajvard-entry--privacy, .product-lajvard .lajvard-entry--boundary { border-top-style:dashed; }
+.product-lajvard .product-footer[data-footer="lajvard-notebook"] { border-top: 2px solid var(--product-lajvard-blue); }
+@media (max-width:800px) { .product-lajvard .lajvard-margin-note { position:static; display:block; margin-bottom:.45rem; } .product-lajvard .product-main[data-field="lajvard-paper"] { border-inline:0; padding-inline:0; } }
+
 /* The paper theme meets a dark navigation and visual instrument. */
 .product-lajvard .product-header { color: #f4f0e6; background: rgba(32,37,34,.96); border-bottom-color: var(--product-lajvard-ink); }
 .product-lajvard .product-header .product-wordmark,

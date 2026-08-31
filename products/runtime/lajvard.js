@@ -1,4 +1,6 @@
-/* Product runtime: lajvard. */
+/* Lajvard runtime: notebook navigation only; no robot service or telemetry is contacted. */
+const notebook = document.querySelector("[data-notebook-state]");
+if (notebook) notebook.setAttribute("data-runtime", "static-concept");
 const menuButton = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
 const details = [...document.querySelectorAll(".product-nav__group")];
