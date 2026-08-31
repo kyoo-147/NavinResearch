@@ -17,13 +17,13 @@
   const title = document.querySelector("[data-release-title]");
   if (!title || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const fonts = [
-    "Pixelated Elegance",
-    "Domino Brick",
-    "Fort Avenue",
-    "Matrixtype",
-    "Matrixtype Display",
-    "Super Pixel",
+  const fontClasses = [
+    "release-title-font--pixelated",
+    "release-title-font--domino",
+    "release-title-font--fort",
+    "release-title-font--matrix",
+    "release-title-font--matrix-display",
+    "release-title-font--super",
   ];
   const text = "NAVIN RELEASES";
   let fontIndex = 0;
@@ -45,12 +45,13 @@
       timer = window.setTimeout(erase, 52);
       return;
     }
-    fontIndex = (fontIndex + 1) % fonts.length;
-    title.style.fontFamily = `"${fonts[fontIndex]}", "Courier New", monospace`;
+    title.classList.remove(...fontClasses);
+    fontIndex = (fontIndex + 1) % fontClasses.length;
+    title.classList.add(fontClasses[fontIndex]);
     timer = window.setTimeout(() => type(text), 180);
   };
 
-  title.style.fontFamily = `"${fonts[fontIndex]}", "Courier New", monospace`;
+  title.classList.add(fontClasses[fontIndex]);
   timer = window.setTimeout(erase, 2000);
   window.addEventListener("pagehide", () => window.clearTimeout(timer), { once: true });
 })();

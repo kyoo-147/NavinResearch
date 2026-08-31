@@ -39,7 +39,7 @@ function setDay(day) {
 }
 function renderChart() {
   const totals = new Map(); sourceRows.forEach((row) => totals.set(row.day, (totals.get(row.day) || 0) + row.visitors)); const entries = [...totals].sort(([a], [b]) => a.localeCompare(b)); const max = Math.max(1, ...entries.map(([, total]) => total)); nodes.dayCount.textContent = `${entries.length} days`; nodes.chart.replaceChildren();
-  entries.forEach(([day, total]) => { const bar = document.createElement("button"); bar.type = "button"; bar.className = "daily-bar"; bar.style.setProperty("--bar-height", `${Math.max(2, (total / max) * 100)}%`); bar.dataset.label = `${readableDay(day)} · ${total.toLocaleString()}`; bar.setAttribute("aria-label", `View ${total.toLocaleString()} visitors on ${readableDay(day)}`); bar.addEventListener("click", () => setDay(day)); nodes.chart.append(bar); });
+  entries.forEach(([day, total]) => { const bar = document.createElement("button"); const heightBucket = Math.max(5, Math.round(((total / max) * 100) / 5) * 5); bar.type = "button"; bar.className = `daily-bar daily-bar--${heightBucket}`; bar.dataset.label = `${readableDay(day)} · ${total.toLocaleString()}`; bar.setAttribute("aria-label", `View ${total.toLocaleString()} visitors on ${readableDay(day)}`); bar.addEventListener("click", () => setDay(day)); nodes.chart.append(bar); });
 }
 function render() {
   const days = [...new Set(sourceRows.map((row) => row.day))].sort(); const latest = days.at(-1) || ""; if (!nodes.picker.value || !days.includes(nodes.picker.value)) nodes.picker.value = latest; nodes.picker.min = days[0] || ""; nodes.picker.max = latest;
