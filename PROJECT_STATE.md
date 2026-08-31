@@ -7,7 +7,7 @@ Maintain the deployed multilingual Navin Research ecosystem as eight truthful, p
 - parent: `navinresearch.com`
 - products: `sandora`, `moyi`, `sori`, `howhow`, `dossier`, `autopilot`, and `lajvard` under `*.navinresearch.com`
 
-The current reconstruction implementation milestone is committed and locally QA-repaired; production deployment of the repaired artifact remains pending because authenticated SSH access is unavailable. The repository now includes a fail-closed public release allowlist builder, but production still serves the previous over-broad full-tree artifact until an authenticated atomic deployment is completed. The immediate milestone remains **checkpoint stability and production hardening**, not new feature work.
+The independent reconstruction milestone is committed and pushed at `6c7e72c`. All local generation, validation, analytics, allowlisted-release, structural, and representative browser checks pass. Production deployment of this repaired artifact remains pending because the current environment has no approved authenticated SSH channel. Production serves an older allowlisted website build, so live pages intentionally differ from the reviewed local output until an atomic deployment is completed.
 
 ## Current Architecture
 
@@ -28,7 +28,7 @@ The ecosystem comprises eight independent systems: the multilingual Navin Resear
 ### Product static sites
 
 - Each product owns `products/content/<slug>.mjs`, `products/themes/<slug>.css`, and an original `products/media/<slug>-system.svg`.
-- `scripts/generate-products.mjs` generates product HTML, product-specific robots/sitemaps/404s, and `products/site-manifest.json`.
+- `scripts/generate-products.mjs` is a thin output/SEO/sitemap/manifest orchestrator. Full page composition belongs to `scripts/product-sites/<slug>.mjs`, with product-specific runtimes under `products/runtime/<slug>.js` and themes under `products/themes/<slug>.css`.
 - The manifest currently contains 145 routes:
   - Sandora 22
   - Moyi 22
@@ -38,7 +38,7 @@ The ecosystem comprises eight independent systems: the multilingual Navin Resear
   - Autopilot 20
   - Lajvard 19
 - Routes resolve one of ten semantic layout families: `editorial`, `index`, `workflow`, `docs`, `specs`, `media`, `ledger`, `timeline`, `comparison`, or `availability`.
-- `products/product-foundation.css` and `products/product-site.js` provide shared responsive/accessibility primitives. Product themes and content contracts provide distinct IA, visual grammar, voice, evidence, and access states.
+- Generated product pages use only their own renderer identity, theme, and runtime. `products/product-primitives.css` supplies low-level accessibility/layout primitives; the legacy `products/product-foundation.css` and `products/product-site.js` remain unlinked and are excluded from the release artifact.
 - Product pages are currently English-only. The parent catalog and parent routes are EN/VI/ZH-CN.
 
 ### Validation
@@ -64,7 +64,7 @@ The ecosystem comprises eight independent systems: the multilingual Navin Resear
 - Current web implementation release: `/var/www/navinresearch.com/releases/20260830134043-aa0ab2a`.
 - Previous rollback release: `/var/www/navinresearch.com/releases/20260830092725-614006f`.
 - The deployed page content was compared against all 255 generated public parent/product files during this checkpoint and matched after newline normalization.
-- Validated allowlisted deployment candidate: `D:/work/michael/artifacts/navin-release-20260830212841-b3e6b7c.tar.gz` (SHA-256 `9a2359933874a11eb51834086b9acaa3f204b96ad1befa1d844fbfe81aec5917`, 2,363,623 bytes). It was extracted to a disposable directory and independently reverified as the exact 323-file release.
+- Current validated allowlisted deployment candidate: `D:/work/michael/artifacts/navin-release-20260831080310-6c7e72c.tar.gz` (SHA-256 `b5dcff9ac4446b467c8807160a5763cea4005d3bbed95c8896ff9d8ae39c5e25`, 2,367,042 bytes). It contains exactly 329 public files and was independently rebuilt and verified against source.
 
 ## Completed Work
 
@@ -143,9 +143,10 @@ The ecosystem comprises eight independent systems: the multilingual Navin Resear
 - `content-routes/route-foundation.css` — parent route/chapter/release/search layout.
 - `products/content/*.mjs` — product truth/content/IA/evidence contracts.
 - `products/themes/*.css` — product-specific visual systems.
-- `products/product-foundation.css` — shared product layout/accessibility primitives.
-- `products/product-site.js` — product navigation/year runtime.
-- `scripts/generate-products.mjs` — product renderer, layout selection, manifest, robots/sitemaps.
+- `products/product-primitives.css` — low-level shared accessibility/layout primitives only.
+- `products/runtime/*.js` — seven product-owned navigation/runtime implementations.
+- `scripts/product-sites/*.mjs` — seven complete product-owned headers, homepages, page families, and footers.
+- `scripts/generate-products.mjs` — thin product output, manifest, robots, and sitemap orchestration.
 - `scripts/build-release.mjs` — fail-closed public artifact allowlist, sitemap/manifest cross-checks, byte verification, and adversarial self-test.
 - `products/site-manifest.json` — generated 145-route product inventory.
 - `docs/design-dna/*.md` — approved product/parent design directions.
@@ -211,8 +212,7 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ### Passed against production during this checkpoint
 
-- Full generated-content comparison using `products/site-manifest.json` and root `sitemap.xml`
-  - **PASS: 255/255 live parent/product pages matched local generated files after newline normalization; 0 status failures, 0 mismatches.**
+- Production content comparison correctly detects deployment drift: 138 of 141 checked product URLs differ from the new reviewed local output because `6c7e72c` has not yet been deployed.
 - Eight host roots and HTTP-to-HTTPS redirects
   - **PASS:** parent plus all seven product subdomains returned HTTPS 200 and HTTP 301 to HTTPS.
 - Product/root robots and sitemaps
@@ -226,12 +226,12 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 ### Passed for local release hardening
 
 - `npm run check:release`
-  - **PASS:** built and verified an isolated 323-file artifact containing 209 HTML files, 50 intentional public blog Markdown files, 110 parent URLs, and 145 product URLs (138 indexable product sitemap URLs plus seven product 404s).
+  - **PASS:** built and verified an isolated 329-file artifact containing 209 HTML files, 50 intentional public blog Markdown files, 110 parent URLs, and 145 product URLs (138 indexable product sitemap URLs plus seven product 404s).
   - Cross-checked the parent sitemap, all seven product sitemaps, and `products/site-manifest.json` without hard-coded route totals.
   - Adversarial checks rejected internal Markdown, operator Python, an unlisted web asset, a modified hash, a missing file, unsafe output containment, sitemap drift/host mutation/output collisions, and symlinked release roots or ancestors.
-- `npm run release:build -- release/candidate` followed by `npm run release:verify -- release/candidate`
-  - **PASS:** exact 323-file allowlist and SHA-256 source parity; no forbidden paths found.
-  - The commit-addressed archive was extracted into a separate disposable directory and `release:verify` passed again with the same 323-file inventory.
+- `npm run release:build -- release/deploy` followed by `npm run release:verify -- release/deploy`
+  - **PASS:** exact 329-file allowlist and SHA-256 source parity; no forbidden paths found.
+  - The current commit-addressed archive is recorded under Production delivery.
 - Playwright against the isolated candidate at 375px and 1440px
   - **PASS: 24 page/viewport checks** across all parent locales and representative routes for all seven products.
   - Every tested page returned 200 with one `h1`, one `main`, no horizontal overflow, and zero console errors.
@@ -239,19 +239,17 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ### Failed or unavailable
 
-- Production deployment of the repaired artifact remains **PENDING** because this environment has no authenticated non-interactive SSH channel. The repaired local release is built and verified; no production files were changed.
+- Production deployment of `6c7e72c` remains **PENDING** because this environment has no approved authenticated SSH channel. Batch-mode SSH authentication was denied; no production files were changed by this reconstruction pass.
 
 - GitHub Actions run `33314706771` for `aa0ab2a`
   - **FAILED TO START**, not a code/test failure.
   - GitHub annotation: account locked due to a billing issue; job had zero steps.
-- Public release allowlist check
-  - **FAIL:** `/1.png`, `/README.md`, `/analytics/aggregate.py`, and `/products/content/sandora.mjs` returned HTTP 200 in production.
-  - This proves the current release was packaged from the full tracked tree, contrary to the documented allowlisted-release boundary. `.git/config` correctly returned 404. No credential/database/MMDB exposure was observed, but source/design/operator files must be removed from the public artifact.
+- Production forbidden-path probes now return 404. The remaining deployment issue is stale website content, not a currently observed source-file exposure.
 - Screen-reader testing, full keyboard traversal, computed contrast across every theme/background, full 320/390/540/768/900/1920 matrix, performance trace, and physical product/runtime verification were **not run** in this checkpoint.
 
 ## Known Issues
 
-- **Production artifact is still over-broad:** tracked source/design/operator files remain publicly reachable from the currently active full-tree release. The local allowlisted replacement passes validation but has not yet been deployed.
+- **Production website content is stale:** all eight hosts are healthy, but the independent reconstruction at `6c7e72c` is not live until authenticated atomic deployment.
 - GitHub Actions cannot start while the account billing lock remains. Local gates are authoritative until resolved.
 - `.github/workflows/validate.yml` runs `generate-site.mjs` rather than `npm test`; when CI becomes available it should be checked for product-generation freshness coverage.
 - Product sites are English-only while the parent site is EN/VI/ZH-CN; this is a known policy/product decision, not an accidental missing locale.
@@ -273,10 +271,10 @@ The historical `docs/ecosystem-review-milestone1.md` is a dated review, not curr
 
 ### P0 — must do next
 
-1. Push the three validated local commits (`f00554b`, `fc1e237`, `b3e6b7c`) to `origin/main`. The commit-addressed candidate archive is already built and independently reverified outside the repository.
-2. **USER ACTION REQUIRED FOR ACCESS:** provide or restore an approved authenticated deployment channel without placing credentials in Git, logs, commands, or this document. Deploy the verified artifact atomically to a new immutable release while preserving the current release as rollback and switching both active symlinks together.
-3. After deployment, verify public source/design/operator paths return 404, all 255 generated URLs still match, all eight hosts/redirects/robots/sitemaps pass, analytics public JSON works, private analytics remains unauthenticated 401/no-store, and both symlinks plus rollback are correct.
-4. Rotate any administrative server credential that has been exposed outside the approved secret-management channel. Do not record the replacement. Use a distinct owner-approved credential for private insights if resetting it.
+1. Restore an approved authenticated deployment channel without placing credentials in Git, logs, commands, or this document.
+2. Deploy `navin-release-20260831080310-6c7e72c.tar.gz` atomically to a new immutable release, preserve the current target as rollback, and switch both active symlinks together.
+3. Verify all generated URLs against `6c7e72c`, all eight hosts/redirects/robots/sitemaps, forbidden-path 404s, public analytics JSON, private analytics unauthenticated 401/no-store, both symlinks, and rollback.
+4. Rotate any administrative server credential exposed outside the approved secret-management channel. Do not record the replacement. Use a distinct owner-approved credential for private insights if resetting it.
 
 ### P1 — important
 
@@ -342,17 +340,16 @@ For deployment, use a reviewed ephemeral operator procedure rather than checking
 ## Git State
 
 - Current branch: `main`.
-- Latest deployed implementation commit: `aa0ab2a83e240f8161628667671c1b43eccee6d8` (`fix(sites): finalize product route generation`).
-- Release hardening starts at `fc1e237` and is completed by `b3e6b7c` for sitemap collision checks and ancestor-symlink tests. Neither release-hardening commit is deployed while the SSH access blocker remains.
-- The durable checkpoint commit is `f00554b`. Verify `git status`, local HEAD, and `origin/main` directly before continuing; the tree must be clean after each focused commit.
+- Local HEAD and `origin/main`: `6c7e72cdbf0c4032ce0a6b847bb5db780a3bb9fa` (`fix(sites): close independent reconstruction QA`).
+- Independent renderer architecture begins at `1b556c7`; product reconstruction and integration complete through `6c7e72c`.
+- Release hardening is included. Verify `git status`, local HEAD, and `origin/main` directly before deployment; the tree must be clean after each focused commit.
 - Several historical local branches and temporary Pi worktrees still exist. They are not pending integration into `main`; do not merge them merely because they exist. Do not delete ambiguous worktrees as part of ordinary feature work.
 
 ## Handoff Notes
 
 - Start a fresh session by reading `AGENTS.md`, then this file, then inspect `git status` and current commits. Do not rely on the dated milestone review as current release status.
-- The website reconstruction itself is complete and live. Do not redo the seven product redesigns or parent-route deepening.
-- The most important newly discovered issue is deployment packaging, not page-generation correctness: live pages match source, but the public release contains too much of the tracked repository.
-- The corrected allowlisted archive is ready at the path recorded under Production delivery. Do not fall back to a Git archive; deployment remains blocked until an approved authenticated channel is restored.
+- The independent reconstruction is complete, pushed, and locally validated, but not yet live. Do not collapse the product-owned renderers back into a shared presentation shell.
+- The allowlisted `6c7e72c` archive is ready at the path recorded under Production delivery. Do not fall back to a Git archive; deployment remains blocked until an approved authenticated channel is restored.
 - Production reachability proves website delivery only. It does not prove product runtimes, model behavior, physical devices, commercial availability, or scientific results.
 - Analytics totals are genuine aggregate production data, but source-channel attribution is not implemented.
 - The previous recurring implementation schedule is permanently cancelled. Continue manually unless the owner explicitly requests a new schedule.
