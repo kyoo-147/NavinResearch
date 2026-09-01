@@ -30,6 +30,14 @@ export function headMarkup({ product, page, path, layout, isHome }) {
   const sandoraImage = product.slug === "sandora" && page.media?.src && !sandoraNonLeadingPaths.has(path) ? page.media.src : "";
   const sandoraCompactImage = sandoraImage.replace(/\.webp$/, "-960.webp");
   const sandoraImageWidth = sandoraImage.endsWith("hero-atlas.webp") ? 1915 : 1672;
+  const sandoraSocialImage = product.slug === "sandora" && page.media?.src ? `https://${product.slug}.navinresearch.com${page.media.src}` : "";
+  const sandoraSocialWidth = page.media?.src?.endsWith("hero-atlas.webp") ? 1915 : 1672;
+  const sandoraSocialHeight = page.media?.src?.endsWith("hero-atlas.webp") ? 821 : 941;
+  const sandoraSocialMeta = sandoraSocialImage ? `
+  <meta property="og:image" content="${escapeHtml(sandoraSocialImage)}">
+  <meta property="og:image:width" content="${sandoraSocialWidth}">
+  <meta property="og:image:height" content="${sandoraSocialHeight}">
+  <meta name="twitter:image" content="${escapeHtml(sandoraSocialImage)}">` : "";
   const sandoraPreloads = product.slug === "sandora" && sandoraImage ? `
   <link rel="preload" as="image" href="${escapeHtml(sandoraImage)}" imagesrcset="${escapeHtml(sandoraCompactImage)} 960w, ${escapeHtml(sandoraImage)} ${sandoraImageWidth}w" imagesizes="(max-width: 960px) calc(100vw - 2rem), 52vw">` : "";
   return `<meta charset="utf-8">
@@ -40,7 +48,7 @@ export function headMarkup({ product, page, path, layout, isHome }) {
   <meta property="og:site_name" content="${escapeHtml(product.name)}">
   <meta property="og:title" content="${escapeHtml(page.title)}">
   <meta property="og:description" content="${escapeHtml(metaDescription)}">
-  <meta property="og:url" content="${canonical}">
+  <meta property="og:url" content="${canonical}">${sandoraSocialMeta}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="${escapeHtml(product.themeColor || "#03120d")}">
   <link rel="canonical" href="${canonical}">${sandoraPreloads}
