@@ -3,7 +3,7 @@ document.documentElement.classList.remove("no-js");
 document.documentElement.dataset.sandoraRuntime = "terminal";
 const menuButton = document.querySelector("[data-product-menu]");
 const menu = document.querySelector("#product-menu");
-const details = [...document.querySelectorAll(".sd-nav-cluster")];
+const details = [...document.querySelectorAll(".sd-nav-group")];
 
 function setMenu(open) {
   document.documentElement.classList.toggle("product-menu-open", open);
@@ -12,11 +12,18 @@ function setMenu(open) {
   if (!open) details.forEach((item) => item.removeAttribute("open"));
 }
 
-menuButton?.addEventListener("click", () => setMenu(menuButton.getAttribute("aria-expanded") !== "true"));
+menuButton?.addEventListener("click", () => {
+  const open = menuButton.getAttribute("aria-expanded") !== "true";
+  setMenu(open);
+  if (open) menu?.querySelector("a, summary")?.focus();
+});
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
+  const menuOpen = menuButton?.getAttribute("aria-expanded") === "true";
+  const openGroup = details.find((item) => item.open);
+  if (event.key === "Escape" && (menuOpen || openGroup)) {
     setMenu(false);
-    menuButton?.focus();
+    if (menuOpen) menuButton?.focus();
+    else openGroup?.querySelector("summary")?.focus();
   }
 });
 

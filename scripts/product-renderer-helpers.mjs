@@ -26,11 +26,12 @@ export function headMarkup({ product, page, path, layout, isHome }) {
   const metaDescription = description.length >= 24 ? description : `${description} Public information for ${product.name}.`;
   const canonical = canonicalUrl(product, path);
   const robots = path === "/404.html" ? "noindex,follow" : "index,follow,max-image-preview:large";
-  const sandoraImage = product.slug === "sandora" && page.media?.src ? page.media.src : "";
+  const sandoraNonLeadingPaths = new Set(["/runtime/", "/observability/", "/docs/", "/pricing/", "/releases/"]);
+  const sandoraImage = product.slug === "sandora" && page.media?.src && !sandoraNonLeadingPaths.has(path) ? page.media.src : "";
   const sandoraCompactImage = sandoraImage.replace(/\.webp$/, "-960.webp");
   const sandoraImageWidth = sandoraImage.endsWith("hero-atlas.webp") ? 1915 : 1672;
   const sandoraPreloads = product.slug === "sandora" && sandoraImage ? `
-  <link rel="preload" as="image" href="${escapeHtml(sandoraImage)}" imagesrcset="${escapeHtml(sandoraCompactImage)} 960w, ${escapeHtml(sandoraImage)} ${sandoraImageWidth}w" imagesizes="(max-width: 1100px) calc(100vw - 2rem), 55vw">` : "";
+  <link rel="preload" as="image" href="${escapeHtml(sandoraImage)}" imagesrcset="${escapeHtml(sandoraCompactImage)} 960w, ${escapeHtml(sandoraImage)} ${sandoraImageWidth}w" imagesizes="(max-width: 960px) calc(100vw - 2rem), 52vw">` : "";
   return `<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="${escapeHtml(metaDescription)}">
