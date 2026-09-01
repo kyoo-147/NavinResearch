@@ -282,7 +282,7 @@
     "product": "dossier",
     "name": "Dossier",
     "path": "/integrations/",
-    "layout": "editorial",
+    "layout": "integration",
     "output": "dossier/integrations/index.html",
     "url": "https://dossier.navinresearch.com/integrations/",
     "title": "Integrations"
@@ -309,7 +309,7 @@
     "product": "dossier",
     "name": "Dossier",
     "path": "/product/",
-    "layout": "editorial",
+    "layout": "workflow",
     "output": "dossier/product/index.html",
     "url": "https://dossier.navinresearch.com/product/",
     "title": "The Dossier workstation"
@@ -498,7 +498,7 @@
     "product": "howhow",
     "name": "HowHow",
     "path": "/product/",
-    "layout": "editorial",
+    "layout": "product",
     "output": "howhow/product/index.html",
     "url": "https://howhow.navinresearch.com/product/",
     "title": "Product"

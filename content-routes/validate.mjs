@@ -133,13 +133,13 @@ for (const file of [
 }
 
 const productContracts = {
-  sandora: { prefix: "sd", frames: { editorial: "sd-modules", index: "sd-modules", workflow: "sd-runbook", docs: "sd-manual", specs: "sd-modules", media: "sd-observation", ledger: "sd-ledger", timeline: "sd-chronicle", comparison: "sd-matrix", availability: "sd-availability-board", product: "sd-product-map", error: "sd-error" } },
-  moyi: { prefix: "my", frames: { editorial: "my-cards", workflow: "my-flow", docs: "my-docs", specs: "my-lab", timeline: "my-lab", availability: "my-offer", product: "my-product-family", ledger: "my-legal-ledger", error: "my-error" } },
-  sori: { prefix: "so", frames: { editorial: "so-stories", workflow: "so-use", docs: "so-guide", ledger: "so-boundaries", timeline: "so-stories", availability: "so-offer", product: "so-product-studio", error: "so-error" } },
-  howhow: { prefix: "hh", frames: { editorial: "hh-shelf", workflow: "hh-recipe", docs: "hh-manual", ledger: "hh-ledger", availability: "hh-review-pass", error: "hh-error" } },
-  dossier: { prefix: "ds", frames: { editorial: "ds-workstation", workflow: "ds-pipeline", docs: "ds-docs", ledger: "ds-review", availability: "ds-register", enterprise: "ds-enterprise", error: "ds-error" } },
-  autopilot: { prefix: "ap", frames: { editorial: "ap-overview", workflow: "ap-loop", docs: "ap-docs", specs: "ap-overview", timeline: "ap-log", availability: "ap-boundary", ledger: "ap-log", error: "ap-error" } },
-  lajvard: { prefix: "lj", frames: { editorial: "lj-essays", index: "lj-essays", workflow: "lj-movement", docs: "lj-docs", specs: "lj-specs", media: "lj-essays", ledger: "lj-notebook", timeline: "lj-notebook", comparison: "lj-essays", availability: "lj-availability-sheet", error: "lj-error" } },
+  sandora: { prefix: "sd", frames: { editorial: "sd-modules", index: "sd-atlas", workflow: "sd-runbook", docs: "sd-manual", specs: "sd-modules", media: "sd-observation", ledger: "sd-ledger", timeline: "sd-chronicle", comparison: "sd-matrix", availability: "sd-availability-board", product: "sd-product-map", error: "sd-error" } },
+  moyi: { prefix: "my", frames: { editorial: "my-cards", workflow: ["my-flow", "my-signal-study"], docs: "my-docs", specs: ["my-lab", "my-signal-study"], timeline: "my-lab", availability: "my-offer", product: "my-product-family", ledger: "my-legal-ledger", error: "my-error" } },
+  sori: { prefix: "so", frames: { editorial: "so-stories", workflow: "so-use", docs: "so-guide", ledger: "so-boundaries", timeline: "so-history", availability: "so-offer", product: "so-product-studio", error: "so-error" } },
+  howhow: { prefix: "hh", frames: { editorial: "hh-shelf", product: "hh-system-map", workflow: "hh-recipe", docs: "hh-manual", ledger: "hh-ledger", availability: "hh-review-pass", error: "hh-error" } },
+  dossier: { prefix: "ds", frames: { editorial: "ds-workstation", workflow: ["ds-pipeline", "ds-decision-map"], integration: "ds-contract", docs: "ds-docs", ledger: "ds-review", availability: "ds-register", enterprise: "ds-enterprise", error: "ds-error" } },
+  autopilot: { prefix: "ap", frames: { editorial: "ap-overview", workflow: "ap-loop", docs: "ap-docs", specs: "ap-wiring", timeline: "ap-log", availability: "ap-boundary", ledger: "ap-log", error: "ap-error" } },
+  lajvard: { prefix: "lj", frames: { editorial: "lj-essays", index: "lj-essays", workflow: "lj-movement", docs: "lj-docs", specs: "lj-specs", media: "lj-archive", ledger: "lj-notebook", timeline: "lj-notebook", comparison: "lj-layers", availability: "lj-availability-sheet", error: "lj-error" } },
 };
 
 for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {
@@ -174,9 +174,10 @@ for (const entry of productManifest) {
     errors.push(`${entry.output}: unknown product contract ${entry.product}`);
     continue;
   }
-  for (const marker of [`class="${contract.prefix}-header"`, `class="${contract.prefix}-footer"`, `<body class="${contract.prefix}-body ${contract.prefix}-${entry.layout}"`, `data-product="${entry.product}"`, '<meta name="description"', `class="${contract.prefix}-hero"`, `/products/themes/${entry.product}.css`, `/products/runtime/${entry.product}.js`, '/products/product-primitives.css']) {
+  for (const marker of [`class="${contract.prefix}-header"`, `class="${contract.prefix}-footer"`, `<body class="${contract.prefix}-body ${contract.prefix}-${entry.layout}"`, `data-product="${entry.product}"`, '<meta name="description"', `/products/themes/${entry.product}.css`, `/products/runtime/${entry.product}.js`, '/products/product-primitives.css']) {
     if (!routeHtml.includes(marker)) errors.push(`${entry.output}: route marker missing: ${marker}`);
   }
+  if (!routeHtml.includes(`class="${contract.prefix}-hero"`) && !routeHtml.includes(`class="${contract.prefix}-route-lead`)) errors.push(`${entry.output}: product-owned route lead missing`);
   if (routeHtml.includes('product-foundation.css') || routeHtml.includes('product-site.js')) errors.push(`${entry.output}: legacy shared product shell remains`);
   if ((routeHtml.match(/<main\b/g) || []).length !== 1 || (routeHtml.match(/<footer\b/g) || []).length !== 1) errors.push(`${entry.output}: expected exactly one main and one footer`);
   if (!routeHtml.includes('data-product-menu') || !routeHtml.includes('aria-controls="product-menu"') || !routeHtml.includes('id="product-menu"')) errors.push(`${entry.output}: responsive menu linkage missing`);
@@ -188,8 +189,9 @@ for (const entry of productManifest) {
     if (!/<h1>[^<]+<\/h1>/.test(mainHtml) || !/<p>[^<]{24,}<\/p>/.test(mainHtml)) errors.push(`${entry.output}: route purpose requires a descriptive heading and paragraph inside main`);
   }
   const requiredFrame = contract.frames[entry.layout];
+  const acceptedFrames = Array.isArray(requiredFrame) ? requiredFrame : [requiredFrame];
   if (!requiredFrame) errors.push(`${entry.output}: unknown ${entry.product} layout contract ${entry.layout}`);
-  else if (!mainHtml.includes(`class="${requiredFrame}"`)) errors.push(`${entry.output}: ${entry.layout} layout frame missing inside main`);
+  else if (!acceptedFrames.some((frame) => mainHtml.includes(`class="${frame}"`) || mainHtml.includes(`class="${frame} `))) errors.push(`${entry.output}: ${entry.layout} layout frame missing inside main (${acceptedFrames.join(" or ")})`);
 }
 
 for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot", "lajvard"]) {
