@@ -21,10 +21,16 @@ export function outputPath(slug, route) {
 }
 
 export function headMarkup({ product, page, path, layout, isHome }) {
+  const assetVersion = product.assetVersion || version;
   const description = String(page.description || page.lede || product.thesis);
   const metaDescription = description.length >= 24 ? description : `${description} Public information for ${product.name}.`;
   const canonical = canonicalUrl(product, path);
   const robots = path === "/404.html" ? "noindex,follow" : "index,follow,max-image-preview:large";
+  const sandoraImage = product.slug === "sandora" && page.media?.src ? page.media.src : "";
+  const sandoraCompactImage = sandoraImage.replace(/\.webp$/, "-960.webp");
+  const sandoraImageWidth = sandoraImage.endsWith("hero-atlas.webp") ? 1915 : 1672;
+  const sandoraPreloads = product.slug === "sandora" && sandoraImage ? `
+  <link rel="preload" as="image" href="${escapeHtml(sandoraImage)}" imagesrcset="${escapeHtml(sandoraCompactImage)} 960w, ${escapeHtml(sandoraImage)} ${sandoraImageWidth}w" imagesizes="(max-width: 1100px) calc(100vw - 2rem), 55vw">` : "";
   return `<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="${escapeHtml(metaDescription)}">
@@ -36,12 +42,12 @@ export function headMarkup({ product, page, path, layout, isHome }) {
   <meta property="og:url" content="${canonical}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="${escapeHtml(product.themeColor || "#03120d")}">
-  <link rel="canonical" href="${canonical}">
+  <link rel="canonical" href="${canonical}">${sandoraPreloads}
   <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
-  <link rel="stylesheet" href="/products/product-primitives.css?v=${version}">
-  <link rel="stylesheet" href="/products/themes/${product.slug}.css?v=${version}">
+  <link rel="stylesheet" href="/products/product-primitives.css?v=${assetVersion}">
+  <link rel="stylesheet" href="/products/themes/${product.slug}.css?v=${assetVersion}">
   <!-- no-JS state is cleared by the external product runtime; this keeps the strict CSP script-src self-only. -->
-  <script src="/products/runtime/${product.slug}.js?v=${version}" defer></script>
+  <script src="/products/runtime/${product.slug}.js?v=${assetVersion}" defer></script>
   <title>${escapeHtml(page.title)}${isHome ? "" : ` | ${escapeHtml(product.name)}`}</title>`;
 }
 
