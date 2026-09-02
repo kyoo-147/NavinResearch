@@ -1,5 +1,5 @@
 const sori = {
-  slug: "sori", themeColor: '#f7f2e9',
+  slug: "sori", themeColor: '#0d0f0e',
   name: "Sori",
   eyebrow: "PROGRAMMABLE VOICE RUNTIME",
   status: "BETA INTEREST ONLY",
