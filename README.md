@@ -1,12 +1,12 @@
 # Navin Research
 
-Source for [navinresearch.com](https://navinresearch.com): a multilingual static research and product site, truthful crawlable content foundation, seven distinct product microsites, reusable design system, and privacy-preserving visitor geography prototype.
+Source for [navinresearch.com](https://navinresearch.com): a multilingual static research and product site, truthful crawlable content foundation, an eight-product catalog, seven integrated product microsites, reusable design system, and privacy-preserving visitor geography prototype. TeraFlow is maintained in a separate product workspace and linked from the parent catalog.
 
 ## Architecture
 
 - `site.config.mjs` — source of truth for EN/VI/ZH-CN copy, metadata, routes, and locale prefixes.
 - `scripts/generate-site.mjs` — generates 60 localized pages, 50 English Markdown blog posts, search metadata, and sitemap.
-- `scripts/generate-products.mjs` — generates seven source-backed product microsites with distinct themes, evidence, access states, and cross-navigation.
+- `scripts/generate-products.mjs` — generates seven source-backed product microsites with distinct themes, evidence, access states, and cross-navigation; TeraFlow is built and deployed separately.
 - `products/` — product content contracts, original diagrams, project-owned media, themes, and architecture documentation in `docs/products.md`.
 - `scripts/blog-posts.mjs` — source manifest and renderer for practical, source-linked AI engineering notes.
 - `styles.css` / `script.js` — homepage design and ambient motion.

@@ -25,7 +25,7 @@
     "url": "/products/",
     "title": "Products",
     "description": "Research systems and products developed by Navin Research.",
-    "text": "Seven distinct systems spanning organizational intelligence, speech, desktop voice, research, documents, autonomous vehicles, and personal robotics."
+    "text": "Eight distinct systems spanning organizational intelligence, speech, desktop voice, research, documents, intelligent transport, autonomous vehicles, and personal robotics."
   },
   {
     "language": "EN",
@@ -82,6 +82,34 @@
     "title": "Search",
     "description": "Search the public Navin Research route directory.",
     "text": "Search the real public surfaces currently available on this website."
+  },
+  {
+    "language": "EN",
+    "url": "/about/people/",
+    "title": "People at Navin Research",
+    "description": "The people and working structure of Navin Research.",
+    "text": "A small multidisciplinary team shaping research across machine learning, language, perception, and the systems built around them. Navin Research works as a small independent research organization. This public structure describes how the work is organized; it is not a statement of corporate form or legal governance."
+  },
+  {
+    "language": "EN",
+    "url": "/about/people/bui-minh-cuong/",
+    "title": "Bui Minh Cuong",
+    "description": "Founder of Navin Research.",
+    "text": "Founder Bui Minh Cuong is the founder of Navin Research. His personal website is linked below; a fuller verified biography will be added when it is ready."
+  },
+  {
+    "language": "EN",
+    "url": "/about/people/bui-hoang-long/",
+    "title": "Bui Hoang Long",
+    "description": "Works on machine learning research at Navin Research.",
+    "text": "Machine Learning Research Bui Hoang Long works on machine learning research at Navin Research. A fuller verified biography and public links will be added when they are ready."
+  },
+  {
+    "language": "EN",
+    "url": "/about/people/nhat-minh/",
+    "title": "Nguyen Doan Nhat Minh",
+    "description": "Works on large language model research at Navin Research.",
+    "text": "Large Language Model Research Nguyen Doan Nhat Minh works on large language model research at Navin Research. A fuller verified biography and public links will be added when they are ready."
   },
   {
     "language": "EN",
@@ -165,7 +193,7 @@
     "url": "/vi/products/",
     "title": "Sản phẩm",
     "description": "Các hệ thống nghiên cứu và sản phẩm do Navin Research phát triển.",
-    "text": "Bảy hệ thống riêng biệt trải rộng từ trí tuệ tổ chức, giọng nói, nghiên cứu và tài liệu đến xe tự hành và robot cá nhân."
+    "text": "Tám hệ thống riêng biệt trải rộng từ trí tuệ tổ chức, giọng nói, nghiên cứu và tài liệu đến giao thông thông minh, xe tự hành và robot cá nhân."
   },
   {
     "language": "VI",
@@ -222,6 +250,34 @@
     "title": "Tìm kiếm",
     "description": "Tìm kiếm trong danh mục trang công khai của Navin Research.",
     "text": "Tìm trong các bề mặt công khai thực tế hiện có trên website."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/about/people/",
+    "title": "Đội ngũ Navin Research",
+    "description": "Đội ngũ và cách tổ chức công việc tại Navin Research.",
+    "text": "Một nhóm nghiên cứu đa lĩnh vực, cùng định hình công việc về học máy, ngôn ngữ, tri giác và những hệ thống được xây dựng xung quanh chúng. Navin Research hoạt động như một tổ chức nghiên cứu độc lập quy mô nhỏ. Cấu trúc công khai này mô tả cách công việc được tổ chức; đây không phải tuyên bố về hình thức doanh nghiệp hay cơ chế quản trị pháp lý."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/about/people/bui-minh-cuong/",
+    "title": "Bui Minh Cuong",
+    "description": "Nhà sáng lập Navin Research.",
+    "text": "Nhà sáng lập Bui Minh Cuong là nhà sáng lập Navin Research. Website cá nhân được liên kết bên dưới; tiểu sử đầy đủ đã xác minh sẽ được bổ sung khi sẵn sàng."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/about/people/bui-hoang-long/",
+    "title": "Bui Hoang Long",
+    "description": "Thực hiện nghiên cứu học máy tại Navin Research.",
+    "text": "Nghiên cứu học máy Bui Hoang Long thực hiện nghiên cứu học máy tại Navin Research. Tiểu sử đầy đủ và các liên kết công khai đã xác minh sẽ được bổ sung khi sẵn sàng."
+  },
+  {
+    "language": "VI",
+    "url": "/vi/about/people/nhat-minh/",
+    "title": "Nguyen Doan Nhat Minh",
+    "description": "Thực hiện nghiên cứu mô hình ngôn ngữ lớn tại Navin Research.",
+    "text": "Nghiên cứu mô hình ngôn ngữ lớn Nguyen Doan Nhat Minh thực hiện nghiên cứu mô hình ngôn ngữ lớn tại Navin Research. Tiểu sử đầy đủ và các liên kết công khai đã xác minh sẽ được bổ sung khi sẵn sàng."
   },
   {
     "language": "VI",
@@ -305,7 +361,7 @@
     "url": "/zh-cn/products/",
     "title": "产品",
     "description": "Navin Research 开发的研究系统与产品。",
-    "text": "七个独立系统，涵盖组织智能、语音、研究、文档、自动驾驶与个人机器人。"
+    "text": "八个独立系统，涵盖组织智能、语音、研究、文档、智能交通、自动驾驶与个人机器人。"
   },
   {
     "language": "CN",
@@ -362,6 +418,34 @@
     "title": "搜索",
     "description": "搜索 Navin Research 的公开页面目录。",
     "text": "搜索本网站当前真实存在的公开页面。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/about/people/",
+    "title": "Navin Research 团队",
+    "description": "Navin Research 的团队与工作组织方式。",
+    "text": "一个小型多学科研究团队，共同推进机器学习、语言、感知及其相关系统的研究工作。 Navin Research 以小型独立研究组织的方式开展工作。这里公开的是工作如何组织，并不构成对公司形式或法律治理结构的说明。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/about/people/bui-minh-cuong/",
+    "title": "Bui Minh Cuong",
+    "description": "Navin Research 创始人。",
+    "text": "创始人 Bui Minh Cuong 是 Navin Research 的创始人。下方提供其个人网站；更完整且经过核实的个人简介将在准备就绪后补充。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/about/people/bui-hoang-long/",
+    "title": "Bui Hoang Long",
+    "description": "在 Navin Research 从事机器学习研究。",
+    "text": "机器学习研究 Bui Hoang Long 在 Navin Research 从事机器学习研究。更完整且经过核实的个人简介与公开链接将在准备就绪后补充。"
+  },
+  {
+    "language": "CN",
+    "url": "/zh-cn/about/people/nhat-minh/",
+    "title": "Nguyen Doan Nhat Minh",
+    "description": "在 Navin Research 从事大语言模型研究。",
+    "text": "大语言模型研究 Nguyen Doan Nhat Minh 在 Navin Research 从事大语言模型研究。更完整且经过核实的个人简介与公开链接将在准备就绪后补充。"
   },
   {
     "language": "CN",
@@ -467,6 +551,13 @@
     "title": "Lajvard — Navin Research",
     "description": "A compact robot companion imagined for the small rituals of a room: noticing where it is, remembering what matters, and answering with warmth without pretending to be human.",
     "text": "WARM COMPANION FIELD NOTES / BLUEPRINT 01 Lajvard is a product direction, not a shipping promise. This notebook describes questions around a portable robot with spatial awareness, a private journal, and a gentle social presence. Compact humanoid form direction Spatial memory direction Owner-controlled journal direction Local-first interaction direction Visible uncertainty and consent CONCEPT STAGE · UPDATES, NOT PREORDER"
+  },
+  {
+    "language": "EN",
+    "url": "https://teraflow.navinresearch.com/",
+    "title": "TeraFlow — Navin Research",
+    "description": "Computer vision and multimodal perception for intelligent transport systems.",
+    "text": "SMART MOBILITY / COMPUTER VISION TeraFlow turns camera and LiDAR data into a live, trackable model of road activity. Camera and LiDAR perception Multi-object tracking Traffic operations PRODUCT"
   },
   {
     "language": "EN",

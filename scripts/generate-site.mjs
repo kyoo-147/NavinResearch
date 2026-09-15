@@ -2,13 +2,14 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, releaseRoute, sections, site } from "../site.config.mjs";
 import { pageHead } from "./components/page-head.mjs";
 import { contentHeader, escapeHtml, routeFooter, siteDrawer, siteFooter, siteHeader } from "./components/site-shell.mjs";
-import { products } from "./product-data.mjs";
+import { catalogProducts } from "./product-data.mjs";
 import { blogPostPath, blogPosts, renderBlogPost } from "./blog-posts.mjs";
 import { routeDetails, routeLinks } from "./route-details.mjs";
+import { people, peoplePageCopy, personPath } from "./people-data.mjs";
 
 const localeEntries = Object.entries(locales);
 const homeAssetRevision = "20260831-06";
-const head = (localeKey, title, description, suffix = "", styles = ["/content-routes/route-foundation.css"], scripts = []) => pageHead({
+const head = (localeKey, title, description, suffix = "", styles = ["/content-routes/route-foundation.css"], scripts = [], image = "/assets/field-4.webp") => pageHead({
   localeKey,
   title,
   description,
@@ -16,20 +17,26 @@ const head = (localeKey, title, description, suffix = "", styles = ["/content-ro
   styles: Array.isArray(styles) ? styles : [styles],
   scripts: Array.isArray(scripts) ? scripts : [scripts],
   revision: homeAssetRevision,
+  image,
 });
 
 const productCopy = {
-  en: { eyebrow: "PRODUCT SYSTEMS / 01—07", title: "Research, made operational.", lede: "Seven independent product programs. Each has its own interface, evidence standard, and path to availability.", status: "Current status", product: "PRODUCT", research: "IN RESEARCH", homeLabel: "Product systems", homeTitle: "Seven systems, built as distinct worlds.", homeLink: "View all products" },
-  vi: { eyebrow: "HỆ THỐNG SẢN PHẨM / 01—07", title: "Nghiên cứu được đưa vào vận hành.", lede: "Bảy chương trình sản phẩm độc lập. Mỗi sản phẩm có giao diện, chuẩn bằng chứng và lộ trình tiếp cận riêng.", status: "Trạng thái hiện tại", product: "SẢN PHẨM", research: "ĐANG NGHIÊN CỨU", homeLabel: "Hệ thống sản phẩm", homeTitle: "Bảy hệ thống, bảy thế giới riêng.", homeLink: "Xem tất cả sản phẩm" },
-  "zh-cn": { eyebrow: "产品系统 / 01—07", title: "让研究进入实际运行。", lede: "七个独立产品计划，每一个都有自己的界面、证据标准与开放路径。", status: "当前状态", product: "产品", research: "研究中", homeLabel: "产品系统", homeTitle: "七个系统，七个独立世界。", homeLink: "查看全部产品" },
+  en: { eyebrow: "PRODUCT SYSTEMS / 01—08", title: "Research, made operational.", lede: "Eight independent product programs. Each has its own interface, evidence standard, and path to availability.", status: "Current status", product: "PRODUCT", research: "IN RESEARCH", homeLabel: "Product systems", homeTitle: "Eight systems, built as distinct worlds.", homeLink: "View all products" },
+  vi: { eyebrow: "HỆ THỐNG SẢN PHẨM / 01—08", title: "Nghiên cứu được đưa vào vận hành.", lede: "Tám chương trình sản phẩm độc lập. Mỗi sản phẩm có giao diện, chuẩn bằng chứng và lộ trình tiếp cận riêng.", status: "Trạng thái hiện tại", product: "SẢN PHẨM", research: "ĐANG NGHIÊN CỨU", homeLabel: "Hệ thống sản phẩm", homeTitle: "Tám hệ thống, tám thế giới riêng.", homeLink: "Xem tất cả sản phẩm" },
+  "zh-cn": { eyebrow: "产品系统 / 01—08", title: "让研究进入实际运行。", lede: "八个独立产品计划，每一个都有自己的界面、证据标准与开放路径。", status: "当前状态", product: "产品", research: "研究中", homeLabel: "产品系统", homeTitle: "八个系统，八个独立世界。", homeLink: "查看全部产品" },
 };
+
+function productUrl(product) {
+  return product.url || `https://${product.slug}.navinresearch.com/`;
+}
 
 function productGrid(localeKey, compact = false) {
   const copy = productCopy[localeKey];
-  return products.map((product, index) => {
+  return catalogProducts.map((product, index) => {
+    const localized = product.catalogCopy?.[localeKey] || product;
     const catalogStatus = copy[product.catalogStatus];
     if (!catalogStatus) throw new Error(`Missing catalog status for ${product.slug}`);
-    return `<article class="product-entry${compact ? " product-entry--compact" : ""}"><a href="https://${product.slug}.navinresearch.com/"><span class="product-entry__number">${String(index + 1).padStart(2, "0")}</span><span class="product-entry__identity"><small>${escapeHtml(product.eyebrow)}</small><strong>${escapeHtml(product.name)}</strong></span><span class="product-entry__statement">${escapeHtml(product.thesis)}</span><span class="product-entry__state"><small>${escapeHtml(copy.status)}</small>${escapeHtml(catalogStatus)}</span><span class="product-entry__arrow" aria-hidden="true">↗</span></a></article>`;
+    return `<article class="product-entry${compact ? " product-entry--compact" : ""}"><a href="${escapeHtml(productUrl(product))}"><span class="product-entry__number">${String(index + 1).padStart(2, "0")}</span><span class="product-entry__identity"><small>${escapeHtml(localized.eyebrow)}</small><strong>${escapeHtml(product.name)}</strong></span><span class="product-entry__statement">${escapeHtml(localized.thesis)}</span><span class="product-entry__state"><small>${escapeHtml(copy.status)}</small>${escapeHtml(catalogStatus)}</span><span class="product-entry__arrow" aria-hidden="true">↗</span></a></article>`;
   }).join("\n");
 }
 
@@ -121,6 +128,39 @@ ${head(localeKey, `${locale.routes.products.title} — ${site.name}`, locale.rou
   </div></body></html>`;
 }
 
+function personCard(localeKey, person) {
+  const copy = peoplePageCopy[localeKey];
+  const profile = person.copy[localeKey];
+  return `<article class="people-card"><a href="${personPath(localeKey, person.slug)}"><figure><img src="${person.image}" alt="${escapeHtml(`${person.name} — ${profile.role}`)}" width="1000" height="1000" decoding="async"></figure><div class="people-card__copy"><p>${escapeHtml(profile.role)}</p><h3>${escapeHtml(person.cardName || person.name)}</h3><small>${escapeHtml(copy.viewProfile)} <i aria-hidden="true">↗</i></small></div></a></article>`;
+}
+
+function peopleTemplate(localeKey) {
+  const locale = locales[localeKey];
+  const copy = peoplePageCopy[localeKey];
+  const orderedPeople = [people[1], people[0], people[2]].map((person) => personCard(localeKey, person)).join("");
+  const structure = copy.structure.map(([number, title, body]) => `<article class="people-structure__item"><span>${escapeHtml(number)}</span><h3>${escapeHtml(title)}</h3><p>${escapeHtml(body)}</p></article>`).join("");
+  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
+${head(localeKey, `${copy.title} — ${site.name}`, locale.routes.people.description, "about/people", "/content-routes/route-foundation.css")}  </head><body class="route-page content-page content-people"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
+    ${contentHeader(localeKey, "people")}
+    <main class="people-main" data-people-index><header class="people-intro"><p class="route-page__eyebrow">${escapeHtml(copy.eyebrow)}</p><h1>${escapeHtml(copy.title)}</h1><p>${escapeHtml(copy.lede)}</p></header><section class="people-group" aria-label="${escapeHtml(copy.title)}"><div class="people-grid">${orderedPeople}</div></section><section class="people-structure" aria-labelledby="people-structure-title"><header><p class="route-page__eyebrow">${escapeHtml(copy.structureEyebrow)}</p><h2 id="people-structure-title">${escapeHtml(copy.structureTitle)}</h2><p>${escapeHtml(copy.structureIntro)}</p></header><div class="people-structure__list">${structure}</div></section></main>
+    ${routeFooter(localeKey)}
+  </div></body></html>`;
+}
+
+function personTemplate(localeKey, person) {
+  const locale = locales[localeKey];
+  const copy = peoplePageCopy[localeKey];
+  const profile = person.copy[localeKey];
+  const suffix = `about/people/${person.slug}`;
+  const website = person.website ? `<a class="person-website" href="${person.website}" target="_blank" rel="noopener noreferrer">${escapeHtml(copy.website)} <span aria-hidden="true">↗</span></a>` : "";
+  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
+${head(localeKey, `${person.name} — ${site.name}`, profile.summary, suffix, "/content-routes/route-foundation.css", [], person.image)}  </head><body class="route-page content-page content-person"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
+    ${contentHeader(localeKey, "people", suffix)}
+    <main class="person-main" data-person="${person.slug}"><a class="person-back" href="${personPath(localeKey)}">← ${escapeHtml(copy.back)}</a><section class="person-hero"><figure><img src="${person.image}" alt="${escapeHtml(`${person.name} — ${profile.role}`)}" width="1000" height="1000" decoding="async"></figure><div class="person-hero__copy"><p class="route-page__eyebrow">${escapeHtml(copy.profileEyebrow)}</p><h1>${escapeHtml(person.name)}</h1><p class="person-role">${escapeHtml(profile.role)}</p>${website}</div></section><section class="person-profile" aria-labelledby="person-profile-title"><div><p>${escapeHtml(copy.role)}</p><strong>${escapeHtml(profile.role)}</strong></div><article><p class="route-page__eyebrow">${escapeHtml(copy.status)}</p><h2 id="person-profile-title">${escapeHtml(copy.about)}</h2><p>${escapeHtml(profile.profile)}</p><small>${escapeHtml(copy.statusValue)}</small></article></section></main>
+    ${routeFooter(localeKey)}
+  </div></body></html>`;
+}
+
 function chapterTemplate(localeKey, chapter) {
   const locale = locales[localeKey];
   const ui = experience[localeKey];
@@ -192,6 +232,8 @@ async function emit(localeKey, suffix, html) {
 for (const [localeKey] of localeEntries) {
   await emit(localeKey, "", homeTemplate(localeKey));
   for (const section of sections) await emit(localeKey, section, section === "products" ? productsTemplate(localeKey) : routeTemplate(localeKey, section));
+  await emit(localeKey, "about/people", peopleTemplate(localeKey));
+  for (const person of people) await emit(localeKey, `about/people/${person.slug}`, personTemplate(localeKey, person));
   await emit(localeKey, releaseRoute, releaseTemplate(localeKey));
   for (const chapter of chapters) await emit(localeKey, chapter.slug, chapterTemplate(localeKey, chapter));
   for (const legalPage of legalPages) await emit(localeKey, legalPage, legalTemplate(localeKey, legalPage));
@@ -219,11 +261,22 @@ const searchIndex = pages.map(({ localeKey, suffix, url }) => {
   if (!suffix) return { language: locale.shortLabel, url, title: locale.meta.title, description: locale.meta.description, text: `${locale.home.statement} ${ui.wealth.statement}` };
   if (chapter) return { language: locale.shortLabel, url, title: `NAVIN / ${chapter.key} — ${chapter.number}`, description: ui.chapterIntro(chapter.domains[localeKey]), text: `${chapter.domains[localeKey]} ${ui.chapterNotice}` };
   if (legalPages.includes(suffix)) { const copy = ui.legal[suffix]; return { language: locale.shortLabel, url, title: copy[0], description: copy[1], text: copy[2] }; }
+  if (suffix === "about/people") {
+    const copy = peoplePageCopy[localeKey];
+    return { language: locale.shortLabel, url, title: copy.title, description: locale.routes.people.description, text: `${copy.lede} ${copy.structureIntro}` };
+  }
+  if (suffix.startsWith("about/people/")) {
+    const slug = suffix.slice("about/people/".length);
+    const person = people.find((item) => item.slug === slug);
+    if (!person) throw new Error(`Missing person data for ${suffix}`);
+    const profile = person.copy[localeKey];
+    return { language: locale.shortLabel, url, title: person.name, description: profile.summary, text: `${profile.role} ${profile.profile}` };
+  }
   const route = locale.routes[suffix]; return { language: locale.shortLabel, url, title: route.title, description: route.description, text: route.lede };
 });
-searchIndex.push(...products.map((product) => ({
+searchIndex.push(...catalogProducts.map((product) => ({
   language: "EN",
-  url: `https://${product.slug}.navinresearch.com/`,
+  url: productUrl(product),
   title: `${product.name} — Navin Research`,
   description: product.thesis,
   text: `${product.eyebrow} ${product.intro} ${product.capabilities.join(" ")} ${product.status}`,

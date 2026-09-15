@@ -1,6 +1,6 @@
 # Product-site architecture
 
-Navin Research publishes eight independent systems from one generated source tree: the parent Navin Research site plus seven product programs:
+Navin Research publishes a parent site and an eight-product catalog. Seven product sites are generated in this source tree:
 
 - `sandora.navinresearch.com`
 - `moyi.navinresearch.com`
@@ -10,9 +10,11 @@ Navin Research publishes eight independent systems from one generated source tre
 - `autopilot.navinresearch.com`
 - `lajvard.navinresearch.com`
 
+TeraFlow is the eighth catalog product at `teraflow.navinresearch.com`. Its website is maintained and built separately in `D:/work/michael/teraflow_web`; this repository owns only its parent-site catalog and search entry.
+
 ## Independent system registry and research artifacts
 
-The eight systems are intentionally distinct: Navin Research (parent), Sandora, Moyi, Sori, HowHow, Dossier, Autopilot, and Lajvard. Each product owns its renderer, theme, runtime, route-family composition, header, homepage, and footer while using only shared technical/accessibility primitives.
+The nine public-facing systems are intentionally distinct: Navin Research (parent), Sandora, Moyi, Sori, HowHow, Dossier, Autopilot, Lajvard, and TeraFlow. The seven integrated product sites each own their renderer, theme, runtime, route-family composition, header, homepage, and footer while using only shared technical/accessibility primitives. TeraFlow retains its own separate build pipeline and visual system.
 
 The reconstruction research artifacts are maintained outside the repository at `D:/work/michael/artifacts/navin-reconstruction/`, with one evidence bundle per system: `navin/`, `sandora/`, `moyi/`, `sori/`, `howhow/`, `dossier/`, `autopilot/`, and `lajvard/`. Each bundle contains the applicable `DESIGN-DNA.json`, `ROUTES.md`, `SOURCE-MAP.md`, and `SYNTHESIS.md`; implementation workflow reports are stored alongside these bundles.
 
@@ -24,7 +26,7 @@ Each product owns three required files:
 - `products/themes/<slug>.css` — a product-specific visual system prefixed by `.product-<slug>`.
 - `products/media/<slug>-system.svg` — an original, accessible system diagram.
 
-`scripts/product-data.mjs` exposes the same content to the multilingual main-site product directory. `scripts/generate-products.mjs` generates each subdomain entry page and cross-product navigation.
+`scripts/product-data.mjs` exposes the seven integrated products plus the TeraFlow catalog entry to the multilingual main-site product directory. `scripts/generate-products.mjs` generates the seven integrated subdomain sites and their cross-product navigation.
 
 Run:
 

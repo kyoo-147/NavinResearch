@@ -7,9 +7,10 @@ function alternateLinks(suffix = "") {
   return links.join("\n");
 }
 
-export function pageHead({ localeKey, title, description, suffix = "", styles = ["/content-routes/route-foundation.css"], scripts = [], revision }) {
+export function pageHead({ localeKey, title, description, suffix = "", styles = ["/content-routes/route-foundation.css"], scripts = [], revision, image = "/assets/field-4.webp" }) {
   const locale = locales[localeKey];
   const canonical = `${site.origin}${localePath(localeKey, suffix)}`;
+  const socialImage = image.startsWith("http") ? image : `${site.origin}${image}`;
   const versionedStyles = styles.map((href) => href.includes("?") ? href : `${href}?v=${revision}`);
   const versionedScripts = scripts.filter(Boolean).map((src) => src.includes("?") ? src : `${src}?v=${revision}`);
   return `    <meta charset="UTF-8">
@@ -23,9 +24,9 @@ export function pageHead({ localeKey, title, description, suffix = "", styles = 
     <meta property="og:type" content="website">
     <meta property="og:url" content="${canonical}">
     <meta property="og:locale" content="${locale.ogLocale}">
-    <meta property="og:image" content="${site.origin}/assets/field-4.webp">
+    <meta property="og:image" content="${socialImage}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="${site.origin}/assets/field-4.webp">
+    <meta name="twitter:image" content="${socialImage}">
     <title>${escapeHtml(title)}</title>
     <link rel="canonical" href="${canonical}">
 ${alternateLinks(suffix)}

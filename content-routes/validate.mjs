@@ -1,7 +1,8 @@
 import { access, readFile, readdir } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, releaseRoute, sections, site } from "../site.config.mjs";
-import { products } from "../scripts/product-data.mjs";
+import { catalogProducts, products } from "../scripts/product-data.mjs";
 import { blogPostPath, blogPosts, blogSources, renderBlogPost } from "../scripts/blog-posts.mjs";
+import { people, peoplePageCopy, personPath } from "../scripts/people-data.mjs";
 
 const errors = [];
 const generatedRoutes = [];
@@ -13,6 +14,10 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   generatedRoutes.push({ localeKey, section: releaseRoute, type: "release", path: localePath(localeKey, releaseRoute), file: `${[locale.prefix, releaseRoute].filter(Boolean).join("/")}/index.html` });
   for (const section of sections) {
     generatedRoutes.push({ localeKey, section, path: localePath(localeKey, section), file: `${[locale.prefix, section].filter(Boolean).join("/")}/index.html` });
+  }
+  generatedRoutes.push({ localeKey, section: "people", type: "people", path: personPath(localeKey), file: `${[locale.prefix, "about/people"].filter(Boolean).join("/")}/index.html` });
+  for (const person of people) {
+    generatedRoutes.push({ localeKey, section: "people", type: "person", person, path: personPath(localeKey, person.slug), file: `${[locale.prefix, "about/people", person.slug].filter(Boolean).join("/")}/index.html` });
   }
   for (const chapter of chapters) {
     generatedRoutes.push({ localeKey, section: chapter.slug, type: "chapter", path: localePath(localeKey, chapter.slug), file: `${[locale.prefix, chapter.slug].filter(Boolean).join("/")}/index.html` });
@@ -65,7 +70,21 @@ for (const route of generatedRoutes) {
     if (!html.includes(marker)) errors.push(`${route.file}: ${marker} missing`);
   }
   if (!html.includes('/assets/brand/logo_icon_tab.png')) errors.push(`${route.file}: current favicon missing`);
-  if (route.type === "release") {
+  if (route.type === "people" || route.type === "person") {
+    for (const marker of ['class="route-page__header content-header"', 'class="route-page__footer content-footer"', 'class="content-field"', 'aria-current="page">' + locale.routes.people.title]) {
+      if (!html.includes(marker)) errors.push(`${route.file}: people marker ${marker} missing`);
+    }
+    if (!html.includes('/content-routes/route-foundation.css?v=')) errors.push(`${route.file}: people stylesheet missing`);
+    if (route.type === "people") {
+      if (!html.includes("data-people-index")) errors.push(`${route.file}: people index marker missing`);
+      for (const person of people) {
+        if (!html.includes(personPath(route.localeKey, person.slug))) errors.push(`${route.file}: member link missing for ${person.slug}`);
+      }
+    } else {
+      if (!html.includes(`data-person="${route.person.slug}"`)) errors.push(`${route.file}: person marker missing`);
+      if (!html.includes(route.person.copy[route.localeKey].role) || !html.includes(route.person.copy[route.localeKey].profile)) errors.push(`${route.file}: verified person copy missing`);
+    }
+  } else if (route.type === "release") {
     for (const marker of ['class="route-page__header content-header"', 'class="route-page__footer content-footer"', 'class="content-field"', 'class="release-registry"', 'data-release-search', "release-page"]) {
       if (!html.includes(marker)) errors.push(`${route.file}: release marker ${marker} missing`);
     }
@@ -86,7 +105,7 @@ for (const route of generatedRoutes) {
   }
   if (html.includes('/favicon.svg')) errors.push(`${route.file}: deleted favicon referenced`);
   if (html.includes('datePublished') || html.includes('application/ld+json')) errors.push(`${route.file}: unsupported schema/date marker found`);
-  if (route.section && route.section !== "products" && route.type !== "legal" && route.type !== "release" && !html.includes(locale.common.preparation) && !html.includes('class="route-features ')) errors.push(`${route.file}: truthful preparation notice or route detail structure missing`);
+  if (route.section && route.section !== "products" && !["legal", "release", "people", "person"].includes(route.type) && !html.includes(locale.common.preparation) && !html.includes('class="route-features ')) errors.push(`${route.file}: truthful preparation notice or route detail structure missing`);
   if (route.type === "chapter") {
     if (!html.includes(`chapter-${route.section}`) || !html.includes('class="chapter-field"')) errors.push(`${route.file}: chapter background structure missing`);
     if (!routeCss.includes(`.chapter-${route.section} .chapter-field { background-image:`)) errors.push(`${route.file}: chapter background image mapping missing`);
@@ -116,6 +135,7 @@ for (const file of [
   "scripts/generate-products.mjs",
   "scripts/components/page-head.mjs",
   "scripts/components/site-shell.mjs",
+  "scripts/people-data.mjs",
   "assets/fonts/PixelatedEleganceRegular.ttf",
   "assets/fonts/DominoBrick.ttf",
   "assets/fonts/FortAvenue.ttf",
@@ -130,6 +150,17 @@ for (const file of [
   } catch {
     errors.push(`${file}: required asset missing`);
   }
+}
+
+for (const person of people) {
+  try { await access(person.image.slice(1)); } catch { errors.push(`${person.image}: people image missing`); }
+  for (const localeKey of Object.keys(locales)) {
+    const profile = person.copy[localeKey];
+    if (!profile?.role || !profile?.summary || !profile?.profile) errors.push(`${person.slug}: incomplete ${localeKey} profile`);
+  }
+}
+for (const localeKey of Object.keys(locales)) {
+  if (!peoplePageCopy[localeKey]?.structure?.length) errors.push(`people page: missing ${localeKey} structure copy`);
 }
 
 const productContracts = {
@@ -202,9 +233,9 @@ for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot",
 const robots = await readFile("robots.txt", "utf8");
 const sitemap = await readFile("sitemap.xml", "utf8");
 const searchIndex = JSON.parse(await readFile("content-routes/search-index.json", "utf8"));
-if (!Array.isArray(searchIndex) || searchIndex.length !== generatedRoutes.length + blogPosts.length + products.length) errors.push("search index: route count mismatch");
-for (const product of products) {
-  const productUrl = `https://${product.slug}.navinresearch.com/`;
+if (!Array.isArray(searchIndex) || searchIndex.length !== generatedRoutes.length + blogPosts.length + catalogProducts.length) errors.push("search index: route count mismatch");
+for (const product of catalogProducts) {
+  const productUrl = product.url || `https://${product.slug}.navinresearch.com/`;
   if (!searchIndex.some((item) => item.url === productUrl && item.title.includes(product.name))) errors.push(`search index: ${productUrl} missing`);
 }
 if (!robots.includes(`Sitemap: ${site.origin}/sitemap.xml`)) errors.push("robots.txt: sitemap missing");
