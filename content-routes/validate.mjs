@@ -126,7 +126,10 @@ for (const route of generatedRoutes) {
       for (const item of copy.related) if (!html.includes(localePath(route.localeKey, item.path))) errors.push(`${route.file}: preserved related link missing: ${item.path}`);
     }
   } else if (route.type === "blog") {
-    for (const marker of ['class="route-page__header content-header"', 'class="route-page__footer content-footer', 'class="content-field"', 'data-about-article', 'data-about-toolbar', 'data-article-content', 'content-blog-article', '/content-routes/route-foundation.css?v=', '/content-routes/about-article.js?v=']) {
+    const blogMarkers = route.post.modelAnnouncement
+      ? ['class="route-page__header content-header"', 'class="route-page__footer content-footer', 'content-model-announcement', 'model-announcement__record', 'model-announcement__section', '/content-routes/route-foundation.css?v=']
+      : ['class="route-page__header content-header"', 'class="route-page__footer content-footer', 'class="content-field"', 'data-about-article', 'data-about-toolbar', 'data-article-content', 'content-blog-article', '/content-routes/route-foundation.css?v=', '/content-routes/about-article.js?v='];
+    for (const marker of blogMarkers) {
       if (!html.includes(marker)) errors.push(`${route.file}: blog marker ${marker} missing`);
     }
     const localizedPost = route.post.translations?.[route.localeKey] || route.post;
@@ -144,7 +147,7 @@ for (const route of generatedRoutes) {
   }
   if (html.includes('/favicon.svg')) errors.push(`${route.file}: deleted favicon referenced`);
   if (html.includes('datePublished') || html.includes('application/ld+json')) errors.push(`${route.file}: unsupported schema/date marker found`);
-  if (route.section && route.section !== "products" && route.section !== "about-preserved" && route.section !== "sign-in" && !["legal", "release", "people", "person"].includes(route.type) && !html.includes(locale.common.preparation) && !html.includes('class="route-features ')) errors.push(`${route.file}: truthful preparation notice or route detail structure missing`);
+  if (route.section && route.section !== "products" && route.section !== "about-preserved" && route.section !== "sign-in" && !["legal", "release", "people", "person"].includes(route.type) && !html.includes(locale.common.preparation) && !html.includes('class="route-features ') && !html.includes('content-model-announcement')) errors.push(`${route.file}: truthful preparation notice or route detail structure missing`);
   if (route.type === "chapter") {
     if (!html.includes(`chapter-${route.section}`) || !html.includes('class="chapter-field"')) errors.push(`${route.file}: chapter background structure missing`);
     if (!routeCss.includes(`.chapter-${route.section} .chapter-field { background-image:`)) errors.push(`${route.file}: chapter background image mapping missing`);

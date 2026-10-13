@@ -158,6 +158,18 @@ const blogArticleUi = {
   "zh-cn": { introduction: "简介", shortAnswer: "简要回答", implementation: "实施步骤", validation: "验证清单", mistakes: "常见错误", decision: "实际决策", sources: "官方来源", practicalBody: "先交付能够通过上述检查的最小设计。记录测试中使用的模型、提示词、工具、数据集与运行时版本，让后续变化可以被比较而不是被猜测。依赖供应商的限制、模型名称、价格或预览功能之前，请重新检查链接文档；这些细节变化往往快于本文的工程原则。" },
 };
 
+const modelAnnouncementUi = {
+  en: {
+    contents: "Contents", back: "Back to Models", statusLabel: "Status", status: "In preparation", modelRecord: "Model record", modelName: "Model name", version: "Version", family: "Model family", modalities: "Modalities", modalitiesValue: "Language · speech · vision", parameterCount: "Parameter count", contextLength: "Context length", trainingData: "Training data", license: "License", access: "Access", releaseDate: "Release date", unknown: "Not announced", evaluation: "Evaluation record", protocol: "Evaluation protocol", benchmarks: "Benchmarks", results: "Results", hardware: "Evaluation hardware", artifact: "Artifact", direction: "Direction", sources: "Sources and references", incomplete: "This record is intentionally incomplete. Empty fields will be filled only when the underlying artifact and evidence are ready.", evaluationNote: "No benchmark, protocol, hardware result, or downloadable artifact has been published for this model."
+  },
+  vi: {
+    contents: "Nội dung", back: "Quay lại Mô hình", statusLabel: "Trạng thái", status: "Đang chuẩn bị", modelRecord: "Hồ sơ mô hình", modelName: "Tên mô hình", version: "Phiên bản", family: "Họ mô hình", modalities: "Phương thức", modalitiesValue: "Ngôn ngữ · giọng nói · thị giác", parameterCount: "Số tham số", contextLength: "Độ dài ngữ cảnh", trainingData: "Dữ liệu huấn luyện", license: "Giấy phép", access: "Quyền truy cập", releaseDate: "Ngày phát hành", unknown: "Chưa công bố", evaluation: "Hồ sơ đánh giá", protocol: "Giao thức đánh giá", benchmarks: "Benchmark", results: "Kết quả", hardware: "Phần cứng đánh giá", artifact: "Hiện vật", direction: "Định hướng", sources: "Nguồn và tham khảo", incomplete: "Hồ sơ này được cố ý để trống. Các trường chỉ được điền khi hiện vật và bằng chứng nền tảng đã sẵn sàng.", evaluationNote: "Chưa có benchmark, giao thức, kết quả phần cứng hay hiện vật tải xuống nào được công bố cho mô hình này."
+  },
+  "zh-cn": {
+    contents: "目录", back: "返回模型", statusLabel: "状态", status: "准备中", modelRecord: "模型记录", modelName: "模型名称", version: "版本", family: "模型系列", modalities: "模态", modalitiesValue: "语言 · 语音 · 视觉", parameterCount: "参数量", contextLength: "上下文长度", trainingData: "训练数据", license: "许可证", access: "访问方式", releaseDate: "发布日期", unknown: "尚未公布", evaluation: "评估记录", protocol: "评估协议", benchmarks: "基准测试", results: "结果", hardware: "评估硬件", artifact: "产物", direction: "方向", sources: "来源与参考资料", incomplete: "此记录有意保留空白。只有在底层产物与证据准备好后，才会填写这些字段。", evaluationNote: "目前尚未公布该模型的基准测试、评估协议、硬件结果或可下载产物。"
+  },
+};
+
 function blogCopy(post, localeKey) {
   return post.translations?.[localeKey] || post;
 }
@@ -205,7 +217,44 @@ ${head(localeKey, `${locale.routes.notes.title} — ${site.name}`, locale.routes
   </div><script src="/content-routes/notes.js?v=${homeAssetRevision}" defer></script></body></html>`;
 }
 
+function modelAnnouncementTemplate(localeKey, post) {
+  const locale = locales[localeKey];
+  const article = blogCopy(post, localeKey);
+  const ui = modelAnnouncementUi[localeKey];
+  const reviewedAt = new Intl.DateTimeFormat(locale.htmlLang, { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(`${blogPostReviewedAt}T00:00:00Z`));
+  const category = relatedCategoryLabel(post.category, localeKey);
+  const value = (text = "") => text ? escapeHtml(text) : `<span class="model-data--empty" aria-label="${escapeHtml(ui.unknown)}">—</span>`;
+  const recordRow = (label, text = "") => `<div><dt>${escapeHtml(label)}</dt><dd>${value(text)}</dd></div>`;
+  const recordRows = [
+    recordRow(ui.modelName),
+    recordRow(ui.version),
+    recordRow(ui.family),
+    recordRow(ui.modalities, ui.modalitiesValue),
+    recordRow(ui.parameterCount),
+    recordRow(ui.contextLength),
+    recordRow(ui.trainingData),
+    recordRow(ui.license),
+    recordRow(ui.access),
+    recordRow(ui.releaseDate),
+  ].join("");
+  const evaluationRows = [ui.protocol, ui.benchmarks, ui.results, ui.hardware, ui.artifact].map((label) => recordRow(label)).join("");
+  const sectionLabel = (item) => item.label.replace(/^\d+\s*\/\s*/, "");
+  const sectionMarkup = article.sections.map((item, index) => `<section class="model-announcement__section" id="model-section-${index + 1}" aria-labelledby="model-section-${index + 1}-title"><p class="model-announcement__section-label">${String(index + 3).padStart(2, "0")} / ${escapeHtml(sectionLabel(item))}</p><h2 id="model-section-${index + 1}-title">${escapeHtml(item.title)}</h2>${item.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}${item.points?.length ? `<ul>${item.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : ""}</section>`).join("");
+  const sourceLinks = post.sources.map((key) => {
+    const source = blogSources[key];
+    return source ? `<li><a href="${escapeHtml(source[1])}" target="_blank" rel="noopener noreferrer">${escapeHtml(source[0])} <span aria-hidden="true">↗</span></a></li>` : "";
+  }).join("");
+  const tocLinks = [`<a href="#model-introduction">${escapeHtml(blogArticleUi[localeKey].introduction)}</a>`, `<a href="#model-record">${escapeHtml(ui.modelRecord)}</a>`, `<a href="#model-evaluation">${escapeHtml(ui.evaluation)}</a>`, ...article.sections.map((item, index) => `<a href="#model-section-${index + 1}">${escapeHtml(item.title)}</a>`), `<a href="#model-sources">${escapeHtml(ui.sources)}</a>`].join("");
+  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
+${head(localeKey, `${article.title} — ${site.name}`, article.description, `blog/${post.category}/${post.slug}`, ["/content-routes/route-foundation.css"], [], "/assets/field-3.webp")}  </head><body class="route-page content-page content-model-announcement"><div class="route-page__shell">
+    ${contentHeader(localeKey, "blog")}
+    <main id="main-content" class="model-announcement-main"><header class="model-announcement__hero"><div class="model-announcement__hero-inner"><div class="model-announcement__masthead"><p class="route-page__eyebrow">${escapeHtml(category)} / NAVIN RESEARCH</p><span>${escapeHtml(ui.statusLabel)}: ${escapeHtml(ui.status)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="route-page__lede">${escapeHtml(article.description)}</p><div class="model-announcement__meta"><time datetime="${escapeHtml(blogPostReviewedAt)}">${escapeHtml(reviewedAt)}</time><span>${escapeHtml(ui.status)}</span></div></div></header><div class="model-announcement__paper"><div class="model-announcement__utility"><a href="${escapeHtml(localePath(localeKey, "models"))}">← ${escapeHtml(ui.back)}</a><span>${escapeHtml(ui.direction)}</span></div><div class="model-announcement__layout"><aside class="model-announcement__toc" aria-label="${escapeHtml(ui.contents)}"><p>${escapeHtml(ui.contents)}</p><nav aria-label="${escapeHtml(ui.contents)}">${tocLinks}</nav></aside><article class="model-announcement__article"><section class="model-announcement__intro" id="model-introduction"><p class="model-announcement__section-label">${escapeHtml(blogArticleUi[localeKey].introduction)}</p><p class="model-announcement__lead">${escapeHtml(article.description)}</p><p><strong>${escapeHtml(blogArticleUi[localeKey].shortAnswer)}:</strong> ${escapeHtml(article.answer)}</p></section><section class="model-announcement__section model-announcement__record" id="model-record" aria-labelledby="model-record-title"><p class="model-announcement__section-label">01 / ${escapeHtml(ui.modelRecord.toUpperCase())}</p><h2 id="model-record-title">${escapeHtml(ui.modelRecord)}</h2><dl>${recordRows}</dl><p class="model-announcement__note">${escapeHtml(ui.incomplete)}</p></section><section class="model-announcement__section model-announcement__record" id="model-evaluation" aria-labelledby="model-evaluation-title"><p class="model-announcement__section-label">02 / ${escapeHtml(ui.evaluation.toUpperCase())}</p><h2 id="model-evaluation-title">${escapeHtml(ui.evaluation)}</h2><dl>${evaluationRows}</dl><p class="model-announcement__note">${escapeHtml(ui.evaluationNote)}</p></section>${sectionMarkup}<section class="model-announcement__section" id="model-sources" aria-labelledby="model-sources-title"><p class="model-announcement__section-label">${String(article.sections.length + 3).padStart(2, "0")} / ${escapeHtml(ui.sources.toUpperCase())}</p><h2 id="model-sources-title">${escapeHtml(ui.sources)}</h2><ul>${sourceLinks}</ul></section></article></div></div></main>
+    ${routeFooter(localeKey, `blog/${post.category}/${post.slug}`)}
+  </div></body></html>`;
+}
+
 function blogTemplate(localeKey, post) {
+  if (post.modelAnnouncement) return modelAnnouncementTemplate(localeKey, post);
   const locale = locales[localeKey];
   const aboutCopy = aboutPageCopy[localeKey];
   const article = blogCopy(post, localeKey);

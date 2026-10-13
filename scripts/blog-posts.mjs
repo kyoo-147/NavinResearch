@@ -47,6 +47,7 @@ const p = (category, slug, title, description, answer, steps, checks, pitfalls, 
 export const blogPostReviewedAt = "2026-08-24";
 
 const modelPreviewArticle = {
+  modelAnnouncement: true,
   sections: [
     { label: "01 / WHY WE ARE BUILDING THIS", title: "A model should earn its release.", paragraphs: ["We are preparing a new Navin Research model for practical work across language, speech, and vision. The point is not to announce a number before the work is ready. The point is to build a model whose behavior, evaluation conditions, and limits can be inspected together.", "The strongest model story is not a promise that it will solve everything. It is a clear account of what the system is for, what it was tested on, and where people should not rely on it." ] },
     { label: "02 / THE MODEL DIRECTION", title: "Build the intelligence and the evidence together.", paragraphs: ["The program is being shaped around useful model behavior, a disciplined evaluation record, and an explicit boundary between model output and the systems that use it.", "That means treating language, speech, and vision as connected research concerns without pretending that one unpublished system already covers every task or modality."], points: ["Task-focused behavior before universal claims", "Evaluation conditions beside every result", "Runtime, safety, and human review outside the model's authority"] },
