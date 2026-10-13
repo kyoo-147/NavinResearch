@@ -2,7 +2,7 @@
 title: "Reasoning With Tools: Separate Planning From Execution"
 description: "Let models choose actions while deterministic code validates, executes, and records each operation."
 language: en
-canonical: https://navinresearch.com/blog/reasoning/reasoning-with-tools.md
+canonical: https://navinresearch.com/blog/reasoning/reasoning-with-tools/
 topics: ["reasoning with tools", "AI tool calling", "agent execution loop"]
 ---
 

@@ -1,6 +1,6 @@
 # Navin Research
 
-Source for [navinresearch.com](https://navinresearch.com): a multilingual static research and product site, truthful crawlable content foundation, an eight-product catalog, seven integrated product microsites, reusable design system, and privacy-preserving visitor geography prototype. TeraFlow is maintained in a separate product workspace and linked from the parent catalog.
+Source for [navinresearch.com](https://navinresearch.com): a multilingual static research and product site, truthful crawlable content foundation, a thirteen-entry catalog, seven integrated product microsites, reusable design system, and privacy-preserving visitor geography prototype. TeraFlow and five additional product surfaces are maintained in separate workspaces and linked from the parent catalog.
 
 ## Architecture
 

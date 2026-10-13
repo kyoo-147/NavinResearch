@@ -2,7 +2,7 @@
 title: "Build a Reliable Image Understanding Pipeline"
 description: "Prepare images, preserve provenance, structure outputs, and verify visual claims before using multimodal results."
 language: en
-canonical: https://navinresearch.com/blog/multimodal/image-understanding-pipeline.md
+canonical: https://navinresearch.com/blog/multimodal/image-understanding-pipeline/
 topics: ["image understanding AI", "multimodal pipeline", "vision language model"]
 ---
 

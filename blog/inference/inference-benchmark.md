@@ -2,7 +2,7 @@
 title: "Benchmark an LLM Inference Server Correctly"
 description: "Report workload, hardware, concurrency, prompt and output lengths, latency percentiles, throughput, and quality together."
 language: en
-canonical: https://navinresearch.com/blog/inference/inference-benchmark.md
+canonical: https://navinresearch.com/blog/inference/inference-benchmark/
 topics: ["LLM inference benchmark", "tokens per second", "time to first token"]
 ---
 

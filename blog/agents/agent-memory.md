@@ -2,7 +2,7 @@
 title: "AI Agent Memory: What to Store and What to Recompute"
 description: "Separate working context, durable user facts, episodic history, and external knowledge to reduce cost and privacy risk."
 language: en
-canonical: https://navinresearch.com/blog/agents/agent-memory.md
+canonical: https://navinresearch.com/blog/agents/agent-memory/
 topics: ["AI agent memory", "long-term memory LLM", "context engineering"]
 ---
 

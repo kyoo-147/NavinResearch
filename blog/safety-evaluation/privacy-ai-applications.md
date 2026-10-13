@@ -2,7 +2,7 @@
 title: "Privacy Engineering for AI Applications"
 description: "Minimize data, define retention, isolate tenants, control logs, and make deletion testable."
 language: en
-canonical: https://navinresearch.com/blog/safety-evaluation/privacy-ai-applications.md
+canonical: https://navinresearch.com/blog/safety-evaluation/privacy-ai-applications/
 topics: ["AI privacy engineering", "LLM data retention", "tenant isolation AI"]
 ---
 

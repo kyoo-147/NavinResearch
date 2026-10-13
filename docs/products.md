@@ -1,6 +1,6 @@
 # Product-site architecture
 
-Navin Research publishes a parent site and an eight-product catalog. Seven product sites are generated in this source tree:
+Navin Research publishes a parent site and a thirteen-entry catalog. Seven product sites are generated in this source tree:
 
 - `sandora.navinresearch.com`
 - `moyi.navinresearch.com`
@@ -10,23 +10,25 @@ Navin Research publishes a parent site and an eight-product catalog. Seven produ
 - `autopilot.navinresearch.com`
 - `lajvard.navinresearch.com`
 
-TeraFlow is the eighth catalog product at `teraflow.navinresearch.com`. Its website is maintained and built separately in `D:/work/michael/teraflow_web`; this repository owns only its parent-site catalog and search entry.
+TeraFlow is the eighth catalog product at `teraflow.navinresearch.com`. Its website is maintained and built separately in `D:/work/michael/teraflow_web`; this repository owns only its parent-site catalog and search entry. The five additional catalog entries—MERAK, Navin OpenBot, Synomorph, PardraVerse, and FirstSnow—are maintained in their own workspaces or repositories and are linked from the parent catalog without being generated as product microsites here.
 
 ## Independent system registry and research artifacts
 
-The nine public-facing systems are intentionally distinct: Navin Research (parent), Sandora, Moyi, Sori, HowHow, Dossier, Autopilot, Lajvard, and TeraFlow. The seven integrated product sites each own their renderer, theme, runtime, route-family composition, header, homepage, and footer while using only shared technical/accessibility primitives. TeraFlow retains its own separate build pipeline and visual system.
+The original nine public-facing systems are intentionally distinct: Navin Research (parent), Sandora, Moyi, Sori, HowHow, Dossier, Autopilot, Lajvard, and TeraFlow. The five newer catalog entries retain their own external product surfaces and source boundaries. The seven integrated product sites each own their renderer, theme, runtime, route-family composition, header, homepage, and footer while using only shared technical/accessibility primitives. TeraFlow retains its own separate build pipeline and visual system.
 
 The reconstruction research artifacts are maintained outside the repository at `D:/work/michael/artifacts/navin-reconstruction/`, with one evidence bundle per system: `navin/`, `sandora/`, `moyi/`, `sori/`, `howhow/`, `dossier/`, `autopilot/`, and `lajvard/`. Each bundle contains the applicable `DESIGN-DNA.json`, `ROUTES.md`, `SOURCE-MAP.md`, and `SYNTHESIS.md`; implementation workflow reports are stored alongside these bundles.
 
 ## Source of truth
 
-Each product owns three required files:
+Each integrated product owns three required files:
 
 - `products/content/<slug>.mjs` — narrative, capability, evidence, status, access, and source trail.
 - `products/themes/<slug>.css` — a product-specific visual system prefixed by `.product-<slug>`.
 - `products/media/<slug>-system.svg` — an original, accessible system diagram.
 
-`scripts/product-data.mjs` exposes the seven integrated products plus the TeraFlow catalog entry to the multilingual main-site product directory. `scripts/generate-products.mjs` generates the seven integrated subdomain sites and their cross-product navigation.
+External catalog entries are defined in `products/catalog-external.mjs`. That registry contains only parent-catalog metadata and canonical external URLs; it does not claim that those products have generated microsites or that every linked runtime is publicly available.
+
+`scripts/product-data.mjs` exposes the seven integrated products, TeraFlow, and the five external catalog entries to the multilingual main-site product directory. `scripts/generate-products.mjs` generates only the seven integrated subdomain sites and their cross-product navigation.
 
 Run:
 

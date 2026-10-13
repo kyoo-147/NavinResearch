@@ -2,7 +2,7 @@
 title: "Build Tool-Call Evaluations for AI Agents"
 description: "Test tool selection, arguments, sequencing, authorization, recovery, and unnecessary calls with executable fixtures."
 language: en
-canonical: https://navinresearch.com/blog/safety-evaluation/tool-call-evals.md
+canonical: https://navinresearch.com/blog/safety-evaluation/tool-call-evals/
 topics: ["tool call evaluation", "AI agent evals", "function calling tests"]
 ---
 

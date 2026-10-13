@@ -2,7 +2,7 @@
 title: "A Practical Qwen Model Deployment Checklist"
 description: "Select the right Qwen variant, template, precision, and serving engine while preserving reproducibility."
 language: en
-canonical: https://navinresearch.com/blog/models/qwen-deployment-checklist.md
+canonical: https://navinresearch.com/blog/models/qwen-deployment-checklist/
 topics: ["Qwen deployment", "Qwen model selection", "open model inference"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Build a Small Reasoning Evaluation Dataset That Matters"
 description: "Create a compact, versioned eval set from real failures before chasing broad benchmark scores."
 language: en
-canonical: https://navinresearch.com/blog/reasoning/reasoning-evaluation-dataset.md
+canonical: https://navinresearch.com/blog/reasoning/reasoning-evaluation-dataset/
 topics: ["reasoning evaluation dataset", "LLM evals", "AI regression testing"]
 ---
 

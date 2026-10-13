@@ -2,7 +2,7 @@
 title: "How to Design Reliable Handoffs Between AI Agents"
 description: "Use typed handoff packets, acceptance checks, and clear responsibility boundaries between specialist agents."
 language: en
-canonical: https://navinresearch.com/blog/agents/agent-handoffs.md
+canonical: https://navinresearch.com/blog/agents/agent-handoffs/
 topics: ["AI agent handoff", "agent routing", "typed agent state"]
 ---
 

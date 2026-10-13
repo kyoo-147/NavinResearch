@@ -2,7 +2,7 @@
 title: "AI Agent Observability: Traces That Help Debug Failures"
 description: "Capture decisions, tool calls, latency, cost, and evidence without turning traces into a privacy liability."
 language: en
-canonical: https://navinresearch.com/blog/agents/agent-observability.md
+canonical: https://navinresearch.com/blog/agents/agent-observability/
 topics: ["AI agent observability", "agent tracing", "LLM monitoring"]
 ---
 

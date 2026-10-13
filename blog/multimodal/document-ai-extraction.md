@@ -2,7 +2,7 @@
 title: "Extract Structured Data From Documents With Multimodal Models"
 description: "Combine file parsing, page images, schemas, citations, and validation for dependable document extraction."
 language: en
-canonical: https://navinresearch.com/blog/multimodal/document-ai-extraction.md
+canonical: https://navinresearch.com/blog/multimodal/document-ai-extraction/
 topics: ["document AI extraction", "multimodal document processing", "structured data extraction"]
 ---
 

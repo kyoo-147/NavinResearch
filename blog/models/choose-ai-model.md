@@ -2,7 +2,7 @@
 title: "How to Choose an AI Model for a Production Application"
 description: "Evaluate quality, latency, cost, context, tool use, deployment, and governance with your own workload."
 language: en
-canonical: https://navinresearch.com/blog/models/choose-ai-model.md
+canonical: https://navinresearch.com/blog/models/choose-ai-model/
 topics: ["choose AI model", "LLM comparison", "production model selection"]
 ---
 

@@ -12,7 +12,8 @@ export function pageHead({ localeKey, title, description, suffix = "", styles = 
   const canonical = `${site.origin}${localePath(localeKey, suffix)}`;
   const socialImage = image.startsWith("http") ? image : `${site.origin}${image}`;
   const versionedStyles = styles.map((href) => href.includes("?") ? href : `${href}?v=${revision}`);
-  const versionedScripts = scripts.filter(Boolean).map((src) => src.includes("?") ? src : `${src}?v=${revision}`);
+  const versionedScripts = ["/content-routes/theme.js", ...scripts].filter(Boolean).filter((src, index, list) => list.indexOf(src) === index).map((src) => src.includes("?") ? src : `${src}?v=${revision}`);
+  const themeBootstrap = `    <script>(function(){try{var saved=localStorage.getItem("navin-theme");var preference=saved === "light" || saved === "dark" || saved === "system" ? saved : "dark";var resolved=preference === "system" ? (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark") : preference;document.documentElement.dataset.theme=resolved;document.documentElement.dataset.themePreference=preference;}catch(error){document.documentElement.dataset.theme="dark";document.documentElement.dataset.themePreference="dark";}}());</script>`;
   return `    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#04130e">
@@ -31,6 +32,7 @@ export function pageHead({ localeKey, title, description, suffix = "", styles = 
     <link rel="canonical" href="${canonical}">
 ${alternateLinks(suffix)}
     <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
+${themeBootstrap}
 ${versionedStyles.map((href) => `    <link rel="stylesheet" href="${href}">`).join("\n")}
 ${versionedScripts.map((src) => `    <script src="${src}" defer></script>`).join("\n")}${versionedScripts.length ? "\n" : ""}`;
 }

@@ -2,7 +2,7 @@
 title: "Continuous AI Evaluations in CI and Production"
 description: "Run fast regression gates on every change and monitor sampled real-world outcomes without leaking user data."
 language: en
-canonical: https://navinresearch.com/blog/safety-evaluation/continuous-ai-evals.md
+canonical: https://navinresearch.com/blog/safety-evaluation/continuous-ai-evals/
 topics: ["continuous AI evaluation", "LLM evals CI", "production AI monitoring"]
 ---
 

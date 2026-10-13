@@ -2,7 +2,7 @@
 title: "Human Approval Gates for High-Risk AI Agent Actions"
 description: "Place approval at the last responsible moment and show people exactly what the agent intends to do."
 language: en
-canonical: https://navinresearch.com/blog/agents/human-approval-gates.md
+canonical: https://navinresearch.com/blog/agents/human-approval-gates/
 topics: ["human in the loop AI", "agent approval gate", "safe AI actions"]
 ---
 

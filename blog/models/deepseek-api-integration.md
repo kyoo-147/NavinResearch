@@ -2,7 +2,7 @@
 title: "Integrate the DeepSeek API Without Locking Your Application"
 description: "Use an adapter, capability checks, strict validation, and live documentation for a resilient DeepSeek integration."
 language: en
-canonical: https://navinresearch.com/blog/models/deepseek-api-integration.md
+canonical: https://navinresearch.com/blog/models/deepseek-api-integration/
 topics: ["DeepSeek API integration", "OpenAI compatible API", "DeepSeek function calling"]
 ---
 

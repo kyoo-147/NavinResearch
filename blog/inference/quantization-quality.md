@@ -2,7 +2,7 @@
 title: "Quantization for LLM Serving: Measure the Quality Trade-Off"
 description: "Reduce memory and increase throughput only after evaluating the exact quantized artifact on your tasks."
 language: en
-canonical: https://navinresearch.com/blog/inference/quantization-quality.md
+canonical: https://navinresearch.com/blog/inference/quantization-quality/
 topics: ["LLM quantization", "quantized model quality", "AI serving optimization"]
 ---
 

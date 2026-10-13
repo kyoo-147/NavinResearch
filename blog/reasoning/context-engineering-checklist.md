@@ -2,7 +2,7 @@
 title: "A Context Engineering Checklist for AI Agents"
 description: "Curate instructions, tools, evidence, state, and history as a limited resource on every model turn."
 language: en
-canonical: https://navinresearch.com/blog/reasoning/context-engineering-checklist.md
+canonical: https://navinresearch.com/blog/reasoning/context-engineering-checklist/
 topics: ["context engineering checklist", "AI agent context", "prompt context management"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Secure an MCP Server Before Connecting AI Agents"
 description: "A deployment checklist for authentication, authorization, consent, validation, and least-privilege Model Context Protocol tools."
 language: en
-canonical: https://navinresearch.com/blog/agents/mcp-server-security.md
+canonical: https://navinresearch.com/blog/agents/mcp-server-security/
 topics: ["MCP server security", "Model Context Protocol", "AI agent authorization"]
 ---
 

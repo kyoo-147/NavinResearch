@@ -5,6 +5,7 @@ import howhow from "../products/content/howhow.mjs";
 import dossier from "../products/content/dossier.mjs";
 import autopilot from "../products/content/autopilot.mjs";
 import lajvard from "../products/content/lajvard.mjs";
+import externalCatalogProducts from "../products/catalog-external.mjs";
 
 export const products = [sandora, moyi, sori, howhow, dossier, autopilot, lajvard];
 
@@ -30,4 +31,4 @@ export const teraflow = {
   url: "https://teraflow.navinresearch.com/",
 };
 
-export const catalogProducts = [...products, teraflow];
+export const catalogProducts = [...products, teraflow, ...externalCatalogProducts];

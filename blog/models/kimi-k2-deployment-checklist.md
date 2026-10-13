@@ -2,7 +2,7 @@
 title: "A Deployment Checklist for Kimi Open-Weight Models"
 description: "Verify the model card, hardware fit, serving stack, tool format, and license before deploying Kimi models."
 language: en
-canonical: https://navinresearch.com/blog/models/kimi-k2-deployment-checklist.md
+canonical: https://navinresearch.com/blog/models/kimi-k2-deployment-checklist/
 topics: ["Kimi K2 deployment", "Moonshot AI models", "open-weight model serving"]
 ---
 

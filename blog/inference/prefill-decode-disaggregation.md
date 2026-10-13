@@ -2,7 +2,7 @@
 title: "Prefill and Decode Disaggregation: When It Helps"
 description: "Separate compute-heavy prompt processing from memory-bandwidth-heavy token generation only for the right workload and scale."
 language: en
-canonical: https://navinresearch.com/blog/inference/prefill-decode-disaggregation.md
+canonical: https://navinresearch.com/blog/inference/prefill-decode-disaggregation/
 topics: ["prefill decode disaggregation", "LLM serving architecture", "distributed inference"]
 ---
 

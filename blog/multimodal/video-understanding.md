@@ -2,7 +2,7 @@
 title: "Practical Video Understanding With Multimodal AI"
 description: "Sample video deliberately, keep timestamps, separate audio and visual evidence, and evaluate event recall."
 language: en
-canonical: https://navinresearch.com/blog/multimodal/video-understanding.md
+canonical: https://navinresearch.com/blog/multimodal/video-understanding/
 topics: ["video understanding AI", "multimodal video analysis", "video summarization"]
 ---
 

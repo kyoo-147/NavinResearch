@@ -2,7 +2,7 @@
 title: "Prompt Injection Defense for Tool-Using AI Agents"
 description: "Combine trust separation, least privilege, validation, approvals, and monitoring because prompts alone cannot secure agents."
 language: en
-canonical: https://navinresearch.com/blog/safety-evaluation/prompt-injection-defense.md
+canonical: https://navinresearch.com/blog/safety-evaluation/prompt-injection-defense/
 topics: ["prompt injection defense", "AI agent security", "indirect prompt injection"]
 ---
 

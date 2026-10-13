@@ -2,10 +2,11 @@
 
 ## Current Objective
 
-Maintain the deployed multilingual Navin Research ecosystem as eight truthful, production-quality static websites:
+Maintain the deployed multilingual Navin Research ecosystem as eight existing truthful, production-quality static websites plus a parent catalog of thirteen verified source-backed entries:
 
 - parent: `navinresearch.com`
 - products: `sandora`, `moyi`, `sori`, `howhow`, `dossier`, `autopilot`, and `lajvard` under `*.navinresearch.com`
+- external catalog entries: `TeraFlow`, `MERAK`, `Navin OpenBot`, `Synomorph`, `PardraVerse`, and `FirstSnow`, each maintained by its own product workspace or repository
 
 The independent reconstruction milestone is committed, pushed, and deployed at implementation commit `6c7e72c`. All local generation, validation, analytics, allowlisted-release, structural, browser, and production checks pass. Production serves the exact reviewed 329-file allowlisted artifact, and all 255 generated parent/product URLs match local output.
 
@@ -15,7 +16,7 @@ Analytics dashboard revision `42b7c64` is committed, pushed, and deployed. Both 
 
 ### Independent reconstruction systems
 
-The ecosystem comprises eight independent systems: the multilingual Navin Research parent plus Sandora, Moyi, Sori, HowHow, Dossier, Autopilot, and Lajvard. Their reconstruction evidence is external to the repository under `D:/work/michael/artifacts/navin-reconstruction/`, partitioned into `navin/`, `sandora/`, `moyi/`, `sori/`, `howhow/`, `dossier/`, `autopilot/`, and `lajvard/` bundles. Each product retains its own renderer, theme, runtime, header, homepage, route-family composition, and footer; shared code is limited to technical/accessibility primitives.
+The ecosystem's integrated reconstruction set comprises eight independent systems: the multilingual Navin Research parent plus Sandora, Moyi, Sori, HowHow, Dossier, Autopilot, and Lajvard. The parent catalog additionally indexes TeraFlow, MERAK, Navin OpenBot, Synomorph, PardraVerse, and FirstSnow without claiming that this repository generates their product runtimes. The reconstruction evidence for the integrated set is external to the repository under `D:/work/michael/artifacts/navin-reconstruction/`, partitioned into `navin/`, `sandora/`, `moyi/`, `sori/`, `howhow/`, `dossier/`, `autopilot/`, and `lajvard/` bundles. Each integrated product retains its own renderer, theme, runtime, header, homepage, route-family composition, and footer; shared code is limited to technical/accessibility primitives.
 
 ### Parent static site
 
@@ -107,7 +108,7 @@ The ecosystem comprises eight independent systems: the multilingual Navin Resear
 - **Manifest authority:** `products/site-manifest.json` is the generated authority for all product routes and layouts.
 - **Truth before marketing:** do not fabricate prices, metrics, customers, certifications, dates, compatibility, availability, model coverage, latency, physical proof, or maturity.
 - **Status taxonomy:** retain precise evidence labels and explicit unknown/unannounced states.
-- **Catalog classification:** Lajvard is the sole `research` catalog item; the other six remain `product` entries even when their access/evidence status is limited.
+- **Catalog classification:** the integrated catalog keeps Lajvard as `research`; Synomorph is an additional `research` entry, while MERAK, Navin OpenBot, PardraVerse, and FirstSnow are `product` entries with explicit external-runtime and evidence boundaries. TeraFlow remains a separately maintained `product` entry.
 - **Approved homepage copy:** preserve “A new frontier is taking shape.” / “Một chân trời mới đang thành hình.” / “新的前沿正在成形。” and `CHAPTER 00 / WEALTH OF NATURE — COMING SOON`.
 - **Responsive Releases table:** preserve the semantic wide table and intentional mobile horizontal scrolling.
 - **Analytics privacy:** exact IP may exist only in restricted logs and in-memory daily deduplication. Persist aggregate counts only. Public minimum group size remains 1.
@@ -138,6 +139,8 @@ The ecosystem comprises eight independent systems: the multilingual Navin Resear
 - `site.config.mjs` — parent locale, metadata, routes, chapters, legal copy.
 - `scripts/generate-site.mjs` — parent/localized/blog/search/sitemap generation.
 - `scripts/route-details.mjs` — route-specific parent compositions.
+- `scripts/product-data.mjs` — integrated products, TeraFlow, and external catalog registry composition.
+- `products/catalog-external.mjs` — source-backed metadata and canonical URLs for non-generated catalog entries.
 - `scripts/blog-posts.mjs` — 50-post Markdown source and renderer.
 - `scripts/components/page-head.mjs` — canonical, hreflang, social, favicon, assets.
 - `scripts/components/site-shell.mjs` — parent headers, drawer, footers, locale switching.

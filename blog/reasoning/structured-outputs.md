@@ -2,7 +2,7 @@
 title: "Structured Outputs for Reliable AI Pipelines"
 description: "Use JSON Schema for machine-consumed responses while preserving server-side validation and business rules."
 language: en
-canonical: https://navinresearch.com/blog/reasoning/structured-outputs.md
+canonical: https://navinresearch.com/blog/reasoning/structured-outputs/
 topics: ["structured outputs", "JSON schema LLM", "reliable AI pipeline"]
 ---
 

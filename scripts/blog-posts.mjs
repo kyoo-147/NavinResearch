@@ -1,3 +1,4 @@
+import { localePath } from "../site.config.mjs";
 export const blogSources = {
   openaiAgents: ["OpenAI, New tools for building agents", "https://openai.com/index/new-tools-for-building-agents/"],
   openaiResponses: ["OpenAI, Responses API reference", "https://platform.openai.com/docs/api-reference/responses"],
@@ -34,11 +35,99 @@ export const blogSources = {
   mistralModels: ["Mistral AI, Models overview", "https://docs.mistral.ai/getting-started/models/models_overview/"],
   nvidiaServing: ["NVIDIA, TensorRT-LLM documentation", "https://nvidia.github.io/TensorRT-LLM/"],
   nvidiaDynamo: ["NVIDIA, Dynamo documentation", "https://docs.nvidia.com/dynamo/latest/"],
+  mistralAbout: ["Mistral AI, Bringing open AI models to the frontier", "https://mistral.ai/news/about-mistral-ai/"],
+  mistralResearch: ["Mistral AI, AI research", "https://mistral.ai/research/"],
+  navinModels: ["Navin Research, Models", "https://navinresearch.com/models/"],
+  navinReleases: ["Navin Research, Releases", "https://navinresearch.com/releases/"],
+  moyiSite: ["Moyi, Speech in context", "https://moyi.navinresearch.com/"],
 };
 
-const p = (category, slug, title, description, answer, steps, checks, pitfalls, sources, keywords) => ({ category, slug, title, description, answer, steps, checks, pitfalls, sources, keywords });
+const p = (category, slug, title, description, answer, steps, checks, pitfalls, sources, keywords, options = {}) => ({ category, slug, title, description, answer, steps, checks, pitfalls, sources, keywords, ...options });
+
+export const blogPostReviewedAt = "2026-08-24";
+
+const modelPreviewArticle = {
+  sections: [
+    { label: "01 / WHY WE ARE BUILDING THIS", title: "A model should earn its release.", paragraphs: ["We are preparing a new Navin Research model for practical work across language, speech, and vision. The point is not to announce a number before the work is ready. The point is to build a model whose behavior, evaluation conditions, and limits can be inspected together.", "The strongest model story is not a promise that it will solve everything. It is a clear account of what the system is for, what it was tested on, and where people should not rely on it." ] },
+    { label: "02 / THE MODEL DIRECTION", title: "Build the intelligence and the evidence together.", paragraphs: ["The program is being shaped around useful model behavior, a disciplined evaluation record, and an explicit boundary between model output and the systems that use it.", "That means treating language, speech, and vision as connected research concerns without pretending that one unpublished system already covers every task or modality."], points: ["Task-focused behavior before universal claims", "Evaluation conditions beside every result", "Runtime, safety, and human review outside the model's authority"] },
+    { label: "03 / AN OPEN RECORD OF WHAT CHANGES", title: "The release note will be part of the model.", paragraphs: ["When the model is ready to be named, its public record should carry the version, intended scope, access state, evaluation method, known failures, and the evidence behind every material claim.", "A model release is therefore more than a checkpoint. It is an accountable handoff from research into the work people may choose to build." ] },
+    { label: "04 / WHAT IS NOT ANNOUNCED", title: "Preparation is not availability.", paragraphs: ["The model name, architecture, parameter count, training data, language coverage, benchmark results, license, API, hardware requirements, release date, and access terms are not announced in this note.", "No performance, customer, pricing, or deployment claim should be inferred from the existence of this preparation work."], points: ["MODEL: NOT ANNOUNCED", "BENCHMARKS: NOT PUBLISHED", "ACCESS AND DATE: NOT ANNOUNCED"] },
+    { label: "05 / WHAT COMES NEXT", title: "A real announcement will show its work.", paragraphs: ["The next public step is not a countdown. It is a release record with a named artifact, a reproducible evaluation boundary, and clear limitations. Until those pieces exist, this article remains a statement of direction—not a launch." ] },
+  ],
+  translations: {
+    vi: {
+      title: "Giới thiệu mô hình chúng tôi đang chuẩn bị tiếp theo",
+      description: "Ghi chú ban đầu về định hướng mô hình Navin Research đang chuẩn bị và bằng chứng cần có trước khi gọi đó là một bản phát hành.",
+      answer: "Chúng tôi đang chuẩn bị một mô hình mới cho các công việc thực tế về ngôn ngữ, giọng nói và thị giác. Đây là giới thiệu về định hướng, không phải thông báo phát hành: tên mô hình, kiến trúc, quy mô, dữ liệu, kết quả đánh giá, giấy phép, quyền truy cập và ngày ra mắt chưa được công bố.",
+      keywords: ["mô hình AI Navin", "mô hình ngôn ngữ", "mô hình sắp ra mắt"],
+      sections: [
+        { label: "01 / VÌ SAO CHÚNG TÔI XÂY DỰNG", title: "Một mô hình phải đủ bằng chứng trước khi phát hành.", paragraphs: ["Chúng tôi đang chuẩn bị một mô hình Navin Research cho các công việc thực tế trong ngôn ngữ, giọng nói và thị giác. Mục tiêu không phải công bố một con số trước khi công việc sẵn sàng. Mục tiêu là xây dựng một mô hình để hành vi, điều kiện đánh giá và giới hạn có thể được xem xét cùng nhau.", "Câu chuyện đáng tin cậy nhất về một mô hình không phải là lời hứa giải quyết mọi thứ. Đó là bản mô tả rõ hệ thống dùng cho việc gì, đã được kiểm tra trên điều kiện nào và ở đâu con người không nên dựa vào nó."] },
+        { label: "02 / ĐỊNH HƯỚNG MÔ HÌNH", title: "Xây dựng năng lực và bằng chứng cùng nhau.", paragraphs: ["Chương trình được định hình quanh hành vi hữu ích của mô hình, hồ sơ đánh giá có kỷ luật và ranh giới rõ giữa đầu ra của mô hình với các hệ thống sử dụng đầu ra đó.", "Điều này có nghĩa là xem ngôn ngữ, giọng nói và thị giác như những hướng nghiên cứu liên kết, nhưng không giả vờ rằng một hệ thống chưa phát hành đã bao phủ mọi nhiệm vụ hay phương thức."], points: ["Hành vi theo nhiệm vụ trước tuyên bố phổ quát", "Điều kiện đánh giá đi cùng từng kết quả", "Runtime, an toàn và kiểm duyệt của con người nằm ngoài quyền tự quyết của mô hình"] },
+        { label: "03 / HỒ SƠ THAY ĐỔI CÔNG KHAI", title: "Ghi chú phát hành cũng là một phần của mô hình.", paragraphs: ["Khi mô hình sẵn sàng được gọi tên, hồ sơ công khai cần nêu phiên bản, phạm vi sử dụng, trạng thái truy cập, phương pháp đánh giá, lỗi đã biết và bằng chứng cho từng tuyên bố quan trọng.", "Vì vậy, phát hành mô hình không chỉ là đặt một checkpoint lên kệ. Đó là một bàn giao có trách nhiệm từ nghiên cứu sang công việc mà mọi người có thể lựa chọn xây dựng."] },
+        { label: "04 / CHƯA CÔNG BỐ", title: "Đang chuẩn bị không có nghĩa là đã sẵn sàng sử dụng.", paragraphs: ["Tên mô hình, kiến trúc, số tham số, dữ liệu huấn luyện, phạm vi ngôn ngữ, kết quả benchmark, giấy phép, API, yêu cầu phần cứng, ngày phát hành và điều khoản truy cập chưa được công bố trong ghi chú này.", "Không nên suy ra hiệu năng, khách hàng, giá, hay khả năng triển khai chỉ từ việc công việc chuẩn bị đang diễn ra."], points: ["MÔ HÌNH: CHƯA CÔNG BỐ", "BENCHMARK: CHƯA CÔNG BỐ", "QUYỀN TRUY CẬP VÀ NGÀY PHÁT HÀNH: CHƯA CÔNG BỐ"] },
+        { label: "05 / BƯỚC TIẾP THEO", title: "Một thông báo thật sẽ cho thấy bằng chứng.", paragraphs: ["Bước công khai tiếp theo không phải là đếm ngược. Đó là hồ sơ phát hành có hiện vật được gọi tên, ranh giới đánh giá có thể tái lập và các giới hạn rõ ràng. Cho đến khi những phần đó tồn tại, bài viết này chỉ là tuyên bố định hướng — không phải thông báo ra mắt."] },
+      ],
+    },
+    "zh-cn": {
+      title: "介绍我们正在准备的下一款模型",
+      description: "关于 Navin Research 正在准备的模型方向，以及在它能够被称为正式发布之前所需要的证据。",
+      answer: "我们正在准备一款面向语言、语音与视觉实际工作的 Navin Research 新模型。这是一篇方向说明，而不是发布公告：模型名称、架构、规模、数据、评估结果、许可证、访问方式与发布日期目前都尚未公布。",
+      keywords: ["Navin AI 模型", "语言模型", "即将推出的模型"],
+      sections: [
+        { label: "01 / 我们为什么构建它", title: "模型必须先赢得发布资格。", paragraphs: ["我们正在为语言、语音与视觉领域的实际工作准备一款 Navin Research 模型。重点不是在工作准备好之前先公布一个数字，而是让模型行为、评估条件与限制能够被放在一起检查。", "最可靠的模型叙事不是承诺它能够解决一切，而是清楚说明系统服务于什么、在哪些条件下被测试，以及在哪些地方人们不应依赖它。"] },
+        { label: "02 / 模型方向", title: "让能力与证据一起成长。", paragraphs: ["这个计划围绕有用的模型行为、严谨的评估记录，以及模型输出与使用它的系统之间的明确边界展开。", "这意味着把语言、语音与视觉视为相互连接的研究方向，但不会假装一个尚未发布的系统已经覆盖所有任务或模态。"], points: ["先验证面向任务的行为，再谈普遍性能力", "每个结果都带着评估条件", "运行时、安全与人工审阅不属于模型自行决定的范围"] },
+        { label: "03 / 可公开追踪的变化", title: "发布说明也是模型的一部分。", paragraphs: ["当模型准备好被命名时，公开记录应包含版本、目标范围、访问状态、评估方法、已知失败，以及每项重要声明所依据的证据。", "因此，模型发布不只是把一个 checkpoint 放上架，而是把研究负责任地交给那些愿意在其上构建工作的人。"] },
+        { label: "04 / 尚未公布的内容", title: "正在准备不等于已经可用。", paragraphs: ["本文没有公布模型名称、架构、参数规模、训练数据、语言范围、基准结果、许可证、API、硬件要求、发布日期或访问条款。", "不能仅因为准备工作存在，就推断模型性能、客户、价格或部署能力。"], points: ["模型：尚未公布", "基准：尚未发布", "访问方式与日期：尚未公布"] },
+        { label: "05 / 接下来", title: "真正的公告会展示它的工作。", paragraphs: ["下一步公开内容不是倒计时，而是一份包含明确产物、可复现评估边界与清晰限制的发布记录。在这些部分出现之前，本文只是方向说明，不是发布公告。"] },
+      ],
+    },
+  },
+};
+
+const moyiTechnologyArticle = {
+  sections: [
+    { label: "01 / MOYI BEGINS WITH CONTEXT", title: "Speech is more than the words in the transcript.", paragraphs: ["Moyi is being shaped as a speech and language foundation around the conditions in which communication happens: distance, noise, turn-taking, local terminology, and the human decision that follows an output.", "That is why the product direction begins with the acoustic field rather than a polished answer box. The room is part of the input." ] },
+    { label: "02 / THE TECHNOLOGY PATH", title: "Keep the chain visible.", paragraphs: ["Moyi separates the path from audio to reviewed meaning: capture the scene, represent speech, carry context and terminology, transform language, expose runtime state, and keep a human review boundary where the result may matter."], points: ["Acoustic field and speaker turns", "Speech and language transformation", "Operational lexicon and context", "Runtime state, interruption, and review"] },
+    { label: "03 / ENGINEERING THE BOUNDARY", title: "Local execution changes the question.", paragraphs: ["Moyi's intended runtime direction keeps critical speech paths close to the device when connectivity, privacy, or response conditions vary. That is an engineering direction, not a claim that a finished edge package is available.", "A serious implementation must define what enters the device, what remains local, what may leave, and how a partial or uncertain output is distinguished from a reviewed handoff."], points: ["Device boundary before deployment claim", "Partial output is not final output", "Receipts carry state and provenance"] },
+    { label: "04 / TECHNOLOGY THAT CAN BE REVIEWED", title: "Terminology belongs beside the model.", paragraphs: ["Names, procedures, and safety phrases are not decoration in an operational speech system. They need to travel through capture, transformation, and review without becoming invisible assumptions.", "The useful technical artifact is therefore not only a model response. It is a record of input conditions, transformation state, output, uncertainty, and the decision made after review." ] },
+    { label: "05 / WHAT IS NOT ANNOUNCED", title: "A research preview leaves the blank fields visible.", paragraphs: ["Moyi has not announced model names, a language list, benchmark values, latency, concurrency, a public SDK or API, supported devices, a deployment package, pricing, or service availability.", "The public site describes a research direction and an engineering vocabulary. It does not grant access or establish production readiness."], points: ["MODEL AND LANGUAGE COVERAGE: NOT ANNOUNCED", "BENCHMARKS AND LATENCY: NOT PUBLISHED", "SDK, DEVICES, PRICING, AND ACCESS: NOT ANNOUNCED"] },
+    { label: "06 / WHAT COMES NEXT", title: "Build the protocol before the promise.", paragraphs: ["The next useful Moyi record will connect a named model or runtime artifact to conditions, evaluation, failure modes, and a clear access boundary. Until then, the technology is best understood as a focused research direction: speech in context, with the boundary visible." ] },
+  ],
+  translations: {
+    vi: {
+      title: "Moyi: Công nghệ giọng nói với ranh giới rõ ràng",
+      description: "Moyi nghiên cứu công nghệ giọng nói, ngôn ngữ và runtime cục bộ bằng cách giữ điều kiện đầu vào, trạng thái biến đổi và bước kiểm duyệt luôn có thể xem xét.",
+      answer: "Moyi đang được định hình như một nền tảng giọng nói và ngôn ngữ cho giao tiếp trong bối cảnh thực tế: tiếng ồn, khoảng cách, lượt nói, thuật ngữ địa phương và quyết định của con người sau đầu ra. Đây là hướng nghiên cứu, không phải tuyên bố về một dịch vụ đã phát hành.",
+      keywords: ["Moyi", "công nghệ giọng nói", "AI dịch giọng nói", "runtime cục bộ"],
+      sections: [
+        { label: "01 / MOYI BẮT ĐẦU TỪ BỐI CẢNH", title: "Giọng nói không chỉ là những từ trong bản chép lời.", paragraphs: ["Moyi được định hình như một nền tảng giọng nói và ngôn ngữ xoay quanh điều kiện giao tiếp diễn ra: khoảng cách, tiếng ồn, lượt nói, thuật ngữ địa phương và quyết định của con người sau đầu ra.", "Vì vậy hướng sản phẩm bắt đầu từ trường âm thanh thay vì một ô trả lời đã được đánh bóng. Căn phòng cũng là một phần của đầu vào."] },
+        { label: "02 / LỘ TRÌNH CÔNG NGHỆ", title: "Giữ cho chuỗi biến đổi có thể nhìn thấy.", paragraphs: ["Moyi tách lộ trình từ âm thanh đến ý nghĩa đã được xem xét: ghi nhận môi trường, biểu diễn giọng nói, mang theo bối cảnh và thuật ngữ, biến đổi ngôn ngữ, phơi bày trạng thái runtime và giữ ranh giới kiểm duyệt của con người khi kết quả có thể tạo ra hệ quả."], points: ["Trường âm thanh và lượt nói", "Biến đổi giọng nói và ngôn ngữ", "Từ điển vận hành và bối cảnh", "Trạng thái runtime, gián đoạn và kiểm duyệt"] },
+        { label: "03 / KỸ THUẬT CỦA RANH GIỚI", title: "Chạy cục bộ làm thay đổi câu hỏi kỹ thuật.", paragraphs: ["Hướng runtime dự kiến của Moyi giữ những đường đi quan trọng của giọng nói gần thiết bị khi kết nối, quyền riêng tư hoặc điều kiện phản hồi thay đổi. Đây là hướng kỹ thuật, không phải tuyên bố rằng đã có gói edge hoàn thiện.", "Một triển khai nghiêm túc phải nêu rõ điều gì đi vào thiết bị, điều gì ở lại cục bộ, điều gì có thể rời đi và cách phân biệt đầu ra một phần hoặc chưa chắc chắn với kết quả đã được kiểm duyệt."], points: ["Ranh giới thiết bị trước tuyên bố triển khai", "Đầu ra một phần không phải đầu ra cuối", "Receipt mang theo trạng thái và nguồn gốc"] },
+        { label: "04 / CÔNG NGHỆ CÓ THỂ XEM XÉT", title: "Thuật ngữ phải nằm cạnh mô hình.", paragraphs: ["Tên riêng, quy trình và câu cảnh báo an toàn không phải phần trang trí trong một hệ thống giọng nói vận hành. Chúng cần đi qua bước ghi nhận, biến đổi và kiểm duyệt mà không trở thành những giả định vô hình.", "Vì vậy hiện vật kỹ thuật hữu ích không chỉ là phản hồi của mô hình. Đó là hồ sơ về điều kiện đầu vào, trạng thái biến đổi, đầu ra, bất định và quyết định sau kiểm duyệt."] },
+        { label: "05 / CHƯA CÔNG BỐ", title: "Bản xem trước nghiên cứu giữ lại các ô trống.", paragraphs: ["Moyi chưa công bố tên mô hình, danh sách ngôn ngữ, giá trị benchmark, độ trễ, khả năng đồng thời, SDK hoặc API công khai, thiết bị hỗ trợ, gói triển khai, giá hay trạng thái cung cấp dịch vụ.", "Trang công khai mô tả một hướng nghiên cứu và vốn từ kỹ thuật. Trang đó không cấp quyền truy cập và không xác lập độ sẵn sàng cho production."], points: ["MÔ HÌNH VÀ PHẠM VI NGÔN NGỮ: CHƯA CÔNG BỐ", "BENCHMARK VÀ ĐỘ TRỄ: CHƯA CÔNG BỐ", "SDK, THIẾT BỊ, GIÁ VÀ QUYỀN TRUY CẬP: CHƯA CÔNG BỐ"] },
+        { label: "06 / BƯỚC TIẾP THEO", title: "Xây dựng giao thức trước khi đưa ra lời hứa.", paragraphs: ["Hồ sơ Moyi hữu ích tiếp theo sẽ nối một model hoặc runtime artifact được gọi tên với điều kiện, đánh giá, lỗi và ranh giới truy cập rõ ràng. Cho đến lúc đó, công nghệ này nên được hiểu là một hướng nghiên cứu tập trung: giọng nói trong bối cảnh, với ranh giới luôn được nhìn thấy."] },
+      ],
+    },
+    "zh-cn": {
+      title: "Moyi：让语音技术的边界保持可见",
+      description: "Moyi 研究语音、语言与本地运行时技术，让输入条件、转换状态与人工审阅边界保持可检查。",
+      answer: "Moyi 正在被塑造成一个围绕真实交流条件的语音与语言基础：噪声、距离、轮次、地方术语，以及输出之后由人做出的决定。这是一条研究方向，不是对已发布服务的声明。",
+      keywords: ["Moyi", "语音技术", "语音翻译 AI", "本地运行时"],
+      sections: [
+        { label: "01 / MOYI 从语境开始", title: "语音不只是转录里的文字。", paragraphs: ["Moyi 正在围绕交流发生的条件塑造语音与语言基础：距离、噪声、轮次、地方术语，以及人对输出做出的决定。", "因此，这条产品方向从声学环境开始，而不是从一个经过包装的回答框开始。房间也是输入的一部分。"] },
+        { label: "02 / 技术路径", title: "让转换链保持可见。", paragraphs: ["Moyi 将从音频到经审阅的意义拆成一条可检查的路径：记录环境、表示语音、携带语境与术语、转换语言、暴露运行时状态，并在结果可能产生影响时保留人工审阅边界。"], points: ["声学环境与说话轮次", "语音与语言转换", "运营词汇与语境", "运行时状态、中断与审阅"] },
+        { label: "03 / 工程边界", title: "本地运行会改变工程问题。", paragraphs: ["Moyi 的目标运行时方向是在连接、隐私或响应条件变化时，让关键语音路径靠近设备。这是一条工程方向，不代表已经有可用的完整边缘部署包。", "严肃的实现必须说明什么进入设备、什么留在本地、什么可以离开，以及如何区分部分或不确定的输出与经过审阅的交接结果。"], points: ["先明确设备边界，再谈部署", "部分输出不等于最终输出", "回执携带状态与来源"] },
+        { label: "04 / 可被审阅的技术", title: "术语应该与模型并列。", paragraphs: ["名称、流程与安全用语不是运营语音系统里的装饰。它们需要穿过采集、转换与审阅，而不变成不可见的假设。", "因此，有用的技术产物不只是模型回答，而是包含输入条件、转换状态、输出、不确定性与审阅决定的记录。"] },
+        { label: "05 / 尚未公布的内容", title: "研究预览会保留空白字段。", paragraphs: ["Moyi 尚未公布模型名称、语言列表、基准数值、延迟、并发能力、公开 SDK 或 API、支持设备、部署包、价格或服务可用性。", "公开网站描述的是一条研究方向与工程词汇，而不是授权访问或生产就绪声明。"], points: ["模型与语言范围：尚未公布", "基准与延迟：尚未发布", "SDK、设备、价格与访问：尚未公布"] },
+        { label: "06 / 接下来", title: "先建立协议，再做出承诺。", paragraphs: ["下一份有用的 Moyi 记录会把一个明确命名的模型或运行时产物，连接到条件、评估、失败模式与访问边界。在那之前，最准确的理解是：这是一条专注的研究方向——让语音处在语境中，也让边界保持可见。"] },
+      ],
+    },
+  },
+};
 
 export const blogPosts = [
+p("models", "introducing-our-next-model", "Introducing the model we are preparing next", "An early note on the model direction Navin Research is preparing—and the evidence required before it can be called a release.", "We are preparing a new Navin Research model for practical work across language, speech, and vision. This note introduces the direction, not a release: the name, architecture, size, data, evaluation results, license, access, and date are not announced.", ["Start from real tasks and define what a useful result must show.", "Build evaluation records with conditions, limitations, and reproducible checks.", "Keep model behavior separate from runtime, safety, and human review.", "Publish a release record only when the artifact and evidence are ready."], ["Name the model and version before making capability claims.", "Attach benchmark results to datasets, protocols, and dates.", "State access, license, and known failure boundaries."], ["Using an unpublished model name as if it were a product.", "Filling missing benchmarks with roadmap language.", "Turning preparation into a launch date or availability promise."], ["mistralAbout", "navinModels", "navinReleases"], ["Navin AI model", "upcoming AI model", "model release"], modelPreviewArticle),
+p("models", "moyi-speech-technology-and-engineering", "Moyi: Speech Technology With the Boundary Visible", "How Moyi connects acoustic context, speech transformation, local runtime, and human review without hiding the unknowns.", "Moyi is being shaped as a speech and language foundation around real communication conditions: noise, distance, speaker turns, local terminology, and the human decision after an output. This is a research direction, not a released service claim.", ["Describe the acoustic scene and the language context.", "Separate capture, transformation, runtime state, and review.", "Keep partial output, provenance, and interruption visible.", "Measure the exact conditions before making quality or latency claims."], ["Record what entered the device and what left it.", "Distinguish a hypothesis from a reviewed handoff.", "Link future model or runtime claims to a named protocol."], ["Treating a transcript as the whole acoustic scene.", "Calling local execution a finished edge package.", "Presenting a concept diagram as measured performance."], ["moyiSite", "navinModels", "navinReleases"], ["Moyi", "speech technology", "on-device speech translation", "local AI runtime"], moyiTechnologyArticle),
   p("agents", "single-agent-before-multi-agent", "Start With One AI Agent Before Building a Multi-Agent System", "A practical decision rule for choosing one agent, a workflow, or several collaborating agents.", "Use one agent until evaluation data shows that context size, tool ownership, or parallel work is the actual bottleneck. Multiple agents add coordination, latency, cost, and new failure modes; they are an architecture choice, not an automatic quality upgrade.", ["Write one measurable task contract with inputs, allowed actions, and a stop condition.", "Build a deterministic workflow around one model and the smallest useful tool set.", "Collect failures by type: missing knowledge, bad tool choice, context overload, or independent subtasks.", "Split roles only when a recorded failure maps clearly to separation or parallelism."], ["Compare task success, p95 latency, and token cost against the single-agent baseline.", "Verify that every handoff has a schema and an owner.", "Keep a fallback path that can finish or safely stop when one specialist fails."], ["Creating personas without distinct tools or information.", "Letting agents converse without a turn or budget limit.", "Judging an architecture from a polished demo instead of repeated tasks."], ["anthropicAgents", "openaiAgents"], ["single agent", "multi-agent system", "AI agent architecture"]),
   p("agents", "multi-agent-orchestration-patterns", "Multi-Agent Orchestration Patterns That Work in Production", "Choose among manager-worker, parallel fan-out, handoff, and evaluator loops without building an uncontrolled agent swarm.", "Prefer explicit orchestration. A manager-worker pattern suits decomposable tasks, parallel fan-out suits independent research, handoffs suit distinct permissions, and evaluator loops suit outputs that can be checked. Each pattern needs bounded turns and a typed result.", ["Classify the task as sequential, parallel, specialist-routed, or iteratively verifiable.", "Define the state passed between agents; pass artifacts and decisions, not entire transcripts by default.", "Set per-agent time, tool, and token budgets.", "Merge results with deterministic code before asking a model to resolve only genuine conflicts."], ["Replay the same task and inspect variance in routing and final quality.", "Inject a failed worker and confirm graceful degradation.", "Trace who produced each claim and which tool evidence supports it."], ["All-to-all chat topologies.", "A reviewer that merely restates the draft.", "No global cancellation or deadline propagation."], ["anthropicMulti", "openaiAgents"], ["multi-agent orchestration", "manager worker agents", "agent handoffs"]),
   p("agents", "agent-handoffs", "How to Design Reliable Handoffs Between AI Agents", "Use typed handoff packets, acceptance checks, and clear responsibility boundaries between specialist agents.", "A reliable handoff is a contract, not a conversational suggestion. Include the objective, relevant state, evidence, constraints, unresolved questions, and an explicit acceptance condition. The receiving agent should be able to reject malformed work.", ["Create a versioned handoff schema with required and optional fields.", "Summarize decisions separately from observations and raw evidence.", "Validate the packet before routing it to the next agent.", "Record acceptance, rejection, or escalation as a trace event."], ["Test missing fields and incompatible schema versions.", "Confirm secrets and unnecessary personal data are excluded.", "Require source links or tool-result identifiers for factual claims."], ["Passing a huge transcript as state.", "Allowing two agents to believe they own the same side effect.", "Treating a handoff as successful before the receiver validates it."], ["openaiAgents", "anthropicContext"], ["AI agent handoff", "agent routing", "typed agent state"]),
@@ -96,7 +185,11 @@ export const blogPosts = [
   p("safety-evaluation", "continuous-ai-evals", "Continuous AI Evaluations in CI and Production", "Run fast regression gates on every change and monitor sampled real-world outcomes without leaking user data.", "Use a layered eval program: small deterministic checks in each pull request, broader offline suites before release, canary comparisons during rollout, and privacy-reviewed production monitoring. Every failure should map to an owner and a release decision.", ["Version datasets, graders, prompts, tools, and model configuration.", "Set blocking thresholds for critical task and safety slices.", "Keep a private holdout set to detect overfitting.", "Sample and redact production cases under a documented policy."], ["Track confidence intervals and repeated-run variance.", "Alert on slice regressions even when the average improves.", "Verify rollback is fast and tested."], ["One giant eval run nobody can interpret.", "Updating tests to make a failing release pass.", "Storing sensitive production traces indefinitely."], ["openaiEvals", "anthropicEvals"], ["continuous AI evaluation", "LLM evals CI", "production AI monitoring"]),
 ];
 
-export function blogPostPath(post) {
+export function blogPostPath(post, localeKey = "en") {
+  return localePath(localeKey, `blog/${post.category}/${post.slug}`);
+}
+
+export function blogMarkdownPath(post) {
   return `/blog/${post.category}/${post.slug}.md`;
 }
 
@@ -115,19 +208,9 @@ export function renderBlogPost(post) {
     if (!source) throw new Error(`Unknown blog source: ${key}`);
     return `- [${source[0]}](${source[1]})`;
   }).join("\n");
-  return `---
-title: "${post.title.replaceAll('"', '\\"')}"
-description: "${post.description.replaceAll('"', '\\"')}"
-language: en
-canonical: ${canonical}
-topics: [${post.keywords.map((keyword) => `"${keyword}"`).join(", ")}]
----
-
-# ${post.title}
-
-${post.description}
-
-**Short answer:** ${post.answer}
+  const articleBody = post.sections
+    ? `**Short answer:** ${post.answer}\n\n${post.sections.map((section) => `_${section.label}_\n\n## ${section.title}\n\n${section.paragraphs.join("\n\n")}${section.points?.length ? `\n\n${bulletList(section.points)}` : ""}`).join("\n\n")}`
+    : `**Short answer:** ${post.answer}
 
 ## Implementation steps
 
@@ -143,7 +226,20 @@ ${bulletList(post.pitfalls)}
 
 ## Practical decision
 
-Ship the smallest design that passes the checks above. Record the model, prompt, tool, dataset, and runtime versions used in testing so later changes can be compared rather than guessed. Recheck the linked documentation before relying on provider-specific limits, model names, prices, or preview features; those details change more quickly than the engineering principles in this note.
+Ship the smallest design that passes the checks above. Record the model, prompt, tool, dataset, and runtime versions used in testing so later changes can be compared rather than guessed. Recheck the linked documentation before relying on provider-specific limits, model names, prices, or preview features; those details change more quickly than the engineering principles in this note.`;
+  return `---
+title: "${post.title.replaceAll('"', '\\"')}"
+description: "${post.description.replaceAll('"', '\\"')}"
+language: en
+canonical: ${canonical}
+topics: [${post.keywords.map((keyword) => `"${keyword}"`).join(", ")}]
+---
+
+# ${post.title}
+
+${post.description}
+
+${articleBody}
 
 ## Official sources
 

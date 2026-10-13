@@ -2,7 +2,7 @@
 title: "Multimodal RAG for Text, Images, and Tables"
 description: "Index each modality with provenance, retrieve at the right granularity, and cite original evidence."
 language: en
-canonical: https://navinresearch.com/blog/multimodal/multimodal-rag.md
+canonical: https://navinresearch.com/blog/multimodal/multimodal-rag/
 topics: ["multimodal RAG", "image retrieval augmented generation", "document retrieval AI"]
 ---
 

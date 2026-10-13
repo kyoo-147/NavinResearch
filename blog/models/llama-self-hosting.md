@@ -2,7 +2,7 @@
 title: "Self-Hosting Llama: What to Validate Before Production"
 description: "Cover licensing, weights, serving, safety, evaluation, and operations for a responsible Llama deployment."
 language: en
-canonical: https://navinresearch.com/blog/models/llama-self-hosting.md
+canonical: https://navinresearch.com/blog/models/llama-self-hosting/
 topics: ["self-host Llama", "Llama deployment", "LLM serving checklist"]
 ---
 

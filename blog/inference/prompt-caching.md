@@ -2,7 +2,7 @@
 title: "Prompt Caching: Structure Requests for Reuse"
 description: "Place stable prefixes first, separate volatile data, monitor cache hits, and protect tenant boundaries."
 language: en
-canonical: https://navinresearch.com/blog/inference/prompt-caching.md
+canonical: https://navinresearch.com/blog/inference/prompt-caching/
 topics: ["prompt caching", "LLM context cache", "AI inference cost"]
 ---
 

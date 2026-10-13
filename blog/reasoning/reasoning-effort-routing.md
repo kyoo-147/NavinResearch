@@ -2,7 +2,7 @@
 title: "Route Reasoning Effort by Task Difficulty"
 description: "Build a simple difficulty router with escalation based on confidence and verification rather than one expensive default."
 language: en
-canonical: https://navinresearch.com/blog/reasoning/reasoning-effort-routing.md
+canonical: https://navinresearch.com/blog/reasoning/reasoning-effort-routing/
 topics: ["reasoning effort routing", "adaptive inference", "LLM cost optimization"]
 ---
 

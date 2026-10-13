@@ -2,7 +2,7 @@
 title: "Audio Understanding Beyond Transcription"
 description: "Design an audio pipeline for transcription, speaker turns, acoustic events, and grounded summaries."
 language: en
-canonical: https://navinresearch.com/blog/multimodal/audio-understanding.md
+canonical: https://navinresearch.com/blog/multimodal/audio-understanding/
 topics: ["audio understanding AI", "speech transcription pipeline", "multimodal audio"]
 ---
 

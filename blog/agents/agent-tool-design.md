@@ -2,7 +2,7 @@
 title: "Design Better Tools for AI Agents"
 description: "Make agent tools easier to select, call, validate, and recover from with narrow schemas and actionable errors."
 language: en
-canonical: https://navinresearch.com/blog/agents/agent-tool-design.md
+canonical: https://navinresearch.com/blog/agents/agent-tool-design/
 topics: ["AI agent tool design", "function calling schema", "tool use reliability"]
 ---
 

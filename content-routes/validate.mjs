@@ -1,12 +1,17 @@
 import { access, readFile, readdir } from "node:fs/promises";
 import { chapters, experience, legalPages, locales, localePath, releaseRoute, sections, site } from "../site.config.mjs";
 import { catalogProducts, products } from "../scripts/product-data.mjs";
-import { blogPostPath, blogPosts, blogSources, renderBlogPost } from "../scripts/blog-posts.mjs";
+import { blogMarkdownPath, blogPostPath, blogPosts, blogSources, renderBlogPost } from "../scripts/blog-posts.mjs";
 import { people, peoplePageCopy, personPath } from "../scripts/people-data.mjs";
+import { aboutPreservedPageCopy } from "../scripts/about-preserved-content.mjs";
 
 const errors = [];
 const generatedRoutes = [];
 const routeCss = (await readFile("content-routes/route-foundation.css", "utf8")).replaceAll("\r\n", "\n");
+const preservedCss = (await readFile("content-routes/about-preserved-editorial.css", "utf8")).replaceAll("\r\n", "\n");
+const companyCss = (await readFile("content-routes/company-editorial.css", "utf8")).replaceAll("\r\n", "\n");
+const lightCss = (await readFile("content-routes/about-light-editorial.css", "utf8")).replaceAll("\r\n", "\n");
+const allRouteCss = `${routeCss}\n${preservedCss}\n${companyCss}\n${lightCss}`;
 const deploymentNginx = await readFile("deployment-example/nginx.conf", "utf8");
 
 for (const [localeKey, locale] of Object.entries(locales)) {
@@ -25,24 +30,30 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   for (const legalPage of legalPages) {
     generatedRoutes.push({ localeKey, section: legalPage, type: "legal", path: localePath(localeKey, legalPage), file: `${[locale.prefix, legalPage].filter(Boolean).join("/")}/index.html` });
   }
+  for (const post of blogPosts) {
+    const suffix = `blog/${post.category}/${post.slug}`;
+    generatedRoutes.push({ localeKey, section: suffix, type: "blog", post, path: blogPostPath(post, localeKey), file: `${[locale.prefix, suffix].filter(Boolean).join("/")}/index.html` });
+  }
 }
 
-if (blogPosts.length !== 50) errors.push(`blog library: expected 50 posts, found ${blogPosts.length}`);
+if (blogPosts.length !== 52) errors.push(`blog library: expected 52 posts, found ${blogPosts.length}`);
 const expectedCategories = new Set(["agents", "reasoning", "models", "multimodal", "inference", "safety-evaluation"]);
-const allowedSourceHosts = new Set(["openai.com", "platform.openai.com", "www.anthropic.com", "docs.anthropic.com", "modelcontextprotocol.io", "a2a-protocol.org", "ai.google.dev", "api-docs.deepseek.com", "www.deepseek.com", "github.com", "qwen.readthedocs.io", "www.llama.com", "docs.mistral.ai", "nvidia.github.io", "docs.nvidia.com"]);
+const allowedSourceHosts = new Set(["openai.com", "platform.openai.com", "www.anthropic.com", "docs.anthropic.com", "modelcontextprotocol.io", "a2a-protocol.org", "ai.google.dev", "api-docs.deepseek.com", "www.deepseek.com", "github.com", "qwen.readthedocs.io", "www.llama.com", "docs.mistral.ai", "mistral.ai", "nvidia.github.io", "docs.nvidia.com", "navinresearch.com", "moyi.navinresearch.com"]);
 const diskBlogFiles = (await readdir("blog", { recursive: true })).filter((file) => file.endsWith(".md")).map((file) => `blog/${file.replaceAll("\\", "/")}`);
 if (diskBlogFiles.length !== blogPosts.length) errors.push(`blog library: expected ${blogPosts.length} generated Markdown files, found ${diskBlogFiles.length}`);
 const blogPaths = new Set();
 for (const post of blogPosts) {
   const url = blogPostPath(post);
-  const file = url.slice(1);
+  const markdownUrl = blogMarkdownPath(post);
+  const file = markdownUrl.slice(1);
   if (!expectedCategories.has(post.category)) errors.push(`${url}: unsupported category`);
-  if (!/^\/blog\/[a-z0-9-]+\/[a-z0-9-]+\.md$/.test(url)) errors.push(`${url}: invalid public Markdown URL`);
+  if (!/^\/blog\/[a-z0-9-]+\/[a-z0-9-]+\/$/.test(url)) errors.push(`${url}: invalid public blog URL`);
   if (blogPaths.has(url)) errors.push(`${url}: duplicate Markdown URL`);
   blogPaths.add(url);
   const markdown = await readFile(file, "utf8");
   if (markdown !== renderBlogPost(post)) errors.push(`${file}: generated Markdown is stale`);
-  for (const marker of ["---\n", `# ${post.title}`, "## Implementation steps", "## Validation checklist", "## Common mistakes", "## Official sources", `canonical: ${site.origin}${url}`]) {
+  const articleMarkers = post.sections ? post.sections.map((section) => `## ${section.title}`) : ["## Implementation steps", "## Validation checklist", "## Common mistakes"];
+  for (const marker of ["---\n", `# ${post.title}`, ...articleMarkers, "## Official sources", `canonical: ${site.origin}${url}`]) {
     if (!markdown.includes(marker)) errors.push(`${file}: required article marker missing: ${marker}`);
   }
   const words = markdown.replace(/https?:\/\/\S+/g, "").trim().split(/\s+/).length;
@@ -88,14 +99,42 @@ for (const route of generatedRoutes) {
     for (const marker of ['class="route-page__header content-header"', 'class="route-page__footer content-footer"', 'class="content-field"', 'class="release-registry"', 'data-release-search', "release-page"]) {
       if (!html.includes(marker)) errors.push(`${route.file}: release marker ${marker} missing`);
     }
+  } else if (route.section === "sign-in") {
+    for (const marker of ['class="sign-in-shell"', 'class="sign-in-panel"', 'class="sign-in-form"', '/content-routes/sign-in.js?v=']) {
+      if (!html.includes(marker)) errors.push(`${route.file}: sign-in marker ${marker} missing`);
+    }
+    if (!html.includes('/content-routes/route-foundation.css?v=')) errors.push(`${route.file}: sign-in stylesheet missing`);
   } else if (sections.includes(route.section)) {
-    for (const routeComponent of ['class="route-page__header content-header"', 'class="route-page__footer content-footer"', 'class="content-field"']) {
+    for (const routeComponent of ['class="route-page__header content-header"', 'class="route-page__footer content-footer', 'class="content-field"']) {
       if (!html.includes(routeComponent)) errors.push(`${route.file}: content-route component ${routeComponent} missing`);
     }
     if (!html.includes('/content-routes/route-foundation.css?v=')) errors.push(`${route.file}: route stylesheet missing`);
     if (!html.includes(`content-${route.section}`)) errors.push(`${route.file}: route background class missing`);
-    if (!routeCss.includes(`.content-${route.section} .content-field { background-image:`)) errors.push(`${route.file}: route background image mapping missing`);
+    if (!allRouteCss.includes(`.content-${route.section} .content-field {`)) errors.push(`${route.file}: route background image mapping missing`);
     if (route.section === "products" && !html.includes('class="product-directory"')) errors.push(`${route.file}: product directory missing`);
+    if (route.section === "about" || route.section === "about-light") {
+      for (const marker of ['data-about-article', 'data-article-content', 'data-about-toolbar', 'data-reading-time', 'about-related', '/content-routes/about-article.js?v=', '/content-routes/theme.js?v=']) {
+        if (!html.includes(marker)) errors.push(`${route.file}: about article marker missing: ${marker}`);
+      }
+    }
+    if (route.section === "about-preserved") {
+      const copy = aboutPreservedPageCopy[route.localeKey];
+      if (!html.includes('/content-routes/about-preserved-editorial.css?v=')) errors.push(`${route.file}: preserved route stylesheet missing`);
+      if (!html.includes('/assets/about/navin-introduction-banner.png')) errors.push(`${route.file}: preserved route banner missing`);
+      if ((html.match(/<main\b/g) || []).length !== 1 || (html.match(/<h1\b/g) || []).length !== 1) errors.push(`${route.file}: preserved route must have exactly one main and one h1`);
+      for (const section of copy.sections) if (!html.includes(`id="${section.id}"`)) errors.push(`${route.file}: preserved section missing: ${section.id}`);
+      for (const item of copy.related) if (!html.includes(localePath(route.localeKey, item.path))) errors.push(`${route.file}: preserved related link missing: ${item.path}`);
+    }
+  } else if (route.type === "blog") {
+    for (const marker of ['class="route-page__header content-header"', 'class="route-page__footer content-footer', 'class="content-field"', 'data-about-article', 'data-about-toolbar', 'data-article-content', 'content-blog-article', '/content-routes/route-foundation.css?v=', '/content-routes/about-article.js?v=']) {
+      if (!html.includes(marker)) errors.push(`${route.file}: blog marker ${marker} missing`);
+    }
+    const localizedPost = route.post.translations?.[route.localeKey] || route.post;
+    if (!html.includes(localizedPost.title) || !html.includes(localizedPost.answer)) errors.push(`${route.file}: blog content missing`);
+    for (const sourceKey of route.post.sources) {
+      const source = blogSources[sourceKey];
+      if (source && !html.includes(source[1])) errors.push(`${route.file}: blog source missing: ${sourceKey}`);
+    }
   } else {
     for (const sharedComponent of ['class="masthead site-header"', 'class="footer site-footer', 'id="site-menu"']) {
       if (!html.includes(sharedComponent)) errors.push(`${route.file}: shared component ${sharedComponent} missing`);
@@ -105,7 +144,7 @@ for (const route of generatedRoutes) {
   }
   if (html.includes('/favicon.svg')) errors.push(`${route.file}: deleted favicon referenced`);
   if (html.includes('datePublished') || html.includes('application/ld+json')) errors.push(`${route.file}: unsupported schema/date marker found`);
-  if (route.section && route.section !== "products" && !["legal", "release", "people", "person"].includes(route.type) && !html.includes(locale.common.preparation) && !html.includes('class="route-features ')) errors.push(`${route.file}: truthful preparation notice or route detail structure missing`);
+  if (route.section && route.section !== "products" && route.section !== "about-preserved" && route.section !== "sign-in" && !["legal", "release", "people", "person"].includes(route.type) && !html.includes(locale.common.preparation) && !html.includes('class="route-features ')) errors.push(`${route.file}: truthful preparation notice or route detail structure missing`);
   if (route.type === "chapter") {
     if (!html.includes(`chapter-${route.section}`) || !html.includes('class="chapter-field"')) errors.push(`${route.file}: chapter background structure missing`);
     if (!routeCss.includes(`.chapter-${route.section} .chapter-field { background-image:`)) errors.push(`${route.file}: chapter background image mapping missing`);
@@ -124,6 +163,12 @@ for (const file of [
   "script.js",
   "google00bfffcce9844575.html",
   "content-routes/route-foundation.css",
+  "content-routes/company-editorial.css",
+  "content-routes/about-preserved-editorial.css",
+  "content-routes/about-light-editorial.css",
+  "content-routes/about-nav.js",
+  "content-routes/about-article.js",
+  "content-routes/theme.js",
   "content-routes/route-search.js",
   "content-routes/release-search.js",
   "content-routes/release-search.js",
@@ -233,7 +278,7 @@ for (const slug of ["sandora", "moyi", "sori", "howhow", "dossier", "autopilot",
 const robots = await readFile("robots.txt", "utf8");
 const sitemap = await readFile("sitemap.xml", "utf8");
 const searchIndex = JSON.parse(await readFile("content-routes/search-index.json", "utf8"));
-if (!Array.isArray(searchIndex) || searchIndex.length !== generatedRoutes.length + blogPosts.length + catalogProducts.length) errors.push("search index: route count mismatch");
+if (!Array.isArray(searchIndex) || searchIndex.length !== generatedRoutes.length + catalogProducts.length) errors.push("search index: route count mismatch");
 for (const product of catalogProducts) {
   const productUrl = product.url || `https://${product.slug}.navinresearch.com/`;
   if (!searchIndex.some((item) => item.url === productUrl && item.title.includes(product.name))) errors.push(`search index: ${productUrl} missing`);

@@ -2,7 +2,7 @@
 title: "An AI Model Upgrade Playbook With Safe Rollback"
 description: "Change models through pinned versions, regression evals, shadow traffic, canaries, and reversible configuration."
 language: en
-canonical: https://navinresearch.com/blog/models/model-upgrade-playbook.md
+canonical: https://navinresearch.com/blog/models/model-upgrade-playbook/
 topics: ["AI model upgrade", "LLM migration", "model rollback"]
 ---
 

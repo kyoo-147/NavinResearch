@@ -2,7 +2,7 @@
 title: "Red-Team an AI Agent With Realistic Attack Paths"
 description: "Test untrusted content, tool abuse, data boundaries, identity, and recovery in a controlled environment."
 language: en
-canonical: https://navinresearch.com/blog/safety-evaluation/red-team-agents.md
+canonical: https://navinresearch.com/blog/safety-evaluation/red-team-agents/
 topics: ["red team AI agents", "agent security testing", "AI attack paths"]
 ---
 

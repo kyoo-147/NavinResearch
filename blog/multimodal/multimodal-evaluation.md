@@ -2,7 +2,7 @@
 title: "Evaluate Multimodal AI With Evidence-Level Metrics"
 description: "Measure perception, grounding, extraction, reasoning, and abstention separately."
 language: en
-canonical: https://navinresearch.com/blog/multimodal/multimodal-evaluation.md
+canonical: https://navinresearch.com/blog/multimodal/multimodal-evaluation/
 topics: ["multimodal evaluation", "vision model evals", "AI grounding metrics"]
 ---
 

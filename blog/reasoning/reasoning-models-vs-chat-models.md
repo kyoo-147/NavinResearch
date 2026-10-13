@@ -2,7 +2,7 @@
 title: "Reasoning Models vs Chat Models: A Practical Selection Guide"
 description: "Choose the least expensive model behavior that reliably solves the task instead of enabling heavy reasoning everywhere."
 language: en
-canonical: https://navinresearch.com/blog/reasoning/reasoning-models-vs-chat-models.md
+canonical: https://navinresearch.com/blog/reasoning/reasoning-models-vs-chat-models/
 topics: ["reasoning models", "reasoning effort", "AI model selection"]
 ---
 

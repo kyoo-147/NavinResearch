@@ -2,7 +2,7 @@
 title: "Multi-Agent Orchestration Patterns That Work in Production"
 description: "Choose among manager-worker, parallel fan-out, handoff, and evaluator loops without building an uncontrolled agent swarm."
 language: en
-canonical: https://navinresearch.com/blog/agents/multi-agent-orchestration-patterns.md
+canonical: https://navinresearch.com/blog/agents/multi-agent-orchestration-patterns/
 topics: ["multi-agent orchestration", "manager worker agents", "agent handoffs"]
 ---
 

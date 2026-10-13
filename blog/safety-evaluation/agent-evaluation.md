@@ -2,7 +2,7 @@
 title: "Evaluate AI Agents End to End"
 description: "Measure task success, policy compliance, tool behavior, efficiency, and recovery across complete trajectories."
 language: en
-canonical: https://navinresearch.com/blog/safety-evaluation/agent-evaluation.md
+canonical: https://navinresearch.com/blog/safety-evaluation/agent-evaluation/
 topics: ["AI agent evaluation", "agent trajectory evals", "LLM task success"]
 ---
 

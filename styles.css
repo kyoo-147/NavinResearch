@@ -240,6 +240,7 @@ h1 {
   font-size: clamp(1.02rem, 1.4vw, 1.35rem);
   line-height: 1.55;
   text-wrap: pretty;
+  transition: color 180ms ease;
 }
 
 .contact {
@@ -476,7 +477,7 @@ h1 {
 .wealth__label { margin: 0 0 2rem; color: var(--acid); font-size: .65rem; font-weight: 700; letter-spacing: .25em; text-transform: uppercase; }
 .wealth h2 { margin: 0; font-size: clamp(2.4rem, 6vw, 5.5rem); font-weight: 400; letter-spacing: .24em; line-height: 1; text-transform: uppercase; }
 .wealth__rule { width: 7.5rem; height: 1px; margin: 2.5rem 0 1.8rem; background: rgba(217,255,87,.78); }
-.wealth__statement { max-width: 34rem; margin: 0; color: rgba(244,247,236,.82); font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.5; }
+.wealth__statement { max-width: 34rem; margin: 0; color: rgba(244,247,236,.82); font-size: clamp(1rem, 1.5vw, 1.25rem); line-height: 1.5; transition: color 180ms ease; }
 .menu-backdrop { position: fixed; z-index: 48; inset: 0; opacity: 0; visibility: hidden; background: rgba(0,8,5,.6); backdrop-filter: blur(4px); transition: opacity 620ms ease, visibility 620ms; }
 .menu-open .menu-backdrop { opacity: 1; visibility: visible; }
 .site-menu { position: fixed; z-index: 50; top: 0; bottom: 0; left: 0; display: grid; width: min(22rem, 90vw); grid-template-columns: 22rem 30rem; overflow: hidden; color: var(--ink); background: rgba(2,22,15,.97); border-right: 1px solid var(--line); transform: translateX(-100vw); visibility: hidden; transition: width 380ms ease, transform 620ms cubic-bezier(.2,.8,.2,1), visibility 620ms; }
@@ -558,7 +559,7 @@ main, .masthead, .hero, .wealth, .hero__content { min-width: 0; max-width: 100%;
 .home-products { position: relative; display: grid; min-height: 100svh; grid-template-columns: minmax(16rem, .72fr) minmax(0, 1.28fr); gap: clamp(3rem, 7vw, 8rem); align-items: start; padding: clamp(7rem, 12vh, 10rem) 0; border-top: 1px solid var(--line); }
 .home-products__intro { position: sticky; top: 7rem; }
 .home-products__intro > p { margin: 0 0 1.3rem; color: var(--acid); font-size: .62rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
-.home-products__intro h2 { max-width: 10ch; margin: 0; font-size: clamp(2.5rem, 5vw, 5.8rem); font-weight: 400; letter-spacing: -.045em; line-height: .93; }
+.home-products__intro h2 { max-width: 22ch; margin: 0; font-size: clamp(1.8rem, 3.2vw, 3.6rem); font-weight: 400; letter-spacing: -.035em; line-height: 1.06; }
 .home-products__intro a { display: inline-flex; gap: 1rem; margin-top: 2.5rem; padding-bottom: .35rem; border-bottom: 1px solid var(--acid); color: var(--acid); font-size: .65rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .product-directory { border-top: 1px solid rgba(244,247,236,.28); }
 .product-entry a { display: grid; grid-template-columns: 2.4rem minmax(8rem,.72fr) minmax(10rem,1.2fr) minmax(8rem,.65fr) 1.5rem; gap: 1.25rem; align-items: center; min-height: 8rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(244,247,236,.18); transition: color 180ms ease, padding 180ms ease; }
@@ -566,13 +567,70 @@ main, .masthead, .hero, .wealth, .hero__content { min-width: 0; max-width: 100%;
 .product-entry__number, .product-entry small { color: var(--muted); font-size: .56rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
 .product-entry__identity { display: grid; gap: .45rem; }
 .product-entry__identity strong { font-size: clamp(1.35rem,2.1vw,2.15rem); font-weight: 400; letter-spacing: -.025em; }
-.product-entry__statement { color: rgba(244,247,236,.76); font-size: .88rem; line-height: 1.5; }
+.product-entry__statement { color: rgba(244,247,236,.76); font-size: .88rem; line-height: 1.5; transition: color 180ms ease; }
 .product-entry__state { display: grid; gap: .35rem; font-size: .62rem; font-weight: 700; letter-spacing: .08em; line-height: 1.4; text-transform: uppercase; }
 .product-entry__arrow { color: var(--acid); font-size: 1.2rem; }
 .product-entry--compact a { min-height: 6.3rem; }
-@media (max-width: 900px) { .home-products { grid-template-columns: 1fr; } .home-products__intro { position: static; } .home-products__intro h2 { max-width: 14ch; } }
+@media (max-width: 900px) { .home-products { grid-template-columns: 1fr; } .home-products__intro { position: static; } .home-products__intro h2 { max-width: 24ch; } }
 @media (max-width: 680px) { .home-products { padding-bottom: 7rem; } .product-entry a { grid-template-columns: 1.8rem 1fr 1.2rem; gap: .8rem; min-height: 7rem; } .product-entry__statement, .product-entry__state { grid-column: 2 / 3; } .product-entry__arrow { grid-column: 3; grid-row: 1 / span 3; } }
 
 @media (max-width:720px){.home-page .footer{position:static;margin-top:2rem;padding-bottom:1.25rem}.home-page .shell{padding-bottom:0}}
 
 @media (max-width: 540px) { .footer p, .footer nav { white-space: normal; overflow-wrap: anywhere; } .footer { font-size: .62rem; } .footer nav { flex-wrap: wrap; gap: .5rem; } }
+
+/* Home header actions mirror the account tabs used across the editorial routes. */
+.home-page .masthead__meta { gap: clamp(1rem, 2vw, 2rem); }
+.home-page .content-header__utilities { display: flex; align-items: center; gap: .55rem; }
+.home-page .content-header__account { display: flex; align-items: center; gap: .55rem; }
+.home-page .content-header__sign-in,
+.home-page .content-header__sales,
+.home-page .content-header__try {
+  display: inline-flex;
+  min-height: 2.7rem;
+  align-items: center;
+  justify-content: center;
+  padding: .35rem .8rem;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: transparent;
+  font: inherit;
+  font-size: .76rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+.home-page .content-header__sign-in { border-color: transparent; padding-inline: .25rem; }
+.home-page .content-header__sales { border-radius: 999px; }
+.home-page .content-header__try { gap: .3rem; border-radius: .55rem; }
+.home-page .content-header__sales:hover,
+.home-page .content-header__sales:focus-visible,
+.home-page .content-header__try:hover,
+.home-page .content-header__try:focus-visible,
+.home-page .content-header__sign-in:hover,
+.home-page .content-header__sign-in:focus-visible { color: var(--acid); }
+html[data-theme="light"] .home-page .content-header__sales,
+html[data-theme="light"] .home-page .content-header__sales:hover,
+html[data-theme="light"] .home-page .content-header__sales:focus-visible {
+  border-color: #76B900;
+  color: #FFFFFF;
+  background: #76B900;
+}
+@media (max-width: 720px) {
+  .home-page .masthead__meta { gap: .5rem; }
+  .home-page .signal { display: none; }
+  .home-page .content-header__account { gap: .25rem; }
+  .home-page .content-header__sign-in,
+  .home-page .content-header__sales,
+  .home-page .content-header__try { min-height: 2.35rem; padding-inline: .55rem; font-size: .7rem; }
+}
+
+
+/* Use the same shared footer geometry on the home route as on About and every other route. */
+.home-page .site-footer.content-footer {
+  position: static;
+  display: block;
+  width: 100%;
+  min-height: 0;
+  padding-top: clamp(3rem, 6vw, 5rem);
+  background: transparent;
+  backdrop-filter: none;
+}

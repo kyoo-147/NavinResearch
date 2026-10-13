@@ -2,7 +2,7 @@
 title: "Cost-Aware Model Routing Without Silent Quality Loss"
 description: "Route tasks among models using validated task classes, hard constraints, and escalation rather than price alone."
 language: en
-canonical: https://navinresearch.com/blog/inference/model-routing-cost.md
+canonical: https://navinresearch.com/blog/inference/model-routing-cost/
 topics: ["cost-aware model routing", "LLM router", "AI inference cost optimization"]
 ---
 

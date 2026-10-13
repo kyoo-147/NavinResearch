@@ -2,7 +2,7 @@
 title: "Build Long-Running AI Agent Jobs That Can Resume Safely"
 description: "Use checkpoints, idempotent tools, bounded retries, and cancellation for tasks that outlive one request."
 language: en
-canonical: https://navinresearch.com/blog/agents/long-running-agent-jobs.md
+canonical: https://navinresearch.com/blog/agents/long-running-agent-jobs/
 topics: ["long-running AI agents", "resumable agent workflow", "idempotent tool calls"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Evaluate RAG Before Tuning the Generator"
 description: "Separate retrieval recall, ranking, context quality, answer support, and citation correctness."
 language: en
-canonical: https://navinresearch.com/blog/safety-evaluation/rag-evaluation.md
+canonical: https://navinresearch.com/blog/safety-evaluation/rag-evaluation/
 topics: ["RAG evaluation", "retrieval augmented generation evals", "citation accuracy"]
 ---
 

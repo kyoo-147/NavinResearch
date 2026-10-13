@@ -1,0 +1,114 @@
+/* Light comparison prototype for /about-light/ only. The canonical /about/ remains dark. */
+.content-about-light {
+  --route-bg: #ffffff;
+  --route-panel: #f4f6f3;
+  --route-text: #111817;
+  --route-muted: rgba(17, 24, 23, .72);
+  --route-line: rgba(17, 24, 23, .16);
+  --route-accent: #08734c;
+  color-scheme: light;
+  color: var(--route-text);
+  background: #ffffff;
+}
+
+.content-about-light .content-field {
+  background-color: #ffffff;
+  background-image: url("/assets/field-2.webp");
+  background-position: center;
+  filter: saturate(.72) contrast(.92) brightness(1.18);
+}
+
+.content-about-light .content-field::after {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, .76) 58%, rgba(255, 255, 255, .86));
+}
+
+.content-about-light .route-page__shell {
+  background: transparent;
+}
+
+.content-about-light .content-header {
+  border-color: var(--route-line);
+  background: transparent;
+}
+
+.content-about-light .content-wordmark,
+.content-about-light .content-header a,
+.content-about-light .content-header summary,
+.content-about-light .route-page__footer {
+  color: var(--route-text);
+}
+
+.content-about-light .content-header a:hover,
+.content-about-light .content-header a:focus-visible,
+.content-about-light .content-header summary:hover,
+.content-about-light .content-header summary:focus-visible,
+.content-about-light .route-page__languages a[aria-current="page"] {
+  color: var(--route-accent);
+}
+
+.content-about-light .content-header__more > div {
+  border-color: var(--route-line);
+  background: #ffffff;
+  box-shadow: 0 1rem 2rem rgba(17, 24, 23, .12);
+}
+
+.content-about-light .content-header__more > div a:hover,
+.content-about-light .content-header__more > div a:focus-visible {
+  color: var(--route-accent);
+  background: rgba(8, 115, 76, .06);
+}
+
+.content-about-light .about-hero {
+  background: var(--route-panel);
+}
+
+.content-about-light .about-index nav a,
+.content-about-light .about-section p {
+  color: var(--route-muted);
+}
+
+.content-about-light .about-index nav a.is-active,
+.content-about-light .about-index nav a[aria-current="location"],
+.content-about-light .about-index nav a:hover,
+.content-about-light .about-index nav a:focus-visible,
+.content-about-light .about-section__meta p,
+.content-about-light .about-section__links a,
+.content-about-light .about-section li::before {
+  color: var(--route-accent);
+}
+
+.content-about-light .about-prose__opening,
+.content-about-light .about-section li {
+  color: var(--route-text);
+}
+
+.content-about-light .about-section__links a:hover,
+.content-about-light .about-section__links a:focus-visible {
+  color: var(--route-text);
+}
+
+.content-about-light .route-page__footer {
+  border-color: var(--route-line);
+}
+
+.content-about-light .route-page__footer a:hover,
+.content-about-light .route-page__footer a:focus-visible {
+  color: var(--route-accent);
+}
+
+.content-about-light .about-article__toolbar button {
+  border-color: var(--route-line);
+  color: var(--route-muted);
+}
+.content-about-light .about-related__item > a > div {
+  background: var(--route-panel);
+}
+.content-about-light .about-related__item h3,
+.content-about-light .about-related__item dd,
+.content-about-light .about-related__item strong {
+  color: var(--route-text);
+}
+.content-about-light .about-related__item span,
+.content-about-light .about-ending-meta > div:first-child span {
+  color: var(--route-muted);
+}

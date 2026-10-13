@@ -2,7 +2,7 @@
 title: "Reduce LLM Latency Before Changing Models"
 description: "Cut sequential calls, shorten outputs, stream useful progress, cache stable prefixes, and parallelize independent work."
 language: en
-canonical: https://navinresearch.com/blog/inference/reduce-llm-latency.md
+canonical: https://navinresearch.com/blog/inference/reduce-llm-latency/
 topics: ["reduce LLM latency", "AI inference optimization", "time to first token"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Verify AI Reasoning Without Requesting Chain-of-Thought"
 description: "Check final answers with tests, constraints, citations, and independent computation instead of collecting private reasoning traces."
 language: en
-canonical: https://navinresearch.com/blog/reasoning/verify-reasoning-results.md
+canonical: https://navinresearch.com/blog/reasoning/verify-reasoning-results/
 topics: ["verify AI reasoning", "LLM answer verification", "chain of thought privacy"]
 ---
 

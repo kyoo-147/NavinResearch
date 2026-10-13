@@ -2,7 +2,7 @@
 title: "KV Cache Planning for LLM Inference"
 description: "Estimate memory from context, concurrency, model architecture, precision, and reuse before promising capacity."
 language: en
-canonical: https://navinresearch.com/blog/inference/kv-cache.md
+canonical: https://navinresearch.com/blog/inference/kv-cache/
 topics: ["KV cache LLM", "LLM inference memory", "long context serving"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Reliable Function Calling With Mistral Models"
 description: "Build a provider adapter, validate arguments, and test tool selection with official Mistral capabilities."
 language: en
-canonical: https://navinresearch.com/blog/models/mistral-function-calling.md
+canonical: https://navinresearch.com/blog/models/mistral-function-calling/
 topics: ["Mistral function calling", "Mistral AI tools", "LLM function calls"]
 ---
 

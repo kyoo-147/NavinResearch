@@ -2,7 +2,7 @@
 title: "When to Use Batch Inference for AI Workloads"
 description: "Move delay-tolerant, independent jobs to batches while preserving identifiers, retries, and quality checks."
 language: en
-canonical: https://navinresearch.com/blog/inference/batch-inference.md
+canonical: https://navinresearch.com/blog/inference/batch-inference/
 topics: ["batch inference", "LLM batch processing", "offline AI workloads"]
 ---
 

@@ -2,7 +2,7 @@
 title: "Open-Weight vs Hosted AI Models: A Deployment Decision"
 description: "Compare control, operations, licensing, data handling, and performance before self-hosting or buying an API."
 language: en
-canonical: https://navinresearch.com/blog/models/open-vs-closed-models.md
+canonical: https://navinresearch.com/blog/models/open-vs-closed-models/
 topics: ["open-weight vs hosted models", "self-hosted LLM", "AI deployment decision"]
 ---
 

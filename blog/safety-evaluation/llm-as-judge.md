@@ -2,7 +2,7 @@
 title: "Use LLM-as-a-Judge Carefully"
 description: "Design rubrics, randomize ordering, calibrate against humans, and keep deterministic checks first."
 language: en
-canonical: https://navinresearch.com/blog/safety-evaluation/llm-as-judge.md
+canonical: https://navinresearch.com/blog/safety-evaluation/llm-as-judge/
 topics: ["LLM as a judge", "model-based evaluation", "AI evaluation rubric"]
 ---
 

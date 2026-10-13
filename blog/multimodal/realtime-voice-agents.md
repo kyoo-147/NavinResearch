@@ -2,7 +2,7 @@
 title: "Build Safer Real-Time Voice Agents"
 description: "Handle latency, interruptions, turn detection, tool calls, consent, and fallback in live voice systems."
 language: en
-canonical: https://navinresearch.com/blog/multimodal/realtime-voice-agents.md
+canonical: https://navinresearch.com/blog/multimodal/realtime-voice-agents/
 topics: ["real-time voice agents", "voice AI safety", "Live API"]
 ---
 

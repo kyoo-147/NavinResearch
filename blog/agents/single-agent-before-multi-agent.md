@@ -2,7 +2,7 @@
 title: "Start With One AI Agent Before Building a Multi-Agent System"
 description: "A practical decision rule for choosing one agent, a workflow, or several collaborating agents."
 language: en
-canonical: https://navinresearch.com/blog/agents/single-agent-before-multi-agent.md
+canonical: https://navinresearch.com/blog/agents/single-agent-before-multi-agent/
 topics: ["single agent", "multi-agent system", "AI agent architecture"]
 ---
 

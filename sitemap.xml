@@ -12,6 +12,10 @@
   <url><loc>https://navinresearch.com/blog/</loc></url>
   <url><loc>https://navinresearch.com/docs/</loc></url>
   <url><loc>https://navinresearch.com/search/</loc></url>
+  <url><loc>https://navinresearch.com/company/</loc></url>
+  <url><loc>https://navinresearch.com/about-preserved/</loc></url>
+  <url><loc>https://navinresearch.com/about-light/</loc></url>
+  <url><loc>https://navinresearch.com/sign-in/</loc></url>
   <url><loc>https://navinresearch.com/about/people/</loc></url>
   <url><loc>https://navinresearch.com/about/people/bui-minh-cuong/</loc></url>
   <url><loc>https://navinresearch.com/about/people/bui-hoang-long/</loc></url>
@@ -24,6 +28,58 @@
   <url><loc>https://navinresearch.com/poiesis/</loc></url>
   <url><loc>https://navinresearch.com/privacy-policy/</loc></url>
   <url><loc>https://navinresearch.com/terms-of-use/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/introducing-our-next-model/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/moyi-speech-technology-and-engineering/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/single-agent-before-multi-agent/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/multi-agent-orchestration-patterns/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/agent-handoffs/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/agent-tool-design/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/agent-memory/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/mcp-server-security/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/a2a-and-mcp/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/human-approval-gates/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/long-running-agent-jobs/</loc></url>
+  <url><loc>https://navinresearch.com/blog/agents/agent-observability/</loc></url>
+  <url><loc>https://navinresearch.com/blog/reasoning/reasoning-models-vs-chat-models/</loc></url>
+  <url><loc>https://navinresearch.com/blog/reasoning/reasoning-effort-routing/</loc></url>
+  <url><loc>https://navinresearch.com/blog/reasoning/verify-reasoning-results/</loc></url>
+  <url><loc>https://navinresearch.com/blog/reasoning/structured-outputs/</loc></url>
+  <url><loc>https://navinresearch.com/blog/reasoning/reasoning-with-tools/</loc></url>
+  <url><loc>https://navinresearch.com/blog/reasoning/long-context-is-not-memory/</loc></url>
+  <url><loc>https://navinresearch.com/blog/reasoning/context-engineering-checklist/</loc></url>
+  <url><loc>https://navinresearch.com/blog/reasoning/reasoning-evaluation-dataset/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/choose-ai-model/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/open-vs-closed-models/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/deepseek-api-integration/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/kimi-k2-deployment-checklist/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/qwen-deployment-checklist/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/llama-self-hosting/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/mistral-function-calling/</loc></url>
+  <url><loc>https://navinresearch.com/blog/models/model-upgrade-playbook/</loc></url>
+  <url><loc>https://navinresearch.com/blog/multimodal/image-understanding-pipeline/</loc></url>
+  <url><loc>https://navinresearch.com/blog/multimodal/document-ai-extraction/</loc></url>
+  <url><loc>https://navinresearch.com/blog/multimodal/video-understanding/</loc></url>
+  <url><loc>https://navinresearch.com/blog/multimodal/audio-understanding/</loc></url>
+  <url><loc>https://navinresearch.com/blog/multimodal/realtime-voice-agents/</loc></url>
+  <url><loc>https://navinresearch.com/blog/multimodal/multimodal-rag/</loc></url>
+  <url><loc>https://navinresearch.com/blog/multimodal/visual-prompt-injection/</loc></url>
+  <url><loc>https://navinresearch.com/blog/multimodal/multimodal-evaluation/</loc></url>
+  <url><loc>https://navinresearch.com/blog/inference/reduce-llm-latency/</loc></url>
+  <url><loc>https://navinresearch.com/blog/inference/prompt-caching/</loc></url>
+  <url><loc>https://navinresearch.com/blog/inference/batch-inference/</loc></url>
+  <url><loc>https://navinresearch.com/blog/inference/quantization-quality/</loc></url>
+  <url><loc>https://navinresearch.com/blog/inference/kv-cache/</loc></url>
+  <url><loc>https://navinresearch.com/blog/inference/prefill-decode-disaggregation/</loc></url>
+  <url><loc>https://navinresearch.com/blog/inference/model-routing-cost/</loc></url>
+  <url><loc>https://navinresearch.com/blog/inference/inference-benchmark/</loc></url>
+  <url><loc>https://navinresearch.com/blog/safety-evaluation/prompt-injection-defense/</loc></url>
+  <url><loc>https://navinresearch.com/blog/safety-evaluation/agent-evaluation/</loc></url>
+  <url><loc>https://navinresearch.com/blog/safety-evaluation/tool-call-evals/</loc></url>
+  <url><loc>https://navinresearch.com/blog/safety-evaluation/rag-evaluation/</loc></url>
+  <url><loc>https://navinresearch.com/blog/safety-evaluation/llm-as-judge/</loc></url>
+  <url><loc>https://navinresearch.com/blog/safety-evaluation/red-team-agents/</loc></url>
+  <url><loc>https://navinresearch.com/blog/safety-evaluation/privacy-ai-applications/</loc></url>
+  <url><loc>https://navinresearch.com/blog/safety-evaluation/continuous-ai-evals/</loc></url>
   <url><loc>https://navinresearch.com/vi/</loc></url>
   <url><loc>https://navinresearch.com/vi/research/</loc></url>
   <url><loc>https://navinresearch.com/vi/models/</loc></url>
@@ -36,6 +92,10 @@
   <url><loc>https://navinresearch.com/vi/blog/</loc></url>
   <url><loc>https://navinresearch.com/vi/docs/</loc></url>
   <url><loc>https://navinresearch.com/vi/search/</loc></url>
+  <url><loc>https://navinresearch.com/vi/company/</loc></url>
+  <url><loc>https://navinresearch.com/vi/about-preserved/</loc></url>
+  <url><loc>https://navinresearch.com/vi/about-light/</loc></url>
+  <url><loc>https://navinresearch.com/vi/sign-in/</loc></url>
   <url><loc>https://navinresearch.com/vi/about/people/</loc></url>
   <url><loc>https://navinresearch.com/vi/about/people/bui-minh-cuong/</loc></url>
   <url><loc>https://navinresearch.com/vi/about/people/bui-hoang-long/</loc></url>
@@ -48,6 +108,58 @@
   <url><loc>https://navinresearch.com/vi/poiesis/</loc></url>
   <url><loc>https://navinresearch.com/vi/privacy-policy/</loc></url>
   <url><loc>https://navinresearch.com/vi/terms-of-use/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/introducing-our-next-model/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/moyi-speech-technology-and-engineering/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/single-agent-before-multi-agent/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/multi-agent-orchestration-patterns/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/agent-handoffs/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/agent-tool-design/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/agent-memory/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/mcp-server-security/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/a2a-and-mcp/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/human-approval-gates/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/long-running-agent-jobs/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/agents/agent-observability/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/reasoning/reasoning-models-vs-chat-models/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/reasoning/reasoning-effort-routing/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/reasoning/verify-reasoning-results/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/reasoning/structured-outputs/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/reasoning/reasoning-with-tools/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/reasoning/long-context-is-not-memory/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/reasoning/context-engineering-checklist/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/reasoning/reasoning-evaluation-dataset/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/choose-ai-model/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/open-vs-closed-models/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/deepseek-api-integration/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/kimi-k2-deployment-checklist/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/qwen-deployment-checklist/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/llama-self-hosting/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/mistral-function-calling/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/models/model-upgrade-playbook/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/multimodal/image-understanding-pipeline/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/multimodal/document-ai-extraction/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/multimodal/video-understanding/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/multimodal/audio-understanding/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/multimodal/realtime-voice-agents/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/multimodal/multimodal-rag/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/multimodal/visual-prompt-injection/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/multimodal/multimodal-evaluation/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/inference/reduce-llm-latency/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/inference/prompt-caching/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/inference/batch-inference/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/inference/quantization-quality/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/inference/kv-cache/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/inference/prefill-decode-disaggregation/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/inference/model-routing-cost/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/inference/inference-benchmark/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/safety-evaluation/prompt-injection-defense/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/safety-evaluation/agent-evaluation/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/safety-evaluation/tool-call-evals/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/safety-evaluation/rag-evaluation/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/safety-evaluation/llm-as-judge/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/safety-evaluation/red-team-agents/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/safety-evaluation/privacy-ai-applications/</loc></url>
+  <url><loc>https://navinresearch.com/vi/blog/safety-evaluation/continuous-ai-evals/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/research/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/models/</loc></url>
@@ -60,6 +172,10 @@
   <url><loc>https://navinresearch.com/zh-cn/blog/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/docs/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/search/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/company/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/about-preserved/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/about-light/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/sign-in/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/about/people/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/about/people/bui-minh-cuong/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/about/people/bui-hoang-long/</loc></url>
@@ -72,54 +188,56 @@
   <url><loc>https://navinresearch.com/zh-cn/poiesis/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/privacy-policy/</loc></url>
   <url><loc>https://navinresearch.com/zh-cn/terms-of-use/</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/single-agent-before-multi-agent.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/multi-agent-orchestration-patterns.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/agent-handoffs.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/agent-tool-design.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/agent-memory.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/mcp-server-security.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/a2a-and-mcp.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/human-approval-gates.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/long-running-agent-jobs.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/agents/agent-observability.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/reasoning/reasoning-models-vs-chat-models.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/reasoning/reasoning-effort-routing.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/reasoning/verify-reasoning-results.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/reasoning/structured-outputs.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/reasoning/reasoning-with-tools.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/reasoning/long-context-is-not-memory.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/reasoning/context-engineering-checklist.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/reasoning/reasoning-evaluation-dataset.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/models/choose-ai-model.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/models/open-vs-closed-models.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/models/deepseek-api-integration.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/models/kimi-k2-deployment-checklist.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/models/qwen-deployment-checklist.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/models/llama-self-hosting.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/models/mistral-function-calling.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/models/model-upgrade-playbook.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/multimodal/image-understanding-pipeline.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/multimodal/document-ai-extraction.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/multimodal/video-understanding.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/multimodal/audio-understanding.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/multimodal/realtime-voice-agents.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/multimodal/multimodal-rag.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/multimodal/visual-prompt-injection.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/multimodal/multimodal-evaluation.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/inference/reduce-llm-latency.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/inference/prompt-caching.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/inference/batch-inference.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/inference/quantization-quality.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/inference/kv-cache.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/inference/prefill-decode-disaggregation.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/inference/model-routing-cost.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/inference/inference-benchmark.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/safety-evaluation/prompt-injection-defense.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/safety-evaluation/agent-evaluation.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/safety-evaluation/tool-call-evals.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/safety-evaluation/rag-evaluation.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/safety-evaluation/llm-as-judge.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/safety-evaluation/red-team-agents.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/safety-evaluation/privacy-ai-applications.md</loc></url>
-  <url><loc>https://navinresearch.com/blog/safety-evaluation/continuous-ai-evals.md</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/introducing-our-next-model/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/moyi-speech-technology-and-engineering/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/single-agent-before-multi-agent/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/multi-agent-orchestration-patterns/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/agent-handoffs/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/agent-tool-design/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/agent-memory/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/mcp-server-security/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/a2a-and-mcp/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/human-approval-gates/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/long-running-agent-jobs/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/agents/agent-observability/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/reasoning/reasoning-models-vs-chat-models/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/reasoning/reasoning-effort-routing/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/reasoning/verify-reasoning-results/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/reasoning/structured-outputs/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/reasoning/reasoning-with-tools/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/reasoning/long-context-is-not-memory/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/reasoning/context-engineering-checklist/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/reasoning/reasoning-evaluation-dataset/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/choose-ai-model/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/open-vs-closed-models/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/deepseek-api-integration/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/kimi-k2-deployment-checklist/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/qwen-deployment-checklist/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/llama-self-hosting/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/mistral-function-calling/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/models/model-upgrade-playbook/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/multimodal/image-understanding-pipeline/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/multimodal/document-ai-extraction/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/multimodal/video-understanding/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/multimodal/audio-understanding/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/multimodal/realtime-voice-agents/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/multimodal/multimodal-rag/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/multimodal/visual-prompt-injection/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/multimodal/multimodal-evaluation/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/inference/reduce-llm-latency/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/inference/prompt-caching/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/inference/batch-inference/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/inference/quantization-quality/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/inference/kv-cache/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/inference/prefill-decode-disaggregation/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/inference/model-routing-cost/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/inference/inference-benchmark/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/safety-evaluation/prompt-injection-defense/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/safety-evaluation/agent-evaluation/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/safety-evaluation/tool-call-evals/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/safety-evaluation/rag-evaluation/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/safety-evaluation/llm-as-judge/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/safety-evaluation/red-team-agents/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/safety-evaluation/privacy-ai-applications/</loc></url>
+  <url><loc>https://navinresearch.com/zh-cn/blog/safety-evaluation/continuous-ai-evals/</loc></url>
 </urlset>

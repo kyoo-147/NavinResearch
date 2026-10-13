@@ -2,7 +2,7 @@
 title: "A2A vs MCP: Different Layers for Agent Systems"
 description: "Understand when Agent2Agent and Model Context Protocol complement each other instead of competing."
 language: en
-canonical: https://navinresearch.com/blog/agents/a2a-and-mcp.md
+canonical: https://navinresearch.com/blog/agents/a2a-and-mcp/
 topics: ["A2A vs MCP", "Agent2Agent protocol", "Model Context Protocol"]
 ---
 

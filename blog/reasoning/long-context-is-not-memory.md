@@ -2,7 +2,7 @@
 title: "Long Context Is Not the Same as Memory"
 description: "Use large context windows deliberately; retrieval, summaries, and durable state still matter."
 language: en
-canonical: https://navinresearch.com/blog/reasoning/long-context-is-not-memory.md
+canonical: https://navinresearch.com/blog/reasoning/long-context-is-not-memory/
 topics: ["long context LLM", "AI memory", "context engineering"]
 ---
 

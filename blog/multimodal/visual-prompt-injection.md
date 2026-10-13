@@ -2,7 +2,7 @@
 title: "Defend Multimodal Agents Against Visual Prompt Injection"
 description: "Treat text inside images and documents as untrusted data, not system instructions."
 language: en
-canonical: https://navinresearch.com/blog/multimodal/visual-prompt-injection.md
+canonical: https://navinresearch.com/blog/multimodal/visual-prompt-injection/
 topics: ["visual prompt injection", "multimodal AI security", "indirect prompt injection"]
 ---
 
