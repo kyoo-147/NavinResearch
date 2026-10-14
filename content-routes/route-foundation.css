@@ -2555,7 +2555,20 @@ html[data-theme="light"] .content-page .route-page__header { background: transpa
 .content-page .content-header__try { padding-inline: .72rem; }
 .content-page .content-header__try > span[aria-hidden="true"] { font-size: .92rem; }
 .route-page__header .content-header__sales { padding-top: .09rem; padding-bottom: .21rem; }
-.route-page__header .content-header__sales { padding-top: .03rem; padding-bottom: .27rem; font-size: .92rem; transform: translateY(-1px); }
+.route-page__header .content-header__sales { padding-top: .15rem; padding-bottom: .15rem; font-size: .92rem; transform: translateY(2px); }
+.route-page__header .content-header__sign-in { transform: translateY(2px); }
+.route-page__header .content-header__try { transform: translateY(2px); }
+.route-page__header .content-header__sign-in > .content-header__label,
+.route-page__header .content-header__sales > .content-header__label,
+.route-page__header .content-header__try > .content-header__label {
+  display: inline-flex;
+  align-items: center;
+  transform: translateY(1px);
+}
+.route-page__header .content-header__try > span[aria-hidden="true"] {
+  display: inline-flex;
+  transform: translateY(1px);
+}
 @media (max-width: 900px) {
   .content-page .content-header__utilities,
   .content-page .content-header__account { justify-content: center; }

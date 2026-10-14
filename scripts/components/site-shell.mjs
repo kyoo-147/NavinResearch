@@ -140,7 +140,7 @@ export function contentHeader(localeKey, currentSection, localeSuffix = currentS
   };
   const routes = primary.map(link).join("\n          ");
   const explore = secondary.map(link).join("");
-  return `<header class="route-page__header content-header"><a class="route-page__brand content-wordmark" href="${localePath(localeKey)}" aria-label="${escapeHtml(experience[localeKey].aria.home)}"><span>NAVIN<br>RESEARCH</span></a><nav class="route-page__nav" aria-label="${escapeHtml(locale.common.navAria)}">${routes}<details class="content-header__more"><summary>${escapeHtml(ui.menu.more)}</summary><div>${explore}</div></details></nav>${accountActions(localeKey)}</header>`;
+  return `<header class="route-page__header content-header"><a class="route-page__brand content-wordmark" href="${localePath(localeKey)}" aria-label="${escapeHtml(experience[localeKey].aria.home)}"><span>NAVIN<br>RESEARCH</span></a><nav class="route-page__nav" aria-label="${escapeHtml(locale.common.navAria)}">${routes}<details class="content-header__more"><summary>${escapeHtml(ui.menu.more)}</summary><div>${explore}</div></details></nav>${accountActions(localeKey, { wrappedLabels: true })}</header>`;
 }
 
 function footerGroups(localeKey) {

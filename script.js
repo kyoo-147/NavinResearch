@@ -11,12 +11,12 @@ const restoreSiteAnnouncement = () => {
   document.querySelectorAll("[data-site-announcement]").forEach((announcement) => {
     announcement.hidden = false;
   });
-  if (document.body.classList.contains("home-page") && window.scrollY > 0) {
-    window.scrollTo(0, 0);
-  }
 };
+window.history.scrollRestoration = "auto";
 window.addEventListener("pageshow", restoreSiteAnnouncement);
+window.addEventListener("load", restoreSiteAnnouncement);
 window.requestAnimationFrame(restoreSiteAnnouncement);
+window.setTimeout(restoreSiteAnnouncement, 0);
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 if (!reduceMotion.matches) {

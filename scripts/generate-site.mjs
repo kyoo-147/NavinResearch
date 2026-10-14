@@ -11,7 +11,7 @@ import { aboutPreservedPageCopy } from "./about-preserved-content.mjs";
 import { people, peoplePageCopy, personPath } from "./people-data.mjs";
 
 const localeEntries = Object.entries(locales);
-const homeAssetRevision = "20261014-03";
+const homeAssetRevision = "20261014-13";
 const head = (localeKey, title, description, suffix = "", styles = ["/content-routes/route-foundation.css"], scripts = [], image = "/assets/field-4.webp") => pageHead({
   localeKey,
   title,
