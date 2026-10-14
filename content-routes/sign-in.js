@@ -3,6 +3,25 @@
   const form = dialog?.querySelector("[data-sign-in-form]") || document.querySelector("[data-sign-in-page-form]");
   if (!form) return;
 
+  const signInShell = document.querySelector(".sign-in-shell");
+  const announcementLanguage = document.documentElement.lang.toLowerCase();
+  const announcementCopy = announcementLanguage.startsWith("vi")
+    ? { label: "Thông báo", message: "afaxxaq-000 — unname sắp ra mắt, với khả năng học theo ngữ cảnh, bộ nhớ do người dùng kiểm soát, quy trình có thể cấu hình và hỗ trợ đa phương thức cho ngôn ngữ, giọng nói và thị giác.", cta: "Tham gia Early Access", close: "Đóng thông báo" }
+    : announcementLanguage.startsWith("zh")
+      ? { label: "公告", message: "afaxxaq-000 — unname 即将发布，支持上下文学习、用户可控记忆、可配置工作流，以及覆盖语言、语音和视觉的多模态能力。", cta: "加入 Early Access", close: "关闭公告" }
+      : { label: "Announcement", message: "afaxxaq-000 — unname is coming soon, featuring contextual learning, user-controlled memory, configurable workflows, and multimodal support across language, speech, and vision.", cta: "Join Early Access", close: "Close announcement" };
+  const announcement = document.createElement("aside");
+  announcement.className = "sign-in-announcement";
+  announcement.setAttribute("aria-label", announcementCopy.label);
+  announcement.innerHTML = `<p class="sign-in-announcement__copy"><span>${announcementCopy.message}</span> <a href="${announcementLanguage.startsWith("vi") ? "/vi" : announcementLanguage.startsWith("zh") ? "/zh-cn" : ""}/contact/">${announcementCopy.cta}</a></p><button type="button" class="sign-in-announcement__close" aria-label="${announcementCopy.close}" data-sign-in-announcement-close>×</button>`;
+  signInShell?.before(announcement);
+  announcement.querySelector("[data-sign-in-announcement-close]")?.addEventListener("click", () => {
+    announcement.hidden = true;
+  });
+  window.addEventListener("pageshow", () => {
+    announcement.hidden = false;
+  });
+
   const status = form.querySelector("[data-sign-in-status]");
   const language = document.documentElement.lang.toLowerCase();
   const standalonePanel = document.querySelector(".sign-in-panel");

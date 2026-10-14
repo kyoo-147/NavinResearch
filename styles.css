@@ -612,11 +612,22 @@ html[data-theme="light"] .home-page .product-card__status { background: rgba(118
   font: inherit;
   font-size: .76rem;
   line-height: 1;
+  text-align: center;
   white-space: nowrap;
 }
 .home-page .content-header__sign-in { border-color: transparent; padding-inline: .25rem; }
 .home-page .content-header__sales { border-radius: 999px; }
-.home-page .content-header__try { gap: .3rem; border-radius: .55rem; }
+.home-page .content-header__try { min-width: 6rem; position: relative; gap: .3rem; border-radius: .55rem; font-size: .84rem; }
+.home-page .content-header__try > .content-header__label { position: absolute; top: calc(50% + 1px); left: calc(50% - .24rem); margin: 0; transform: translate(-50%, -50%); }
+.home-page .content-header__try > span[aria-hidden="true"] { position: absolute; top: 50%; right: .55rem; transform: translateY(-50%); }
+.home-page .content-header__sign-in > .content-header__label,
+.home-page .content-header__sales > .content-header__label { display: inline-flex; align-items: center; line-height: 1; transform: none; }
+.home-page .content-header__sign-in > .content-header__label,
+.home-page .content-header__sales > .content-header__label { display: inline-flex; align-items: center; line-height: 1; transform: none; }
+.home-page .content-header__sales > .content-header__label { transform: translateY(1px); }
+.home-page .content-header__sales > .content-header__label { transform: translateY(1px); font-size: .84rem; }
+.home-page .content-header__try > span { display: inline-flex; align-items: center; line-height: 1; transform: none; }
+.home-page .content-header__try > .content-header__label { font-size: .84rem; line-height: 1; }
 .home-page .content-header__sales:hover,
 .home-page .content-header__sales:focus-visible,
 .home-page .content-header__try:hover,
@@ -637,6 +648,9 @@ html[data-theme="light"] .home-page .content-header__sales:focus-visible {
   .home-page .content-header__sign-in,
   .home-page .content-header__sales,
   .home-page .content-header__try { min-height: 2.35rem; padding-inline: .55rem; font-size: .7rem; }
+  .home-page .content-header__try { min-width: 5.4rem; font-size: .82rem; }
+  .home-page .content-header__try > .content-header__label { font-size: .82rem; }
+  .home-page .content-header__try > span[aria-hidden="true"] { right: .3rem; }
 }
 
 

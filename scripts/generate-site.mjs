@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { aboutPublication, chapters, experience, legalPages, locales, localePath, releaseRoute, sections, site } from "../site.config.mjs";
 import { pageHead } from "./components/page-head.mjs";
-import { contentHeader, cookieManageLabel, cookiePreferencesMarkup, escapeHtml, footerSocialIcons, languageLinks, routeFooter, siteDrawer, siteFooter, siteHeader, themePicker } from "./components/site-shell.mjs";
+import { contentHeader, cookieManageLabel, cookiePreferencesMarkup, escapeHtml, footerSocialIcons, languageLinks, routeFooter, siteAnnouncement, siteDrawer, siteFooter, siteHeader, themePicker } from "./components/site-shell.mjs";
 import { catalogProducts } from "./product-data.mjs";
 import { blogMarkdownPath, blogPostPath, blogPostReviewedAt, blogPosts, blogSources, renderBlogPost } from "./blog-posts.mjs";
 import { routeDetails, routeLinks } from "./route-details.mjs";
@@ -11,7 +11,7 @@ import { aboutPreservedPageCopy } from "./about-preserved-content.mjs";
 import { people, peoplePageCopy, personPath } from "./people-data.mjs";
 
 const localeEntries = Object.entries(locales);
-const homeAssetRevision = "20261013-16";
+const homeAssetRevision = "20261014-03";
 const head = (localeKey, title, description, suffix = "", styles = ["/content-routes/route-foundation.css"], scripts = [], image = "/assets/field-4.webp") => pageHead({
   localeKey,
   title,
@@ -144,8 +144,9 @@ function homeTemplate(localeKey) {
 ${head(localeKey, locale.meta.title, locale.meta.description, "", [`/styles.css?v=${homeAssetRevision}`, "/content-routes/route-foundation.css"], [`/script.js?v=${homeAssetRevision}`, "/content-routes/theme.js"])}  </head>
   <body class="home-page content-page">
     <div class="field" aria-hidden="true">${[1,2,3,4,5].map((n) => `<div class="field__layer field__layer--${n}"></div>`).join("")}<div class="field__wash"></div><div class="field__grain"></div></div>
+    ${siteAnnouncement(localeKey)}
     <div class="shell">
-      ${siteHeader(localeKey)}
+      ${siteHeader(localeKey, "", { wrappedLabels: true })}
       ${siteDrawer(localeKey)}
       <main>
         <section class="hero">

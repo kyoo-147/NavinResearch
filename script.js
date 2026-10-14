@@ -2,6 +2,22 @@ document.querySelectorAll("[data-current-year]").forEach((node) => {
   node.textContent = String(new Date().getFullYear());
 });
 
+document.querySelectorAll("[data-site-announcement-close]").forEach((button) => {
+  button.addEventListener("click", () => {
+    button.closest("[data-site-announcement]")?.setAttribute("hidden", "");
+  });
+});
+const restoreSiteAnnouncement = () => {
+  document.querySelectorAll("[data-site-announcement]").forEach((announcement) => {
+    announcement.hidden = false;
+  });
+  if (document.body.classList.contains("home-page") && window.scrollY > 0) {
+    window.scrollTo(0, 0);
+  }
+};
+window.addEventListener("pageshow", restoreSiteAnnouncement);
+window.requestAnimationFrame(restoreSiteAnnouncement);
+
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 if (!reduceMotion.matches) {
   window.setTimeout(() => document.documentElement.classList.add("motion-ready"), 3000);

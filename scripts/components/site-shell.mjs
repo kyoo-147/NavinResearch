@@ -61,9 +61,20 @@ export function footerSocialIcons() {
   return `<div class="content-footer__social" aria-label="Social platforms"><span role="img" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4 19 20M19 4 5 20"></path></svg></span><span role="img" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.2a2 2 0 0 0-1.4-1.4C17.3 6.5 12 6.5 12 6.5s-5.3 0-6.6.3A2 2 0 0 0 4 8.2 21 21 0 0 0 3.7 12 21 21 0 0 0 4 15.8a2 2 0 0 0 1.4 1.4c1.3.3 6.6.3 6.6.3s5.3 0 6.6-.3a2 2 0 0 0 1.4-1.4 21 21 0 0 0 .3-3.8 21 21 0 0 0-.3-3.8ZM10.5 15V9l5 3-5 3Z"></path></svg></span><span role="img" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8.5V18M6 5.5v.1M10 18v-5.2a3 3 0 0 1 6 0V18M10 11.5V18"></path></svg></span><span role="img" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 0 0-2.7 16.6c.4.1.6-.2.6-.4v-1.5c-2.3.5-2.8-1-2.8-1-.4-.9-.9-1.1-.9-1.1-.8-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.8 1.4 2.1 1 2.6.8.1-.6.3-1 .5-1.2-1.9-.2-3.9-1-3.9-4.2 0-.9.3-1.7.9-2.3-.1-.2-.4-1.1.1-2.3 0 0 .7-.2 2.4.9.7-.2 1.4-.3 2.1-.3s1.5.1 2.1.3c1.7-1.1 2.4-.9 2.4-.9.5 1.2.2 2.1.1 2.3.6.6.9 1.4.9 2.3 0 3.2-2 4-3.9 4.2.3.3.5.8.5 1.6v2.4c0 .2.2.5.6.4A8.5 8.5 0 0 0 12 3.5Z"></path></svg></span><span role="img" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="4"></rect><circle cx="12" cy="12" r="3"></circle><circle cx="16.5" cy="7.5" r=".7" fill="currentColor" stroke="none"></circle></svg></span><span role="img" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5v9.2a3.3 3.3 0 1 1-2.5-3.2M14 5c.6 1.8 1.8 2.8 4 3"></path></svg></span><span role="img" aria-label="Discord"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7.5c3.2-1.5 6.8-1.5 10 0l1.5 8.3c-2.6 1.8-4.1 2.2-4.1 2.2l-1-1.4a7.7 7.7 0 0 1-2.8 0l-1 1.4s-1.5-.4-4.1-2.2L7 7.5Z"></path><circle cx="9.5" cy="12" r=".8" fill="currentColor" stroke="none"></circle><circle cx="14.5" cy="12" r=".8" fill="currentColor" stroke="none"></circle></svg></span></div>`;
 }
 
-function accountActions(localeKey) {
+export function siteAnnouncement(localeKey) {
+  const copy = localeKey === "vi"
+    ? { label: "Thông báo", message: "afaxxaq-000 — unname sắp ra mắt, với khả năng học theo ngữ cảnh, bộ nhớ do người dùng kiểm soát, quy trình có thể cấu hình và hỗ trợ đa phương thức cho ngôn ngữ, giọng nói và thị giác.", cta: "Tham gia Early Access", close: "Đóng thông báo" }
+    : localeKey === "zh-cn"
+      ? { label: "公告", message: "afaxxaq-000 — unname 即将发布，支持上下文学习、用户可控记忆、可配置工作流，以及覆盖语言、语音和视觉的多模态能力。", cta: "加入 Early Access", close: "关闭公告" }
+      : { label: "Announcement", message: "afaxxaq-000 — unname is coming soon, featuring contextual learning, user-controlled memory, configurable workflows, and multimodal support across language, speech, and vision.", cta: "Join Early Access", close: "Close announcement" };
+  return `<aside class="sign-in-announcement site-announcement" data-site-announcement role="region" aria-label="${escapeHtml(copy.label)}"><p class="sign-in-announcement__copy"><span>${escapeHtml(copy.message)}</span> <a href="${localePath(localeKey, "contact")}">${escapeHtml(copy.cta)}</a></p><button type="button" class="sign-in-announcement__close" aria-label="${escapeHtml(copy.close)}" data-site-announcement-close>×</button></aside>`;
+}
+
+function accountActions(localeKey, { wrappedLabels = false } = {}) {
   const account = experience[localeKey].account;
-  return `<div class="content-header__utilities"><div class="content-header__account"><a class="content-header__sign-in" href="${localePath(localeKey, "sign-in")}">${escapeHtml(account.signIn)}</a><a class="content-header__sales" href="${localePath(localeKey, "contact")}">${escapeHtml(account.contactSales)}</a><button type="button" class="content-header__try" disabled aria-disabled="true">${escapeHtml(account.tryNavin)} <span aria-hidden="true">↗</span></button></div></div>`;
+  const label = (value) => wrappedLabels ? `<span class="content-header__label">${escapeHtml(value)}</span>` : escapeHtml(value);
+  const tryAction = `${label(account.tryNavin)}${wrappedLabels ? "" : " "}<span aria-hidden="true">↗</span>`;
+  return `<div class="content-header__utilities"><div class="content-header__account"><a class="content-header__sign-in" href="${localePath(localeKey, "sign-in")}">${label(account.signIn)}</a><a class="content-header__sales" href="${localePath(localeKey, "contact")}">${label(account.contactSales)}</a><button type="button" class="content-header__try" disabled aria-disabled="true">${tryAction}</button></div></div>`;
 }
 
 function signInMarkup(localeKey) {
@@ -91,6 +102,7 @@ export function siteDrawer(localeKey) {
             <a href="${localePath(localeKey, "about/people")}">${escapeHtml(ui.menu.people)}</a>
             <button type="button" data-chapters-toggle aria-expanded="false" aria-controls="chapter-panel">${escapeHtml(ui.menu.chapters)}<span aria-hidden="true">→</span></button>
             <a href="${localePath(localeKey, "research")}">${escapeHtml(ui.menu.work)}</a>
+            <a href="${localePath(localeKey, "notes")}">${escapeHtml(locale.routes.notes.title)}</a>
             <a href="${localePath(localeKey, "about")}">${escapeHtml(ui.menu.about)}</a>
             <a href="${localePath(localeKey, "releases")}">${escapeHtml(ui.menu.releases)}</a>
             <a href="${localePath(localeKey)}#wealth-of-nature">${escapeHtml(ui.menu.philosophy)}</a>
@@ -104,7 +116,7 @@ export function siteDrawer(localeKey) {
       </aside>`;
 }
 
-export function siteHeader(localeKey, suffix = "") {
+export function siteHeader(localeKey, suffix = "", options = {}) {
   const locale = locales[localeKey];
   const ui = experience[localeKey];
   const status = suffix ? locale.common.status : locale.home.status;
@@ -113,7 +125,7 @@ export function siteHeader(localeKey, suffix = "") {
           <button class="menu-toggle" type="button" data-menu-open aria-expanded="false" aria-controls="site-menu" aria-label="${escapeHtml(ui.menu.open)}"><span></span><span></span><span></span></button>
           <a class="brand brand--wordmark" href="${localePath(localeKey)}" aria-label="${escapeHtml(ui.aria.home)}"><span class="brand__name">NAVIN<br>RESEARCH</span></a>
         </div>
-        <div class="masthead__meta"><span class="signal">${escapeHtml(status)}</span>${accountActions(localeKey)}</div>
+        <div class="masthead__meta"><span class="signal">${escapeHtml(status)}</span>${accountActions(localeKey, options)}</div>
       </header>`;
 }
 

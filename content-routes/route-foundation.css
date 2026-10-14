@@ -2162,7 +2162,7 @@ html[data-theme="light"] .content-page .theme-picker__options { background: var(
   opacity: 1;
   font-family: inherit;
 }
-.content-page .content-header__try span { font-size: .9rem; }
+.content-page .content-header__try > span[aria-hidden="true"] { font-size: .9rem; }
 html[data-theme="light"] .content-page .content-footer { background: transparent; }
 @media (max-width: 640px) {
   .content-page .content-header__account { gap: .35rem; }
@@ -2553,7 +2553,9 @@ html[data-theme="light"] .content-page .route-page__header { background: transpa
 .content-page .content-header__sign-in { padding-inline: .2rem; }
 .content-page .content-header__sales,
 .content-page .content-header__try { padding-inline: .72rem; }
-.content-page .content-header__try span { font-size: .92rem; }
+.content-page .content-header__try > span[aria-hidden="true"] { font-size: .92rem; }
+.route-page__header .content-header__sales { padding-top: .09rem; padding-bottom: .21rem; }
+.route-page__header .content-header__sales { padding-top: .03rem; padding-bottom: .27rem; font-size: .92rem; transform: translateY(-1px); }
 @media (max-width: 900px) {
   .content-page .content-header__utilities,
   .content-page .content-header__account { justify-content: center; }
@@ -2637,7 +2639,7 @@ html[data-theme="light"] .content-page .route-page__header { background: transpa
   -webkit-font-smoothing: antialiased;
 }
 .standalone-sign-in a { color: inherit; text-decoration: none; }
-.sign-in-shell { display: grid; min-height: 100svh; grid-template-columns: minmax(20rem, .88fr) minmax(30rem, 1.12fr); }
+.sign-in-shell { display: grid; min-height: 100svh; grid-template-columns: minmax(20rem, .7fr) minmax(30rem, 1.3fr); }
 .sign-in-aside { position: relative; display: flex; min-height: 100svh; flex-direction: column; justify-content: space-between; overflow: hidden; padding: clamp(2rem, 5vw, 5rem); color: #f4f7ec; background: #07140f url("/assets/field-3.webp") center / cover; }
 .sign-in-aside::before { position: absolute; inset: 0; content: ""; background: linear-gradient(145deg, rgba(2, 12, 9, .88), rgba(3, 28, 18, .58) 52%, rgba(3, 13, 10, .92)); }
 .sign-in-aside > * { position: relative; z-index: 1; }
@@ -2650,7 +2652,7 @@ html[data-theme="light"] .content-page .route-page__header { background: transpa
 .sign-in-aside__content p:last-child { max-width: 27rem; margin: 0; color: rgba(244, 247, 236, .72); font-size: 1rem; line-height: 1.55; }
 .sign-in-aside__status { margin: 0; color: rgba(244, 247, 236, .52); font-size: .65rem; font-weight: 700; letter-spacing: .14em; }
 .sign-in-panel { position: relative; display: grid; min-height: 100svh; place-items: center; padding: 5.5rem 1.5rem 3rem; background: #f8f8f5; }
-.sign-in-panel__inner { width: min(100%, 27rem); }
+.sign-in-panel__inner { width: min(100%, 27rem); transform: translate(-1rem, -2.75rem); }
 .sign-in-panel__mark { display: block; width: 4.25rem; height: 4.25rem; margin-bottom: 1.35rem; object-fit: contain; }
 .sign-in-panel__eyebrow { color: #526057; }
 .sign-in-panel h2 { margin: .65rem 0 .55rem; color: #151a18; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 400; letter-spacing: -.06em; line-height: .98; }
@@ -2690,6 +2692,7 @@ html[data-theme="light"] .content-page .route-page__header { background: transpa
   .sign-in-aside__content p:last-child { font-size: .85rem; }
   .sign-in-aside__status { display: none; }
   .sign-in-panel { min-height: auto; padding: 5.5rem 1.25rem 4rem; }
+  .sign-in-panel__inner { transform: none; }
 }
 @media (max-width: 430px) {
   .sign-in-providers { grid-template-columns: 1fr; }
@@ -2727,7 +2730,7 @@ html[data-theme="light"] .content-page .route-page__header { background: transpa
 
 .sign-in-utility-nav { position: absolute; z-index: 2; top: 1.75rem; right: clamp(1.25rem, 4vw, 4.5rem); display: flex; align-items: center; gap: 1.35rem; color: #68736c; font-size: .78rem; }
 .sign-in-utility-nav a:hover, .sign-in-utility-nav a:focus-visible { color: #151a18; }
-.sign-in-utility-nav__contact { padding: .55rem .9rem; border-radius: .35rem; color: #f8f8f5 !important; background: #151a18; font-weight: 700; }
+.sign-in-utility-nav__contact { padding: .43rem .9rem .67rem; border-radius: .35rem; color: #f8f8f5 !important; background: #151a18; font-size: 1.05rem; font-weight: 700; }
 .sign-in-utility-nav__contact:hover, .sign-in-utility-nav__contact:focus-visible { background: #08734c; }
 @media (max-width: 760px) {
   .sign-in-utility-nav { top: 1.25rem; right: 1.25rem; gap: .8rem; font-size: .72rem; }
@@ -2985,4 +2988,73 @@ html[data-theme="light"] .home-page .chapter-panel .chapter-back { color: #15211
   width: calc(100% + (var(--edge) * 2));
   margin-left: calc(var(--edge) * -1);
   padding-inline: var(--edge);
+}
+
+/* Sign-in type scale: give the account content a slightly stronger reading hierarchy. */
+.standalone-sign-in .sign-in-aside__brand { font-size: .82rem; }
+.standalone-sign-in .sign-in-aside__eyebrow { font-size: .72rem; }
+.standalone-sign-in .sign-in-panel h2 { font-size: clamp(2.1rem, 4.2vw, 3.4rem); }
+.standalone-sign-in .sign-in-panel__intro { font-size: .96rem; }
+.standalone-sign-in .sign-in-providers button { font-size: .84rem; }
+.standalone-sign-in .sign-in-divider { font-size: .74rem; }
+.standalone-sign-in .sign-in-methods button { font-size: .82rem; }
+.standalone-sign-in .sign-in-form label { font-size: .74rem; }
+.standalone-sign-in .sign-in-form input { font-size: .95rem; }
+.standalone-sign-in .sign-in-form__label-row button { font-size: .72rem; }
+.standalone-sign-in .sign-in-form__submit { font-size: .9rem; }
+.standalone-sign-in .sign-in-panel__legal { font-size: .74rem; }
+
+/* Sign-in announcement: a dismissible, full-width release strip above the account surface. */
+.sign-in-announcement {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem 4rem;
+  color: #f8f8f5;
+  background: linear-gradient(102deg, #0b3d31 0%, #167b5c 48%, #6bd495 100%);
+  font-size: .78rem;
+  text-align: center;
+}
+.sign-in-announcement[hidden] { display: none !important; }
+.sign-in-announcement__copy { max-width: 70rem; margin: 0; line-height: 1.35; }
+.sign-in-announcement__copy a { color: inherit; font-weight: 700; text-decoration: underline; text-decoration-thickness: .08em; text-underline-offset: .16em; }
+.sign-in-announcement__copy a:hover, .sign-in-announcement__copy a:focus-visible { color: #d9ff57; }
+.sign-in-announcement__close {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.sign-in-announcement__close:hover, .sign-in-announcement__close:focus-visible { color: #d9ff57; }
+.standalone-sign-in:has(.sign-in-announcement:not([hidden])) { display: flex; flex-direction: column; }
+.standalone-sign-in:has(.sign-in-announcement:not([hidden])) .sign-in-shell { display: grid; flex: 1 1 auto; height: auto; min-height: 0; }
+.standalone-sign-in:has(.sign-in-announcement:not([hidden])) .sign-in-aside,
+.standalone-sign-in:has(.sign-in-announcement:not([hidden])) .sign-in-panel { height: auto; min-height: 0; }
+@media (max-width: 760px) {
+  .sign-in-announcement { min-height: 3rem; padding: .6rem 3.25rem .6rem 1rem; font-size: .72rem; }
+  .sign-in-announcement__copy { max-width: 34rem; }
+  .standalone-sign-in:has(.sign-in-announcement:not([hidden])) .sign-in-shell { display: block; height: auto; }
+  .standalone-sign-in:has(.sign-in-announcement:not([hidden])) .sign-in-aside { height: 8.5rem; min-height: 8.5rem; }
+  .standalone-sign-in:has(.sign-in-announcement:not([hidden])) .sign-in-panel { height: auto; min-height: 0; overflow: visible; }
+  html:has(body.standalone-sign-in .sign-in-announcement:not([hidden])) { height: auto; overflow-y: auto; }
+  .standalone-sign-in:has(.sign-in-announcement:not([hidden])) { height: auto; min-height: 100svh; overflow: visible; }
+}
+
+@media (min-width: 901px) {
+  .content-blog-article .about-intro h1 { max-width: none; white-space: nowrap; }
 }
