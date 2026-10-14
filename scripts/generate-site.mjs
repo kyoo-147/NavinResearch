@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { aboutPublication, chapters, experience, legalPages, locales, localePath, releaseRoute, sections, site } from "../site.config.mjs";
 import { pageHead } from "./components/page-head.mjs";
 import { contentHeader, cookieManageLabel, cookiePreferencesMarkup, escapeHtml, footerSocialIcons, languageLinks, routeFooter, siteDrawer, siteFooter, siteHeader, themePicker } from "./components/site-shell.mjs";
@@ -11,7 +11,7 @@ import { aboutPreservedPageCopy } from "./about-preserved-content.mjs";
 import { people, peoplePageCopy, personPath } from "./people-data.mjs";
 
 const localeEntries = Object.entries(locales);
-const homeAssetRevision = "20261013-14";
+const homeAssetRevision = "20261013-16";
 const head = (localeKey, title, description, suffix = "", styles = ["/content-routes/route-foundation.css"], scripts = [], image = "/assets/field-4.webp") => pageHead({
   localeKey,
   title,
@@ -23,10 +23,63 @@ const head = (localeKey, title, description, suffix = "", styles = ["/content-ro
   image,
 });
 
+const letterMarkdown = await readFile("letters/ai-thuc-chien-2026.md", "utf8");
+const letterSummaryMarkdown = await readFile("letters/ai-thuc-chien-2026-summary.md", "utf8");
+const letterTitle = "Kính gửi Ban Tổ chức cuộc thi AI Thực Chiến 2026";
+const letterSummaryTitle = "Chúng tôi sẽ không dừng lại ở đây.";
+
+function renderLetterInline(value) {
+  return escapeHtml(value)
+    .replace(/\*\*([\s\S]+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/_([^_]+?)_/g, "<em>$1</em>")
+    .replace(/\*([^*]+?)\*/g, "<em>$1</em>");
+}
+
+function renderLetterMarkdown(markdown, { summary = false } = {}) {
+  return markdown.trim().split(/\n\s*\n/).map((block) => {
+    const text = block.replace(/\r?\n/g, " ").trim();
+    if (summary && text === "**Read full letter →**") return '<a class="letter-read-full" href="/letter/full/">Read full letter <span aria-hidden="true">→</span></a>';
+    if (text.startsWith("# ")) return `<h1 id="letter-title">${renderLetterInline(text.slice(2))}</h1>`;
+    return `<p>${renderLetterInline(text)}</p>`;
+  }).join("\n");
+}
+
+function letterTemplate(markdown, { summary = false } = {}) {
+  const title = summary ? letterSummaryTitle : letterTitle;
+  const canonicalPath = summary ? "/letter/" : "/letter/full/";
+  const renderedLetter = renderLetterMarkdown(markdown, { summary });
+  const headingEnd = renderedLetter.indexOf("</h1>") + "</h1>".length;
+  const pageContent = summary
+    ? `<div class="letter-summary__title">${renderedLetter.slice(0, headingEnd)}</div><div class="letter-summary__body">${renderedLetter.slice(headingEnd).trim()}</div>`
+    : renderedLetter;
+  const backLink = summary ? "" : '<a class="letter-back-summary" href="/letter/">← Back to summary</a>';
+  return `<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111213">
+    <meta name="description" content="${escapeHtml(title)}">
+    <meta name="robots" content="index, follow">
+    <title>${escapeHtml(title)}</title>
+    <link rel="icon" href="/assets/brand/logo_icon_tab.png" type="image/png">
+    <link rel="canonical" href="${site.origin}${canonicalPath}">
+    <link rel="stylesheet" href="/content-routes/letter.css?v=${homeAssetRevision}">
+  </head>
+  <body class="letter-page${summary ? " letter-page--summary" : " letter-page--full"}">
+    <main class="letter" aria-labelledby="letter-title">
+      ${backLink}
+      ${pageContent}
+    </main>
+  </body>
+</html>
+`;
+}
+
 const productCopy = {
-  en: { eyebrow: "PRODUCT SYSTEMS / 01—13", title: "Research, made operational.", lede: "Thirteen independent product programs. Each has its own interface, evidence standard, and path to availability.", status: "Current status", product: "PRODUCT", research: "IN RESEARCH", homeLabel: "Product systems", homeTitle: "Models, software, and intelligent systems designed to make AI more capable, adaptable, and useful.", homeLink: "" },
-  vi: { eyebrow: "HỆ THỐNG SẢN PHẨM / 01—13", title: "Nghiên cứu được đưa vào vận hành.", lede: "Mười ba chương trình sản phẩm độc lập. Mỗi sản phẩm có giao diện, chuẩn bằng chứng và lộ trình tiếp cận riêng.", status: "Trạng thái hiện tại", product: "SẢN PHẨM", research: "ĐANG NGHIÊN CỨU", homeLabel: "Hệ thống sản phẩm", homeTitle: "Các mô hình, phần mềm và hệ thống thông minh được thiết kế để AI trở nên mạnh mẽ, thích ứng và hữu ích hơn.", homeLink: "" },
-  "zh-cn": { eyebrow: "产品系统 / 01—13", title: "让研究进入实际运行。", lede: "十三个独立产品计划，每一个都有自己的界面、证据标准与开放路径。", status: "当前状态", product: "产品", research: "研究中", homeLabel: "产品系统", homeTitle: "为让 AI 更强大、更具适应性且更有用而设计的模型、软件与智能系统。", homeLink: "" },
+  en: { eyebrow: "PRODUCT SYSTEMS / 01—13", title: "Research, made operational.", lede: "Thirteen independent product programs. Each has its own interface, evidence standard, and path to availability.", status: "Current status", product: "PRODUCT", research: "IN RESEARCH", homeLabel: "Product systems", homeTitle: "Building what comes next.", homeDescription: "Models, software, and intelligent systems designed to make AI more capable, adaptable, and useful.", homeLink: "Explore all products" },
+  vi: { eyebrow: "HỆ THỐNG SẢN PHẨM / 01—13", title: "Nghiên cứu được đưa vào vận hành.", lede: "Mười ba chương trình sản phẩm độc lập. Mỗi sản phẩm có giao diện, chuẩn bằng chứng và lộ trình tiếp cận riêng.", status: "Trạng thái hiện tại", product: "SẢN PHẨM", research: "ĐANG NGHIÊN CỨU", homeLabel: "Hệ thống sản phẩm", homeTitle: "Xây dựng điều tiếp theo.", homeDescription: "Các mô hình, phần mềm và hệ thống thông minh được thiết kế để AI trở nên mạnh mẽ, thích ứng và hữu ích hơn.", homeLink: "Khám phá tất cả sản phẩm" },
+  "zh-cn": { eyebrow: "产品系统 / 01—13", title: "让研究进入实际运行。", lede: "十三个独立产品计划，每一个都有自己的界面、证据标准与开放路径。", status: "当前状态", product: "产品", research: "研究中", homeLabel: "产品系统", homeTitle: "构建下一步。", homeDescription: "为让 AI 更强大、更具适应性且更有用而设计的模型、软件与智能系统。", homeLink: "探索全部产品" },
 };
 
 const notesCopy = {
@@ -48,6 +101,38 @@ function productGrid(localeKey, compact = false) {
   }).join("\n");
 }
 
+// Catalog thumbnails intentionally reuse project-owned media where it exists. Fallbacks are the
+// existing Navin field assets until reviewed product media is available for the external entries.
+const catalogMedia = {
+  sandora: { src: "/assets/product-catalog/sandora-abstract.png", alt: "Abstract Sandora interface study" },
+  moyi: { src: "/assets/product-catalog/moyi-waveform.png", alt: "Moyi speech waveform and signal map" },
+  sori: { src: "/assets/product-catalog/sori-workspace.png", alt: "Sori desktop voice workspace" },
+  howhow: { src: "/assets/product-catalog/howhow-system-overview-cropped.png", alt: "HowHow system overview diagram" },
+  dossier: { src: "/assets/product-catalog/dossier-invoice-review.webp", alt: "Dossier invoice review workspace" },
+  autopilot: { src: "/assets/product-catalog/autopilot-semantic-segmentation.webp", alt: "Autopilot semantic segmentation visualization" },
+  lajvard: { src: "/assets/product-catalog/lajvard-swan-family.png", alt: "Lajvard swan family robot concept" },
+  teraflow: { src: "/assets/product-catalog/teraflow-corridor-digital-twin.webp", alt: "TeraFlow corridor digital twin and traffic detection visualization" },
+  merak: { src: "/assets/product-catalog/merak-email-infrastructure.png", alt: "MERAK email infrastructure control dashboard" },
+  "navin-openbot": { src: "/assets/product-catalog/openbot-banner.webp", alt: "OpenBot project banner" },
+  synomorph: { src: "/assets/product-catalog/synomorph-learning-cycles.png", alt: "Synomorph learning cycles across reason, skill, and habit" },
+  pardraverse: { src: "/assets/product-catalog/pardraverse-product.png", alt: "PardraVerse practice console" },
+  "first-snow": { src: "/assets/product-catalog/firstsnow-learning-companion.png", alt: "FirstSnow child-safe learning companion" },
+};
+
+function catalogProductMedia(product) {
+  return catalogMedia[product.slug] || { src: "/assets/field-1.webp", alt: `${product.name} visual field`, fallback: true };
+}
+
+function productCardGrid(localeKey) {
+  const copy = productCopy[localeKey];
+  return catalogProducts.map((product) => {
+    const localized = product.catalogCopy?.[localeKey] || product;
+    const catalogStatus = copy[product.catalogStatus];
+    if (!catalogStatus) throw new Error(`Missing catalog status for ${product.slug}`);
+    const media = catalogProductMedia(product);
+    return `<article class="product-card${media.fallback ? " product-card--fallback" : ""}"><a href="${escapeHtml(productUrl(product))}" aria-label="${escapeHtml(`${product.name}: ${localized.thesis}`)}"><div class="product-card__media"><img src="${escapeHtml(media.src)}" alt="${escapeHtml(media.alt)}"${media.fit ? ` data-fit="${escapeHtml(media.fit)}"` : ""} width="1600" height="900" loading="lazy" decoding="async"></div><div class="product-card__body"><small class="product-card__category">${escapeHtml(localized.eyebrow)}</small><strong class="product-card__name">${escapeHtml(product.name)}</strong><span class="product-card__description">${escapeHtml(localized.thesis)}</span><span class="product-card__meta"><span class="product-card__status">${escapeHtml(catalogStatus)}</span><span class="product-card__arrow" aria-hidden="true">↗</span></span></div></a></article>`;
+  }).join("\n");
+}
 function homeTemplate(localeKey) {
   const locale = locales[localeKey];
   const home = locale.home;
@@ -68,7 +153,7 @@ ${head(localeKey, locale.meta.title, locale.meta.description, "", [`/styles.css?
           <div class="hero__content"><p class="eyebrow">${escapeHtml(ui.chapterEyebrow)}</p><h1>${title}</h1><p class="statement">${escapeHtml(home.statement)}</p></div>
           <aside class="contact" aria-label="${escapeHtml(home.contactAria)}"><p>${escapeHtml(home.contactLabel)}</p><h2>${escapeHtml(home.contactTitle)}</h2><nav class="contact__links" aria-label="${escapeHtml(home.contactLinksAria)}"><a href="mailto:${site.email}"><span>Email</span><span aria-hidden="true">↗</span></a><a href="${site.linkedin}" target="_blank" rel="noopener noreferrer"><span>LinkedIn</span><span aria-hidden="true">↗</span></a><a href="${site.github}" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span aria-hidden="true">↗</span></a></nav></aside>
         </section>
-        <section class="home-products" aria-labelledby="home-products-title"><div class="home-products__intro"><p>${escapeHtml(productCopy[localeKey].homeLabel)}</p><h2 id="home-products-title">${escapeHtml(productCopy[localeKey].homeTitle)}</h2>${productCopy[localeKey].homeLink ? `<a href="${localePath(localeKey, "products")}">${escapeHtml(productCopy[localeKey].homeLink)} <span aria-hidden="true">→</span></a>` : ""}</div><div class="product-directory product-directory--home">${productGrid(localeKey, true)}</div></section>
+        <section class="home-products" aria-labelledby="home-products-title"><div class="home-products__intro"><p>${escapeHtml(productCopy[localeKey].homeLabel)}</p><h2 id="home-products-title">${escapeHtml(productCopy[localeKey].homeTitle)}</h2><p class="home-products__description">${escapeHtml(productCopy[localeKey].homeDescription)}</p>${productCopy[localeKey].homeLink ? `<a href="${localePath(localeKey, "products")}">${escapeHtml(productCopy[localeKey].homeLink)} <span aria-hidden="true">↗</span></a>` : ""}</div><div class="product-directory product-directory--home">${productCardGrid(localeKey)}</div></section>
         <section class="wealth" id="wealth-of-nature" aria-labelledby="wealth-title">
           <div class="wealth__mark" aria-hidden="true"><span></span></div>
           <p class="wealth__label">${escapeHtml(ui.wealth.label)}</p>
@@ -119,7 +204,6 @@ function aboutIntroMetaMarkup(localeKey) {
   return date ? `<div class="about-intro__meta"><time datetime="${escapeHtml(aboutPublication.publishedAt)}">${escapeHtml(date)}</time></div>` : "";
 }
 
-const aboutRelatedOrder = ["multi-agent-orchestration-patterns", "agent-memory", "multimodal-rag", "prompt-injection-defense", "reduce-llm-latency", "human-approval-gates", "single-agent-before-multi-agent", "agent-handoffs", "reasoning-models-vs-chat-models"];
 const noteImageBySlug = {
   "multi-agent-orchestration-patterns": "/assets/notes-01.png",
   "agent-memory": "/assets/notes-02.png",
@@ -141,10 +225,55 @@ const aboutRelatedImages = {
   inference: "/assets/field-5.webp",
   "safety-evaluation": "/assets/field-1.webp",
 };
+function postImage(post) {
+  const index = blogPosts.indexOf(post);
+  return noteImageBySlug[post.slug] || noteImageSequence[(index < 0 ? 0 : index) % noteImageSequence.length] || aboutRelatedImages[post.category] || "/assets/field-1.webp";
+}
 
-function aboutRelatedPosts() {
-  const posts = new Map(blogPosts.map((post) => [post.slug, post]));
-  return aboutRelatedOrder.map((slug) => posts.get(slug)).filter(Boolean);
+const relatedStopWords = new Set(["about", "after", "again", "also", "been", "before", "being", "from", "have", "into", "more", "most", "only", "that", "their", "there", "these", "this", "through", "what", "when", "where", "which", "with", "without", "your"]);
+
+function relatedTokens(value) {
+  return String(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter((token) => token.length > 2 && !relatedStopWords.has(token));
+}
+
+function relatedSignals(post) {
+  const sections = (post.sections || []).flatMap((section) => [section.label, section.title, ...(section.paragraphs || []), ...(section.points || [])]);
+  const keywords = new Set((post.keywords || []).flatMap(relatedTokens));
+  const tokens = new Set(relatedTokens([post.title, post.description, post.answer, ...sections].join(" ")));
+  return { keywords, tokens };
+}
+
+const relatedSignalCache = new Map(blogPosts.map((post) => [post.slug, relatedSignals(post)]));
+
+function relatedScore(post, currentPost) {
+  if (!currentPost || post.slug === currentPost.slug) return 0;
+  const current = relatedSignalCache.get(currentPost.slug) || relatedSignals(currentPost);
+  const candidate = relatedSignalCache.get(post.slug) || relatedSignals(post);
+  const sharedKeywords = [...current.keywords].filter((token) => candidate.keywords.has(token)).length;
+  const sharedTokens = [...current.tokens].filter((token) => candidate.tokens.has(token)).length;
+  const sharedSources = (currentPost.sources || []).filter((source) => (post.sources || []).includes(source)).length;
+  return (post.category === currentPost.category ? 14 : 0)
+    + Math.min(sharedKeywords * 5, 20)
+    + Math.min(sharedTokens, 16)
+    + Math.min(sharedSources * 3, 9);
+}
+
+function relatedBlogPosts(currentPost, limit = 9) {
+  return blogPosts
+    .filter((post) => !currentPost || post.slug !== currentPost.slug)
+    .map((post, index) => ({ post, index, score: relatedScore(post, currentPost) }))
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, limit)
+    .map(({ post }) => post);
+}
+
+function aboutRelatedPosts(currentPost = null) {
+  return relatedBlogPosts(currentPost, currentPost ? 9 : blogPosts.length);
 }
 
 const blogCategoryLabels = {
@@ -156,18 +285,6 @@ const blogArticleUi = {
   en: { introduction: "Introduction", shortAnswer: "Short answer", implementation: "Implementation steps", validation: "Validation checklist", mistakes: "Common mistakes", decision: "Practical decision", sources: "Official sources", practicalBody: "Ship the smallest design that passes the checks above. Record the model, prompt, tool, dataset, and runtime versions used in testing so later changes can be compared rather than guessed. Recheck the linked documentation before relying on provider-specific limits, model names, prices, or preview features; those details change more quickly than the engineering principles in this note." },
   vi: { introduction: "Giới thiệu", shortAnswer: "Tóm tắt", implementation: "Các bước triển khai", validation: "Danh sách kiểm tra", mistakes: "Sai lầm thường gặp", decision: "Quyết định thực tế", sources: "Nguồn chính thức", practicalBody: "Hãy triển khai thiết kế nhỏ nhất vượt qua các bước kiểm tra ở trên. Ghi lại phiên bản mô hình, prompt, công cụ, dữ liệu và runtime đã dùng để kiểm thử để những thay đổi sau này có thể được so sánh thay vì phỏng đoán. Kiểm tra lại tài liệu được liên kết trước khi dựa vào giới hạn, tên mô hình, giá hoặc tính năng thử nghiệm của nhà cung cấp." },
   "zh-cn": { introduction: "简介", shortAnswer: "简要回答", implementation: "实施步骤", validation: "验证清单", mistakes: "常见错误", decision: "实际决策", sources: "官方来源", practicalBody: "先交付能够通过上述检查的最小设计。记录测试中使用的模型、提示词、工具、数据集与运行时版本，让后续变化可以被比较而不是被猜测。依赖供应商的限制、模型名称、价格或预览功能之前，请重新检查链接文档；这些细节变化往往快于本文的工程原则。" },
-};
-
-const modelAnnouncementUi = {
-  en: {
-    contents: "Contents", back: "Back to Models", statusLabel: "Status", status: "In preparation", modelRecord: "Model record", modelName: "Model name", version: "Version", family: "Model family", modalities: "Modalities", modalitiesValue: "Language · speech · vision", parameterCount: "Parameter count", contextLength: "Context length", trainingData: "Training data", license: "License", access: "Access", releaseDate: "Release date", unknown: "Not announced", evaluation: "Evaluation record", protocol: "Evaluation protocol", benchmarks: "Benchmarks", results: "Results", hardware: "Evaluation hardware", artifact: "Artifact", direction: "Direction", sources: "Sources and references", incomplete: "This record is intentionally incomplete. Empty fields will be filled only when the underlying artifact and evidence are ready.", evaluationNote: "No benchmark, protocol, hardware result, or downloadable artifact has been published for this model."
-  },
-  vi: {
-    contents: "Nội dung", back: "Quay lại Mô hình", statusLabel: "Trạng thái", status: "Đang chuẩn bị", modelRecord: "Hồ sơ mô hình", modelName: "Tên mô hình", version: "Phiên bản", family: "Họ mô hình", modalities: "Phương thức", modalitiesValue: "Ngôn ngữ · giọng nói · thị giác", parameterCount: "Số tham số", contextLength: "Độ dài ngữ cảnh", trainingData: "Dữ liệu huấn luyện", license: "Giấy phép", access: "Quyền truy cập", releaseDate: "Ngày phát hành", unknown: "Chưa công bố", evaluation: "Hồ sơ đánh giá", protocol: "Giao thức đánh giá", benchmarks: "Benchmark", results: "Kết quả", hardware: "Phần cứng đánh giá", artifact: "Hiện vật", direction: "Định hướng", sources: "Nguồn và tham khảo", incomplete: "Hồ sơ này được cố ý để trống. Các trường chỉ được điền khi hiện vật và bằng chứng nền tảng đã sẵn sàng.", evaluationNote: "Chưa có benchmark, giao thức, kết quả phần cứng hay hiện vật tải xuống nào được công bố cho mô hình này."
-  },
-  "zh-cn": {
-    contents: "目录", back: "返回模型", statusLabel: "状态", status: "准备中", modelRecord: "模型记录", modelName: "模型名称", version: "版本", family: "模型系列", modalities: "模态", modalitiesValue: "语言 · 语音 · 视觉", parameterCount: "参数量", contextLength: "上下文长度", trainingData: "训练数据", license: "许可证", access: "访问方式", releaseDate: "发布日期", unknown: "尚未公布", evaluation: "评估记录", protocol: "评估协议", benchmarks: "基准测试", results: "结果", hardware: "评估硬件", artifact: "产物", direction: "方向", sources: "来源与参考资料", incomplete: "此记录有意保留空白。只有在底层产物与证据准备好后，才会填写这些字段。", evaluationNote: "目前尚未公布该模型的基准测试、评估协议、硬件结果或可下载产物。"
-  },
 };
 
 function blogCopy(post, localeKey) {
@@ -184,9 +301,9 @@ function relatedDateLabel(localeKey, label) {
   return `${label} · ${date}`;
 }
 
-function aboutRelatedMarkup(localeKey) {
+function aboutRelatedMarkup(localeKey, currentPost = null) {
   const copy = aboutPageCopy[localeKey];
-  const cards = aboutRelatedPosts().map((post) => { const postCopy = blogCopy(post, localeKey); return `<article class="about-related__item" data-related-card><a href="${escapeHtml(blogPostPath(post, localeKey))}" draggable="false"><img src="${escapeHtml(noteImageBySlug[post.slug] || aboutRelatedImages[post.category] || "/assets/field-1.webp")}" alt="" width="1672" height="941" loading="lazy" decoding="async"><div><h3>${escapeHtml(postCopy.title)}</h3><p class="about-related__meta"><span>${escapeHtml(relatedCategoryLabel(post.category, localeKey))}</span><time datetime="${escapeHtml(blogPostReviewedAt)}">${escapeHtml(relatedDateLabel(localeKey, copy.related.dateLabel))}</time></p></div></a></article>`; }).join("");
+  const cards = aboutRelatedPosts(currentPost).map((post) => { const postCopy = blogCopy(post, localeKey); return `<article class="about-related__item" data-related-card><a href="${escapeHtml(blogPostPath(post, localeKey))}" draggable="false"><img src="${escapeHtml(postImage(post))}" alt="" width="1672" height="941" loading="lazy" decoding="async"><div><h3>${escapeHtml(postCopy.title)}</h3><p class="about-related__meta"><span>${escapeHtml(relatedCategoryLabel(post.category, localeKey))}</span><time datetime="${escapeHtml(blogPostReviewedAt)}">${escapeHtml(relatedDateLabel(localeKey, copy.related.dateLabel))}</time></p></div></a></article>`; }).join("");
   return `<section class="about-related" aria-labelledby="about-related-title" data-related-carousel><header><h2 id="about-related-title">${escapeHtml(copy.related.title)}</h2><div class="about-related__controls"><button type="button" data-related-previous aria-controls="about-related-track" aria-label="${escapeHtml(copy.related.previous)}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m10 3-5 5 5 5"></path></svg></button><button type="button" data-related-next aria-controls="about-related-track" aria-label="${escapeHtml(copy.related.next)}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"></path></svg></button><a class="about-related__view-all" href="${localePath(localeKey, copy.related.viewAllPath)}">${escapeHtml(copy.related.viewAll)}</a></div></header><div class="about-related__viewport" data-related-viewport tabindex="0" role="region" aria-label="${escapeHtml(copy.related.title)}"><div class="about-related__track" id="about-related-track" data-related-track>${cards}</div></div></section>`;
 }
 
@@ -196,7 +313,7 @@ function notesDate(localeKey) {
 }
 
 function notesCard(localeKey, post, variant = "", index = 0) {
-  const image = noteImageBySlug[post.slug] || noteImageSequence[index % noteImageSequence.length] || aboutRelatedImages[post.category] || "/assets/field-1.webp";
+  const image = postImage(post);
   const copy = notesCopy[localeKey];
   const postCopy = blogCopy(post, localeKey);
   return `<article class="notes-card${variant ? ` notes-card--${variant}` : ""}" data-notes-card data-notes-category="${escapeHtml(relatedCategoryLabel(post.category, localeKey))}"><a href="${escapeHtml(blogPostPath(post, localeKey))}"><div class="notes-card__media"><img src="${escapeHtml(image)}" alt="" width="960" height="540" loading="lazy" decoding="async"></div><div class="notes-card__copy"><p class="notes-card__category">${escapeHtml(relatedCategoryLabel(post.category, localeKey))}</p><h2>${escapeHtml(postCopy.title)}</h2><p class="notes-card__description">${escapeHtml(postCopy.description)}</p><p class="notes-card__meta"><span>${escapeHtml(copy.reviewed)}</span><time datetime="${escapeHtml(blogPostReviewedAt)}">${escapeHtml(notesDate(localeKey))}</time></p></div></a></article>`;
@@ -217,51 +334,14 @@ ${head(localeKey, `${locale.routes.notes.title} — ${site.name}`, locale.routes
   </div><script src="/content-routes/notes.js?v=${homeAssetRevision}" defer></script></body></html>`;
 }
 
-function modelAnnouncementTemplate(localeKey, post) {
-  const locale = locales[localeKey];
-  const article = blogCopy(post, localeKey);
-  const ui = modelAnnouncementUi[localeKey];
-  const reviewedAt = new Intl.DateTimeFormat(locale.htmlLang, { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(`${blogPostReviewedAt}T00:00:00Z`));
-  const category = relatedCategoryLabel(post.category, localeKey);
-  const value = (text = "") => text ? escapeHtml(text) : `<span class="model-data--empty" aria-label="${escapeHtml(ui.unknown)}">—</span>`;
-  const recordRow = (label, text = "") => `<div><dt>${escapeHtml(label)}</dt><dd>${value(text)}</dd></div>`;
-  const recordRows = [
-    recordRow(ui.modelName),
-    recordRow(ui.version),
-    recordRow(ui.family),
-    recordRow(ui.modalities, ui.modalitiesValue),
-    recordRow(ui.parameterCount),
-    recordRow(ui.contextLength),
-    recordRow(ui.trainingData),
-    recordRow(ui.license),
-    recordRow(ui.access),
-    recordRow(ui.releaseDate),
-  ].join("");
-  const evaluationRows = [ui.protocol, ui.benchmarks, ui.results, ui.hardware, ui.artifact].map((label) => recordRow(label)).join("");
-  const sectionLabel = (item) => item.label.replace(/^\d+\s*\/\s*/, "");
-  const sectionMarkup = article.sections.map((item, index) => `<section class="model-announcement__section" id="model-section-${index + 1}" aria-labelledby="model-section-${index + 1}-title"><p class="model-announcement__section-label">${String(index + 3).padStart(2, "0")} / ${escapeHtml(sectionLabel(item))}</p><h2 id="model-section-${index + 1}-title">${escapeHtml(item.title)}</h2>${item.paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")}${item.points?.length ? `<ul>${item.points.map((point) => `<li>${escapeHtml(point)}</li>`).join("")}</ul>` : ""}</section>`).join("");
-  const sourceLinks = post.sources.map((key) => {
-    const source = blogSources[key];
-    return source ? `<li><a href="${escapeHtml(source[1])}" target="_blank" rel="noopener noreferrer">${escapeHtml(source[0])} <span aria-hidden="true">↗</span></a></li>` : "";
-  }).join("");
-  const tocLinks = [`<a href="#model-introduction">${escapeHtml(blogArticleUi[localeKey].introduction)}</a>`, `<a href="#model-record">${escapeHtml(ui.modelRecord)}</a>`, `<a href="#model-evaluation">${escapeHtml(ui.evaluation)}</a>`, ...article.sections.map((item, index) => `<a href="#model-section-${index + 1}">${escapeHtml(item.title)}</a>`), `<a href="#model-sources">${escapeHtml(ui.sources)}</a>`].join("");
-  return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
-${head(localeKey, `${article.title} — ${site.name}`, article.description, `blog/${post.category}/${post.slug}`, ["/content-routes/route-foundation.css"], [], "/assets/field-3.webp")}  </head><body class="route-page content-page content-model-announcement"><div class="route-page__shell">
-    ${contentHeader(localeKey, "blog")}
-    <main id="main-content" class="model-announcement-main"><header class="model-announcement__hero"><div class="model-announcement__hero-inner"><div class="model-announcement__masthead"><p class="route-page__eyebrow">${escapeHtml(category)} / NAVIN RESEARCH</p><span>${escapeHtml(ui.statusLabel)}: ${escapeHtml(ui.status)}</span></div><h1>${escapeHtml(article.title)}</h1><p class="route-page__lede">${escapeHtml(article.description)}</p><div class="model-announcement__meta"><time datetime="${escapeHtml(blogPostReviewedAt)}">${escapeHtml(reviewedAt)}</time><span>${escapeHtml(ui.status)}</span></div></div></header><div class="model-announcement__paper"><div class="model-announcement__utility"><a href="${escapeHtml(localePath(localeKey, "models"))}">← ${escapeHtml(ui.back)}</a><span>${escapeHtml(ui.direction)}</span></div><div class="model-announcement__layout"><aside class="model-announcement__toc" aria-label="${escapeHtml(ui.contents)}"><p>${escapeHtml(ui.contents)}</p><nav aria-label="${escapeHtml(ui.contents)}">${tocLinks}</nav></aside><article class="model-announcement__article"><section class="model-announcement__intro" id="model-introduction"><p class="model-announcement__section-label">${escapeHtml(blogArticleUi[localeKey].introduction)}</p><p class="model-announcement__lead">${escapeHtml(article.description)}</p><p><strong>${escapeHtml(blogArticleUi[localeKey].shortAnswer)}:</strong> ${escapeHtml(article.answer)}</p></section><section class="model-announcement__section model-announcement__record" id="model-record" aria-labelledby="model-record-title"><p class="model-announcement__section-label">01 / ${escapeHtml(ui.modelRecord.toUpperCase())}</p><h2 id="model-record-title">${escapeHtml(ui.modelRecord)}</h2><dl>${recordRows}</dl><p class="model-announcement__note">${escapeHtml(ui.incomplete)}</p></section><section class="model-announcement__section model-announcement__record" id="model-evaluation" aria-labelledby="model-evaluation-title"><p class="model-announcement__section-label">02 / ${escapeHtml(ui.evaluation.toUpperCase())}</p><h2 id="model-evaluation-title">${escapeHtml(ui.evaluation)}</h2><dl>${evaluationRows}</dl><p class="model-announcement__note">${escapeHtml(ui.evaluationNote)}</p></section>${sectionMarkup}<section class="model-announcement__section" id="model-sources" aria-labelledby="model-sources-title"><p class="model-announcement__section-label">${String(article.sections.length + 3).padStart(2, "0")} / ${escapeHtml(ui.sources.toUpperCase())}</p><h2 id="model-sources-title">${escapeHtml(ui.sources)}</h2><ul>${sourceLinks}</ul></section></article></div></div></main>
-    ${routeFooter(localeKey, `blog/${post.category}/${post.slug}`)}
-  </div></body></html>`;
-}
-
 function blogTemplate(localeKey, post) {
-  if (post.modelAnnouncement) return modelAnnouncementTemplate(localeKey, post);
   const locale = locales[localeKey];
   const aboutCopy = aboutPageCopy[localeKey];
   const article = blogCopy(post, localeKey);
   const ui = blogArticleUi[localeKey];
   const reviewedAt = new Intl.DateTimeFormat(locale.htmlLang, { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(`${blogPostReviewedAt}T00:00:00Z`));
   const category = relatedCategoryLabel(post.category, localeKey);
-  const image = noteImageBySlug[post.slug] || aboutRelatedImages[post.category] || "/assets/field-1.webp";
+  const image = postImage(post);
   const sourceLinks = post.sources.map((key) => {
     const source = blogSources[key];
     return source ? `<li><a href="${escapeHtml(source[1])}" target="_blank" rel="noopener noreferrer">${escapeHtml(source[0])} <span aria-hidden="true">↗</span></a></li>` : "";
@@ -278,12 +358,12 @@ function blogTemplate(localeKey, post) {
     ];
   const sourceSection = section("official-sources", `${String(articleSections.length + 1).padStart(2, "0")}. ${ui.sources.toUpperCase()}`, ui.sources, `<ul>${sourceLinks}</ul>`);
   const tocLinks = article.sections
-    ? article.sections.map((item, index) => `<a href="#blog-section-${index + 1}">${escapeHtml(item.title)}</a>`).join("")
+    ? article.sections.map((item, index) => `<a href="#blog-section-${index + 1}">${escapeHtml(item.label.replace(/^\d+\s*\/\s*/, ""))}</a>`).join("")
     : `<a href="#implementation-steps">${escapeHtml(ui.implementation)}</a><a href="#validation-checklist">${escapeHtml(ui.validation)}</a><a href="#common-mistakes">${escapeHtml(ui.mistakes)}</a><a href="#official-sources">${escapeHtml(ui.sources)}</a>`;
   return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>
-${head(localeKey, `${article.title} — ${site.name}`, article.description, `blog/${post.category}/${post.slug}`, ["/content-routes/route-foundation.css"], ["/content-routes/about-article.js", "/content-routes/about-carousel.js"], image)}  </head><body class="route-page content-page content-about content-blog content-blog-article"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
+${head(localeKey, `${article.title} — ${site.name}`, article.description, `blog/${post.category}/${post.slug}`, ["/content-routes/route-foundation.css"], ["/content-routes/about-nav.js", "/content-routes/about-article.js", "/content-routes/about-carousel.js"], image)}  </head><body class="route-page content-page content-about content-blog content-blog-article"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">
     ${contentHeader(localeKey, "blog")}
-    <main id="main-content" class="about-main content-main"><article class="about-article" data-about-article><header class="about-intro content-copy"><p class="route-page__eyebrow">${escapeHtml(category)} / NAVIN RESEARCH</p><h1>${escapeHtml(article.title)}</h1><p class="route-page__lede about-intro__lede--italic">${escapeHtml(article.description)}</p><div class="about-intro__meta"><time datetime="${escapeHtml(blogPostReviewedAt)}">${escapeHtml(reviewedAt)}</time></div></header><figure class="about-hero"><img src="${escapeHtml(image)}" alt="" width="1672" height="941" decoding="async" fetchpriority="high"></figure>${aboutToolbarMarkup({ toolbar: aboutCopy.toolbar })}<div class="about-reading-layout"><aside class="about-index content-index" aria-label="${escapeHtml(aboutCopy.indexLabel)}"><p>${escapeHtml(aboutCopy.indexLabel)}</p><nav aria-label="${escapeHtml(aboutCopy.indexLabel)}"><a href="#blog-opening">${escapeHtml(ui.introduction)}</a>${tocLinks}<a href="#official-sources">${escapeHtml(ui.sources)}</a></nav></aside><article class="about-prose" data-article-content><div class="about-prose__opening" id="blog-opening"><p>${escapeHtml(article.description)}</p><p><strong>${escapeHtml(ui.shortAnswer)}:</strong> ${escapeHtml(article.answer)}</p></div><div class="route-features about-sections">${articleSections.join("")}${sourceSection}</div></article></div></article>${aboutRelatedMarkup(localeKey)}</main>
+    <main id="main-content" class="about-main content-main"><article class="about-article" data-about-article><header class="about-intro content-copy"><p class="route-page__eyebrow">${escapeHtml(category)} / NAVIN RESEARCH</p><h1>${escapeHtml(article.title)}</h1><p class="route-page__lede about-intro__lede--italic">${escapeHtml(article.description)}</p><div class="about-intro__meta"><time datetime="${escapeHtml(blogPostReviewedAt)}">${escapeHtml(reviewedAt)}</time></div></header><figure class="about-hero"><img src="${escapeHtml(image)}" alt="" width="1672" height="941" decoding="async" fetchpriority="high"></figure>${aboutToolbarMarkup({ toolbar: aboutCopy.toolbar })}<div class="about-reading-layout"><aside class="about-index content-index" aria-label="${escapeHtml(aboutCopy.indexLabel)}"><p>${escapeHtml(aboutCopy.indexLabel)}</p><nav aria-label="${escapeHtml(aboutCopy.indexLabel)}"><a href="#blog-opening">${escapeHtml(ui.introduction)}</a>${tocLinks}<a href="#official-sources">${escapeHtml(ui.sources)}</a></nav></aside><article class="about-prose" data-article-content><div class="about-prose__opening" id="blog-opening"><p>${escapeHtml(article.description)}</p><p><strong>${escapeHtml(ui.shortAnswer)}:</strong> ${escapeHtml(article.answer)}</p></div><div class="route-features about-sections">${articleSections.join("")}${sourceSection}</div></article></div></article>${aboutRelatedMarkup(localeKey, post)}</main>
     ${routeFooter(localeKey, `blog/${post.category}/${post.slug}`)}
   </div></body></html>`;
 }
@@ -520,6 +600,9 @@ for (const [localeKey] of localeEntries) {
   for (const post of blogPosts) await emit(localeKey, `blog/${post.category}/${post.slug}`, blogTemplate(localeKey, post));
 }
 
+await emit("en", "letter", letterTemplate(letterSummaryMarkdown, { summary: true }));
+await emit("en", "letter/full", letterTemplate(letterMarkdown));
+
 const notFoundTemplate = (localeKey = "en") => {
   const locale = locales[localeKey];
   return `<!DOCTYPE html><html lang="${locale.htmlLang}"><head>${head(localeKey, `Page not found — ${site.name}`, "The requested Navin Research page was not found.", "404", "/content-routes/route-foundation.css")}</head><body class="route-page content-page content-404"><div class="content-field" aria-hidden="true"></div><div class="route-page__shell">${contentHeader(localeKey, "")}<main class="route-page__main content-main"><div class="content-copy"><p class="route-page__eyebrow">NAVIN RESEARCH / 404</p><h1>Page not found.</h1><p class="route-page__lede">This route is not part of the public site.</p><p><a class="route-contact" href="/">Return home <span aria-hidden="true">→</span></a></p></div></main>${routeFooter(localeKey)}</div></body></html>`;
@@ -539,6 +622,8 @@ const searchIndex = pages.map(({ localeKey, suffix, url }) => {
   const locale = locales[localeKey];
   const ui = experience[localeKey];
   const chapter = chapters.find((item) => item.slug === suffix);
+  if (suffix === "letter") return { language: "VI", url, title: letterSummaryTitle, description: letterSummaryTitle, text: letterSummaryMarkdown };
+  if (suffix === "letter/full") return { language: "VI", url, title: letterTitle, description: letterTitle, text: letterMarkdown };
   if (!suffix) return { language: locale.shortLabel, url, title: locale.meta.title, description: locale.meta.description, text: `${locale.home.statement} ${ui.wealth.statement}` };
   if (chapter) return { language: locale.shortLabel, url, title: `NAVIN / ${chapter.key} — ${chapter.number}`, description: ui.chapterIntro(chapter.domains[localeKey]), text: `${chapter.domains[localeKey]} ${ui.chapterNotice}` };
   if (legalPages.includes(suffix)) { const copy = ui.legal[suffix]; return { language: locale.shortLabel, url, title: copy[0], description: copy[1], text: copy[2] }; }

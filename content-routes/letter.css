@@ -1,0 +1,228 @@
+@font-face {
+  font-family: "Atkinson";
+  src: url("/assets/fonts/atkinson-regular.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Atkinson";
+  src: url("/assets/fonts/atkinson-bold.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+:root {
+  color-scheme: light;
+  background: #f6f6f1;
+  color: #15211d;
+  font-family: "Atkinson", system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: #f6f6f1;
+}
+
+body {
+  position: relative;
+  min-width: 320px;
+  min-height: 100svh;
+  margin: 0;
+  isolation: isolate;
+  overflow-x: hidden;
+  background: #f6f6f1;
+  color: #15211d;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before,
+body::after {
+  position: fixed;
+  inset: -4%;
+  pointer-events: none;
+  content: "";
+}
+
+body::before {
+  z-index: -2;
+  background: url("/assets/field-4.webp") center / cover no-repeat;
+  filter: saturate(.68) contrast(.92) brightness(1.18) blur(8px);
+  opacity: .8;
+  transform: scale(1.06);
+}
+
+body::after {
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(246, 246, 241, .92), rgba(246, 246, 241, .76) 58%, rgba(246, 246, 241, .88));
+}
+
+.letter-page {
+  min-height: 100svh;
+  padding: clamp(4.5rem, 13vh, 9rem) clamp(1.25rem, 4vw, 3rem) clamp(5rem, 12vh, 9rem);
+}
+
+.letter {
+  position: relative;
+  width: min(100%, 49rem);
+  margin: 0 auto;
+  color: #15211d;
+}
+
+.letter-summary__title,
+.letter-summary__body {
+  display: block;
+}
+
+.letter h1 {
+  margin: 0 0 2.8rem;
+  color: #15211d;
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -.015em;
+  line-height: 1.35;
+}
+
+.letter p {
+  margin: 0 0 1.35rem;
+  color: rgba(21, 33, 29, .82);
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  font-weight: 400;
+  line-height: 1.76;
+}
+
+.letter strong {
+  color: #15211d;
+  font-weight: 700;
+}
+
+.letter em {
+  color: rgba(21, 33, 29, .86);
+}
+
+.letter-read-full {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-top: 1.25rem;
+  color: #15211d;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(21, 33, 29, .62);
+}
+
+.letter-read-full:hover {
+  border-bottom-color: #15211d;
+}
+
+.letter-read-full:focus-visible,
+.letter-back-summary:focus-visible {
+  outline: 2px solid #15211d;
+  outline-offset: .35rem;
+}
+
+.letter-back-summary {
+  position: fixed;
+  z-index: 3;
+  top: clamp(1rem, 2.5vw, 2rem);
+  right: clamp(1rem, 3vw, 3rem);
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.45rem;
+  padding: .55rem .85rem;
+  color: #15211d;
+  background: rgba(246, 246, 241, .74);
+  border: 1px solid rgba(21, 33, 29, .24);
+  border-radius: 999px;
+  box-shadow: 0 .35rem 1.2rem rgba(21, 33, 29, .1);
+  font-size: .85rem;
+  font-weight: 700;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+}
+
+.letter-page--full {
+  padding-top: clamp(4.75rem, 9vw, 8rem);
+  padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.letter-page--full .letter h1 {
+  margin-bottom: 2.8rem;
+}
+
+.letter-page--full .letter p:last-child {
+  margin-bottom: 0;
+}
+
+/* The short letter keeps the original single-column letter composition, but tightens
+   measure, leading, and paragraph rhythm so it reads as one quiet page. */
+.letter-page--summary {
+  display: grid;
+  place-items: center;
+  padding-top: clamp(2rem, 4vh, 3rem);
+  padding-bottom: clamp(2rem, 4vh, 3rem);
+}
+
+.letter-page--summary .letter {
+  width: min(100%, 50rem);
+}
+
+.letter-page--summary .letter h1 {
+  margin-bottom: 1.2rem;
+  font-size: clamp(1.15rem, 1.65vw, 1.5rem);
+  line-height: 1.32;
+}
+
+.letter-page--summary .letter p {
+  margin-bottom: .5rem;
+  font-size: clamp(.84rem, .95vw, 1rem);
+  line-height: 1.45;
+}
+
+.letter-page--summary .letter-read-full {
+  margin-top: .65rem;
+  font-size: clamp(.84rem, .95vw, 1rem);
+}
+
+@media (max-width: 600px) {
+@media (max-width: 600px) {
+  .letter-page {
+    padding-top: 3.2rem;
+    padding-bottom: 4rem;
+  }
+
+  .letter h1 {
+    margin-bottom: 2.2rem;
+    font-size: 1.15rem;
+  }
+
+  .letter p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .letter-back-summary {
+    top: .75rem;
+    right: .75rem;
+    min-height: 2.25rem;
+    font-size: .78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+    animation-duration: .001ms !important;
+  }
+}

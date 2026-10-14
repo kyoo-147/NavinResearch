@@ -141,6 +141,8 @@ function footerGroups(localeKey) {
     { label: footer.research, groups: [
       { label: footer.library, links: [routeLink("research", locale.routes.research.title), routeLink("models", locale.routes.models.title), routeLink("publications", locale.routes.publications.title)] },
       { label: footer.latest, links: [routeLink("blog", locale.routes.blog.title), routeLink("releases", locale.routes.releases.title)] },
+      { label: footer.advancements, links: [routeLink("models", locale.routes.models.title), routeLink("releases", locale.routes.releases.title), routeLink("research", locale.routes.research.title), routeLink("blog", locale.routes.blog.title)] },
+      { label: footer.safety, links: [routeLink("research", locale.routes.research.title), routeLink("docs", locale.routes.docs.title), routeLink("privacy-policy", experience[localeKey].privacy), routeLink("contact", locale.routes.contact.title)] },
     ] },
     { label: footer.products, groups: [
       { label: footer.directory, links: [routeLink("products", locale.routes.products.title)] },
@@ -148,16 +150,24 @@ function footerGroups(localeKey) {
     ] },
     { label: footer.company, groups: [
       { label: footer.about, links: [routeLink("about", locale.routes.about.title), routeLink("about/people", locale.routes.people.title), routeLink("careers", locale.routes.careers.title), routeLink("contact", locale.routes.contact.title)] },
+      { label: footer.support, links: [routeLink("contact", locale.routes.contact.title), routeLink("docs", locale.routes.docs.title), routeLink("search", locale.routes.search.title)] },
+      { label: footer.developers, links: [routeLink("docs", locale.routes.docs.title), routeLink("research", locale.routes.research.title), externalLink(site.github, footer.github)] },
     ] },
     { label: footer.resources, groups: [
       { label: footer.learn, links: [routeLink("blog", locale.routes.blog.title), routeLink("publications", locale.routes.publications.title), routeLink("docs", locale.routes.docs.title), routeLink("search", locale.routes.search.title)] },
+      { label: footer.methods, links: [routeLink("research", locale.routes.research.title), routeLink("notes", locale.routes.notes.title), routeLink("docs", locale.routes.docs.title)] },
+      { label: footer.platform, links: [routeLink("products", locale.routes.products.title), routeLink("docs", locale.routes.docs.title), routeLink("contact", locale.routes.contact.title)] },
+      { label: footer.updates, links: [routeLink("blog", locale.routes.blog.title), routeLink("releases", locale.routes.releases.title), routeLink("publications", locale.routes.publications.title)] },
     ] },
     { label: footer.connect, groups: [
       { label: footer.channels, links: [externalLink(`mailto:${site.email}`, footer.email), externalLink(site.linkedin, footer.linkedin), externalLink(site.github, footer.github)] },
+      { label: footer.community, links: [externalLink(site.linkedin, footer.linkedin), externalLink(site.github, footer.github), externalLink(`mailto:${site.email}`, footer.email)] },
     ] },
     { label: footer.more, groups: [
       { label: footer.account, links: [routeLink("sign-in", locale.routes["sign-in"].title), routeLink("contact", locale.routes.contact.title)] },
       { label: footer.legal, links: [routeLink("privacy-policy", experience[localeKey].privacy), routeLink("terms-of-use", experience[localeKey].terms)] },
+      { label: footer.explore, links: [routeLink("search", locale.routes.search.title), routeLink("products", locale.routes.products.title), routeLink("about/people", locale.routes.people.title), routeLink("contact", locale.routes.contact.title)] },
+      { label: footer.policies, links: [routeLink("privacy-policy", experience[localeKey].privacy), routeLink("terms-of-use", experience[localeKey].terms), routeLink("docs", locale.routes.docs.title)] },
     ] },
   ];
 }

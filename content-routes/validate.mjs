@@ -36,9 +36,13 @@ for (const [localeKey, locale] of Object.entries(locales)) {
   }
 }
 
+
+generatedRoutes.push({ localeKey: "vi", section: "letter", type: "letter", path: "/letter/", file: "letter/index.html" });
+generatedRoutes.push({ localeKey: "vi", section: "letter/full", type: "letter-full", path: "/letter/full/", file: "letter/full/index.html" });
+
 if (blogPosts.length !== 52) errors.push(`blog library: expected 52 posts, found ${blogPosts.length}`);
 const expectedCategories = new Set(["agents", "reasoning", "models", "multimodal", "inference", "safety-evaluation"]);
-const allowedSourceHosts = new Set(["openai.com", "platform.openai.com", "www.anthropic.com", "docs.anthropic.com", "modelcontextprotocol.io", "a2a-protocol.org", "ai.google.dev", "api-docs.deepseek.com", "www.deepseek.com", "github.com", "qwen.readthedocs.io", "www.llama.com", "docs.mistral.ai", "mistral.ai", "nvidia.github.io", "docs.nvidia.com", "navinresearch.com", "moyi.navinresearch.com"]);
+const allowedSourceHosts = new Set(["openai.com", "platform.openai.com", "www.anthropic.com", "docs.anthropic.com", "modelcontextprotocol.io", "a2a-protocol.org", "ai.google.dev", "api-docs.deepseek.com", "deepseek.com", "www.deepseek.com", "github.com", "qwen.readthedocs.io", "www.llama.com", "docs.mistral.ai", "mistral.ai", "nvidia.github.io", "docs.nvidia.com", "navinresearch.com", "moyi.navinresearch.com"]);
 const diskBlogFiles = (await readdir("blog", { recursive: true })).filter((file) => file.endsWith(".md")).map((file) => `blog/${file.replaceAll("\\", "/")}`);
 if (diskBlogFiles.length !== blogPosts.length) errors.push(`blog library: expected ${blogPosts.length} generated Markdown files, found ${diskBlogFiles.length}`);
 const blogPaths = new Set();
@@ -72,6 +76,17 @@ for (const route of generatedRoutes) {
   const html = await readFile(route.file, "utf8");
   const locale = locales[route.localeKey];
   const canonical = `${site.origin}${route.path}`;
+  if (route.type === "letter" || route.type === "letter-full") {
+    const markers = route.type === "letter"
+      ? ['<html lang="vi">', '<title>', 'name="description"', '<main class="letter"', 'id="letter-title">', '/content-routes/letter.css?v=', '<h1 id="letter-title">Chúng tôi sẽ không dừng lại ở đây.</h1>', '<em>Thư gửi Ban Tổ chức AI Thực Chiến 2026.</em>', 'class="letter-read-full"', 'href="/letter/full/"']
+      : ['<html lang="vi">', '<title>', 'name="description"', '<main class="letter"', 'id="letter-title">', '/content-routes/letter.css?v=', '<em>Kính gửi Ban Tổ chức cuộc thi AI Thực Chiến 2026,</em>', '<em>Chúng tôi không dừng lại ở đây.</em>'];
+    for (const marker of markers) {
+      if (!html.includes(marker)) errors.push(`${route.file}: letter marker missing: ${marker}`);
+    }
+    if (route.type === "letter" && html.includes("Trước hết, chúng tôi thẳng thắn")) errors.push(`${route.file}: summary must not include the full letter opening`);
+    if (html.includes('class="masthead site-header"') || html.includes('class="footer site-footer')) errors.push(`${route.file}: letter must remain a blank letter-only page`);
+    continue;
+  }
   if (!html.includes(`<html lang="${locale.htmlLang}">`)) errors.push(`${route.file}: html lang missing`);
   if (!html.includes(`<link rel="canonical" href="${canonical}">`)) errors.push(`${route.file}: canonical missing`);
   for (const requiredLanguage of ["en", "vi", "zh-CN", "x-default"]) {
@@ -126,10 +141,7 @@ for (const route of generatedRoutes) {
       for (const item of copy.related) if (!html.includes(localePath(route.localeKey, item.path))) errors.push(`${route.file}: preserved related link missing: ${item.path}`);
     }
   } else if (route.type === "blog") {
-    const blogMarkers = route.post.modelAnnouncement
-      ? ['class="route-page__header content-header"', 'class="route-page__footer content-footer', 'content-model-announcement', 'model-announcement__record', 'model-announcement__section', '/content-routes/route-foundation.css?v=']
-      : ['class="route-page__header content-header"', 'class="route-page__footer content-footer', 'class="content-field"', 'data-about-article', 'data-about-toolbar', 'data-article-content', 'content-blog-article', '/content-routes/route-foundation.css?v=', '/content-routes/about-article.js?v='];
-    for (const marker of blogMarkers) {
+    for (const marker of ['class="route-page__header content-header"', 'class="route-page__footer content-footer', 'class="content-field"', 'data-about-article', 'data-about-toolbar', 'data-article-content', 'content-blog-article', '/content-routes/route-foundation.css?v=', '/content-routes/about-article.js?v=']) {
       if (!html.includes(marker)) errors.push(`${route.file}: blog marker ${marker} missing`);
     }
     const localizedPost = route.post.translations?.[route.localeKey] || route.post;
@@ -147,7 +159,7 @@ for (const route of generatedRoutes) {
   }
   if (html.includes('/favicon.svg')) errors.push(`${route.file}: deleted favicon referenced`);
   if (html.includes('datePublished') || html.includes('application/ld+json')) errors.push(`${route.file}: unsupported schema/date marker found`);
-  if (route.section && route.section !== "products" && route.section !== "about-preserved" && route.section !== "sign-in" && !["legal", "release", "people", "person"].includes(route.type) && !html.includes(locale.common.preparation) && !html.includes('class="route-features ') && !html.includes('content-model-announcement')) errors.push(`${route.file}: truthful preparation notice or route detail structure missing`);
+  if (route.section && route.section !== "products" && route.section !== "about-preserved" && route.section !== "sign-in" && !["legal", "release", "people", "person"].includes(route.type) && !html.includes(locale.common.preparation) && !html.includes('class="route-features ')) errors.push(`${route.file}: truthful preparation notice or route detail structure missing`);
   if (route.type === "chapter") {
     if (!html.includes(`chapter-${route.section}`) || !html.includes('class="chapter-field"')) errors.push(`${route.file}: chapter background structure missing`);
     if (!routeCss.includes(`.chapter-${route.section} .chapter-field { background-image:`)) errors.push(`${route.file}: chapter background image mapping missing`);

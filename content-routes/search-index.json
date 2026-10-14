@@ -198,16 +198,16 @@
   {
     "language": "EN",
     "url": "/blog/models/introducing-our-next-model/",
-    "title": "Introducing the model we are preparing next",
-    "description": "An early note on the model direction Navin Research is preparing—and the evidence required before it can be called a release.",
-    "text": "We are preparing a new Navin Research model for practical work across language, speech, and vision. This note introduces the direction, not a release: the name, architecture, size, data, evaluation results, license, access, and date are not announced. Navin AI model upcoming AI model model release"
+    "title": "Introducing afaxxaq-000 — unname",
+    "description": "A pre-release note on afaxxaq-000 — unname, the open-weight multimodal model Navin Research is testing and preparing to announce.",
+    "text": "afaxxaq-000 — unname is the temporary designation for a Navin Research model being tested and prepared for announcement. It is designed to learn from conversations, retain user-controlled memory, adapt across users and work, and support high customization through knowledge retrieval, tools, workflows, fine-tuning, and adapters. It is not publicly released yet; pricing, benchmarks, and numerical specifications are not announced. afaxxaq-000 unname Navin AI model open-weight multimodal model customizable AI model upcoming model"
   },
   {
     "language": "EN",
     "url": "/blog/models/moyi-speech-technology-and-engineering/",
     "title": "Moyi: Speech Technology With the Boundary Visible",
     "description": "How Moyi connects acoustic context, speech transformation, local runtime, and human review without hiding the unknowns.",
-    "text": "Moyi is being shaped as a speech and language foundation around real communication conditions: noise, distance, speaker turns, local terminology, and the human decision after an output. This is a research direction, not a released service claim. Moyi speech technology on-device speech translation local AI runtime"
+    "text": "Moyi is an independent speech foundation-model family and runtime direction for multilingual operations. It begins with audio, context, language, and a visible human check. This is a research preview, not a released model, service, or performance claim. Moyi speech technology speech translation local AI runtime multilingual AI"
   },
   {
     "language": "EN",
@@ -758,16 +758,16 @@
   {
     "language": "VI",
     "url": "/vi/blog/models/introducing-our-next-model/",
-    "title": "Giới thiệu mô hình chúng tôi đang chuẩn bị tiếp theo",
-    "description": "Ghi chú ban đầu về định hướng mô hình Navin Research đang chuẩn bị và bằng chứng cần có trước khi gọi đó là một bản phát hành.",
-    "text": "Chúng tôi đang chuẩn bị một mô hình mới cho các công việc thực tế về ngôn ngữ, giọng nói và thị giác. Đây là giới thiệu về định hướng, không phải thông báo phát hành: tên mô hình, kiến trúc, quy mô, dữ liệu, kết quả đánh giá, giấy phép, quyền truy cập và ngày ra mắt chưa được công bố. mô hình AI Navin mô hình ngôn ngữ mô hình sắp ra mắt"
+    "title": "Giới thiệu afaxxaq-000 — unname, mô hình chúng tôi đang chuẩn bị",
+    "description": "Ghi chú trước phát hành về afaxxaq-000 — unname, một mô hình đa phương thức open-weight của Navin Research đang được kiểm thử và chờ công bố.",
+    "text": "afaxxaq-000 — unname là tên tạm thời của một model Navin Research đang được kiểm thử và chuẩn bị công bố. Model được định hướng có khả năng học trong cuộc trò chuyện, ghi nhớ theo người dùng, thích nghi với nhiều người và công việc, hỗ trợ tùy biến cao bằng memory, knowledge base/RAG, tools, workflows, fine-tuning và adapters. Đây chưa phải model đã phát hành; giá, benchmark và các thông số định lượng chưa được công bố. afaxxaq-000 unname model Navin Research open-weight model AI đa phương thức model tùy biến"
   },
   {
     "language": "VI",
     "url": "/vi/blog/models/moyi-speech-technology-and-engineering/",
     "title": "Moyi: Công nghệ giọng nói với ranh giới rõ ràng",
-    "description": "Moyi nghiên cứu công nghệ giọng nói, ngôn ngữ và runtime cục bộ bằng cách giữ điều kiện đầu vào, trạng thái biến đổi và bước kiểm duyệt luôn có thể xem xét.",
-    "text": "Moyi đang được định hình như một nền tảng giọng nói và ngôn ngữ cho giao tiếp trong bối cảnh thực tế: tiếng ồn, khoảng cách, lượt nói, thuật ngữ địa phương và quyết định của con người sau đầu ra. Đây là hướng nghiên cứu, không phải tuyên bố về một dịch vụ đã phát hành. Moyi công nghệ giọng nói AI dịch giọng nói runtime cục bộ"
+    "description": "Moyi là hướng nghiên cứu về model nền tảng giọng nói, runtime cục bộ và dịch giọng nói trong bối cảnh vận hành đa ngôn ngữ.",
+    "text": "Moyi đang được định hình như một họ model nền tảng giọng nói độc lập và một hướng runtime cho hoạt động đa ngôn ngữ. Công việc bắt đầu từ âm thanh, bối cảnh, ngôn ngữ và bước kiểm tra của con người. Đây là research preview, không phải tuyên bố về model, dịch vụ hay hiệu năng đã phát hành. Moyi công nghệ giọng nói dịch giọng nói runtime cục bộ AI đa ngôn ngữ"
   },
   {
     "language": "VI",
@@ -1318,16 +1318,16 @@
   {
     "language": "CN",
     "url": "/zh-cn/blog/models/introducing-our-next-model/",
-    "title": "介绍我们正在准备的下一款模型",
-    "description": "关于 Navin Research 正在准备的模型方向，以及在它能够被称为正式发布之前所需要的证据。",
-    "text": "我们正在准备一款面向语言、语音与视觉实际工作的 Navin Research 新模型。这是一篇方向说明，而不是发布公告：模型名称、架构、规模、数据、评估结果、许可证、访问方式与发布日期目前都尚未公布。 Navin AI 模型 语言模型 即将推出的模型"
+    "title": "介绍 afaxxaq-000 — unname：我们正在准备的模型",
+    "description": "关于 afaxxaq-000 — unname 的发布前说明：这是一款正在测试并等待公开发布的 Navin Research 多模态 open-weight 模型。",
+    "text": "afaxxaq-000 — unname 是 Navin Research 一款正在测试并准备公开发布的模型的临时名称。它被设计为能够在对话中学习、保留用户记忆、适应不同用户与工作，并通过 memory、知识库/RAG、工具、工作流、fine-tuning 与 adapters 实现高度定制。它尚未正式发布；价格、基准结果与定量规格尚未公布。 afaxxaq-000 unname Navin Research 模型 open-weight 模型 多模态 AI 可定制模型"
   },
   {
     "language": "CN",
     "url": "/zh-cn/blog/models/moyi-speech-technology-and-engineering/",
     "title": "Moyi：让语音技术的边界保持可见",
-    "description": "Moyi 研究语音、语言与本地运行时技术，让输入条件、转换状态与人工审阅边界保持可检查。",
-    "text": "Moyi 正在被塑造成一个围绕真实交流条件的语音与语言基础：噪声、距离、轮次、地方术语，以及输出之后由人做出的决定。这是一条研究方向，不是对已发布服务的声明。 Moyi 语音技术 语音翻译 AI 本地运行时"
+    "description": "Moyi 研究面向多语言运营的语音基础模型、边缘运行时与语境化语音翻译方向。",
+    "text": "Moyi 正在被塑造成一个独立的语音基础模型系列与运行时方向，服务于多语言运营场景。它从音频、语境、语言与明确的人工检查开始。这是 research preview，不是对已发布模型、服务或性能的声明。 Moyi 语音技术 语音翻译 本地运行时 多语言 AI"
   },
   {
     "language": "CN",
@@ -1680,6 +1680,20 @@
     "text": "Use a layered eval program: small deterministic checks in each pull request, broader offline suites before release, canary comparisons during rollout, and privacy-reviewed production monitoring. Every failure should map to an owner and a release decision. continuous AI evaluation LLM evals CI production AI monitoring"
   },
   {
+    "language": "VI",
+    "url": "/letter/",
+    "title": "Chúng tôi sẽ không dừng lại ở đây.",
+    "description": "Chúng tôi sẽ không dừng lại ở đây.",
+    "text": "# Chúng tôi sẽ không dừng lại ở đây.\n\n*Thư gửi Ban Tổ chức AI Thực Chiến 2026.*\n\nChúng tôi thừa nhận rằng bài thi của mình tại vòng chung khảo chưa đáp ứng đầy đủ những tiêu chí đã đề ra. Chúng tôi không phủ nhận thiếu sót và cũng không tìm cách biện minh cho kết quả.\n\nTuy nhiên, **chúng tôi đặt câu hỏi về tính phù hợp của phương pháp đánh giá.**\n\nMột cuộc thi đề cao nghiên cứu trí tuệ nhân tạo, phát triển mô hình ngôn ngữ lớn và thuật toán tiên tiến, tại sao lại lựa chọn thử thách tạo video làm nội dung quan trọng trong quá trình tuyển chọn?\n\nMột video có thể truyền tải ý tưởng, nhưng liệu nó có thể phản ánh năng lực nghiên cứu, chất lượng mô hình hay chiều sâu của một thuật toán?\n\n**Chúng tôi không phản đối sáng tạo. Chúng tôi phản đối việc sử dụng một thước đo chưa tương xứng với những năng lực mà cuộc thi tuyên bố muốn tìm kiếm.**\n\nHãy nhìn sang Trung Quốc và những quốc gia đang dẫn đầu về AI. Họ đầu tư vào hạ tầng tính toán, nhân lực nghiên cứu, mô hình nền tảng và những đột phá kỹ thuật. Những đóng góp khoa học được đánh giá thông qua phương pháp, thực nghiệm và kết quả có thể kiểm chứng.\n\nChúng tôi hiểu rằng video có thể hỗ trợ trình bày. Nhưng nếu mục tiêu là phát triển AI, **năng lực kỹ thuật phải là trọng tâm của việc đánh giá.**\n\nVậy chúng tôi muốn hỏi Ban Tổ chức:\n\nBằng cách nào một thử thách tạo video có thể đánh giá khách quan năng lực nghiên cứu, phát triển mô hình ngôn ngữ lớn và thiết kế thuật toán của các đội thi?\n\nĐâu là cơ sở lựa chọn đề bài, tiêu chí chấm điểm và cách thức bảo đảm những năng lực ấy được đánh giá tương xứng?\n\nChúng tôi mong nhận được một lời giải thích minh bạch, có cơ sở chuyên môn.\n\nĐiều khiến chúng tôi thất vọng không đơn thuần là việc có thể phải dừng bước, mà là nguy cơ những ý tưởng, công trình nghiên cứu và khát vọng công nghệ có giá trị bị bỏ lỡ bởi một cơ chế đánh giá chưa phản ánh đầy đủ năng lực của người tham gia.\n\n**Chúng tôi mong những sân chơi công nghệ tại Việt Nam được xây dựng bằng sự tận tâm và trách nhiệm, không chỉ bằng hình thức.** Nếu muốn đưa AI Việt Nam tiến xa hơn, hãy tạo cơ hội để những người nghiên cứu được chứng minh bằng nghiên cứu, những người phát triển mô hình được chứng minh bằng mô hình.\n\nVề phần mình, Navin Research sẽ tiếp tục những gì đã bắt đầu: nghiên cứu mô hình, phát triển thuật toán và xây dựng những hệ thống trí tuệ nhân tạo của riêng mình.\n\n**Dù có được bước tiếp hay phải dừng lại tại cuộc thi này, chúng tôi vẫn sẽ tiếp tục.**\n\n**Chúng tôi tự tin rằng những mô hình đang phát triển có đủ tiềm năng để cạnh tranh, vượt qua và đánh bại những mô hình của các đội tham gia cuộc thi. Sự tự tin ấy đến từ những hướng nghiên cứu, thuật toán và nền tảng kỹ thuật mà chúng tôi đã và đang xây dựng.**\n\nChúng tôi không yêu cầu bất kỳ ai tin vào tuyên bố đó ngay hôm nay. Chúng tôi sẽ chứng minh bằng những mô hình được công bố, bằng benchmark và bằng kết quả thực nghiệm có thể kiểm chứng.\n\n**Một cuộc thi có thể quyết định ai bước vào vòng tiếp theo. Nhưng không một cuộc thi nào có thể quyết định giới hạn của những người thực sự muốn tiến về phía trước.**\n\nChúng tôi có thể thua ở một vòng thi. Nhưng chúng tôi sẽ không từ bỏ con đường mình đã chọn.\n\n*Bùi Minh Cường*  \n**NAVIN RESEARCH**\n\n**Read full letter →**\n"
+  },
+  {
+    "language": "VI",
+    "url": "/letter/full/",
+    "title": "Kính gửi Ban Tổ chức cuộc thi AI Thực Chiến 2026",
+    "description": "Kính gửi Ban Tổ chức cuộc thi AI Thực Chiến 2026",
+    "text": "# _Kính gửi Ban Tổ chức cuộc thi AI Thực Chiến 2026,_\n\nTrước hết, chúng tôi thẳng thắn thừa nhận rằng bài thi của đội tại vòng chung khảo chưa thực sự tốt và chưa đáp ứng đầy đủ những tiêu chí mà Ban Tổ chức đã đề ra. Chúng tôi không phủ nhận những thiếu sót, cũng không có ý định tìm cách biện minh cho kết quả của mình.\n\nTuy nhiên, có một điều mà chúng tôi cảm thấy không thể tiếp tục im lặng.\n\n**Khi một cuộc thi đề cao trí tuệ, nghiên cứu, đổi mới sáng tạo và năng lực phát triển trí tuệ nhân tạo, điều cần được đặt lên bàn cân trước hết phải là năng lực công nghệ, chiều sâu học thuật và giá trị thực tiễn của những gì người tham gia tạo ra.**\n\nChúng tôi thực sự không thể hiểu nổi tại sao một cuộc thi hướng đến việc phát triển trí tuệ nhân tạo, các mô hình ngôn ngữ lớn và những thuật toán tiên tiến, lại lựa chọn một thử thách sản xuất video làm nội dung quan trọng trong quá trình đánh giá và tuyển chọn thí sinh.\n\nMột video có thể kể một câu chuyện đẹp, nhưng liệu nó có thể phản ánh chiều sâu của một công trình nghiên cứu?\n\nMột thước phim có thể gây ấn tượng, nhưng liệu nó có thể chứng minh năng lực xây dựng mô hình, tối ưu thuật toán hay giải quyết những vấn đề kỹ thuật thực sự?\n\nVà liệu một ý tưởng có giá trị có đáng bị bỏ lại phía sau chỉ vì người tạo ra nó không giỏi kể chuyện bằng hình ảnh?\n\n**Chúng tôi không phản đối sáng tạo. Chúng tôi phản đối việc sử dụng một thước đo chưa tương xứng để đánh giá những năng lực mà cuộc thi tuyên bố muốn tìm kiếm.**\n\nChúng tôi đã đến với cuộc thi bằng tất cả sự nhiệt huyết, bằng tinh thần của những người trẻ khao khát nghiên cứu, sáng tạo và xây dựng những công nghệ mang dấu ấn Việt Nam.\n\nNhưng rồi, sự nhiệt huyết ấy như bị dội một gáo nước lạnh khi chúng tôi chứng kiến đề bài của vòng thi: tạo video.\n\nMột yêu cầu mà chúng tôi thực sự khó có thể hình dung lại trở thành trọng tâm của một vòng đánh giá trong cuộc thi công nghệ có quy mô quốc gia.\n\nChúng tôi tự hỏi:\n\n**Chúng ta đang tìm kiếm những người có năng lực nghiên cứu và phát triển trí tuệ nhân tạo, hay những người có khả năng sản xuất nội dung truyền thông tốt nhất?**\n\nHãy nhìn sang Trung Quốc, nơi những doanh nghiệp, phòng thí nghiệm và tổ chức nghiên cứu AI đang đầu tư mạnh mẽ vào hạ tầng tính toán, nguồn nhân lực, các mô hình nền tảng và những thuật toán tiên tiến.\n\nHọ xây dựng năng lực công nghệ bằng những khoản đầu tư dài hạn, bằng nghiên cứu thực nghiệm và bằng đội ngũ kỹ sư, nhà khoa học được đào tạo bài bản.\n\nHọ hiểu rằng muốn phát triển trí tuệ nhân tạo, phải đầu tư vào chính năng lực tạo ra trí tuệ nhân tạo.\n\nVà không chỉ Trung Quốc. Hãy nhìn vào những quốc gia đang dẫn đầu về khoa học công nghệ, nơi các công trình nghiên cứu được đánh giá dựa trên phương pháp, tính mới, kết quả thực nghiệm, khả năng tái lập và những đóng góp thực chất.\n\nỞ những sân chơi công nghệ và nghiên cứu nghiêm túc, người tham gia cần có cơ hội chứng minh năng lực thông qua sản phẩm, thực nghiệm, kết quả đánh giá và những đóng góp kỹ thuật có thể kiểm chứng.\n\nBởi nghiên cứu không phải một màn trình diễn.\n\n**Một thuật toán không trở nên xuất sắc chỉ vì nó được giới thiệu bằng một video đẹp.**\n\n**Và một công trình nghiên cứu cũng không trở nên vô giá trị chỉ vì người tạo ra nó không biết cách dựng nên một thước phim hấp dẫn.**\n\nChúng tôi hoàn toàn hiểu rằng video có thể là một phương tiện hữu ích để trình bày ý tưởng, giới thiệu sản phẩm hoặc truyền đạt kết quả nghiên cứu.\n\nNhưng một phương tiện truyền đạt không thể thay thế cho chính đối tượng cần được đánh giá.\n\nMột video giới thiệu không thể tự nó chứng minh chất lượng mô hình, năng lực thiết kế thuật toán, hiệu quả tối ưu hóa hay giá trị khoa học của một công trình nghiên cứu.\n\nVà chúng tôi chưa thấy cơ sở chuyên môn đủ thuyết phục để giải thích vì sao một thử thách sản xuất video lại được đặt vào vị trí quan trọng như vậy trong quá trình tuyển chọn những đội ngũ được kỳ vọng có năng lực nghiên cứu và phát triển AI.\n\nChúng tôi mong Ban Tổ chức hãy nhìn lại những cuộc thi nghiên cứu khoa học, phát triển mô hình và kỹ thuật AI trên thế giới.\n\nHãy đối chiếu cách họ thiết kế đề bài, cách họ tổ chức đánh giá và cách họ tạo điều kiện để những người có chuyên môn thực sự chứng minh năng lực.\n\n**Liệu có bao nhiêu cuộc thi đề cao nghiên cứu mô hình và thuật toán lại sử dụng khả năng tạo video như một tiêu chí có thể quyết định việc một đội thi được đi tiếp hay phải dừng lại?**\n\nNếu có những cuộc thi tương đồng, xin hãy chỉ ra và lý giải vì sao phương thức đánh giá ấy phù hợp với mục tiêu của cuộc thi này.\n\nNếu không, tại sao chúng ta lại lựa chọn cách tiếp cận đó?\n\nVà quan trọng hơn cả, chúng tôi mong Ban Tổ chức trả lời một câu hỏi:\n\n**Bằng cách nào một đề bài tạo video có thể đánh giá khách quan, toàn diện và công bằng năng lực nghiên cứu, phát triển mô hình ngôn ngữ lớn, thiết kế thuật toán và giải quyết các bài toán trí tuệ nhân tạo của những đội thi tham gia?**\n\nChúng tôi thực sự cần một lời giải thích có cơ sở chuyên môn, chứ không chỉ là một câu trả lời mang tính hình thức.\n\nNếu mục tiêu là tổ chức một cuộc thi sáng tạo video bằng AI, xin hãy xây dựng một sân chơi riêng dành cho lĩnh vực đó.\n\nChúng tôi hoàn toàn tôn trọng những người làm nội dung sáng tạo, những người phát triển công cụ tạo sinh hình ảnh, video và các công nghệ hỗ trợ sản xuất nội dung. Đó đều là những lĩnh vực có giá trị và đòi hỏi năng lực chuyên môn riêng.\n\nNhưng xin đừng đánh đồng năng lực sáng tạo nội dung với năng lực nghiên cứu và phát triển mô hình trí tuệ nhân tạo.\n\nĐó là những lĩnh vực có mục tiêu, phương pháp và tiêu chuẩn đánh giá khác nhau.\n\n**Một người có thể tạo ra một video xuất sắc mà không cần tự xây dựng một mô hình ngôn ngữ. Ngược lại, một người có thể xây dựng được một thuật toán xuất sắc mà không có kỹ năng sản xuất video chuyên nghiệp.**\n\nVậy tại sao chúng ta lại để hai năng lực khác biệt ấy có nguy cơ bị đánh giá bằng cùng một thước đo?\n\nĐiều khiến chúng tôi thất vọng không đơn thuần là việc phải dừng bước.\n\n**Điều khiến chúng tôi thất vọng là nguy cơ những ý tưởng có giá trị, những công trình nghiên cứu nghiêm túc và những khát vọng công nghệ thực sự có thể bị bỏ lỡ bởi một cơ chế đánh giá chưa phản ánh đầy đủ năng lực của người tham gia.**\n\nCó thể đâu đó trong cuộc thi này, một nhóm sinh viên đang xây dựng một thuật toán mới.\n\nCó thể một đội ngũ nhỏ đang âm thầm phát triển mô hình của riêng mình.\n\nCó thể một ý tưởng chưa biết cách trình bày thật đẹp hôm nay lại chính là nền móng của một đột phá công nghệ trong tương lai.\n\nChúng ta có sẵn sàng đánh mất những khả năng ấy chỉ vì một vòng thi chưa cho họ đủ cơ hội chứng minh?\n\nĐó là điều chúng tôi thực sự quan ngại.\n\n**Chúng tôi chỉ mong rằng tất cả chúng ta hãy thực sự góp phần đưa Việt Nam tiến xa hơn, phát triển mạnh mẽ hơn trên bản đồ công nghệ thế giới. Đừng chỉ làm vì hình thức. Hãy làm bằng sự tận tâm, bằng trách nhiệm và bằng khát vọng thực sự đối với nền khoa học công nghệ nước nhà.**\n\nNếu chúng ta thực sự mong Việt Nam có những mô hình AI của riêng mình, những thuật toán mang dấu ấn của người Việt và những doanh nghiệp công nghệ đủ sức cạnh tranh quốc tế, thì hãy bắt đầu bằng việc tạo ra những môi trường đánh giá đúng năng lực của những người đang theo đuổi mục tiêu ấy.\n\nHãy để những người nghiên cứu được chứng minh bằng nghiên cứu.\n\nHãy để những người phát triển mô hình được chứng minh bằng mô hình.\n\nHãy để những người xây dựng thuật toán được chứng minh bằng thuật toán.\n\nVà hãy để những đóng góp công nghệ được đánh giá bằng những kết quả có thể kiểm chứng.\n\nĐừng để những người trẻ mang theo khát vọng nghiên cứu phải rời khỏi một sân chơi công nghệ mà chưa từng có cơ hội chứng minh đầy đủ những gì họ thực sự có thể làm.\n\nĐừng biến một cuộc thi đề cao nghiên cứu thành nơi mà hình thức trình bày có nguy cơ lấn át giá trị kỹ thuật.\n\nVà trên hết, **đừng để sự nhiệt huyết của những người đang muốn cống hiến cho nền công nghệ Việt Nam bị dập tắt bởi những cách thức đánh giá thiếu sức thuyết phục.**\n\nChúng tôi không khẳng định mình xứng đáng đi tiếp hơn bất kỳ đội thi nào. Chúng tôi cũng hiểu rằng kết quả của một cuộc thi phải được tôn trọng.\n\nNhưng tôn trọng kết quả không có nghĩa là không được quyền đặt câu hỏi về cách thức đánh giá.\n\nVà chấp nhận thất bại không có nghĩa là phải chấp nhận mọi điều mà chúng tôi cho rằng chưa hợp lý.\n\nChúng tôi không đòi hỏi được ưu ái. Chúng tôi cũng không yêu cầu Ban Tổ chức thay đổi kết quả vì riêng mình.\n\nĐiều chúng tôi mong muốn là một sự giải thích minh bạch và có trách nhiệm.\n\n**Chúng tôi đề nghị Ban Tổ chức làm rõ cơ sở lựa chọn đề bài, tiêu chí và trọng số chấm điểm, mối liên hệ giữa thử thách sản xuất video với mục tiêu nghiên cứu và phát triển AI, cũng như cách thức bảo đảm rằng năng lực kỹ thuật của các đội thi đã được đánh giá một cách tương xứng.**\n\nChúng tôi muốn hiểu vì sao hình thức đánh giá này được lựa chọn và những cơ sở nào cho thấy nó có thể phản ánh đúng năng lực mà cuộc thi hướng đến.\n\nĐây không chỉ là một câu hỏi dành cho kết quả của chúng tôi.\n\nĐó còn là câu hỏi về cách chúng ta phát hiện, đánh giá và nuôi dưỡng những tài năng công nghệ trong tương lai.\n\n**Điều khiến chúng tôi quan ngại không chỉ là một đề thi. Đó là tư duy tổ chức và lựa chọn những giá trị mà một sân chơi công nghệ muốn tôn vinh.**\n\nBởi nếu chúng ta muốn xây dựng một nền khoa học công nghệ đủ mạnh để cạnh tranh với thế giới, thì ngay từ những sân chơi đầu tiên, chúng ta cũng cần nghiêm túc với cách mình tìm kiếm và đánh giá những con người có khả năng tạo ra công nghệ.\n\nChúng tôi đã đến cuộc thi này với tinh thần của những người muốn xây dựng công nghệ thực sự.\n\nChúng tôi muốn nghiên cứu mô hình.\n\nMuốn phát triển thuật toán.\n\nMuốn giải quyết những bài toán mà trí tuệ nhân tạo vẫn chưa thể giải quyết tốt.\n\nVà trên hết, chúng tôi muốn chứng minh rằng một đội ngũ nghiên cứu độc lập tại Việt Nam cũng có thể tạo ra những công nghệ AI có giá trị, có khả năng cạnh tranh và đóng góp vào sự phát triển chung của lĩnh vực này.\n\nNếu hành trình tại cuộc thi này phải kết thúc, thì đó cũng chỉ là sự kết thúc của một vòng thi, không phải sự kết thúc của khát vọng.\n\n**Chúng tôi sẽ tiếp tục nghiên cứu.**\n\n**Chúng tôi sẽ tiếp tục xây dựng.**\n\n**Chúng tôi sẽ tiếp tục phát triển mô hình của riêng mình.**\n\nRồi sẽ đến một ngày, khi những gì chúng tôi đang xây dựng được công bố, chúng tôi mong rằng kết quả thực nghiệm, năng lực kỹ thuật và giá trị mà công nghệ tạo ra sẽ là câu trả lời thuyết phục nhất.\n\nChúng tôi không cần một thước phim để chứng minh rằng mình có thể tiến xa đến đâu.\n\nChúng tôi muốn để chính công nghệ lên tiếng.\n\nChúng tôi sẽ cạnh tranh bằng nghiên cứu, bằng thuật toán, bằng mô hình và bằng những kết quả có thể kiểm chứng.\n\nChúng tôi đặt mục tiêu vượt qua những đối thủ mạnh nhất, không phải bằng những tuyên bố, mà bằng năng lực thực tế.  \n\n**Dù có được bước tiếp hay phải dừng lại tại cuộc thi này, chúng tôi vẫn sẽ tiếp tục nghiên cứu và phát triển những mô hình trí tuệ nhân tạo của riêng mình.**\n\nChúng tôi tự tin rằng những mô hình mà Navin Research đang xây dựng sẽ đủ sức cạnh tranh, vượt qua và đánh bại những mô hình của các đội tham gia cuộc thi này. Sự tự tin ấy đến từ những nghiên cứu, thuật toán và nền tảng kỹ thuật mà chúng tôi đã và đang phát triển.\n\n**Chúng tôi không cần bất kỳ ai tin vào lời tuyên bố ấy ngày hôm nay. Chúng tôi sẽ chứng minh bằng chính những mô hình, kết quả thực nghiệm và công nghệ mà mình công bố trong tương lai.**\n\nMột cuộc thi có thể kết thúc, nhưng hành trình nghiên cứu của chúng tôi thì không.\n\nBởi đối với chúng tôi, trí tuệ nhân tạo không phải một phong trào nhất thời, không phải một màn trình diễn và càng không phải một cuộc đua xem ai kể câu chuyện hấp dẫn hơn.\n\nĐó là một hành trình nghiên cứu nghiêm túc, dài hạn, đầy khó khăn, nhưng xứng đáng để theo đuổi.\n\n**Một cuộc thi có thể quyết định ai bước vào vòng tiếp theo. Nhưng không một cuộc thi nào có thể quyết định giới hạn của những người thực sự muốn tiến về phía trước.**\n\nChúng tôi có thể thua ở một vòng thi.\n\nNhưng chúng tôi sẽ không từ bỏ con đường mình đã chọn.\n\nVà nếu có một điều cuối cùng chúng tôi mong Ban Tổ chức ghi nhận, thì đó là:\n\n**Xin đừng để hình thức trình bày trở thành rào cản khiến những giá trị nghiên cứu thực sự không có cơ hội được nhìn thấy.**\n\n**Đừng chỉ nói về khát vọng đưa trí tuệ nhân tạo Việt Nam vươn tầm thế giới. Hãy chứng minh khát vọng ấy bằng những hành động thực chất, bằng sự tận tâm và bằng trách nhiệm đối với những người đang nỗ lực biến nó thành hiện thực.**\n\nBởi tương lai của trí tuệ nhân tạo không được quyết định bởi những thước phim đẹp nhất.\n\n**Nó được xây dựng bởi những con người dám nghiên cứu, dám thử nghiệm, dám thất bại và dám tiếp tục ngay cả khi không còn ai trao cho họ một sân khấu.**\n\nVà chúng tôi tin rằng những gì thực sự có giá trị sẽ được chứng minh bằng thời gian, bằng kết quả và bằng chính những công nghệ được tạo ra.\n\n_Trân trọng,_\n\n**Bùi Minh Cường**  \n**NAVIN RESEARCH**\n\n_Chúng tôi không dừng lại ở đây._"
+  },
+  {
     "language": "EN",
     "url": "https://sandora.navinresearch.com/",
     "title": "Sandora — Navin Research",
@@ -1692,48 +1706,6 @@
     "title": "Moyi — Navin Research",
     "description": "Translation that keeps the operational signal in the room.",
     "text": "EDGE SPEECH INTELLIGENCE Moyi is an on-device AI translation runtime for multilingual operations where context, terminology, and safety messages matter. This is a research preview: the acoustic field is a design concept, not a claim of finished performance. On-device runtime Speech translation Operational terminology Acoustic context Safety-aware review RESEARCH PREVIEW"
-  },
-  {
-    "language": "EN",
-    "url": "https://sori.navinresearch.com/",
-    "title": "Sori — Navin Research",
-    "description": "A quiet, local-first voice runtime for desktop work.",
-    "text": "PROGRAMMABLE VOICE RUNTIME Sori is a Windows-first desktop MVP foundation: a small instrument for speaking into the active app, with the runtime, permissions, and boundaries kept visible when they matter. Local-first desktop runtime Hotkey-led voice interaction Model and provider routing Local history and metadata Skills, tools, and permissions BETA INTEREST ONLY"
-  },
-  {
-    "language": "EN",
-    "url": "https://howhow.navinresearch.com/",
-    "title": "HowHow — Navin Research",
-    "description": "A bounded research application that keeps approvals, provenance, and failure history beside every useful result.",
-    "text": "EVIDENCE-FIRST RESEARCH OS HowHow is an evidence-first Research OS for making bounded research work inspectable from question to review. Its current direction is approved for an integration spike; consequential decisions remain explicitly human-owned. Research briefing Evidence ledger Approval boundaries Failure memory Reviewable packaging READY FOR HUMAN REVIEW"
-  },
-  {
-    "language": "EN",
-    "url": "https://dossier.navinresearch.com/",
-    "title": "Dossier — Navin Research",
-    "description": "A local-first document desk for turning difficult pages into reviewable, approved, integration-ready structured data.",
-    "text": "Agentic Document Intelligence Dossier is a concept-stage direction for document work where extraction is only the beginning. Each proposed record stays connected to the page, the decision, and the person who approved it. OCR Handwriting Layout and tables Forms and extraction QA and evidence Early-access interest"
-  },
-  {
-    "language": "EN",
-    "url": "https://autopilot.navinresearch.com/",
-    "title": "Autopilot — Navin Research",
-    "description": "A ROS and deep-learning stack for autonomous scale-model vehicles, documented as a test-track chronicle rather than a production promise.",
-    "text": "AUTONOMOUS SCALE-MODEL VEHICLES Autopilot follows the vehicle from sensor input to control output: camera, IMU, sonar, and localisation feed a ROS-based loop, while learned perception and classical control share the work. ROS sensor graph Deep-learning perception Camera and IMU fusion Lane-keeping control Embedded actuation OPEN RESEARCH REFERENCE"
-  },
-  {
-    "language": "EN",
-    "url": "https://lajvard.navinresearch.com/",
-    "title": "Lajvard — Navin Research",
-    "description": "A compact robot companion imagined for the small rituals of a room: noticing where it is, remembering what matters, and answering with warmth without pretending to be human.",
-    "text": "WARM COMPANION FIELD NOTES / BLUEPRINT 01 Lajvard is a product direction, not a shipping promise. This notebook describes questions around a portable robot with spatial awareness, a private journal, and a gentle social presence. Compact humanoid form direction Spatial memory direction Owner-controlled journal direction Local-first interaction direction Visible uncertainty and consent CONCEPT STAGE · UPDATES, NOT PREORDER"
-  },
-  {
-    "language": "EN",
-    "url": "https://teraflow.navinresearch.com/",
-    "title": "TeraFlow — Navin Research",
-    "description": "Computer vision and multimodal perception for intelligent transport systems.",
-    "text": "SMART MOBILITY / COMPUTER VISION TeraFlow turns camera and LiDAR data into a live, trackable model of road activity. Camera and LiDAR perception Multi-object tracking Traffic operations PRODUCT"
   },
   {
     "language": "EN",
@@ -1762,6 +1734,48 @@
     "title": "PardraVerse — Navin Research",
     "description": "A terminal-first practice workspace for thinking first, coding by hand, and inspecting local evidence.",
     "text": "LOCAL CODING-LEARNING AGENT PardraVerse is a local-first coding-learning agent that combines practice problems, editable solutions, local judging, research notes, and session history. Terminal-first coaching Local judging Practice sessions Editable research notes MVP / AVAILABLE"
+  },
+  {
+    "language": "EN",
+    "url": "https://dossier.navinresearch.com/",
+    "title": "Dossier — Navin Research",
+    "description": "A local-first document desk for turning difficult pages into reviewable, approved, integration-ready structured data.",
+    "text": "Agentic Document Intelligence Dossier is a concept-stage direction for document work where extraction is only the beginning. Each proposed record stays connected to the page, the decision, and the person who approved it. OCR Handwriting Layout and tables Forms and extraction QA and evidence Early-access interest"
+  },
+  {
+    "language": "EN",
+    "url": "https://sori.navinresearch.com/",
+    "title": "Sori — Navin Research",
+    "description": "A quiet, local-first voice runtime for desktop work.",
+    "text": "PROGRAMMABLE VOICE RUNTIME Sori is a Windows-first desktop MVP foundation: a small instrument for speaking into the active app, with the runtime, permissions, and boundaries kept visible when they matter. Local-first desktop runtime Hotkey-led voice interaction Model and provider routing Local history and metadata Skills, tools, and permissions BETA INTEREST ONLY"
+  },
+  {
+    "language": "EN",
+    "url": "https://howhow.navinresearch.com/",
+    "title": "HowHow — Navin Research",
+    "description": "A bounded research application that keeps approvals, provenance, and failure history beside every useful result.",
+    "text": "EVIDENCE-FIRST RESEARCH OS HowHow is an evidence-first Research OS for making bounded research work inspectable from question to review. Its current direction is approved for an integration spike; consequential decisions remain explicitly human-owned. Research briefing Evidence ledger Approval boundaries Failure memory Reviewable packaging READY FOR HUMAN REVIEW"
+  },
+  {
+    "language": "EN",
+    "url": "https://autopilot.navinresearch.com/",
+    "title": "Autopilot — Navin Research",
+    "description": "A ROS and deep-learning stack for autonomous scale-model vehicles, documented as a test-track chronicle rather than a production promise.",
+    "text": "AUTONOMOUS SCALE-MODEL VEHICLES Autopilot follows the vehicle from sensor input to control output: camera, IMU, sonar, and localisation feed a ROS-based loop, while learned perception and classical control share the work. ROS sensor graph Deep-learning perception Camera and IMU fusion Lane-keeping control Embedded actuation OPEN RESEARCH REFERENCE"
+  },
+  {
+    "language": "EN",
+    "url": "https://lajvard.navinresearch.com/",
+    "title": "Lajvard — Navin Research",
+    "description": "A compact robot companion imagined for the small rituals of a room: noticing where it is, remembering what matters, and answering with warmth without pretending to be human.",
+    "text": "WARM COMPANION FIELD NOTES / BLUEPRINT 01 Lajvard is a product direction, not a shipping promise. This notebook describes questions around a portable robot with spatial awareness, a private journal, and a gentle social presence. Compact humanoid form direction Spatial memory direction Owner-controlled journal direction Local-first interaction direction Visible uncertainty and consent CONCEPT STAGE · UPDATES, NOT PREORDER"
+  },
+  {
+    "language": "EN",
+    "url": "https://teraflow.navinresearch.com/",
+    "title": "TeraFlow — Navin Research",
+    "description": "Computer vision and multimodal perception for intelligent transport systems.",
+    "text": "SMART MOBILITY / COMPUTER VISION TeraFlow turns camera and LiDAR data into a live, trackable model of road activity. Camera and LiDAR perception Multi-object tracking Traffic operations PRODUCT"
   },
   {
     "language": "EN",

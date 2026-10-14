@@ -17,6 +17,7 @@ const exactPublicFiles = [
   "styles.css",
   "content-routes/release-search.js",
   "content-routes/route-foundation.css",
+  "content-routes/letter.css",
   "content-routes/about-preserved-editorial.css",
   "content-routes/about-light-editorial.css",
   "content-routes/about-nav.js",

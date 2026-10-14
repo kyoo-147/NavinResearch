@@ -75,21 +75,18 @@
   }, { passive: false });
   viewport.addEventListener("pointerdown", (event) => {
     if (event.pointerType === "mouse" && event.button !== 0) return;
-    if (event.pointerType !== "touch") event.preventDefault();
     dragging = true;
     moved = false;
     dragStartX = event.clientX;
     dragStartScroll = viewport.scrollLeft;
     viewport.classList.add("is-dragging");
-    if (event.pointerType !== "touch") {
-      try { viewport.setPointerCapture?.(event.pointerId); } catch {}
-    }
   });
   viewport.addEventListener("pointermove", (event) => {
     if (!dragging) return;
     const delta = event.clientX - dragStartX;
     if (Math.abs(delta) < 6 && !moved) return;
     moved = true;
+    try { viewport.setPointerCapture?.(event.pointerId); } catch {}
     event.preventDefault();
     const maxScroll = Math.max(0, track.scrollWidth - viewport.clientWidth);
     viewport.scrollLeft = Math.max(0, Math.min(maxScroll, dragStartScroll - delta));

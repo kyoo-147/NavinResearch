@@ -31,4 +31,25 @@ export const teraflow = {
   url: "https://teraflow.navinresearch.com/",
 };
 
-export const catalogProducts = [...products, teraflow, ...externalCatalogProducts];
+const catalogOrder = [
+  "sandora",
+  "moyi",
+  "merak",
+  "navin-openbot",
+  "synomorph",
+  "pardraverse",
+  "dossier",
+  "sori",
+  "howhow",
+  "autopilot",
+  "lajvard",
+  "teraflow",
+  "first-snow",
+];
+
+const catalogBySlug = new Map([...products, teraflow, ...externalCatalogProducts].map((product) => [product.slug, product]));
+export const catalogProducts = catalogOrder.map((slug) => {
+  const product = catalogBySlug.get(slug);
+  if (!product) throw new Error(`Missing catalog product for ${slug}`);
+  return product;
+});

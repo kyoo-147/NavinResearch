@@ -3,71 +3,116 @@ title: "Moyi: Speech Technology With the Boundary Visible"
 description: "How Moyi connects acoustic context, speech transformation, local runtime, and human review without hiding the unknowns."
 language: en
 canonical: https://navinresearch.com/blog/models/moyi-speech-technology-and-engineering/
-topics: ["Moyi", "speech technology", "on-device speech translation", "local AI runtime"]
+topics: ["Moyi", "speech technology", "speech translation", "local AI runtime", "multilingual AI"]
 ---
 
 # Moyi: Speech Technology With the Boundary Visible
 
 How Moyi connects acoustic context, speech transformation, local runtime, and human review without hiding the unknowns.
 
-**Short answer:** Moyi is being shaped as a speech and language foundation around real communication conditions: noise, distance, speaker turns, local terminology, and the human decision after an output. This is a research direction, not a released service claim.
+**Short answer:** Moyi is an independent speech foundation-model family and runtime direction for multilingual operations. It begins with audio, context, language, and a visible human check. This is a research preview, not a released model, service, or performance claim.
 
-_01 / MOYI BEGINS WITH CONTEXT_
+_01 / MOYI'S SCOPE_
 
-## Speech is more than the words in the transcript.
+## Moyi is a speech foundation direction for multilingual operations.
 
-Moyi is being shaped as a speech and language foundation around the conditions in which communication happens: distance, noise, turn-taking, local terminology, and the human decision that follows an output.
+Moyi is being shaped as an independent speech foundation-model family and runtime direction for multilingual operations. The work starts with audio, context, language, and a visible human check rather than treating speech as a clean text box.
 
-That is why the product direction begins with the acoustic field rather than a polished answer box. The room is part of the input.
+This page describes a research preview. It does not announce a released model, a supported language list, a production service, or measured performance.
 
-_02 / THE TECHNOLOGY PATH_
-
-## Keep the chain visible.
-
-Moyi separates the path from audio to reviewed meaning: capture the scene, represent speech, carry context and terminology, transform language, expose runtime state, and keep a human review boundary where the result may matter.
-
-- Acoustic field and speaker turns
 - Speech and language transformation
-- Operational lexicon and context
-- Runtime state, interruption, and review
+- Multilingual operational context
+- Human review remains visible
 
-_03 / ENGINEERING THE BOUNDARY_
+_02 / FROM MODEL TO RUNTIME_
 
-## Local execution changes the question.
+## Separate the model, the runtime, and the reviewed result.
 
-Moyi's intended runtime direction keeps critical speech paths close to the device when connectivity, privacy, or response conditions vary. That is an engineering direction, not a claim that a finished edge package is available.
+Moyi's technical direction keeps model behavior, runtime state, and reviewed output as separate records. That separation makes it possible to inspect where uncertainty entered the chain instead of treating one generated sentence as the whole system.
 
-A serious implementation must define what enters the device, what remains local, what may leave, and how a partial or uncertain output is distinguished from a reviewed handoff.
+A complete path can include acoustic representation, speech understanding, language transformation, runtime receipts, and a human-approved handoff. Each step needs its own evidence and failure boundary.
 
-- Device boundary before deployment claim
-- Partial output is not final output
-- Receipts carry state and provenance
+- Model context
+- Runtime receipt
+- Reviewed output
+- Failure and interruption state
 
-_04 / TECHNOLOGY THAT CAN BE REVIEWED_
+_03 / THE ACOUSTIC FIELD_
 
-## Terminology belongs beside the model.
+## Speech begins with the scene, not only the transcript.
 
-Names, procedures, and safety phrases are not decoration in an operational speech system. They need to travel through capture, transformation, and review without becoming invisible assumptions.
+Distance, noise, overlapping speakers, turn-taking, microphone conditions, and local terminology all shape what a speech system can observe. Moyi treats those conditions as part of the input record to be measured and reviewed.
 
-The useful technical artifact is therefore not only a model response. It is a record of input conditions, transformation state, output, uncertainty, and the decision made after review.
+A clean transcript can hide what was audible, what was inferred, and what remained unclear. The system should preserve that distinction.
 
-_05 / WHAT IS NOT ANNOUNCED_
+- Acoustic conditions
+- Speaker turns
+- Operational terms
+- Unknown or unclear segments
 
-## A research preview leaves the blank fields visible.
+_04 / OPERATIONAL TRANSLATION_
 
-Moyi has not announced model names, a language list, benchmark values, latency, concurrency, a public SDK or API, supported devices, a deployment package, pricing, or service availability.
+## Terminology belongs beside the translation model.
 
-The public site describes a research direction and an engineering vocabulary. It does not grant access or establish production readiness.
+Names, procedures, and safety messages are not decoration in an operational speech workflow. Moyi's direction keeps an explicit operational lexicon and context beside the speech transformation instead of treating every utterance as generic text.
+
+A proposed translation may be useful without being automatically actionable. The interface must distinguish a partial hypothesis from a reviewed handoff.
+
+- Respect team vocabulary
+- Preserve safety wording
+- Carry context through the transformation
+- Require human confirmation when the result matters
+
+_05 / STREAMING AND STATE_
+
+## Partial output is not final output.
+
+Incremental audio can produce a sequence of changing hypotheses. A future Moyi runtime should identify each input chunk, revision, interruption, and reviewed result so users can see which state they are reading.
+
+Latency and throughput are not published. Any timing claim requires a named runtime, hardware, workload, protocol, and repeatable measurement.
+
+- Capture chunk
+- Transform state
+- Revised hypothesis
+- Reviewed handoff
+
+_06 / LOCAL RUNTIME_
+
+## On-device execution is a direction, not a finished package.
+
+Moyi's intended runtime direction keeps critical speech paths close to the device when connectivity, privacy, or response conditions vary. Local execution changes the data boundary, but it does not by itself prove quality, resource fit, or production readiness.
+
+A real deployment record would need to state what enters the device, what remains local, what may leave, which hardware is supported, and how failure or partial output is handled.
+
+- What enters the device
+- What stays local
+- What may leave
+- Hardware and resource limits
+
+_07 / EVALUATION AND UNKNOWN FIELDS_
+
+## A language claim needs a listening protocol.
+
+A useful evaluation record should identify the audio conditions, language and terminology context, expected output, review standard, model or runtime version, and failure cases. Moyi has not published model names, a language list, benchmark values, latency, concurrency, supported devices, or a public SDK/API.
+
+Pricing, service availability, deployment packages, customers, and production outcomes are also not announced. Empty fields are more accurate than inferred capabilities.
 
 - MODEL AND LANGUAGE COVERAGE: NOT ANNOUNCED
 - BENCHMARKS AND LATENCY: NOT PUBLISHED
 - SDK, DEVICES, PRICING, AND ACCESS: NOT ANNOUNCED
 
-_06 / WHAT COMES NEXT_
+_08 / WHAT COMES NEXT_
 
 ## Build the protocol before the promise.
 
-The next useful Moyi record will connect a named model or runtime artifact to conditions, evaluation, failure modes, and a clear access boundary. Until then, the technology is best understood as a focused research direction: speech in context, with the boundary visible.
+The next useful Moyi record will connect a named model or runtime artifact to its input conditions, evaluation method, failure modes, data boundary, and access terms. Until then, Moyi is best understood as a focused research direction: speech in context, with the boundary visible.
+
+This article does not turn a concept diagram into measured performance or a research preview into a shipped service.
+
+- Name the artifact
+- Publish the protocol
+- Show the limits
+- Keep review and provenance visible
 
 ## Official sources
 
