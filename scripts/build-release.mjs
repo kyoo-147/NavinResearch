@@ -27,6 +27,7 @@ const exactPublicFiles = [
   "content-routes/notes.js",
   "content-routes/sign-in.js",
   "content-routes/theme.js",
+  "content-routes/theme-bootstrap.js",
   "content-routes/route-search.js",
   "content-routes/search-index.json",
   "products/product-primitives.css",

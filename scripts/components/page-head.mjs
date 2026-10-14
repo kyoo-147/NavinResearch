@@ -13,7 +13,7 @@ export function pageHead({ localeKey, title, description, suffix = "", styles = 
   const socialImage = image.startsWith("http") ? image : `${site.origin}${image}`;
   const versionedStyles = styles.map((href) => href.includes("?") ? href : `${href}?v=${revision}`);
   const versionedScripts = ["/content-routes/theme.js", ...scripts].filter(Boolean).filter((src, index, list) => list.indexOf(src) === index).map((src) => src.includes("?") ? src : `${src}?v=${revision}`);
-  const themeBootstrap = `    <script>(function(){try{var saved=localStorage.getItem("navin-theme");var preference=saved === "light" || saved === "dark" || saved === "system" ? saved : "dark";var resolved=preference === "system" ? (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark") : preference;document.documentElement.dataset.theme=resolved;document.documentElement.dataset.themePreference=preference;}catch(error){document.documentElement.dataset.theme="dark";document.documentElement.dataset.themePreference="dark";}}());</script>`;
+  const themeBootstrap = `    <script src="/content-routes/theme-bootstrap.js?v=${revision}"></script>`;
   return `    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#04130e">
