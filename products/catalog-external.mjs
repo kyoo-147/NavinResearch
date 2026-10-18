@@ -71,7 +71,7 @@ const externalCatalogProducts = [
     capabilities: ["Terminal-first coaching", "Local judging", "Practice sessions", "Editable research notes"],
     status: "MVP / AVAILABLE",
     catalogStatus: "product",
-    url: "https://github.com/kyoo-147/PardraVerse",
+    url: "https://pardraverse.navinresearch.com/",
     catalogCopy: {
       vi: {
         eyebrow: "AGENT HỌC LẬP TRÌNH CỤC BỘ",
