@@ -23,7 +23,8 @@ import {
   writeProductManifest,
 } from "./product-renderer-helpers.mjs";
 
-const products = [sandora, moyi, sori, howhow, dossier, autopilot, lajvard];
+// Product subdomains now ship from their own repos; keep the pipeline but emit nothing.
+const products = [];
 const renderers = new Map([
   ["sandora", { render: renderSandora, layoutFor: sandoraLayout }],
   ["moyi", { render: renderMoyi, layoutFor: moyiLayout }],

@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://sori.navinresearch.com/sitemap.xml
