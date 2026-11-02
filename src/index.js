@@ -33,7 +33,7 @@ const CONSENT = `<script id="navin-consent-boot">
 
 const UI = `<style id="navin-consent-style">
 #navin-consent{position:fixed;left:0;right:0;bottom:0;z-index:2147483646;
-background:rgba(247,247,248,.92);backdrop-filter:blur(20px) saturate(140%);
+background:rgba(247,247,248,.82);backdrop-filter:blur(22px) saturate(150%);
 -webkit-backdrop-filter:blur(20px) saturate(140%);
 border-top:1px solid rgba(0,0,0,.08);color:#0d0d0d;
 font:15px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
@@ -68,8 +68,9 @@ color:#fff;font:inherit;font-weight:500;cursor:pointer}
 <div id="navin-consent" hidden>
   <div class="copy">
     <strong>We use cookies</strong>
-    <p>We use cookies to help this site function, understand service usage, and support product improvement.
-       Visit <a href="#" data-open-prefs>Manage Cookies</a> to change preferences anytime.</p>
+    <p>We use cookies to help this site function, understand service usage, and support marketing efforts.
+       Visit <a href="#" data-open-prefs>Manage Cookies</a> to change preferences anytime.
+       View our <a href="/policies/cookie-policy/">Cookie Policy</a> for more info.</p>
   </div>
   <div class="row">
     <button type="button" data-consent="manage">Manage Cookies</button>
