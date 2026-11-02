@@ -1,4 +1,5 @@
-import { chapters, experience, locales, localePath, sections, site } from "../../site.config.mjs";
+import { chapters, experience, locales, localePath, sections, site,
+  SIGN_IN_URL, CONTACT_SALES_URL } from "../../site.config.mjs";
 import { catalogProducts } from "../product-data.mjs";
 
 const currentYear = new Date().getUTCFullYear();
@@ -73,8 +74,9 @@ export function siteAnnouncement(localeKey) {
 function accountActions(localeKey, { wrappedLabels = false } = {}) {
   const account = experience[localeKey].account;
   const label = (value) => wrappedLabels ? `<span class="content-header__label">${escapeHtml(value)}</span>` : escapeHtml(value);
-  const tryAction = `${label(account.tryNavin)}${wrappedLabels ? "" : " "}<span aria-hidden="true">↗</span>`;
-  return `<div class="content-header__utilities"><div class="content-header__account"><a class="content-header__sign-in" href="${localePath(localeKey, "sign-in")}">${label(account.signIn)}</a><a class="content-header__sales" href="${localePath(localeKey, "contact")}">${label(account.contactSales)}</a><button type="button" class="content-header__try" disabled aria-disabled="true">${tryAction}</button></div></div>`;
+  /* one button carries both entry points; the separate Try Navin tab is gone */
+  const signInLabel = `${account.signIn} / ${account.tryNavin}`;
+  return `<div class="content-header__utilities"><div class="content-header__account"><a class="content-header__sign-in" href="${SIGN_IN_URL}">${label(signInLabel)}</a><a class="content-header__sales" href="${CONTACT_SALES_URL}">${label(account.contactSales)}</a></div></div>`;
 }
 
 function signInMarkup(localeKey) {
@@ -176,7 +178,9 @@ function footerGroups(localeKey) {
       { label: footer.community, links: [externalLink(site.linkedin, footer.linkedin), externalLink(site.github, footer.github), externalLink(`mailto:${site.email}`, footer.email)] },
     ] },
     { label: footer.more, groups: [
-      { label: footer.account, links: [routeLink("sign-in", locale.routes["sign-in"].title), routeLink("contact", locale.routes.contact.title)] },
+      { label: footer.account, links: [
+        `<a href="${SIGN_IN_URL}">${escapeHtml(locale.routes["sign-in"].title)}</a>`,
+        routeLink("contact", locale.routes.contact.title)] },
       { label: footer.legal, links: [routeLink("privacy-policy", experience[localeKey].privacy), routeLink("terms-of-use", experience[localeKey].terms)] },
       { label: footer.explore, links: [routeLink("search", locale.routes.search.title), routeLink("products", locale.routes.products.title), routeLink("about/people", locale.routes.people.title), routeLink("contact", locale.routes.contact.title)] },
       { label: footer.policies, links: [routeLink("privacy-policy", experience[localeKey].privacy), routeLink("terms-of-use", experience[localeKey].terms), routeLink("docs", locale.routes.docs.title)] },

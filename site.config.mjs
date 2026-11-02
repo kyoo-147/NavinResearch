@@ -248,6 +248,11 @@ export const experience = {
   },
 };
 
+/* The harness gateway is the single front door for signing in and for
+   sales conversations; the marketing site links straight to it. */
+export const SIGN_IN_URL = "https://navinharness.navinresearch.com/login/";
+export const CONTACT_SALES_URL = "https://navinharness.navinresearch.com/login/sales";
+
 export function localePath(localeKey, section = "") {
   const prefix = locales[localeKey].prefix;
   const parts = [prefix, section].filter(Boolean);
